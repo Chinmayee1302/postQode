@@ -1,0 +1,136 @@
+id: a63005df-4d87-4f57-9554-23167eb30213
+name: editGateway
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/blufis/{{gatewayID}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - blufis
+      - '{{gatewayID}}'
+  method: PATCH
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |
+      {
+          "networkAliases": {
+              "hid-blufis": {
+                  "policyName": "{{updatedGatewayDetails.gatewayPolicy}}",
+                  "SID-64": "{{updatedGatewayDetails.gatewayId}}"
+              }
+          },
+          "networkId": "hid-blufis",
+          "data": [
+              {
+                  "path": "manufacturer",
+                  "value": "{{updatedGatewayDetails.manufacturer}}"
+              },
+              {
+                  "path": "gatewayType",
+                  "value": "{{updatedGatewayDetails.gatewayType}}"
+              },
+              {
+                  "path": "gatewayPolicy",
+                  "value": "{{updatedGatewayDetails.gatewayPolicy}}"
+              },
+              {
+                  "path": "gatewayId",
+                  "value": "{{updatedGatewayDetails.gatewayId}}"
+              },
+              {
+                  "path": "gatewayName",
+                  "value": "{{updatedGatewayDetails.gatewayName}}"
+              },
+              {
+                  "path": "location/building/id",
+                  "value": "{{BuildingId}}"
+              },
+              {
+                  "path": "location/building/name",
+                  "value": "{{buildingDetails.buildingName}}"
+              },
+              {
+                  "path": "location/floor/id",
+                  "value": "{{floorId}}"
+              },
+              {
+                  "path": "location/floor/name",
+                  "value": "{{floorDetails.floorName}}"
+              },
+              {
+                  "path": "location/department/id",
+                  "value": null
+              },
+              {
+                  "path": "location/department/name",
+                  "value": null
+              },
+              {
+                  "path": "location/room/id",
+                  "value": "{{roomId}}"
+              },
+              {
+                  "path": "location/room/name",
+                  "value": "{{roomDetails.roomName_1}}"
+              },
+              {
+                  "path": "associatedLocation/room/id",
+                  "value": null
+              },
+              {
+                  "path": "associatedLocation/room/name",
+                  "value": null
+              }
+          ],
+          "name": "HID-Gateway {{updatedGatewayDetails.gatewayName}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - console.log(pq.request.body)
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - const responseData = pq.response.json();
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
+        - pq.test('Gateway details are correct', function() {
+        - '    pq.expect(responseData.data.manufacturer).to.equal(pq.environment.get(''updatedGatewayDetails.manufacturer''));'
+        - '    pq.expect(responseData.data.gatewayType).to.equal(pq.environment.get(''updatedGatewayDetails.gatewayType''));'
+        - '    pq.expect(responseData.data.gatewayPolicy).to.equal(pq.environment.get(''updatedGatewayDetails.gatewayPolicy''));'
+        - '    pq.expect(responseData.data.gatewayId).to.equal(pq.environment.get(''updatedGatewayDetails.gatewayId''));'
+        - '    pq.expect(responseData.data.gatewayName).to.equal(pq.environment.get(''updatedGatewayDetails.gatewayName''));'
+        - '});'
+type: request

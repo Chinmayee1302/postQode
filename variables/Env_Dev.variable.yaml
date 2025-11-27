@@ -5,7 +5,6 @@ PROJECT_ID: 55zmpJa2Q7vyjulNF72JK6
 SYSTEM_ID: 1WZp0PBZ2Y9BB5nYWnaDmx
 API_Base_URL: https://dev-cox-health-imagine-api.leverege.com/v1
 hsptlBluePrintID: 2I8n67xzYK0lHliPLeJMih
-buildingId: 4sqr23Qxh8tjYlBKpCVPEI
 API_Lev_URL: https://dev-cognosos.web.app/
 hopitalDetails:
   hospitalName: PostQode123
@@ -15,8 +14,8 @@ hopitalDetails:
   timezone: Eastern Standard Time
   state: Alabama
   updatedstreetAddress: 1214 Coolidge Street_Updated
-HospitalId: 11cLmzn9dREXlVVEU32Ft9
-BuildingId: 5Yilp5HL2Y0eyOP4Zu3yeX
+HospitalId: 5b4k3ed9i9e2oXGsOlcMs3
+BuildingId: 1JBdJPpiJ4VBPfLYVtwItg
 buildingDetails:
   buildingName: Apollo Care Hospital
   streetAddress: Koramangala
@@ -44,8 +43,44 @@ roomDetails:
   monitorCompliance: 'No'
 departmentName: PostQodeDept
 updatedDepartmentName: PostQodeDept_Updated
-departmentID: 6e3M1XH9aAhGA2OaXTlrOg
+departmentID: 5Msp7Y3u17sl3038JsFjtG
 departmentBoundaryName: DeptBoundary
 updatedDepartmentBoundaryName: DeptBoundaryUpdated
-floorId: 5yyGMuxbo1CsveMpnAi7St
-departmentBoundaryId: 6qHOHodhp7lFAskw7gBmpf
+departmentBoundaryId: 4pdTtmC7wnD5pxMga7R3kF
+tagDetails:
+  deviceId: postTag
+  model: iBeek Mini
+  type: Asset Tag
+  manufacturer: HID
+updatedTagDetails:
+  deviceId: postTag
+  model: Beacon Card V4
+  type: Staff Tag
+  manufacturer: HID
+tagId: 73WmEDmwe68nZ9YNvTLdTV
+sensorDetails:
+  deviceId: postSensor
+  sensorType: Ambient
+  manufacturer: Centrak
+  model: postSensorModel
+gatewayDetails:
+  manufacturer: HID
+  gatewayType: AC
+  gatewayPolicy: PostQodePolicy
+  gatewayId: POSTQODEGATEWAYID
+  gatewayName: PostQodeGatewayName
+updatedGatewayDetails:
+  manufacturer: HID
+  gatewayType: DC
+  gatewayPolicy: PostQodePolicy
+  gatewayId: POSTQODEGATEWAYID
+  gatewayName: PostQodeGatewayName
+updatedSensorDetails:
+  deviceId: postSensorUpdated
+  sensorType: Ambient
+  manufacturer: Centrak
+  model: postSensorModelUpdated
+sensorId: 72It7bREptGIDhOwyO9Pyn
+roomId: 3snIxUatPOyG36MEagjYk8
+gatewayID: 2tejfR8XdSeTlebESfS8TR
+floorId: 4wY8qaJVMX8EbGUqqP9qlr

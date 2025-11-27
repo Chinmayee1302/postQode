@@ -1,0 +1,91 @@
+id: 1215c8cd-a8a4-4efe-ab60-e14fefa059ee
+name: Dele_Gateway
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/buildings/{{BuildingId}}/floors/{{floorId}}/rooms/{{roomId}}/blufi/{{gatewayID}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - buildings
+      - '{{BuildingId}}'
+      - floors
+      - '{{floorId}}'
+      - rooms
+      - '{{roomId}}'
+      - blufi
+      - '{{gatewayID}}'
+  method: DELETE
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - console.log(pq.request.url)
+        - const baseUrl = pq.environment.get('API_Base_URL');
+        - const sysId = pq.environment.get('SYSTEM_ID');
+        - const hospId = pq.environment.get('HospitalId');
+        - let buildId = pq.environment.get('BuildingId')
+        - const idToken = pq.globals.get("idToken");
+        - const gatewayID = pq.environment.get('gatewayID')
+        - const response = pq.response.json();
+        - pq.test("Status code is 200", function() {
+        - '    pq.expect(pq.response.code).to.equal(200);'
+        - '});'
+        - >-
+          console.log(`${baseUrl}/interface/${sysId}/hospital/${hospId}/blufis/${gatewayID}`)
+        - ''
+        - const newRequest = {
+        - '    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/blufis/${gatewayID}`,'
+        - '    method: ''DELETE'','
+        - '    header: {'
+        - '        ''Content-Type'': ''application/json'''
+        - '    },'
+        - '      auth: {'
+        - '        type: ''bearer'','
+        - '        bearer: {'
+        - '            token: idToken'
+        - '        }'
+        - '    },'
+        - '    body: {'
+        - '        mode: ''raw'','
+        - '        modeOfBody: ''JSON'','
+        - '        raw: JSON.stringify({'
+        - '          deleteDevice: "force"'
+        - '        })'
+        - '    }'
+        - '};'
+        - ''
+        - pq.sendRequest(newRequest, function (err, res) {
+        - '    pq.test(''sent request status code is 200'', function () {'
+        - '        pq.expect(res).to.have.status(200);'
+        - '    });'
+        - '});'
+type: request

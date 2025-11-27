@@ -1,0 +1,90 @@
+id: 753e7dcc-efa3-450e-bed8-cb40baaed670
+name: editTags
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/tags/{{tagId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - tags
+      - '{{tagId}}'
+  method: PATCH
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "networkAliases": {
+          "hid-beacons": {
+            "deviceId": "{{updatedTagDetails.deviceId}}"
+          }
+        },
+        "networkId": "hid-beacons",
+        "data": [
+          {
+            "path": "uniqueDeviceId",
+            "value": "{{updatedTagDetails.deviceId}}"
+          },
+          {
+            "path": "model",
+            "value": "{{updatedTagDetails.model}}"
+          },
+          {
+            "path": "type",
+            "value": "{{updatedTagDetails.type}}"
+          },
+          {
+            "path": "manufacturer",
+            "value": "{{updatedTagDetails.manufacturer}}"
+          }
+        ],
+        "name": "{{updatedTagDetails.deviceId}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - const response = pq.response.json();
+        - const tagDetails = pq.environment.get('updatedTagDetails')
+        - ''
+        - pq.test("Status code is 200", function () {
+        - '      if (pq.response.code === 200) {'
+        - '          pq.response.to.have.status(200);'
+        - '          pq.test("Response has tag details", function() {'
+        - '              pq.expect(response.data.uniqueDeviceId).to.equal(tagDetails.deviceId);'
+        - '              pq.expect(response.data.model).to.equal(tagDetails.model);'
+        - '              pq.expect(response.data.type).to.equal(tagDetails.type);'
+        - '              pq.expect(response.data.manufacturer).to.equal(tagDetails.manufacturer);      '
+        - '          });'
+        - '      } else {'
+        - '          console.log("Updated tags");'
+        - '      }'
+        - '  });'
+type: request

@@ -1,9 +1,9 @@
-id: 8191685f-6b2a-4a4f-ac27-91a20193e7bf
-name: Delete_Department
+id: dc852cd7-2b6c-4157-9930-e0884eb9c326
+name: editDepartmentBoundary
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/departments/{{departmentID}}
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/departmentBoundaries/{{departmentBoundaryId}}
     host:
       - '{{API_Base_URL}}'
     path:
@@ -11,9 +11,9 @@ request:
       - '{{SYSTEM_ID}}'
       - hospital
       - '{{HospitalId}}'
-      - departments
-      - '{{departmentID}}'
-  method: DELETE
+      - departmentBoundaries
+      - '{{departmentBoundaryId}}'
+  method: PATCH
   headers:
     - description: ''
       disabled: false
@@ -36,11 +36,23 @@ request:
     modeOfBody: JSON
     raw: |-
       {
-          "deleteDevice": "force"
+          "data": {
+              "name": "{{departmentBoundaryName}}",
+              "department": "{{departmentID}}"
+          },
+          "name": "{{departmentBoundaryName}}"
       }
   auth:
     type: bearer
     bearer:
       token: '{{idToken}}'
-events: []
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test("Status code is 200.", function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
 type: request

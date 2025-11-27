@@ -1,0 +1,77 @@
+id: 882c13e9-9fb0-47e7-80fb-4cc6bafb493c
+name: createSensor
+request:
+  url:
+    raw: '{{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/sensors'
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - sensors
+  method: POST
+  headers:
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "networkAliases": {
+          "cognosos-sensors": {
+            "deviceId": "{{sensorDetails.deviceId}}"
+          }
+        },
+        "networkId": "cognosos-sensors",
+        "data": [
+          {
+            "path": "deviceId",
+            "value": "{{sensorDetails.deviceId}}"
+          },
+          {
+            "path": "sensorType",
+            "value": "{{sensorDetails.sensorType}}"
+          },
+          {
+            "path": "manufacturer",
+            "value": "{{sensorDetails.manufacturer}}"
+          },
+          {
+            "path": "model",
+            "value": "{{sensorDetails.model}}"
+          }
+        ],
+        "name": "Centrak Sensor {{sensorDetails.deviceId}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - ''
+        - const response = pq.response.json();
+        - const sensorDetails = pq.environment.get('sensorDetails')
+        - ''
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - pq.test('Sensor details are correct', function() {
+        - '    pq.expect(response.data.uniqueDeviceId).to.equal(sensorDetails.uniqueDeviceId);'
+        - '    pq.expect(response.data.model).to.equal(sensorDetails.model);'
+        - '    pq.expect(response.data.sensorType).to.equal(sensorDetails.sensorType);'
+        - '    pq.expect(response.data.manufacturer).to.equal(sensorDetails.manufacturer);      '
+        - '});'
+        - pq.test('Set sensorId environment variable', function() {
+        - '    const responseData = pq.response.json();'
+        - '    pq.environment.set(''sensorId'', responseData.id);'
+        - '});'
+type: request

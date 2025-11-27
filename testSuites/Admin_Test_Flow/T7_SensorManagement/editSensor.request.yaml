@@ -1,0 +1,89 @@
+id: 65f10952-3c36-4b96-830b-a4dc4751b8a9
+name: editSensor
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/sensors/{{sensorId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - sensors
+      - '{{sensorId}}'
+  method: PATCH
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "networkAliases": {
+          "cognosos-sensors": {
+            "deviceId": "{{updatedSensorDetails.deviceId}}"
+          }
+        },
+        "networkId": "cognosos-sensors",
+        "data": [
+          {
+            "path": "deviceId",
+            "value": "{{updatedSensorDetails.deviceId}}"
+          },
+          {
+            "path": "sensorType",
+            "value": "{{updatedSensorDetails.sensorType}}"
+          },
+          {
+            "path": "manufacturer",
+            "value": "{{updatedSensorDetails.manufacturer}}"
+          },
+          {
+            "path": "model",
+            "value": "{{updatedSensorDetails.model}}"
+          }
+        ],
+        "name": "Centrak Sensor {{sensorDetails.deviceId}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - ''
+        - const response = pq.response.json();
+        - >-
+          const updatedSensorDetails =
+          pq.environment.get('updatedSensorDetails')
+        - ''
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - pq.test('Sensor details are correct', function() {
+        - '    pq.expect(response.data.uniqueDeviceId).to.equal(updatedSensorDetails.uniqueDeviceId);'
+        - '    pq.expect(response.data.model).to.equal(updatedSensorDetails.model);'
+        - '    pq.expect(response.data.sensorType).to.equal(updatedSensorDetails.sensorType);'
+        - '    pq.expect(response.data.manufacturer).to.equal(updatedSensorDetails.manufacturer);      '
+        - '});'
+type: request

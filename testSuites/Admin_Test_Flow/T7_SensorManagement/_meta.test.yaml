@@ -1,12 +1,12 @@
 description: ''
-id: 763a2baf-e849-45f0-a276-d061be41c20a
-name: T5_DepartmentboundaryManagement
+id: 13f72cfc-e166-4ed7-bb79-fe32a069659a
+name: T7_SensorManagement
 dependencies: []
 type: TESTCASE
 testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
 parentId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
 testSteps:
-  - fileReference: createDepartmentBoundary.request.yaml
+  - fileReference: createSensor.request.yaml
     type: request
-  - fileReference: editDepartmentBoundary.request.yaml
+  - fileReference: editSensor.request.yaml
     type: request

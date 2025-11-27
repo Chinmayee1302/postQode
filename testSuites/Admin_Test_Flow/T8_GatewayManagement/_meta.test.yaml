@@ -1,12 +1,12 @@
 description: ''
-id: 763a2baf-e849-45f0-a276-d061be41c20a
-name: T5_DepartmentboundaryManagement
+id: 7c2a0d64-cba9-4175-b3a6-43d794602b14
+name: T8_GatewayManagement
 dependencies: []
 type: TESTCASE
 testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
 parentId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
 testSteps:
-  - fileReference: createDepartmentBoundary.request.yaml
+  - fileReference: createGateway.request.yaml
     type: request
-  - fileReference: editDepartmentBoundary.request.yaml
+  - fileReference: editGateway.request.yaml
     type: request

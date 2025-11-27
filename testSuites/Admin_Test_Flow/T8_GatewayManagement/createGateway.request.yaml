@@ -1,0 +1,162 @@
+id: 2742189e-0ead-41db-88f2-0852de6f4d00
+name: createGateway
+request:
+  url:
+    raw: '{{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/blufis'
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - blufis
+  method: POST
+  headers:
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |
+      {
+          "networkAliases": {
+              "hid-blufis": {
+                  "policyName": "{{gatewayDetails.gatewayPolicy}}",
+                  "SID-64": "{{gatewayDetails.gatewayId}}"
+              }
+          },
+          "networkId": "hid-blufis",
+          "data": [
+              {
+                  "path": "manufacturer",
+                  "value": "{{gatewayDetails.manufacturer}}"
+              },
+              {
+                  "path": "gatewayType",
+                  "value": "{{gatewayDetails.gatewayType}}"
+              },
+              {
+                  "path": "gatewayPolicy",
+                  "value": "{{gatewayDetails.gatewayPolicy}}"
+              },
+              {
+                  "path": "gatewayId",
+                  "value": "{{gatewayDetails.gatewayId}}"
+              },
+              {
+                  "path": "gatewayName",
+                  "value": "{{gatewayDetails.gatewayName}}"
+              },
+              {
+                  "path": "location/building/id",
+                  "value": "{{BuildingId}}"
+              },
+              {
+                  "path": "location/building/name",
+                  "value": "{{buildingDetails.buildingName}}"
+              },
+              {
+                  "path": "location/floor/id",
+                  "value": "{{floorId}}"
+              },
+              {
+                  "path": "location/floor/name",
+                  "value": "{{floorDetails.floorName}}"
+              },
+              {
+                  "path": "location/department/id",
+                  "value": null
+              },
+              {
+                  "path": "location/department/name",
+                  "value": null
+              },
+              {
+                  "path": "location/room/id",
+                  "value": "{{roomId}}"
+              },
+              {
+                  "path": "location/room/name",
+                  "value": "{{roomDetails.roomName_1}}"
+              },
+              {
+                  "path": "associatedLocation/room/id",
+                  "value": null
+              },
+              {
+                  "path": "associatedLocation/room/name",
+                  "value": null
+              }
+          ],
+          "name": "HID-Gateway {{gatewayDetails.gatewayName}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - const deptBoundId = pq.environment.get('departmentBoundaryId');
+        - const baseUrl = pq.environment.get('API_Base_URL');
+        - const sysId = pq.environment.get('SYSTEM_ID');
+        - const hospId = pq.environment.get('HospitalId');
+        - let buildId = pq.environment.get('BuildingId')
+        - const idToken = pq.globals.get("idToken");
+        - const deptId = pq.environment.get('departmentID');
+        - const floorId = pq.environment.get('floorId');
+        - const roomId = pq.environment.get('roomId')
+        - ''
+        - const responseData = pq.response.json();
+        - pq.environment.set('gatewayID', responseData.id);
+        - ''
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
+        - pq.test('Gateway details are correct', function() {
+        - '    pq.expect(responseData.data.manufacturer).to.equal(pq.environment.get(''gatewayDetails.manufacturer''));'
+        - '    pq.expect(responseData.data.gatewayType).to.equal(pq.environment.get(''gatewayDetails.gatewayType''));'
+        - '    pq.expect(responseData.data.gatewayPolicy).to.equal(pq.environment.get(''gatewayDetails.gatewayPolicy''));'
+        - '    pq.expect(responseData.data.gatewayId).to.equal(pq.environment.get(''gatewayDetails.gatewayId''));'
+        - '    pq.expect(responseData.data.gatewayName).to.equal(pq.environment.get(''gatewayDetails.gatewayName''));'
+        - '});'
+        - ''
+        - const gatewayID = pq.environment.get('gatewayID')
+        - ''
+        - >-
+          console.log(`${baseUrl}/interface/${sysId}/hospital/${hospId}/buildings/${buildId}/floors/${floorId}/rooms/${roomId}/blufi`)
+        - console.log(gatewayID)
+        - const newRequest = {
+        - '    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/buildings/${buildId}/floors/${floorId}/rooms/${roomId}/blufi`,'
+        - '    method: ''POST'','
+        - '    header: {'
+        - '        ''Content-Type'': ''application/json'''
+        - '    },'
+        - '      auth: {'
+        - '        type: ''bearer'','
+        - '        bearer: {'
+        - '            token: idToken'
+        - '        }'
+        - '    },'
+        - '    body: {'
+        - '        mode: ''raw'','
+        - '        modeOfBody: ''JSON'','
+        - '        raw: JSON.stringify({'
+        - '            id: gatewayID,'
+        - '            force: "true"'
+        - '        })'
+        - '    }'
+        - '};'
+        - ''
+        - pq.sendRequest(newRequest, function (err, res) {
+        - '    pq.test(''sent request status code is 200'', function () {'
+        - '        pq.expect(res).to.have.status(200);'
+        - '    });'
+        - '});'
+type: request

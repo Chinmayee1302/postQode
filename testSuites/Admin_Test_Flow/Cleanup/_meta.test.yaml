@@ -8,13 +8,21 @@ type: AFTER
 testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
 parentId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
 testSteps:
-  - fileReference: Delete_Building.request.yaml
+  - fileReference: Dele_Gateway.request.yaml
     type: request
-  - fileReference: Delete_Hospital.request.yaml
+  - fileReference: Delete_Sensor.request.yaml
     type: request
-  - fileReference: Delete_Department.request.yaml
+  - fileReference: Delete_Tags.request.yaml
+    type: request
+  - fileReference: Delete_DepartmentBoundary.request.yaml
     type: request
   - fileReference: Delete_Floor.request.yaml
     type: request
+  - fileReference: Delete_Department.request.yaml
+    type: request
   - fileReference: Delete_RoomType.request.yaml
+    type: request
+  - fileReference: Delete_Building.request.yaml
+    type: request
+  - fileReference: Delete_Hospital.request.yaml
     type: request

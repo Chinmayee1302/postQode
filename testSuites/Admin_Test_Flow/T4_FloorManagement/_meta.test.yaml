@@ -1,0 +1,12 @@
+description: ''
+id: f5801f2b-ae53-46fb-acf2-3c1f7ab9ef84
+name: T4_FloorManagement
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: createFloorID.request.yaml
+    type: request
+  - fileReference: updateRoomId.request.yaml
+    type: request
+  - fileReference: editFloor.request.yaml
+    type: request

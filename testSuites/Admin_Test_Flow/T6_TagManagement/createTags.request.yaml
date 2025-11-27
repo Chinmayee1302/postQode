@@ -1,0 +1,73 @@
+id: 04334883-bd30-4c59-b87a-d2010e206308
+name: createTags
+request:
+  url:
+    raw: '{{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/tags'
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - tags
+  method: POST
+  headers: []
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "networkAliases": {
+          "hid-beacons": {
+            "deviceId": "{{tagDetails.deviceId}}"
+          }
+        },
+        "networkId": "hid-beacons",
+        "data": [
+          {
+            "path": "uniqueDeviceId",
+            "value": "{{tagDetails.deviceId}}"
+          },
+          {
+            "path": "model",
+            "value": "{{tagDetails.model}}"
+          },
+          {
+            "path": "type",
+            "value": "{{tagDetails.type}}"
+          },
+          {
+            "path": "manufacturer",
+            "value": "{{tagDetails.manufacturer}}"
+          }
+        ],
+        "name": "{{tagDetails.deviceId}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - const response = pq.response.json();
+        - const tagDetails = pq.environment.get('tagDetails')
+        - ''
+        - pq.test("Status code is 200", function () {
+        - '      if (pq.response.code === 200) {'
+        - '          pq.response.to.have.status(200);'
+        - '          pq.test("Response has tag details", function() {'
+        - '              pq.expect(response.data.uniqueDeviceId).to.equal(tagDetails.deviceId);'
+        - '              pq.expect(response.data.model).to.equal(tagDetails.model);'
+        - '              pq.expect(response.data.type).to.equal(tagDetails.type);'
+        - '              pq.expect(response.data.manufacturer).to.equal(tagDetails.manufacturer);      '
+        - '          });'
+        - '          pq.environment.set("tagId", response.id);'
+        - '      } else {'
+        - '          console.log("Unable to create tags");'
+        - '      }'
+        - '  });'
+type: request

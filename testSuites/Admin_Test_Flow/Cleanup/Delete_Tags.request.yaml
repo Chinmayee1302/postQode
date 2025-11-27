@@ -1,9 +1,9 @@
-id: 8191685f-6b2a-4a4f-ac27-91a20193e7bf
-name: Delete_Department
+id: 6e0512c7-1d66-4a20-8be9-52bbdcbfaec7
+name: Delete_Tags
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/departments/{{departmentID}}
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/tags/{{tagId}}
     host:
       - '{{API_Base_URL}}'
     path:
@@ -11,8 +11,8 @@ request:
       - '{{SYSTEM_ID}}'
       - hospital
       - '{{HospitalId}}'
-      - departments
-      - '{{departmentID}}'
+      - tags
+      - '{{tagId}}'
   method: DELETE
   headers:
     - description: ''
@@ -34,10 +34,7 @@ request:
   body:
     mode: raw
     modeOfBody: JSON
-    raw: |-
-      {
-          "deleteDevice": "force"
-      }
+    raw: '{"deleteDevice":"force"}'
   auth:
     type: bearer
     bearer:

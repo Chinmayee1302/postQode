@@ -1,9 +1,9 @@
-id: 8191685f-6b2a-4a4f-ac27-91a20193e7bf
-name: Delete_Department
+id: aa1c54b4-4067-48ab-a162-08e85fa34b66
+name: Delete_Sensor
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/departments/{{departmentID}}
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/sensors/{{sensorId}}
     host:
       - '{{API_Base_URL}}'
     path:
@@ -11,8 +11,8 @@ request:
       - '{{SYSTEM_ID}}'
       - hospital
       - '{{HospitalId}}'
-      - departments
-      - '{{departmentID}}'
+      - sensors
+      - '{{sensorId}}'
   method: DELETE
   headers:
     - description: ''
@@ -34,10 +34,7 @@ request:
   body:
     mode: raw
     modeOfBody: JSON
-    raw: |-
-      {
-          "deleteDevice": "force"
-      }
+    raw: '{"deleteDevice":"force"}'
   auth:
     type: bearer
     bearer:
