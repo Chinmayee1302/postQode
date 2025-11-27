@@ -1,0 +1,77 @@
+code: 200
+headers:
+  _items:
+    - key: Date
+      value: Thu, 27 Nov 2025 10:44:47 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: keep-alive
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';font-src 'self' https:
+        data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+        data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"287-o2+sMTRFz+GUDDyPj6+5rscl15Q"
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=zrJk7RVaul0%2B3Hd4%2FccC%2FLIulOJ%2BBTUwcPcmVbfficLPz08OH2sTxBycJ%2Fw90VA2rzuqLQYIRkkEDI53eMliDYx%2B1LkBxoBXvRCxeaRuudmo2bszMAQ4CynGFx%2B%2FeN6NUKCZFK7F"}]}
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 9a5108430bed1f95-BLR
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: >-
+  {"blueprintId":"29z3cX3ZupQPU95PrDkfUX","created":1764240287452,"id":"4HsIqE54IPHqabd9VTt29P","lastModified":1764240287452,"name":"Department
+  Boundary
+  Device","projectId":"55zmpJa2Q7vyjulNF72JK6","purpose":"organization","simulated":false,"systemId":"1WZp0PBZ2Y9BB5nYWnaDmx","data":{"name":"DeptBoundary_Updated","department":"6e3M1XH9aAhGA2OaXTlrOg","geoJson":{"id":"a2dd22503517ebc198b2269e5e9d85f8","type":"Feature","properties":{},"geometry":{"coordinates":[[[-117.25647114811176,32.991763406312586],[-117.25676101003815,32.99226541524463],[-117.25721916658418,32.99173009673808],[-117.25647114811176,32.991763406312586]]],"type":"Polygon"}}}}
+responseTime: 780
+status: OK
+responseSize: 647
+assertions: []
+logs:
+  - message: >-
+      {"href":"https://dev-cox-health-imagine-api.leverege.com/v1/interface/1WZp0PBZ2Y9BB5nYWnaDmx/hospital/11cLmzn9dREXlVVEU32Ft9/departmentBoundaries","path":"/v1/interface/1WZp0PBZ2Y9BB5nYWnaDmx/hospital/11cLmzn9dREXlVVEU32Ft9/departmentBoundaries","host":"dev-cox-health-imagine-api.leverege.com","protocol":"https"}
+    level: LOG
+  - message: 'pq.sendRequest response: {"allowed":true}'
+    level: LOG
+  - message: Department Boundary created
+    level: LOG

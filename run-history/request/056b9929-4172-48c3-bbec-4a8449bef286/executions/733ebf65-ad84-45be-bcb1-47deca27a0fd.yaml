@@ -1,0 +1,70 @@
+code: 200
+headers:
+  _items:
+    - key: Date
+      value: Wed, 29 Oct 2025 06:43:49 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: close
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';font-src 'self' https:
+        data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+        data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"124-h3g0c7oKZ/teinVXKRK7QfiRaWc"
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=NKDUPNUUw7xSvqUgSWh94G7mQbzRRQgjM%2BZQQ9z82o7v6dfUXdeo%2FpUVjw%2F%2F9F3MQGEy7UgPae8EBoGOKGNg0ZXR4cTHMKjvGvAeBOkEyj96JsBA0VqA3qp1UKET3pasXISlQQ%3D%3D"}]}
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 9960b3660d8088c9-MAA
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: >-
+  {"blueprintId":"2yqlK8gjUteJAi2wP59ygD","created":1761720229004,"id":"5WNzq8y9jq8PajXbFCis9W","lastModified":1761720229004,"name":"PostQodeDept","projectId":"0H8EanQ0GefcOYRjV46wL9","purpose":"organization","simulated":false,"systemId":"4feYb9OZYr8j1YLy9qFBT6","data":{"name":"PostQodeDept"}}
+responseTime: 719
+status: OK
+responseSize: 292
+assertions:
+  - name: Department Creation
+    passed: true
+logs: []

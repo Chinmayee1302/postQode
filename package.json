@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@postqode/cli": "^0.1.32"
+  }
+}

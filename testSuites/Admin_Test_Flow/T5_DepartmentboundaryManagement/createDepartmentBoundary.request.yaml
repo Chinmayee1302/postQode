@@ -1,0 +1,58 @@
+id: 7d626ab7-331c-4d0f-8559-db24ca49e60c
+name: createDepartmentBoundary
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/departmentBoundaries
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - departmentBoundaries
+  method: POST
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+          "data": {
+                      "name": "{{updatedDepartmentBoundaryName}}",
+                      "department": "{{departmentID}}",
+                      "geoJson":
+                        {"id":"a2dd22503517ebc198b2269e5e9d85f8","type":"Feature","properties":{},"geometry":{"coordinates":[[[-117.25647114811176,32.991763406312586],[-117.25676101003815,32.99226541524463],[-117.25721916658418,32.99173009673808],[-117.25647114811176,32.991763406312586]]],"type":"Polygon"}}
+                    },
+                    "name": "{{updatedDepartmentBoundaryName}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - let response = pq.response.json();
+        - ''
+        - pq.environment.set('departmentBoundaryId',response.id)
+type: request

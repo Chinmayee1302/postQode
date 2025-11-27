@@ -1,0 +1,96 @@
+id: a6af9e9c-2c1f-4d4b-8437-cdd2fe4ab82b
+name: createDepartment
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/departments
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - departments
+  method: POST
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "data": [
+          {
+            "path": "name",
+            "value": "{{updatedDepartmentName}}"
+          }
+        ],
+        "name": "{{updatedDepartmentName}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - const depResponse = pq.response.json();
+        - ''
+        - // Validate department name
+        - pq.test("Department Creation", () => {
+        - '  pq.expect(depResponse.name).to.equal(pq.environment.get(''updatedDepartmentName''));'
+        - '});'
+        - ''
+        - // Set department ID
+        - const deptId = depResponse.id;
+        - pq.environment.set("departmentID", deptId);
+        - ''
+        - // Gather required variables
+        - const baseUrl = pq.environment.get('API_Base_URL');
+        - const sysId   = pq.environment.get('SYSTEM_ID');
+        - const hospId  = pq.environment.get('HospitalId');
+        - const bldgId  = pq.environment.get("BuildingId");
+        - const idToken = pq.globals.get("idToken");
+        - ''
+        - // Send department link request
+        - pq.sendRequest({
+        - '  url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/buildings/${bldgId}/departments`,'
+        - '  method: "POST",'
+        - '  headers: {'
+        - '    Authorization: `Bearer ${idToken}`,'
+        - '    "Content-Type": "application/json"'
+        - '  },'
+        - '  body: {'
+        - '    mode: "raw",'
+        - '    raw: JSON.stringify({'
+        - '      id: deptId,'
+        - '      force: true'
+        - '    })'
+        - '  }'
+        - '}, (err, res) => {'
+        - '  if (err || res.code !== 200) {'
+        - '    console.warn("Department linking failed", err || res.text());'
+        - '    return;'
+        - '  }'
+        - '  console.log("Department linked successfully:", res.json());'
+        - '});'
+        - ''
+type: request

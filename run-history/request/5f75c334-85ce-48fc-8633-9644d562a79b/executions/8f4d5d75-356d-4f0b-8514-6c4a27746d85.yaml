@@ -1,0 +1,68 @@
+code: 200
+headers:
+  _items:
+    - key: Date
+      value: Thu, 27 Nov 2025 12:34:01 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: keep-alive
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';font-src 'self' https:
+        data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+        data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"27f-5elMvcLeNnT2cOKZ6Z62VY0m+Mk"
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=tGoEJISnCrlGFQ%2Bi2BEIE3VA6In1aXpZtttJ%2FrZOsDp6uatJOoBJP6hnVp5VFdlUAM3t62muivpfY8mqezsUdE47fNQH%2B4n8JkHU%2FwyD%2BUKJ4fO%2FdQaMl73kyffKiTeXmZbrEfxs"}]}
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 9a51a8445c5295be-BLR
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: >-
+  {"blueprintId":"29z3cX3ZupQPU95PrDkfUX","created":1764246841235,"id":"6qHOHodhp7lFAskw7gBmpf","lastModified":1764246841235,"name":"DeptBoundaryUpdated","projectId":"55zmpJa2Q7vyjulNF72JK6","purpose":"organization","simulated":false,"systemId":"1WZp0PBZ2Y9BB5nYWnaDmx","data":{"name":"DeptBoundaryUpdated","department":"6e3M1XH9aAhGA2OaXTlrOg","geoJson":{"id":"a2dd22503517ebc198b2269e5e9d85f8","type":"Feature","properties":{},"geometry":{"coordinates":[[[-117.25647114811176,32.991763406312586],[-117.25676101003815,32.99226541524463],[-117.25721916658418,32.99173009673808],[-117.25647114811176,32.991763406312586]]],"type":"Polygon"}}}}
+responseTime: 671
+status: OK
+responseSize: 639
+assertions: []
+logs: []

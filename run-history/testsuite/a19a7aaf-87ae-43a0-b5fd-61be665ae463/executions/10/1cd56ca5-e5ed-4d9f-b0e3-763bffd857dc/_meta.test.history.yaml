@@ -1,0 +1,21 @@
+testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+testCaseId: 1cd56ca5-e5ed-4d9f-b0e3-763bffd857dc
+testCaseName: Authentication
+testCaseType: BEFORE
+testResult: PASSED
+beforeEachResponses: []
+iterationResponses: []
+testStepResponses:
+  - d07fd4f4-15ad-4913-8a4a-70ba80fc5cf7
+afterEachResponses: []
+startedAt: 2025-11-26T08:54:48.615Z
+finishedAt: 2025-11-26T08:54:49.247Z
+total: 1
+completed: 1
+passed: 1
+failed: 0
+skipped: 0
+aborted: 0
+testId: ""
+isIterationResponse: false
+iterationCount: 0

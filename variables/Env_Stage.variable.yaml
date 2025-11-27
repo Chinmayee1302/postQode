@@ -1,0 +1,30 @@
+SECRET: >-
+  2VX72HtkbJs28Gg3ES0YtD3fkEP2scJVmizM16ejaPMP72f4SePQSU249Orbtavub438gTycuZgyMQ4ApXIX2Mn0
+API_KEY: 3XckzCuBn5yVE5jLRDinPx
+PROJECT_ID: 0H8EanQ0GefcOYRjV46wL9
+SYSTEM_ID: 4feYb9OZYr8j1YLy9qFBT6
+API_Base_URL: https://stg-cox-health-imagine-api.leverege.com/v1
+hsptlBluePrintID: 2I8n67xzYK0lHliPLeJMih
+buildingId: 4sqr23Qxh8tjYlBKpCVPEI
+API_Lev_URL: https://stg-cognosos.web.app/
+HOSPITAL_ID: 1nHFSsaZpNXyE5dbfA4Wvv
+hopitalDetails:
+  hospitalName: PostQode123
+  streetAddress: 1214 Coolidge Street
+  city: Birmingham
+  zipCode: '35205'
+  timezone: Eastern Standard Time
+  state: Alabama
+HospitalId: 6FbfpXPODvPwBnfbvheP3X
+BuildingId: 0cy7mBPTYIZNqxXfhQqmCk
+buildingDetails:
+  buildingName: Apollo Care Hospital
+  streetAddress: Koramangala
+  city: Bengaluru
+  zipCode: '35205'
+  contactName: Parker
+  contactPhoneNumber: '9285963258'
+  contactEmail: parker@mailinator.com
+  timezone: Eastern Standard Time
+  state: Alabama
+departmentName: PostQodeDept

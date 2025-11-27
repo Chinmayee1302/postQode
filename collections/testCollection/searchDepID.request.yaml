@@ -1,0 +1,39 @@
+id: 06bb8dd4-898e-4427-9088-7eb372394d29
+name: searchDepID
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HOSPITAL_ID}}/departments.search
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HOSPITAL_ID}}'
+      - departments.search
+  method: POST
+  headers: []
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n  \"limit\": 100,\r\n  \"offset\": 0,\r\n  \"filter\": {\r\n    \"type\": \"logical\",\r\n    \"operator\": \"and\",\r\n    \"conditions\": [\r\n      {\r\n        \"type\": \"groupedText\",\r\n        \"value\": \"{{itemName}}\"\r\n      }\r\n    ]\r\n  },\r\n  \"sort\": [\r\n    {\r\n      \"field\": \"created\",\r\n      \"order\": \"desc\"\r\n    }\r\n  ]\r\n}\r\n"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const response=pq.response.json()\r"
+        - pq.variables.set("departmentId",response.items[0].id)
+      packages: []
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "const assetDetails=JSON.parse(pq.collectionVariables.get(\"assetDetails\")) \r"
+        - pq.variables.set("itemName",assetDetails.departmentName)
+      packages: []

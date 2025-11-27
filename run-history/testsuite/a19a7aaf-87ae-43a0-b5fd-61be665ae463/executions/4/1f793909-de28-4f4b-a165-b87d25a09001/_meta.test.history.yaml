@@ -1,0 +1,22 @@
+testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+testCaseId: 1f793909-de28-4f4b-a165-b87d25a09001
+testCaseName: Cleanup
+testCaseType: AFTER
+testResult: FAILED
+beforeEachResponses: []
+iterationResponses: []
+testStepResponses:
+  - 8eb77796-9c3a-4e84-b61d-39cf2b5bbbc9
+  - ed17da5e-1438-4bad-b23a-e657bc257ca5
+afterEachResponses: []
+startedAt: 2025-11-26T08:51:23.523Z
+finishedAt: 2025-11-26T08:51:23.649Z
+total: 1
+completed: 1
+passed: 0
+failed: 1
+skipped: 0
+aborted: 0
+testId: ""
+isIterationResponse: false
+iterationCount: 0

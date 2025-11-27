@@ -1,0 +1,12 @@
+description: >-
+  This test case handles the main logic of the floor creation flow, which
+  includes deleting a hospital and creating a building.
+id: 2a713d14-b1e6-4963-9ebc-cfd284e2addf
+name: T1_FacilityManagement
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: CreateFacility.request.yaml
+    type: request
+  - fileReference: EditFacility.request.yaml
+    type: request

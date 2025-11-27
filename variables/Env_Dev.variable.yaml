@@ -1,0 +1,51 @@
+SECRET: >-
+  4tyGsPDHZ6JZA5HPPBTA3c2O2mQYSiRpT3EcbHwPlcEr2FwgaNEGZuhmoJbdHkEK8U6eDtmPpxwZth1CzLCFPsnc
+API_KEY: 07ytMWNK8NtT03Ue2VKHUk
+PROJECT_ID: 55zmpJa2Q7vyjulNF72JK6
+SYSTEM_ID: 1WZp0PBZ2Y9BB5nYWnaDmx
+API_Base_URL: https://dev-cox-health-imagine-api.leverege.com/v1
+hsptlBluePrintID: 2I8n67xzYK0lHliPLeJMih
+buildingId: 4sqr23Qxh8tjYlBKpCVPEI
+API_Lev_URL: https://dev-cognosos.web.app/
+hopitalDetails:
+  hospitalName: PostQode123
+  streetAddress: 1214 Coolidge Street
+  city: Birmingham
+  zipCode: '35205'
+  timezone: Eastern Standard Time
+  state: Alabama
+  updatedstreetAddress: 1214 Coolidge Street_Updated
+HospitalId: 11cLmzn9dREXlVVEU32Ft9
+BuildingId: 5Yilp5HL2Y0eyOP4Zu3yeX
+buildingDetails:
+  buildingName: Apollo Care Hospital
+  streetAddress: Koramangala
+  city: Bengaluru
+  zipCode: '35205'
+  contactName: Parker
+  contactPhoneNumber: '9285963258'
+  contactEmail: parker@mailinator.com
+  timezone: Eastern Standard Time
+  state: Alabama
+  updatedcity: Bengaluru_Updated
+floorDetails:
+  floorName: First Floor
+  floorNumber: '1'
+  updatedfloorNumber: 1_Updated
+roomDetails:
+  roomName_1: Room 101
+  roomName_2: Room 102
+  roomNumber_1: Room 101
+  roomNumber_2: Room 102
+  roomType: postqodeType
+  roomTypeUpdated: postqodeTypeUpdated
+  assetStatus: Available
+  utilizationState: Not Utilized
+  monitorCompliance: 'No'
+departmentName: PostQodeDept
+updatedDepartmentName: PostQodeDept_Updated
+departmentID: 6e3M1XH9aAhGA2OaXTlrOg
+departmentBoundaryName: DeptBoundary
+updatedDepartmentBoundaryName: DeptBoundaryUpdated
+floorId: 5yyGMuxbo1CsveMpnAi7St
+departmentBoundaryId: 6qHOHodhp7lFAskw7gBmpf

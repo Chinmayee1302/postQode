@@ -1,0 +1,78 @@
+id: b730bbda-883a-43f8-9a4c-d5de6617334f
+name: editRoomType
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{HospitalId}}/srv/prosightBypass/resourceEnum
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - system
+      - '{{SYSTEM_ID}}'
+      - device
+      - '{{HospitalId}}'
+      - srv
+      - prosightBypass
+      - resourceEnum
+  method: PUT
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "resEnum": {
+          "name": "roomType",
+          "value": "{{roomName}}"
+        },
+        "value": {
+          "metadata/isCompliant": true,
+          "metadata/shrinkage": "N/A",
+          "metadata/color": "^#C6C6C6",
+          "metadata/defaultColor": "^#C6C6C6",
+          "metadata/status": "{{status}}",
+          "metadata/utilized": "{{utilizationStatus}}",
+          "name": "{{updatedRoomName}}"
+        }
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - const roomData = pq.environment.get("roomDetails")
+        - const roomName = roomData.roomTypeUpdated;
+        - const updatedRoomName = roomData.roomType;
+        - // Inject value for request body
+        - pq.variables.set("roomName", roomName)
+        - pq.variables.set("updatedRoomName",updatedRoomName)
+        - pq.variables.set("status",roomData.assetStatus)
+        - pq.variables.set("utilizationStatus",roomData.utilizationState)
+        - ''
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - console.log(pq.request.url)
+        - console.log(pq.environment.get('roomDetails.roomTypeUpdated'))
+type: request

@@ -1,0 +1,54 @@
+id: cb64134b-4150-4aa8-8543-8d4a52c99f9e
+name: tagCreationAPI
+request:
+  url:
+    raw: '{{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HOSPITAL_ID}}/tags'
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HOSPITAL_ID}}'
+      - tags
+  method: POST
+  headers: []
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n  \"networkAliases\": {\r\n    \"hid-beacons\": {\r\n      \"deviceId\": \"{{deviceId}}\"\r\n    }\r\n  },\r\n  \"networkId\": \"hid-beacons\",\r\n  \"data\": [\r\n    {\r\n      \"path\": \"uniqueDeviceId\",\r\n      \"value\": \"{{deviceId}}\"\r\n    },\r\n    {\r\n      \"path\": \"type\",\r\n      \"value\": \"{{type}}\"\r\n    },\r\n    {\r\n      \"path\": \"manufacturer\",\r\n      \"value\":  \"{{manufacturer}}\"\r\n    },\r\n    {\r\n      \"path\": \"model\",\r\n      \"value\": \"{{model}}\"\r\n    },\r\n    {\r\n      \"path\": \"tagType\",\r\n      \"value\": \"{{model}}\"\r\n    },\r\n    {\r\n      \"path\": \"location\",\r\n      \"value\": {\r\n        \"floor\": {\r\n          \"name\": \"{{floorName}}\",\r\n          \"id\": \"{{floorID}}\"\r\n        },\r\n        \"department\": {\r\n          \"name\": \"{{departmentName}}\",\r\n          \"id\": \"{{departmentID}}\"\r\n        },\r\n        \"room\": {\r\n          \"name\": \"{{locationName}}\",\r\n          \"id\": \"{{locationID}}\"\r\n        },\r\n        \"building\": {\r\n          \"name\": \"{{buildingName}}\",\r\n          \"id\": \"{{buildingId}}\"\r\n        },\r\n        \"timestamp\": 1720012800000\r\n      }\r\n    },\r\n    {\r\n      \"path\": \"p\",\r\n      \"value\": {\r\n        \"floor\": {\r\n          \"name\": \"{{floorName}}\",\r\n          \"id\": \"{{floorID}}\"\r\n        },\r\n        \"department\": {\r\n          \"name\": \"{{departmentName}}\",\r\n          \"id\": \"{{departmentID}}\"\r\n        },\r\n        \"room\": {\r\n          \"name\": \"{{locationName}}\",\r\n          \"id\": \"{{locationID}}\"\r\n        },\r\n        \"building\": {\r\n          \"name\": \"{{buildingName}}\",\r\n          \"id\": \"{{buildingId}}\"\r\n        },\r\n        \"timestamp\": 1720012800000\r\n      }\r\n    },\r\n    {\r\n      \"path\": \"prevLocation\",\r\n      \"value\": {\r\n        \"floor\": {\r\n          \"name\": \"{{floorName}}\",\r\n          \"id\": \"{{floorID}}\"\r\n        },\r\n        \"department\": {\r\n          \"name\": \"{{departmentName}}\",\r\n          \"id\": \"{{departmentID}}\"\r\n        },\r\n        \"room\": {\r\n          \"name\": \"{{previousRoomName}}\",\r\n          \"id\": \"{{previousRoomID}}\"\r\n        },\r\n        \"building\": {\r\n          \"name\": \"{{buildingName}}\",\r\n          \"id\": \"{{buildingId}}\"\r\n        },\r\n        \"timestamp\": 1720012800000\r\n      }\r\n    }\r\n  ],\r\n  \"name\": \"{{deviceId}}\"\r\n}\r\n"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "const assetTagDetails=JSON.parse(pq.collectionVariables.get(\"assetTagDetails\"))\r"
+        - "\r"
+        - "const { type, manufacturer, model, floorName, locationName, previousRoomName, departmentName, buildingName, buildingId, deviceId,floorID,locationID,previousRoomID ,departmentID} = assetTagDetails.tag1\r"
+        - "pq.variables.set(\"type\",type)\r"
+        - "pq.variables.set(\"manufacturer\",manufacturer)\r"
+        - "pq.variables.set(\"floorName\",floorName)\r"
+        - "pq.variables.set(\"floorID\",floorID)\r"
+        - "pq.variables.set(\"locationName\",locationName)\r"
+        - "pq.variables.set(\"locationID\",locationID)\r"
+        - "pq.variables.set(\"previousRoomName\",previousRoomName)\r"
+        - "pq.variables.set(\"previousRoomID\",previousRoomID)\r"
+        - "pq.variables.set(\"departmentName\",departmentName)\r"
+        - "pq.variables.set(\"departmentID\",departmentID)\r"
+        - "pq.variables.set(\"buildingName\",buildingName)\r"
+        - "pq.variables.set(\"buildingId\",buildingId)\r"
+        - "pq.variables.set(\"floorID\",floorID)\r"
+        - "pq.variables.set(\"model\",model)\r"
+        - pq.variables.set("deviceId",deviceId)
+      packages: []
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const response=pq.response.json()\r"
+        - pq.collectionVariables.set("tagID",response.id)
+      packages: []

@@ -1,0 +1,70 @@
+id: 7a8bbe75-5967-4221-a2e3-e12e39e53d36
+name: createRoomTypeAPI
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{HOSPITAL_ID}}/srv/prosightBypass/resourceEnum
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - system
+      - '{{SYSTEM_ID}}'
+      - device
+      - '{{HOSPITAL_ID}}'
+      - srv
+      - prosightBypass
+      - resourceEnum
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzUwODQ5NTQ3LCJleHAiOjE3NTA5MzU5NDcsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMjBESldmZVJHbWx4QzlveVJnTFcxVSJ9.NCza4z56MbtwfeI_mpHH9D9ktYSw3puHjOzLHOL3hAk
+    - key: Referer
+      value: https://staging-commercial-cox-health.firebaseapp.com/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/137.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"resEnum\": {\r\n        \"name\": \"roomType\"\r\n    },\r\n    \"value\": {\r\n        \"metadata/isCompliant\": {{isCompliant}},\r\n        \"name\": \"{{roomName}}\",\r\n        \"metadata/shrinkage\": \"N/A\",\r\n        \"metadata/color\": \"^#C6C6C6\",\r\n        \"metadata/defaultColor\": \"^#C6C6C6\",\r\n        \"metadata/status\": \"{{status}}\",\r\n        \"metadata/utilized\": \"{{utilizationStatus}}\"\r\n    }\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - ''
+      packages: []
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "const assetData=JSON.parse(pq.collectionVariables.get(\"assetAlertData\"))\r"
+        - "const roomName = assetData.locationDetails.roomType;\r"
+        - "let isCompliant=false;\r"
+        - "if(assetData.roomDetails.monitorCompliance){\r"
+        - "    isCompliant=true\r"
+        - "}\r"
+        - "// Inject value for request body\r"
+        - "pq.variables.set(\"roomName\", roomName);\r"
+        - "pq.variables.set(\"isCompliant\",isCompliant)\r"
+        - "pq.variables.set(\"status\",assetData.roomDetails.assetStatus)\r"
+        - "pq.variables.set(\"utilizationStatus\",assetData.roomDetails.utilizationState)\r"
+        - ''
+      packages: []

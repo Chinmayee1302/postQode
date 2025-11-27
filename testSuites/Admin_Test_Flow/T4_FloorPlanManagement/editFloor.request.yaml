@@ -1,0 +1,83 @@
+id: 5a575d98-e412-45ea-aca1-87c2cb3da1b2
+name: editFloor
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/project/{{PROJECT_ID}}/system/{{SYSTEM_ID}}/srv/prosightApiServer/floor/{{floorId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - project
+      - '{{PROJECT_ID}}'
+      - system
+      - '{{SYSTEM_ID}}'
+      - srv
+      - prosightApiServer
+      - floor
+      - '{{floorId}}'
+  method: PUT
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+          "floor": {
+              "name": "{{floorDetails.floorName}}",
+              "data": {
+                  "name": "{{floorDetails.floorName}}",
+                  "floorNumber": "{{floorDetails.floorNumber}}",
+                  "abbreviation": "{{floorDetails.floorNumber}}",
+                  "location": {
+                     "building": {
+              "id": "{{BuildingId}}",
+              "name": "{{buildingDetails.buildingName}}"
+            },
+                       "hospital": {
+              "id": "{{HospitalId}}",
+              "name": "{{hopitalDetails.hospitalName}}"
+            }
+                  },
+                  "floorPlan": "test-floor.geojson"
+              }
+          },
+          "userEmail": "chinmayee.s@cognosos.com"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - let response = pq.response.json();
+        - ''
+        - ''
+        - pq.test("Status code is 200.", function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
+        - pq.test("Check for floor details.", function () {
+        - '  pq.expect(response.floor.id).to.be.equal(pq.environment.get(''floorId''))'
+        - '  pq.expect(response.floor.name).to.be.equal(pq.environment.get(''floorDetails.floorName''))'
+        - '});'
+        - ''
+type: request

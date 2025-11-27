@@ -1,0 +1,78 @@
+code: 201
+headers:
+  _items:
+    - key: Date
+      value: Thu, 06 Nov 2025 05:56:07 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: close
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';block-all-mixed-content;font-src
+        'self' https: data:;form-action 'self';frame-ancestors 'self';img-src
+        'self' data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"1ae-CEXvxrjo5i+mUX0Hpskx4u+ZyIc"
+    - key: Expect-Ct
+      value: max-age=0
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=gGsthpeUoaADXhHPTYP6L4jZ190FoUTg3mJ%2BeLcQXrBC1jnPAA76RgEdvaEjxELwRik%2F7QlgU4oIE4ZJek4jCb3s6mAk%2BJWX2nsrAsbXl%2FXDvJyk0rQWo3nIzCR0rT96no2VCDNP"}]}
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 99a25888597ecbcd-MAA
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: >-
+  {"id":"608CNmLTOE79RD05z4DfUm","name":"PostQode123","data":{"name":"PostQode123","address":{"street":"1214
+  Coolidge
+  Street","city":"Birmingham","state":"Alabama","zipCode":"35205"},"contact":{},"hospitalType":"Default","timezone":"Eastern
+  Standard
+  Time","position":{"lat":42.32694,"lon":-71.83355}},"metadata":{"timeZone":"Eastern
+  Standard Time","allowedApplications":["Prosight Assets","Prosight
+  Safety","Prosight Environment"]}}
+responseTime: 610
+status: Created
+responseSize: 430
+assertions:
+  - name: Validate hospital details
+    passed: true
+logs: []

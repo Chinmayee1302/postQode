@@ -1,0 +1,39 @@
+id: fd839254-78aa-4465-8df4-f3567e9b7911
+name: searchLocID
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HOSPITAL_ID}}/rooms.search
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HOSPITAL_ID}}'
+      - rooms.search
+  method: POST
+  headers: []
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n  \"limit\": 100,\r\n  \"offset\": 0,\r\n  \"filter\": {\r\n    \"type\": \"logical\",\r\n    \"operator\": \"and\",\r\n    \"conditions\": [\r\n      {\r\n        \"type\": \"groupedText\",\r\n        \"value\": \"{{itemName}}\"\r\n      }\r\n    ]\r\n  },\r\n  \"sort\": [\r\n    {\r\n      \"field\": \"created\",\r\n      \"order\": \"desc\"\r\n    }\r\n  ]\r\n}\r\n"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "const assetDetails=JSON.parse(pq.collectionVariables.get(\"assetDetails\")) \r"
+        - pq.variables.set("itemName",assetDetails.locationName)
+      packages: []
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const response=pq.response.json()\r"
+        - pq.variables.set("locationId",response.items[0].id)
+      packages: []

@@ -1,0 +1,74 @@
+code: 400
+headers:
+  _items:
+    - key: Date
+      value: Thu, 27 Nov 2025 09:31:43 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: keep-alive
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';block-all-mixed-content;font-src
+        'self' https: data:;form-action 'self';frame-ancestors 'self';img-src
+        'self' data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"47-tIsu6HDScrMpHi46lzBOVf/K9X0"
+    - key: Expect-Ct
+      value: max-age=0
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=1EYm4Eh%2B3yyoj6yeVZRrCs0IyLMBKXuJV8bOSn0DnSkC5VAZPm9iWJwnNLl1OWV95eqYv0gO436rLGoyUL0ClzsMKB9sb9MmGsrS6Xsauxc1%2FyIM%2Btu2E2206KD11auDGPPkf3b5"}]}
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 9a509d3dbfa9b080-BLR
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: '{"status":400,"message":"The value is either locked or does not exist"}'
+responseTime: 556
+status: Bad Request
+responseSize: 71
+assertions: []
+logs:
+  - message: >-
+      {"href":"https://dev-cox-health-imagine-api.leverege.com/v1/system/1WZp0PBZ2Y9BB5nYWnaDmx/device/11cLmzn9dREXlVVEU32Ft9/srv/prosightBypass/resourceEnum","path":"/v1/system/1WZp0PBZ2Y9BB5nYWnaDmx/device/11cLmzn9dREXlVVEU32Ft9/srv/prosightBypass/resourceEnum","host":"dev-cox-health-imagine-api.leverege.com","protocol":"https"}
+    level: LOG
+  - message: postqodeTypeUpdated
+    level: LOG

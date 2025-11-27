@@ -1,0 +1,16 @@
+testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+testSuiteName: Admin Test Flow
+beforeResponses: []
+testCaseResponses: []
+testGroupResponses: []
+afterResponses: []
+testResult: FAILED
+startedAt: 2025-11-26T08:51:03.571Z
+finishedAt: 2025-11-26T08:51:03.617Z
+total: 0
+completed: 0
+passed: 0
+failed: 0
+skipped: 0
+aborted: 0
+buildNumber: 2

@@ -1,0 +1,10 @@
+description: ''
+id: 7e20c41f-c012-4902-812b-e14d6facdc05
+name: T3_RoomTypeManagement
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: createRoomType.request.yaml
+    type: request
+  - fileReference: editRoomType.request.yaml
+    type: request

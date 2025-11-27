@@ -1,0 +1,106 @@
+id: 1f2b4824-5e2e-42f3-950c-97793e9e424b
+name: UpdatingFloorAndDepartmentForBoundary
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/departmentBoundaries/{{departmentBoundaryId}}?test=true
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - departmentBoundaries
+      - '{{departmentBoundaryId}}'
+    query:
+      - key: test
+        value: 'true'
+        disabled: false
+  method: PATCH
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"macOS"'
+    - description: ''
+      disabled: false
+      key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY0MjQwNjI5LCJleHAiOjE3NjQzMjcwMjksImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiI2QmE2VW1HTVZHb0R4dnhFbnVoVHFpIn0.mlyl7mQ8IL6zcvSIMi0-sv7mGS3yHJC8pU70IeZ0wug
+    - key: Referer
+      value: https://dev-cognosos.web.app/
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: sec-ch-ua
+      value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: ''
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - const resp = pq.response.json();
+        - const deptBoundId = pq.environment.get('departmentBoundaryId');
+        - const baseUrl = pq.environment.get('API_Base_URL');
+        - const sysId = pq.environment.get('SYSTEM_ID');
+        - const hospId = pq.environment.get('HospitalId');
+        - const idToken = pq.globals.get("idToken");
+        - const deptId = pq.environment.get('departmentID');
+        - const floorId = pq.environment.get('floorId');
+        - >-
+          const departmentUrl =
+          `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments/${deptId}/departmentBoundaries`;
+        - console.log("Linking to Department URL:", departmentUrl);
+        - pq.sendRequest({
+        - '  url: departmentUrl,'
+        - '  method: ''POST'','
+        - '  headers: {'
+        - '    ''Authorization'': `Bearer ${idToken}`,'
+        - '    ''Content-Type'': ''application/json'''
+        - '  },'
+        - '  body: { id: deptBoundId, force: true }'
+        - '}, (err, res) => {'
+        - '  if (err || res.status !== 200) {'
+        - '    console.error("Department Link Error:", err || res.json());'
+        - '  } else {'
+        - '    console.log("Department Link Response:", res.json());'
+        - '    console.log("Department Boundary Linked to department successfully");'
+        - '  }'
+        - '});'
+        - ''
+        - >-
+          const floorUrl =
+          `${baseUrl}/interface/${sysId}/hospital/${hospId}/floors/${floorId}/departmentBoundaries`;
+        - ''
+        - console.log("Linking to Floor URL:", floorUrl);
+        - pq.sendRequest({
+        - '  url: floorUrl,'
+        - '  method: ''POST'','
+        - '  headers: {'
+        - '    ''Authorization'': `Bearer ${idToken}`,'
+        - '    ''Content-Type'': ''application/json'''
+        - '  },'
+        - '  body: { id: deptBoundId, force: true }'
+        - '}, (err, res) => {'
+        - '  if (err || res.status !== 200) {'
+        - '    console.error("Floor Link Error:", err || res.json());'
+        - '  } else {'
+        - '    console.log("Floor Link Response:", res.json());'
+        - '    console.log("Department Boundary Linked to floor successfully");'
+        - '  }'
+        - '});'
+        - ''
+type: request

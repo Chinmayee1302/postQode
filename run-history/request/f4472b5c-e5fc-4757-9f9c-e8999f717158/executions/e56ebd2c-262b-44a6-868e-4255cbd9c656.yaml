@@ -1,0 +1,65 @@
+code: 204
+headers:
+  _items:
+    - key: Date
+      value: Wed, 29 Oct 2025 09:04:05 GMT
+    - key: Connection
+      value: close
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Access-Control-Allow-Origin
+      value: https://staging-commercial-cox-health.firebaseapp.com
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';block-all-mixed-content;font-src
+        'self' https: data:;form-action 'self';frame-ancestors 'self';img-src
+        'self' data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Expect-Ct
+      value: max-age=0
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=fFnjTI1zXrCskmejtyUxpvKrggH0T9%2Fb5SQjzHi%2FjrKJV%2B7qrypqAhbtMtNXgZgmv6JeJRusomRb%2BPXmH%2B8KVJOGCqwrBLGuAx7BwVmonwR4tQXhCRjP%2FwNZS8UGmErS8TncIQ%3D%3D"}]}
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 996180d83c97c08d-MAA
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: ''
+responseTime: 1580
+status: No Content
+responseSize: 0
+assertions: []
+logs: []

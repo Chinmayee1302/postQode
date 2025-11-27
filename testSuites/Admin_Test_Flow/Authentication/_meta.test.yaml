@@ -1,0 +1,12 @@
+description: >-
+  This hook handles the initial authentication by visiting the base URL and
+  retrieving an idToken.
+id: 1cd56ca5-e5ed-4d9f-b0e3-763bffd857dc
+name: Authentication
+dependencies: []
+type: BEFORE
+testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+parentId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+testSteps:
+  - fileReference: visitBaseURL.request.yaml
+    type: request

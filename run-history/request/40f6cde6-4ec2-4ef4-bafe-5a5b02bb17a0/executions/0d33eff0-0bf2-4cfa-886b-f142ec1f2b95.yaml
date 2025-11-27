@@ -1,0 +1,72 @@
+code: 200
+headers:
+  _items:
+    - key: Date
+      value: Wed, 26 Nov 2025 11:33:16 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: keep-alive
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';font-src 'self' https:
+        data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+        data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"136-OACxa261FfrVdTHR99OzaFs+cy4"
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=fA%2FpfXA8of5CemuPyn1fPeTAVHocAn6yZnU2hiNAhDie9dNyG43UtzPy4t4b7Idvzef23FY1aGfn1MjEA35l42HWt3MO2iZS8%2Fr1uCPnX3hGXO4sqfZ48yDbyd%2FCamwORTrTlNs%2B"}]}
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 9a4911e4cd63b080-BLR
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: >-
+  {"blueprintId":"0hYpVaaOdZYe9bi9cdUrBK","created":1764156796364,"id":"7mAUOWxpGldOBM1Wm47uhA","lastModified":1764156796364,"name":"PostQodeDept_Updated,","projectId":"55zmpJa2Q7vyjulNF72JK6","purpose":"organization","simulated":false,"systemId":"1WZp0PBZ2Y9BB5nYWnaDmx","data":{"name":"PostQodeDept_Updated,"}}
+responseTime: 3727
+status: OK
+responseSize: 310
+assertions:
+  - name: Department Creation
+    passed: true
+logs:
+  - message: Department linking failed {"message":"Forbidden","status":403,"log":false}
+    level: WARN

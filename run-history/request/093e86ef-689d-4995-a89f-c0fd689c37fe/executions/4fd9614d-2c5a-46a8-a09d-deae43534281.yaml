@@ -1,0 +1,87 @@
+code: 400
+headers:
+  _items:
+    - key: Date
+      value: Thu, 27 Nov 2025 12:39:34 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: close
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';font-src 'self' https:
+        data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+        data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"44-/8mY8c1FBOvJEM1YqVUhu+iM6Gw"
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=0lbHp%2BIaswgTwgOXuoDLzU5Fa22cVWfaVJG6KXTUho1jvt%2BPU8pRYmVH8InlKCU72q1fsx79POWef%2BciPIpuSmkHc8jRVXEkBF6R7hPFkuebIYkN1eFmU6xDN9wk4SHbQ0E%2F5iou"}]}
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 9a51b0641fb8c174-BLR
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: '{"status":400,"message":"Unexpected token \" in JSON at position 0"}'
+responseTime: 297
+status: Bad Request
+responseSize: 68
+assertions: []
+logs:
+  - message: >-
+      Linking to Department URL:
+      https://dev-cox-health-imagine-api.leverege.com/v1/interface/1WZp0PBZ2Y9BB5nYWnaDmx/hospital/11cLmzn9dREXlVVEU32Ft9/departments/6e3M1XH9aAhGA2OaXTlrOg/departmentBoundaries
+    level: LOG
+  - message: >-
+      Linking to Floor URL:
+      https://dev-cox-health-imagine-api.leverege.com/v1/interface/1WZp0PBZ2Y9BB5nYWnaDmx/hospital/11cLmzn9dREXlVVEU32Ft9/floors/5yyGMuxbo1CsveMpnAi7St/departmentBoundaries
+    level: LOG
+  - message: >-
+      Department Link Error:
+      {"blueprintId":"29z3cX3ZupQPU95PrDkfUX","created":1764247174321,"id":"3AeF4R1PC10SdQrnvJm3Ow","lastModified":1764247174321,"name":"Department
+      Boundary
+      Device","projectId":"55zmpJa2Q7vyjulNF72JK6","purpose":"organization","simulated":false,"systemId":"1WZp0PBZ2Y9BB5nYWnaDmx"}
+    level: ERROR
+  - message: >-
+      Floor Link Error:
+      {"blueprintId":"29z3cX3ZupQPU95PrDkfUX","created":1764247174334,"id":"5vo2TzcuflrulSJO9XIAu1","lastModified":1764247174334,"name":"Department
+      Boundary
+      Device","projectId":"55zmpJa2Q7vyjulNF72JK6","purpose":"organization","simulated":false,"systemId":"1WZp0PBZ2Y9BB5nYWnaDmx"}
+    level: ERROR

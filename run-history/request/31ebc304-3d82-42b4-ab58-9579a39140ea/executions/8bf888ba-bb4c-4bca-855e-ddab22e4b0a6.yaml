@@ -1,0 +1,74 @@
+code: 201
+headers:
+  _items:
+    - key: Date
+      value: Wed, 26 Nov 2025 09:08:36 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: close
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';block-all-mixed-content;font-src
+        'self' https: data:;form-action 'self';frame-ancestors 'self';img-src
+        'self' data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"1f3-7KMsrSCa1dD35HS+GTJgaCVAggU"
+    - key: Expect-Ct
+      value: max-age=0
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=zPd58LRqL1Zzn6aiSxM6MvNO%2B3ljoTofg0hnuti8hWmimHEviny5kWyOrc0dbdd0UQztu9E6JZdE%2BRSBzaznYM77U4TCdlHorPqQIjoPuojsj%2FUg%2Bsv9wx1DSMrskUxrTgHcew%3D%3D"}]}
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 9a483dfb0c26179c-MAA
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: >-
+  {"id":"3rSUiOVNPZyf8myyLg6wEa","name":"Apollo Care
+  Hospital","metadata":{},"data":{"name":"Apollo Care
+  Hospital","addressDetails":{"streetAddress":"Koramangala","city":"Bengaluru","state":"Alabama","zipCode":"35205"},"position":{"lat":32.828866,"lon":-86.789292},"hospital":{"id":"4fZ0sezro324fnCIS4p2CJ"},"contactDetails":{}},"purpose":"organization","created":1764148115967,"simulated":false,"lastModified":1764148115967,"blueprintId":"4tx22s5Aw6dVlj8HNPhzbm","projectId":"55zmpJa2Q7vyjulNF72JK6"}
+responseTime: 682
+status: Created
+responseSize: 499
+assertions:
+  - name: Validate building details
+    passed: true
+logs: []

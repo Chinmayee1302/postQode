@@ -1,0 +1,73 @@
+code: 200
+headers:
+  _items:
+    - key: Date
+      value: Thu, 16 Oct 2025 06:47:43 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: close
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';font-src 'self' https:
+        data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+        data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"4a7-I156PKzcFAfwPCkq/Wc0wSPqljI"
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=qaYzDZ0omjkdBL%2BADm35wCOfyR6i8VkIv%2FCv7M8bH6hHSIutmuAjjiwqgDU2WvwCPGMsTZUeGxCBV4yp1Ms5ugNl58mtT5N%2Bx9ckzQdpI%2F4Jvj1hFHclKWN%2BseWZ0lfY%2Bjo51Q%3D%3D"}]}
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 98f59b3c5fe42d42-MAA
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: >-
+  {"profile":{"id":"51DXjVZ5l09eHGRLS8abxR","username":"chinmayee.s@codecraft.co.in","name":"chinmayee.s@codecraft.co.in","email":"chinmayee.s@codecraft.co.in","phone":"123-456-7890","created":1751533636240,"lastLogin":1760597160764,"lastVerify":1760597160764,"permissions":{"role":"user"},"projectId":"0H8EanQ0GefcOYRjV46wL9","metadata":{"desktop":"dcTJhvOqH8tZ63xbj9S2kH:APA91bHCBc33JtPTRUon41lHR21f7JqoboZ5B8UbDHb7nZnEamw-INZrt8cMryd4N3DXhkAs36oF6ivT2BBPEgq4QcAa7XWHOQQ3KTQWK09fOZxZMgZf0Vs","devicePushIds":["dcTJhvOqH8tZ63xbj9S2kH:APA91bHCBc33JtPTRUon41lHR21f7JqoboZ5B8UbDHb7nZnEamw-INZrt8cMryd4N3DXhkAs36oF6ivT2BBPEgq4QcAa7XWHOQQ3KTQWK09fOZxZMgZf0Vs"],"notifications":{"environment":{"alertTypes":"all","departments":"all","email":true,"equipmentTypes":"all","hours":"all","push":true,"text":true,"weekdays":"all"}},"temperatureSetting":"degC"}},"idToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzYwNTk3MjYzLCJleHAiOjE3NjA2ODM2NjMsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiNTFEWGpWWjVsMDllSEdSTFM4YWJ4UiJ9.Hnr5OAbcf108uYNqm_qzzN9HXyzLE-A277-kBg3Vr4U"}
+responseTime: 577
+status: OK
+responseSize: 1191
+assertions:
+  - name: Check idToken is set
+    passed: true
+logs:
+  - message: >-
+      eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzYwNTk3MjYzLCJleHAiOjE3NjA2ODM2NjMsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiNTFEWGpWWjVsMDllSEdSTFM4YWJ4UiJ9.Hnr5OAbcf108uYNqm_qzzN9HXyzLE-A277-kBg3Vr4U
+    level: LOG

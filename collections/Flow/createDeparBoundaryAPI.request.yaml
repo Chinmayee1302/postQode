@@ -1,0 +1,31 @@
+id: 22e9be1d-3b3c-45ab-8ea6-be912cb8581d
+name: createDeparBoundaryAPI
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HOSPITAL_ID}}/departmentBoundaries
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HOSPITAL_ID}}'
+      - departmentBoundaries
+  method: POST
+  headers: []
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"data\": {\r\n                \"name\": \"{{updatedDepartmentBoundaryName}}\",\r\n                \"department\": \"{{departmentID}}\",\r\n                \"geoJson\":\r\n                  {\"id\":\"a2dd22503517ebc198b2269e5e9d85f8\",\"type\":\"Feature\",\"properties\":{},\"geometry\":{\"coordinates\":[[[-117.25647114811176,32.991763406312586],[-117.25676101003815,32.99226541524463],[-117.25721916658418,32.99173009673808],[-117.25647114811176,32.991763406312586]]],\"type\":\"Polygon\"}}\r\n              },\r\n              \"name\": \"{{updatedDepartmentBoundaryName}}\"\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "pq.variables.set(\"departmentBoundaryName\",\"testboundary\")\r"
+        - const departmentID=pq.variables.get("departmentID")

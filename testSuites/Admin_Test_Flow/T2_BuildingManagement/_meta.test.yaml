@@ -1,0 +1,10 @@
+description: A test case for managing buildings.
+id: f877efdf-6b6d-46cb-8b0f-99020c522751
+name: T2_BuildingManagement
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: create_Building.request.yaml
+    type: request
+  - fileReference: editBuilding.request.yaml
+    type: request

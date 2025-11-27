@@ -1,0 +1,133 @@
+testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+testCaseId: 1cd56ca5-e5ed-4d9f-b0e3-763bffd857dc
+testStepId: 282c51b6-0212-494a-8d32-0e89b42efe50
+testStepName: visitBaseURL
+testStepType: request
+testStepDetail:
+  id: 282c51b6-0212-494a-8d32-0e89b42efe50
+  name: visitBaseURL
+  request:
+    url: https://dev-cox-health-imagine-api.leverege.com/v1/login
+    method: POST
+    headers:
+      - key: sec-ch-ua-platform
+        value: '"Windows"'
+      - key: Referer
+        value: https://staging-commercial-cox-health.firebaseapp.com/
+      - key: User-Agent
+        value: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
+          Gecko) Chrome/137.0.0.0 Safari/537.36
+      - key: Accept
+        value: application/json
+      - key: sec-ch-ua
+        value: '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"'
+      - key: Content-Type
+        value: application/json
+      - key: sec-ch-ua-mobile
+        value: ?0
+    body:
+      mode: raw
+      modeOfBody: JSON
+      raw: "{\r
+
+        \    \"username\": \"chinmayee.s@cognosos.com\",\r
+
+        \    \"password\": \"Prosight123\",\r
+
+        \    \"projectId\": \"55zmpJa2Q7vyjulNF72JK6\"\r
+
+        }"
+  events:
+    - listen: test
+      script:
+        type: javascript
+        exec:
+          - let response = pq.response.json();
+          - if (response && response.idToken) {
+          - '    pq.globals.set("idToken", response.idToken.trim());'
+          - "}"
+          - const token = pq.globals.get("idToken");
+          - ""
+          - // Verify it's set
+          - pq.test("Check idToken is set", function () {
+          - "    pq.expect(token).to.not.be.null;"
+          - "});"
+  type: request
+startedAt: 2025-11-26T08:54:48.624Z
+finishedAt: 2025-11-26T08:54:49.246Z
+testResult: PASSED
+response:
+  code: 200
+  headers:
+    - key: Date
+      value: Wed, 26 Nov 2025 08:55:01 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: keep-alive
+    - key: Access-Control-Allow-Credentials
+      value: "true"
+    - key: Content-Security-Policy
+      value: "default-src 'self';base-uri 'self';font-src 'self' https:
+        data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+        data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https:
+        'unsafe-inline';upgrade-insecure-requests"
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"506-i1261szYSmPL+vwxNzj65yLJc/Y"
+    - key: Origin-Agent-Cluster
+      value: ?1
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: off
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: "0"
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=LzvvxcD1y7fc3ThK5wdFVPn6OZdzNt6wzXCyw2wag%2FquiczG4wFLLUUBei5SvMy1CZ2QmT7wlFx27Qy0AbZmH4kwO7OO%2Fk%2BOYTx3dLxhR%2B0tGj4e2f4l%2BHqpAxAHwrkPsw8nDQ%3D%3D"}]}'
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 9a482a195d632d42-MAA
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+  cookies: []
+  body: '{"profile":{"id":"6Ba6UmGMVGoDxvxEnuhTqi","username":"chinmayee.s@cognosos.com","name":"chinmayee.s@cognosos.com","email":"chinmayee.s@cognosos.com","phone":"","created":1762938139312,"lastLogin":1764147245508,"lastVerify":1764147245508,"permissions":{"role":"user"},"projectId":"55zmpJa2Q7vyjulNF72JK6","metadata":{"lastModified":1762938142135,"notifications":{"assets":{"alertTypes":"all","email":false,"hours":"all","push":true,"text":false,"weekdays":"all"},"compliance":{"alertTypes":"all","email":false,"hours":"all","push":true,"text":false,"weekdays":"all"},"core":{"alertTypes":"all","email":false,"hours":"all","push":true,"text":false,"weekdays":"all"},"environment":{"alertTypes":"all","email":false,"hours":"all","push":true,"text":false,"weekdays":"all"},"safety":{"alertTypes":"all","email":false,"hours":"all","push":true,"text":false,"weekdays":"all"},"timeZone":"America/Los_Angeles"},"temperatureSetting":"degC"}},"idToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY0MTQ3MzAxLCJleHAiOjE3NjQyMzM3MDEsImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiI2QmE2VW1HTVZHb0R4dnhFbnVoVHFpIn0.wPyHLjP_9joNAtWD6MtVpw606WqAqUs9ZMQR1T6LVsE"}'
+  responseTime: 602
+  status: OK
+  responseSize: 1286
+assertions:
+  - name: null check
+    skipped: false
+    passed: true
+    error: {}
+  - name: Check idToken is set
+    skipped: false
+    passed: true
+    error: {}
+iterationCount: 0
+logs: []

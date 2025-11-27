@@ -1,0 +1,55 @@
+id: 3ed6aa69-f82f-4424-a053-93c206e68be8
+name: visitBaseURL Copy
+request:
+  url:
+    raw: '{{API_Base_URL}}/login'
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - login
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Referer
+      value: https://staging-commercial-cox-health.firebaseapp.com/
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/137.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"'
+    - key: Content-Type
+      value: application/json
+    - key: sec-ch-ua-mobile
+      value: '?0'
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"projectId\": \"{{PROJECT_ID}}\"\r\n}"
+  auth:
+    type: none
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "let response = pq.response.json();\r"
+        - "pq.environment.set(\"idToken\", response.idToken.trim());\r"
+        - "const token=pq.environment.get(\"idToken\")\r"
+        - "// Verify it's set\r"
+        - "pq.test(\"Check idToken is set\", function () {\r"
+        - "    pq.expect(token, \"idToken should be set in environment\").to.not.be.undefined;\r"
+        - "    pq.expect(token).to.not.be.null;\r"
+        - "    pq.expect(token).to.not.equal(\"\");\r"
+        - "});\r"
+        - ''
+      packages: []
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - ''
+      packages: []

@@ -1,0 +1,118 @@
+testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+testCaseId: 1f793909-de28-4f4b-a165-b87d25a09001
+testStepId: 0d9fdad0-ffd1-4e22-ab1d-ab757175878c
+testStepName: Delete_Building
+testStepType: request
+testStepDetail:
+  id: 0d9fdad0-ffd1-4e22-ab1d-ab757175878c
+  name: Delete_Building
+  request:
+    url: https://dev-cox-health-imagine-api.leverege.com/v1/project/55zmpJa2Q7vyjulNF72JK6/system/1WZp0PBZ2Y9BB5nYWnaDmx/srv/prosightApiServer/building/3rHZ22MJLKCFa7GoU9g7ip
+    method: delete
+    headers:
+      - key: accept
+        value: application/json
+      - key: accept-language
+        value: en-GB,en-US;q=0.9,en;q=0.8
+      - key: content-type
+        value: application/json
+      - key: origin
+        value: https://staging-commercial-cox-health.firebaseapp.com
+      - key: priority
+        value: u=1, i
+      - key: referer
+        value: https://staging-commercial-cox-health.firebaseapp.com/
+      - key: sec-ch-ua
+        value: '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"'
+      - key: sec-ch-ua-mobile
+        value: ?0
+      - key: sec-ch-ua-platform
+        value: '"macOS"'
+      - key: sec-fetch-dest
+        value: empty
+      - key: sec-fetch-mode
+        value: cors
+      - key: sec-fetch-site
+        value: cross-site
+      - key: user-agent
+        value: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+          (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+      - key: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY0MTQ3MzAxLCJleHAiOjE3NjQyMzM3MDEsImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiI2QmE2VW1HTVZHb0R4dnhFbnVoVHFpIn0.wPyHLjP_9joNAtWD6MtVpw606WqAqUs9ZMQR1T6LVsE
+    body:
+      mode: none
+    auth:
+      type: bearer
+      bearer:
+        token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY0MTQ3MzAxLCJleHAiOjE3NjQyMzM3MDEsImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiI2QmE2VW1HTVZHb0R4dnhFbnVoVHFpIn0.wPyHLjP_9joNAtWD6MtVpw606WqAqUs9ZMQR1T6LVsE
+  events: []
+  type: request
+startedAt: 2025-11-26T08:54:54.253Z
+finishedAt: 2025-11-26T08:54:57.128Z
+testResult: PASSED
+response:
+  code: 204
+  headers:
+    - key: Date
+      value: Wed, 26 Nov 2025 08:55:09 GMT
+    - key: Connection
+      value: keep-alive
+    - key: Access-Control-Allow-Credentials
+      value: "true"
+    - key: Access-Control-Allow-Origin
+      value: https://staging-commercial-cox-health.firebaseapp.com
+    - key: Content-Security-Policy
+      value: "default-src 'self';base-uri 'self';block-all-mixed-content;font-src
+        'self' https: data:;form-action 'self';frame-ancestors 'self';img-src
+        'self' data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https:
+        'unsafe-inline';upgrade-insecure-requests"
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Expect-Ct
+      value: max-age=0
+    - key: Origin-Agent-Cluster
+      value: ?1
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: off
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: "0"
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Report-To
+      value: '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=2RvRT37mSa3ir2tLxiPiXyvzrE%2BNijy0eiv3fLtbtL73%2Ft1ie4I8zGckoDHpdx%2FE2ggPpc3sA8M6czaE%2FixIXQcu1OX3zx%2Bga19h03b8x2Bxk90QcYpYxSah8XSyjNd86L8eJQ%3D%3D"}]}'
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 9a482a3bf81017a7-MAA
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+  cookies: []
+  body: ""
+  responseTime: 2864
+  status: No Content
+  responseSize: 0
+assertions: []
+iterationCount: 0
+logs: []

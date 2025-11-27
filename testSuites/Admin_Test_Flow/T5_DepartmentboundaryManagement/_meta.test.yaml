@@ -1,0 +1,12 @@
+description: ''
+id: 763a2baf-e849-45f0-a276-d061be41c20a
+name: T5_DepartmentboundaryManagement
+dependencies: []
+type: TESTCASE
+testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+parentId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+testSteps:
+  - fileReference: createDepartmentBoundary.request.yaml
+    type: request
+  - fileReference: UpdatingFloorAndDepartmentForBoundary.request.yaml
+    type: request

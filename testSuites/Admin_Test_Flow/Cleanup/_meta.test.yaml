@@ -1,0 +1,20 @@
+description: >-
+  This hook handles the cleanup process by deleting the created building and
+  hospital.
+id: 1f793909-de28-4f4b-a165-b87d25a09001
+name: Cleanup
+dependencies: []
+type: AFTER
+testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+parentId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+testSteps:
+  - fileReference: Delete_Building.request.yaml
+    type: request
+  - fileReference: Delete_Hospital.request.yaml
+    type: request
+  - fileReference: Delete_Department.request.yaml
+    type: request
+  - fileReference: Delete_Floor.request.yaml
+    type: request
+  - fileReference: Delete_RoomType.request.yaml
+    type: request

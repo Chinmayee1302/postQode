@@ -1,0 +1,69 @@
+code: 401
+headers:
+  _items:
+    - key: Date
+      value: Fri, 07 Nov 2025 06:58:21 GMT
+    - key: Content-Type
+      value: application/json; charset=utf-8
+    - key: Transfer-Encoding
+      value: chunked
+    - key: Connection
+      value: close
+    - key: Access-Control-Allow-Credentials
+      value: 'true'
+    - key: Content-Security-Policy
+      value: >-
+        default-src 'self';base-uri 'self';font-src 'self' https:
+        data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+        data:;object-src 'none';script-src 'self';script-src-attr
+        'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+    - key: Cross-Origin-Embedder-Policy
+      value: require-corp
+    - key: Cross-Origin-Opener-Policy
+      value: same-origin
+    - key: Cross-Origin-Resource-Policy
+      value: same-origin
+    - key: Etag
+      value: W/"26-ukL57UQrfxKxwPYnVBT6wq69PO4"
+    - key: Origin-Agent-Cluster
+      value: '?1'
+    - key: Referrer-Policy
+      value: no-referrer
+    - key: Strict-Transport-Security
+      value: max-age=15552000; includeSubDomains
+    - key: Vary
+      value: Origin, Accept-Encoding
+    - key: X-Content-Type-Options
+      value: nosniff
+    - key: X-Dns-Prefetch-Control
+      value: 'off'
+    - key: X-Download-Options
+      value: noopen
+    - key: X-Frame-Options
+      value: SAMEORIGIN
+    - key: X-Permitted-Cross-Domain-Policies
+      value: none
+    - key: X-Xss-Protection
+      value: '0'
+    - key: Cf-Cache-Status
+      value: DYNAMIC
+    - key: Nel
+      value: '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}'
+    - key: Report-To
+      value: >-
+        {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=XIbu4Zm1QUL53gd9R9Z%2B2rWbZsTpERFMXsmuEHAoKSVGm4gsE0vEiP8WL2vfmYddlGlDKom5cSI70Zb63Rgx75kZK%2FKo6R7WkDnrHz8eNLOKd9%2BNHHbd83P0OUeYWiBwdGmgsnKX"}]}
+    - key: Server
+      value: cloudflare
+    - key: Cf-Ray
+      value: 99aaf111fba0c1c9-BLR
+    - key: Alt-Svc
+      value: h3=":443"; ma=86400
+cookies: []
+body: '{"status":401,"message":"jwt expired"}'
+responseTime: 351
+status: Unauthorized
+responseSize: 38
+assertions: []
+logs:
+  - message: hospital not found
+    level: LOG

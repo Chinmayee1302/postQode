@@ -1,0 +1,10 @@
+description: ''
+id: 8765178d-3f41-4a5c-b5c3-76636f6962cc
+name: T3_DepartmentManagement
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: createDepartment.request.yaml
+    type: request
+  - fileReference: editDepartment.request.yaml
+    type: request

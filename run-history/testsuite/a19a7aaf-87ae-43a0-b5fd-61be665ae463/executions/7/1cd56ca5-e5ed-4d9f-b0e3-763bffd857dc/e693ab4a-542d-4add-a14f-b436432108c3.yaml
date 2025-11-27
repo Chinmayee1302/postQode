@@ -1,0 +1,53 @@
+testSuiteId: a19a7aaf-87ae-43a0-b5fd-61be665ae463
+testCaseId: 1cd56ca5-e5ed-4d9f-b0e3-763bffd857dc
+testStepId: 282c51b6-0212-494a-8d32-0e89b42efe50
+testStepName: visitBaseURL
+testStepType: request
+testStepDetail:
+  id: 282c51b6-0212-494a-8d32-0e89b42efe50
+  name: visitBaseURL
+  request:
+    url: "{{API_Base_URL}}/login"
+    method: POST
+    headers:
+      - key: sec-ch-ua-platform
+        value: '"Windows"'
+      - key: Referer
+        value: https://staging-commercial-cox-health.firebaseapp.com/
+      - key: User-Agent
+        value: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
+          Gecko) Chrome/137.0.0.0 Safari/537.36
+      - key: Accept
+        value: application/json
+      - key: sec-ch-ua
+        value: '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"'
+      - key: Content-Type
+        value: application/json
+      - key: sec-ch-ua-mobile
+        value: ?0
+    body:
+      mode: raw
+      modeOfBody: JSON
+      raw: "{\r
+
+        \    \"username\": \"{{username}}\",\r
+
+        \    \"password\": \"{{password}}\",\r
+
+        \    \"projectId\": \"{{PROJECT_ID}}\"\r
+
+        }"
+  events:
+    - listen: test
+      script:
+        type: javascript
+        exec:
+          - console.log(pq.response.json());
+  type: request
+startedAt: 2025-11-26T08:52:22.261Z
+finishedAt: 2025-11-26T08:52:22.294Z
+testResult: FAILED
+assertions: []
+rejectReason: getaddrinfo ENOTFOUND {{api_base_url}}
+iterationCount: 0
+logs: []
