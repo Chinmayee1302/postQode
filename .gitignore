@@ -1,2 +1,8 @@
+# Ignore PostQode run history
 /run-history
+
+# Ignore all HTML files
 *.html
+
+# Ignore node modules
+/node_modules
