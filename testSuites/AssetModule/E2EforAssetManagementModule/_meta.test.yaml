@@ -1,0 +1,14 @@
+description: ''
+id: b55dc819-9746-4882-97d1-cebb0d19f5c3
+name: E2EforAssetManagementModule
+dependencies: []
+type: TESTCASE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+testSteps:
+  - fileReference: tagCreationAPI.request.yaml
+    type: request
+  - fileReference: AssetCreationAPI.request.yaml
+    type: request
+  - fileReference: linkAssetandTag.request.yaml
+    type: request

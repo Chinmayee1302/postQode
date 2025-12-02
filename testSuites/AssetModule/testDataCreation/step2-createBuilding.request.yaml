@@ -1,0 +1,121 @@
+id: 735989d3-b4c4-41d1-b41b-37217e5896a1
+name: step2-createBuilding
+request:
+  url:
+    raw: >-
+      {{API_Base_URL_Dev}}/project/{{PROJECT_ID_Dev}}/system/{{SYSTEM_ID_Dev}}/srv/prosightApiServer/building
+    host:
+      - '{{API_Base_URL_Dev}}'
+    path:
+      - project
+      - '{{PROJECT_ID_Dev}}'
+      - system
+      - '{{SYSTEM_ID_Dev}}'
+      - srv
+      - prosightApiServer
+      - building
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"macOS"'
+    - key: Referer
+      value: https://staging-commercial-cox-health.firebaseapp.com/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "data": {
+          "hospital": {
+            "systemId": "{{SYSTEM_ID_Dev}}",
+            "metadata": {
+              "allowedApplications": [
+                "Prosight Assets",
+                "Prosight Safety",
+                "Prosight Environment"
+              ],
+              "timeZone": "{{AssetManagement.hopitalDetails.timezone}}"
+            },
+            "data": {
+              "address": {
+                "zipCode": "{{AssetManagement.hopitalDetails.zipCode}}",
+                "city": "{{AssetManagement.hopitalDetails.city}}",
+                "street": "{{AssetManagement.hopitalDetails.streetAddress}}",
+                "state": "{{AssetManagement.hopitalDetails.state}}"
+              },
+              "hospitalType": "Default",
+              "timezone": "{{AssetManagement.hopitalDetails.timezone}}",
+              "contact": {
+                "phone": "{{AssetManagement.buildingDetails.contactPhoneNumber}}",
+                "name": "{{AssetManagement.buildingDetails.contactName}}",
+                "email": "{{AssetManagement.buildingDetails.contactEmail}}"
+              },
+              "name": "{{AssetManagement.hopitalDetails.hospitalName}}",
+              "position": {
+                "lon": -92.016302,
+                "lat": 30.222169
+              },
+              "openStaffDuressAlerts": {
+                "test5": 0
+              }
+            },
+            "purpose": "organization",
+            "created": 1644009933179,
+            "simulated": false,
+            "name": "{{AssetManagement.hopitalDetails.hospitalName}}",
+            "id": "{{AssetManagement.hopitalDetails.HospitalId}}",
+            "lastModified": 1761556719623,
+            "blueprintId": "{{hsptlBluePrintID_Dev}}",
+            "projectId": "{{PROJECT_ID}}"
+          },
+          "name": "{{AssetManagement.buildingDetails.buildingName}}",
+          "addressDetails": {
+            "streetAddress": "{{AssetManagement.buildingDetails.streetAddress}}",
+            "city": "{{AssetManagement.buildingDetails.city}}",
+            "state": "{{AssetManagement.buildingDetails.state}}",
+            "zipCode": "{{AssetManagement.buildingDetails.zipCode}}"
+          },
+          "position": {
+            "lat": 32.828866,
+            "lon": -86.789292
+          }
+        },
+        "name": "{{AssetManagement.buildingDetails.buildingName}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - let response = pq.response.json();
+        - if (pq.response.code === 201) {
+        - '  pq.test("Validate building details", function () {'
+        - '    let buildingDetails = pq.environment.get("AssetManagement.buildingDetails");'
+        - '    pq.expect(response.name).to.equal(buildingDetails.buildingName);'
+        - '    pq.expect(response.data.name).to.equal(buildingDetails.buildingName);'
+        - '    pq.expect(response.data.addressDetails.streetAddress).to.equal(buildingDetails.streetAddress);'
+        - '    pq.expect(response.data.addressDetails.city).to.equal(buildingDetails.city);'
+        - '    pq.expect(response.data.addressDetails.state).to.equal(buildingDetails.state);'
+        - '    pq.expect(response.data.addressDetails.zipCode).to.equal(buildingDetails.zipCode);'
+        - '  });'
+        - '  pq.environment.set("AssetManagement.buildingDetails.BuildingId", response.id);'
+        - '} else {'
+        - '  console.log("building not found",response);'
+        - '}'
+type: request

@@ -1,0 +1,57 @@
+id: 3f7e8c1a-8b2e-4b4f-8c1a-9g6h8j3k2l1m
+name: Delete_Building
+request:
+  url:
+    raw: >-
+      {{API_Base_URL_Dev}}/project/{{PROJECT_ID_Dev}}/system/{{SYSTEM_ID_Dev}}/srv/prosightApiServer/building/{{AssetManagement.buildingDetails.BuildingId}}
+    host:
+      - '{{API_Base_URL_Dev}}'
+    path:
+      - project
+      - '{{PROJECT_ID_Dev}}'
+      - system
+      - '{{SYSTEM_ID_Dev}}'
+      - srv
+      - prosightApiServer
+      - building
+      - '{{AssetManagement.buildingDetails.BuildingId}}'
+  method: DELETE
+  headers:
+    - key: accept
+      value: application/json
+    - key: accept-language
+      value: en-GB,en-US;q=0.9,en;q=0.8
+    - key: content-type
+      value: application/json
+    - key: origin
+      value: https://staging-commercial-cox-health.firebaseapp.com
+    - key: priority
+      value: u=1, i
+    - key: referer
+      value: https://staging-commercial-cox-health.firebaseapp.com/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: sec-ch-ua-platform
+      value: '"macOS"'
+    - key: sec-fetch-dest
+      value: empty
+    - key: sec-fetch-mode
+      value: cors
+    - key: sec-fetch-site
+      value: cross-site
+    - key: user-agent
+      value: >-
+        Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+    - key: Authorization
+      value: Bearer {{idToken}}
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request

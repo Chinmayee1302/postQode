@@ -1,0 +1,265 @@
+id: 0db0a33a-852c-4abd-b66a-3e53d2bb1bc0
+name: tagCreationAPI
+request:
+  url:
+    raw: >-
+      {{API_Base_URL_Dev}}/interface/{{SYSTEM_ID_Dev}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/tags
+    host:
+    - '{{API_Base_URL_Dev}}'
+    path:
+    - interface
+    - '{{SYSTEM_ID_Dev}}'
+    - hospital
+    - '{{AssetManagement.hopitalDetails.HospitalId}}'
+    - tags
+  method: POST
+  headers: []
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r
+
+      \  \"networkAliases\": {\r
+
+      \    \"hid-beacons\": {\r
+
+      \      \"deviceId\": \"{{AssetManagement.tagDetails.tag1.deviceId}}\"\r
+
+      \    }\r
+
+      \  },\r
+
+      \  \"networkId\": \"hid-beacons\",\r
+
+      \  \"data\": [\r
+
+      \    {\r
+
+      \      \"path\": \"uniqueDeviceId\",\r
+
+      \      \"value\": \"{{AssetManagement.tagDetails.tag1.deviceId}}\"\r
+
+      \    },\r
+
+      \    {\r
+
+      \      \"path\": \"type\",\r
+
+      \      \"value\": \"{{AssetManagement.tagDetails.tag1.type}}\"\r
+
+      \    },\r
+
+      \    {\r
+
+      \      \"path\": \"manufacturer\",\r
+
+      \      \"value\":  \"{{AssetManagement.tagDetails.tag1.manufacturer}}\"\r
+
+      \    },\r
+
+      \    {\r
+
+      \      \"path\": \"model\",\r
+
+      \      \"value\": \"{{AssetManagement.tagDetails.tag1.model}}\"\r
+
+      \    },\r
+
+      \    {\r
+
+      \      \"path\": \"tagType\",\r
+
+      \      \"value\": \"{{AssetManagement.tagDetails.tag1.model}}\"\r
+
+      \    },\r
+
+      \    {\r
+
+      \      \"path\": \"location\",\r
+
+      \      \"value\": {\r
+
+      \        \"floor\": {\r
+
+      \          \"name\": \"{{AssetManagement.floorDetails.floorName}}\",\r
+
+      \          \"id\": \"{{AssetManagement.floorDetails.floorId}}\"\r
+
+      \        },\r
+
+      \        \"department\": {\r
+
+      \          \"name\": \"{{AssetManagement.departmentName}}\",\r
+
+      \          \"id\": \"{{AssetManagement.departmentID}}\"\r
+
+      \        },\r
+
+      \        \"room\": {\r
+
+      \          \"name\": \"{{AssetManagement.locationDetails.roomName_1}}\",\r
+
+      \          \"id\": \"{{AssetManagement.locationDetails.room0}}\"\r
+
+      \        },\r
+
+      \        \"building\": {\r
+
+      \          \"name\": \"{{AssetManagement.buildingDetails.buildingName}}\",\r
+
+      \          \"id\": \"{{AssetManagement.buildingDetails.BuildingId}}\"\r
+
+      \        },\r
+
+      \        \"timestamp\": {{timestamp}}\r
+
+      \      }\r
+
+      \    },\r
+
+      \    {\r
+
+      \      \"path\": \"p\",\r
+
+      \      \"value\": {\r
+
+      \        \"floor\": {\r
+
+      \          \"name\": \"{{AssetManagement.floorDetails.floorName}}\",\r
+
+      \          \"id\": \"{{AssetManagement.floorDetails.floorId}}\"\r
+
+      \        },\r
+
+      \        \"department\": {\r
+
+      \          \"name\": \"{{AssetManagement.departmentName}}\",\r
+
+      \          \"id\": \"{{AssetManagement.departmentID}}\"\r
+
+      \        },\r
+
+      \        \"room\": {\r
+
+      \          \"name\": \"{{AssetManagement.locationDetails.roomName_1}}\",\r
+
+      \          \"id\": \"{{AssetManagement.locationDetails.room0}}\"\r
+
+      \        },\r
+
+      \        \"building\": {\r
+
+      \          \"name\": \"{{AssetManagement.buildingDetails.buildingName}}\",\r
+
+      \          \"id\": \"{{AssetManagement.buildingDetails.BuildingId}}\"\r
+
+      \        },\r
+
+      \        \"timestamp\": {{timestamp}}\r
+
+      \      }\r
+
+      \    },\r
+
+      \    {\r
+
+      \      \"path\": \"prevLocation\",\r
+
+      \      \"value\": {\r
+
+      \        \"floor\": {\r
+
+      \          \"name\": \"{{AssetManagement.floorDetails.floorName}}\",\r
+
+      \          \"id\": \"{{AssetManagement.floorDetails.floorId}}\"\r
+
+      \        },\r
+
+      \        \"department\": {\r
+
+      \          \"name\": \"{{AssetManagement.departmentName}}\",\r
+
+      \          \"id\": \"{{AssetManagement.departmentID}}\"\r
+
+      \        },\r
+
+      \        \"room\": {\r
+
+      \          \"name\": \"{{AssetManagement.locationDetails.roomName_2}}\",\r
+
+      \          \"id\": \"{{AssetManagement.locationDetails.room1}}\"\r
+
+      \        },\r
+
+      \        \"building\": {\r
+
+      \           \"name\": \"{{AssetManagement.buildingDetails.buildingName}}\",\r
+
+      \          \"id\": \"{{AssetManagement.buildingDetails.BuildingId}}\"\r
+
+      \        },\r
+
+      \        \"timestamp\": {{timestamp}}\r
+
+      \      }\r
+
+      \    }\r
+
+      \  ],\r
+
+      \  \"name\": \"{{AssetManagement.tagDetails.tag1.deviceId}}\"\r
+
+      }\r\n"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+- listen: prerequest
+  script:
+    type: javascript
+    exec:
+    - pq.variables.set("timestamp", Date.now())
+- listen: test
+  script:
+    type: javascript
+    exec:
+    - >-
+      pq.test("Status code is 200", function () { pq.response.to.have.status(200); });
+    - 'pq.test("Response should be a valid JSON", function() { pq.response.to.be.json; });'
+    - const response = pq.response.json();
+    - >-
+      pq.test("Response should have required properties", function() {
+          pq.expect(response).to.have.property('id');
+          pq.expect(response).to.have.property('name', 'Automation Asset testing device');
+          pq.expect(response).to.have.property('networkId', 'hid-beacons');
+          pq.expect(response).to.have.property('simulated', false);
+      });
+    - >-
+      pq.test("Data object should have correct properties", function() {
+          const data = response.data;
+          pq.expect(data).to.have.property('uniqueDeviceId', 'Automation Asset testing device');
+          pq.expect(data).to.have.property('type', 'Asset Tag');
+          pq.expect(data).to.have.property('manufacturer', 'HID');
+          pq.expect(data).to.have.property('model', 'Asset Tag 2');
+          pq.expect(data).to.have.property('tagType', 'Asset Tag 2');
+      });
+    - >-
+      pq.test("Location details should be correct", function() {
+          const location = response.data.location;
+          pq.expect(location.floor).to.have.property('name', 'assetManagementFloor');
+          pq.expect(location.department).to.have.property('name', 'assetManagementdepo');
+          pq.expect(location.room).to.have.property('name', 'assetManagementroom1');
+          pq.expect(location.building).to.have.property('name', 'assetManagementBuilding');
+      });
+    - >-
+      pq.test("Previous location details should be correct", function() {
+          const prevLocation = response.data.prevLocation;
+          pq.expect(prevLocation.room).to.have.property('name', 'assetManagementroom2');
+      });
+    - pq.environment.set("AssetManagement.tag1.tagID", response.id);
+    - >-
+      if (!pq.response.ok) {
+          console.log(pq.request.url);
+      }
+type: request

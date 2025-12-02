@@ -1,0 +1,51 @@
+id: 1d9c6a3b-9a8b-3c2d-b928-3c2d9a8b1d9c
+name: DeleteDepartment
+request:
+  url:
+    raw: >-
+      {{API_Base_URL_Dev}}/interface/{{SYSTEM_ID_Dev}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/departments/{{AssetManagement.departmentID}}
+    host:
+      - '{{API_Base_URL_Dev}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID_Dev}}'
+      - hospital
+      - '{{AssetManagement.hopitalDetails.HospitalId}}'
+      - departments
+      - '{{AssetManagement.departmentID}}'
+  method: DELETE
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+          "deleteDevice": "force"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - console.log(pq.environment.get("AssetManagement.departmentID"))
+type: request

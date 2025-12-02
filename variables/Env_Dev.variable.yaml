@@ -1,11 +1,3 @@
-SECRET: >-
-  4tyGsPDHZ6JZA5HPPBTA3c2O2mQYSiRpT3EcbHwPlcEr2FwgaNEGZuhmoJbdHkEK8U6eDtmPpxwZth1CzLCFPsnc
-API_KEY: 07ytMWNK8NtT03Ue2VKHUk
-PROJECT_ID: 55zmpJa2Q7vyjulNF72JK6
-SYSTEM_ID: 1WZp0PBZ2Y9BB5nYWnaDmx
-API_Base_URL: https://dev-cox-health-imagine-api.leverege.com/v1
-hsptlBluePrintID: 2I8n67xzYK0lHliPLeJMih
-API_Lev_URL: https://dev-cognosos.web.app/
 hopitalDetails:
   hospitalName: PostQode123
   streetAddress: 1214 Coolidge Street

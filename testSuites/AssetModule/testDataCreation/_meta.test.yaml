@@ -1,0 +1,25 @@
+description: ''
+id: ec6a7637-1ddf-4a72-8aa8-193a8c457d32
+name: testDataCreation
+disabled: true
+dependencies: []
+type: BEFORE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+testSteps:
+  - fileReference: visitBaseURL.request.yaml
+    type: request
+  - fileReference: step1-createFacility.request.yaml
+    type: request
+  - fileReference: step2-createBuilding.request.yaml
+    type: request
+  - fileReference: step3-createDepartment.request.yaml
+    type: request
+  - fileReference: step4-createRoomType.request.yaml
+    type: request
+  - fileReference: step5-createFloorID.request.yaml
+    type: request
+  - fileReference: step6-updateRoomId.request.yaml
+    type: request
+  - fileReference: step7-createDepartmentBoundary.request.yaml
+    type: request

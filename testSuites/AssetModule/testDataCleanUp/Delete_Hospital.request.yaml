@@ -1,0 +1,41 @@
+id: 9a8b7c6d-5e4f-3a2b-1c9d-8b7a6d5e4f3a
+name: Delete_Hospital
+request:
+  url:
+    raw: >-
+      {{API_Base_URL_Dev}}/project/{{PROJECT_ID_Dev}}/system/{{SYSTEM_ID_Dev}}/srv/prosightApiServer/hospital/{{AssetManagement.hopitalDetails.HospitalId}}
+    host:
+      - '{{API_Base_URL_Dev}}'
+    path:
+      - project
+      - '{{PROJECT_ID_Dev}}'
+      - system
+      - '{{SYSTEM_ID_Dev}}'
+      - srv
+      - prosightApiServer
+      - hospital
+      - '{{AssetManagement.hopitalDetails.HospitalId}}'
+  method: DELETE
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"macOS"'
+    - key: Referer
+      value: https://staging-commercial-cox-health.firebaseapp.com/
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request
