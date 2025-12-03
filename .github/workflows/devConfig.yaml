@@ -3,7 +3,7 @@ name: API Tests - DEV
 on:
   push:
     branches: [ postQode-AssetManagementModule ]
-  pull:
+  pull_request:
     branches: [ postQode-AssetManagementModule ]
 
 jobs:
