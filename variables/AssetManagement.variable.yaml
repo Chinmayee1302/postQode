@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 4vXMB5Uc4v85Uc7NTDCVVt
+    HospitalId: 14EYLh6MebycUIDVtPSg1S
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,7 +18,7 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 4eyEx2Wf6k3WOjT09r3zO3
+    BuildingId: 5pvaHJEsLUI2cfejRqPk3k
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
@@ -34,9 +34,9 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
-    assetlevId: 7CGU6OYpvDhrZ8Pju9IA25
+    assetlevId: 41HDtRtU4ndGZ6HiigBkSW
   asset2:
-    assetName: ASSET2-SMARTHOSP-TC-497425362357211422444361021939283058
+    assetName: ASSET2-SMARTHOSP-TC-4974253623572114224443610219392830586538
     assetId: '2345'
     serialNumber: 1F:TM:9J:74
     departmentName: assetManagementdepo
@@ -46,25 +46,30 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
-    assetlevId: 5s5dBZHtSrJ5r4mwO69eNl
+    assetlevId: 15eI9mEAAm3FegCGRKA0ck
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 5BcOCEi4JJVkbc413bxWJr
-    room1: 6dAG9Ql7vupv1mdRzJeRBu
+    room0: 0WJs1LLL0GdEP2zzSay1BT
+    room1: 3qdf6LkSuvtujoxS39CbBq
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 4ZLKvTP3VafzuE5fiHBDdG
-  roomId: 5BcOCEi4JJVkbc413bxWJr
+    floorId: 2vOwkzTipFK8gOmLbNJMnE
+  roomDetails:
+    roomTypeName: assetManagementroom
+    status: Available
+    utilizationState: Not Utilized
+    monitorCompliance: 'No'
+  roomId: 0WJs1LLL0GdEP2zzSay1BT
   tagDetails:
     tag1:
       deviceId: assetMngmemntTag
       type: Asset Tag
       manufacturer: HID
       model: Asset Tag 2
-      tagID: 3T3NF3LafGCg1jj78IwjJC
+      tagID: 7JT3Rvp4fKODCmIqeT404K
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -72,16 +77,16 @@ AssetManagement:
       model: Asset Tag 2
   locationDetails[room0]: 6vIr8LFYPfpY8uaXKRlCi8
   locationDetails[room1]: 3wBt3ja5qPMIYA1hpbHN0H
-  departmentID: 6cNdiOuTsAGzxcBQANtey9
-  departmentBoundaryId: 02oyK5JZ8sWlQpImsNPkeu
   editedAssetDetails:
     assetName: assetEdited
     assetId: 2345-edited
     serialNumber: 1F:TM:9J:74:edited
-    departmentName: Accident and emergency
+    departmentName: Administration
     assetType: BiPap
     manufacturer: SMITH MEDICAL1
     modelNum: HL977
     maintenanceDay: Monthly
     rentedOption: Owned
     departmentID: 104OFYLyLkMZeXYk3N9Mka
+  departmentID: 2n6ZbiBJu3ktoMcAz6p6qG
+  departmentBoundaryId: 5dU18xf0irs7LaWFdhrkpC
