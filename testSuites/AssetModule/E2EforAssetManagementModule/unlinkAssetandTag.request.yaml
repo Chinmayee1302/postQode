@@ -3,14 +3,14 @@ name: unlinkAssetandTag
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/assets/{{AssetManagement.asset1.assetlevId}}/tag
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets/{{AssetManagement.asset1.assetlevId}}/tag
     host:
     - '{{API_Base_URL}}'
     path:
     - interface
     - '{{SYSTEM_ID}}'
     - hospital
-    - '{{AssetManagement.hopitalDetails.HospitalId}}'
+    - '{{AssetManagement.hospitalDetails.HospitalId}}'
     - assets
     - '{{AssetManagement.asset1.assetlevId}}'
     - tag

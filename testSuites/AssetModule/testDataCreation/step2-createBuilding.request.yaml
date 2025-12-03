@@ -45,23 +45,23 @@ request:
                 "Prosight Safety",
                 "Prosight Environment"
               ],
-              "timeZone": "{{AssetManagement.hopitalDetails.timezone}}"
+              "timeZone": "{{AssetManagement.hospitalDetails.timezone}}"
             },
             "data": {
               "address": {
-                "zipCode": "{{AssetManagement.hopitalDetails.zipCode}}",
-                "city": "{{AssetManagement.hopitalDetails.city}}",
-                "street": "{{AssetManagement.hopitalDetails.streetAddress}}",
-                "state": "{{AssetManagement.hopitalDetails.state}}"
+                "zipCode": "{{AssetManagement.hospitalDetails.zipCode}}",
+                "city": "{{AssetManagement.hospitalDetails.city}}",
+                "street": "{{AssetManagement.hospitalDetails.streetAddress}}",
+                "state": "{{AssetManagement.hospitalDetails.state}}"
               },
               "hospitalType": "Default",
-              "timezone": "{{AssetManagement.hopitalDetails.timezone}}",
+              "timezone": "{{AssetManagement.hospitalDetails.timezone}}",
               "contact": {
                 "phone": "{{AssetManagement.buildingDetails.contactPhoneNumber}}",
                 "name": "{{AssetManagement.buildingDetails.contactName}}",
                 "email": "{{AssetManagement.buildingDetails.contactEmail}}"
               },
-              "name": "{{AssetManagement.hopitalDetails.hospitalName}}",
+              "name": "{{AssetManagement.hospitalDetails.hospitalName}}",
               "position": {
                 "lon": -92.016302,
                 "lat": 30.222169
@@ -73,8 +73,8 @@ request:
             "purpose": "organization",
             "created": 1644009933179,
             "simulated": false,
-            "name": "{{AssetManagement.hopitalDetails.hospitalName}}",
-            "id": "{{AssetManagement.hopitalDetails.HospitalId}}",
+            "name": "{{AssetManagement.hospitalDetails.hospitalName}}",
+            "id": "{{AssetManagement.hospitalDetails.HospitalId}}",
             "lastModified": 1761556719623,
             "blueprintId": "{{hsptlBluePrintID}}",
             "projectId": "{{PROJECT_ID}}"

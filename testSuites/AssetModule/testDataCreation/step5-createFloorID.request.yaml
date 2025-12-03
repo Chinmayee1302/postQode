@@ -3,14 +3,14 @@ name: step5-createFloorID
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/buildings/{{AssetManagement.buildingDetails.BuildingId}}/floors
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/buildings/{{AssetManagement.buildingDetails.BuildingId}}/floors
     host:
     - '{{API_Base_URL}}'
     path:
     - interface
     - '{{SYSTEM_ID}}'
     - hospital
-    - '{{AssetManagement.hopitalDetails.HospitalId}}'
+    - '{{AssetManagement.hospitalDetails.HospitalId}}'
     - buildings
     - '{{AssetManagement.buildingDetails.BuildingId}}'
     - floors
@@ -45,9 +45,9 @@ request:
 
       \      \"hospital\": {\r
 
-      \        \"id\": \"{{AssetManagement.hopitalDetails.HospitalId}}\",\r
+      \        \"id\": \"{{AssetManagement.hospitalDetails.HospitalId}}\",\r
 
-      \        \"name\": \"{{AssetManagement.hopitalDetails.hospitalName}}\"\r
+      \        \"name\": \"{{AssetManagement.hospitalDetails.hospitalName}}\"\r
 
       \      }\r
 
@@ -85,7 +85,7 @@ events:
     - "const floorId  = pq.environment.get('AssetManagement.floorDetails.floorId')\r"
     - "const baseUrl  = pq.globals.get('API_Base_URL');\r"
     - "const sysId    = pq.globals.get('SYSTEM_ID');\r"
-    - "const hospId   = pq.environment.get('AssetManagement.hopitalDetails.HospitalId');\r"
+    - "const hospId   = pq.environment.get('AssetManagement.hospitalDetails.HospitalId');\r"
     - "const bldgId   = pq.environment.get(\"AssetManagement.buildingDetails.BuildingId\");\r"
     - "const deptId   = pq.environment.get(\"AssetManagement.departmentID\");\r"
     - "const idToken = pq.globals.get(\"idToken\");\r"

@@ -36,25 +36,25 @@ request:
     modeOfBody: JSON
     raw: |-
       {
-      "name": "{{AssetManagement.hopitalDetails.hospitalName}}",
+      "name": "{{AssetManagement.hospitalDetails.hospitalName}}",
       "data": {
-          "name": "{{AssetManagement.hopitalDetails.hospitalName}}",
+          "name": "{{AssetManagement.hospitalDetails.hospitalName}}",
           "address": {
-              "street": "{{AssetManagement.hopitalDetails.streetAddress}}",
-              "city": "{{AssetManagement.hopitalDetails.city}}",
-              "state": "{{AssetManagement.hopitalDetails.state}}",
-              "zipCode": "{{AssetManagement.hopitalDetails.zipCode}}"
+              "street": "{{AssetManagement.hospitalDetails.streetAddress}}",
+              "city": "{{AssetManagement.hospitalDetails.city}}",
+              "state": "{{AssetManagement.hospitalDetails.state}}",
+              "zipCode": "{{AssetManagement.hospitalDetails.zipCode}}"
           },
           "contact": {},
           "hospitalType": "Default",
-          "timezone": "{{AssetManagement.hopitalDetails.timezone}}",
+          "timezone": "{{AssetManagement.hospitalDetails.timezone}}",
           "position": {
               "lat": 42.32694,
               "lon": -71.83355
           }
       },
       "metadata": {
-          "timeZone": "{{AssetManagement.hopitalDetails.timezone}}",
+          "timeZone": "{{AssetManagement.hospitalDetails.timezone}}",
           "allowedApplications": [
               "Prosight Assets",
               "Prosight Safety",
@@ -75,13 +75,13 @@ events:
     - let response = pq.response.json();
     - pq.test('Validate Hospital Name', () => {
     - '  pq.response.to.have.status(201)'
-    - '  pq.expect(response.name).to.eql(pq.environment.get("AssetManagement.hopitalDetails.hospitalName"))'
+    - '  pq.expect(response.name).to.eql(pq.environment.get("AssetManagement.hospitalDetails.hospitalName"))'
     - '})'
     - if (pq.response.code === 409) {
-    - '  console.log("Hospital is already there in System", pq.environment.get("AssetManagement.hopitalDetails.HospitalId"))'
+    - '  console.log("Hospital is already there in System", pq.environment.get("AssetManagement.hospitalDetails.HospitalId"))'
     - '}'
     - if (pq.response.code === 201) {
-    - '  pq.environment.set("AssetManagement.hopitalDetails.HospitalId", response.id);'
+    - '  pq.environment.set("AssetManagement.hospitalDetails.HospitalId", response.id);'
     - '} else {'
     - '  console.log("Hospital creation failed with status code: " + pq.response.code);'
     - '  console.log(response);'

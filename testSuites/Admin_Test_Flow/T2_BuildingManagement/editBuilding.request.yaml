@@ -5,34 +5,34 @@ request:
     raw: >-
       {{API_Base_URL}}/project/{{PROJECT_ID}}/system/{{SYSTEM_ID}}/srv/prosightApiServer/building/{{BuildingId}}
     host:
-      - '{{API_Base_URL}}'
+    - '{{API_Base_URL}}'
     path:
-      - project
-      - '{{PROJECT_ID}}'
-      - system
-      - '{{SYSTEM_ID}}'
-      - srv
-      - prosightApiServer
-      - building
-      - '{{BuildingId}}'
+    - project
+    - '{{PROJECT_ID}}'
+    - system
+    - '{{SYSTEM_ID}}'
+    - srv
+    - prosightApiServer
+    - building
+    - '{{BuildingId}}'
   method: PUT
   headers:
-    - description: ''
-      disabled: false
-      key: Cache-Control
-      value: no-cache
-    - description: ''
-      disabled: false
-      key: Accept
-      value: '*/*'
-    - description: ''
-      disabled: false
-      key: Accept-Encoding
-      value: gzip, deflate
-    - description: ''
-      disabled: false
-      key: Connection
-      value: keep-alive
+  - description: ''
+    disabled: false
+    key: Cache-Control
+    value: no-cache
+  - description: ''
+    disabled: false
+    key: Accept
+    value: '*/*'
+  - description: ''
+    disabled: false
+    key: Accept-Encoding
+    value: gzip, deflate
+  - description: ''
+    disabled: false
+    key: Connection
+    value: keep-alive
   body:
     mode: raw
     modeOfBody: JSON
@@ -47,23 +47,23 @@ request:
                 "Prosight Safety",
                 "Prosight Environment"
               ],
-              "timeZone": "{{hopitalDetails.timezone}}"
+              "timeZone": "{{hospitalDetails.timezone}}"
             },
             "data": {
               "address": {
-                "zipCode": "{{hopitalDetails.zipCode}}",
-                "city": "{{hopitalDetails.city}}",
-                "street": "{{hopitalDetails.streetAddress}}",
-                "state": "{{hopitalDetails.state}}"
+                "zipCode": "{{hospitalDetails.zipCode}}",
+                "city": "{{hospitalDetails.city}}",
+                "street": "{{hospitalDetails.streetAddress}}",
+                "state": "{{hospitalDetails.state}}"
               },
               "hospitalType": "Default",
-              "timezone": "{{hopitalDetails.timezone}}",
+              "timezone": "{{hospitalDetails.timezone}}",
               "contact": {
                 "phone": "{{buildingDetails.contactPhoneNumber}}",
                 "name": "{{buildingDetails.contactName}}",
                 "email": "{{buildingDetails.contactEmail}}"
               },
-              "name": "{{hopitalDetails.hospitalName}}",
+              "name": "{{hospitalDetails.hospitalName}}",
               "position": {
                 "lon": -92.016302,
                 "lat": 30.222169
@@ -75,7 +75,7 @@ request:
             "purpose": "organization",
             "created": 1644009933179,
             "simulated": false,
-            "name": "{{hopitalDetails.hospitalName}}",
+            "name": "{{hospitalDetails.hospitalName}}",
             "id": "{{HospitalId}}",
             "lastModified": 1761556719623,
             "blueprintId": "{{hsptlBluePrintID}}",
@@ -100,22 +100,22 @@ request:
     bearer:
       token: '{{idToken}}'
 events:
-  - listen: test
-    script:
-      type: javascript
-      exec:
-        - let response = pq.response.json();
-        - if (pq.response.code === 200) {
-        - '  pq.test("Validate building details", function () {'
-        - '    let buildingDetails = pq.environment.get("buildingDetails");'
-        - '    pq.expect(response.name).to.equal(buildingDetails.buildingName);'
-        - '    pq.expect(response.data.name).to.equal(buildingDetails.buildingName);'
-        - '    pq.expect(response.data.addressDetails.streetAddress).to.equal(buildingDetails.streetAddress);'
-        - '    pq.expect(response.data.addressDetails.city).to.equal(buildingDetails.updatedcity);'
-        - '    pq.expect(response.data.addressDetails.state).to.equal(buildingDetails.state);'
-        - '    pq.expect(response.data.addressDetails.zipCode).to.equal(buildingDetails.zipCode);'
-        - '  });'
-        - '} else {'
-        - '  console.log("building not found");'
-        - '}'
+- listen: test
+  script:
+    type: javascript
+    exec:
+    - let response = pq.response.json();
+    - if (pq.response.code === 200) {
+    - '  pq.test("Validate building details", function () {'
+    - '    let buildingDetails = pq.environment.get("buildingDetails");'
+    - '    pq.expect(response.name).to.equal(buildingDetails.buildingName);'
+    - '    pq.expect(response.data.name).to.equal(buildingDetails.buildingName);'
+    - '    pq.expect(response.data.addressDetails.streetAddress).to.equal(buildingDetails.streetAddress);'
+    - '    pq.expect(response.data.addressDetails.city).to.equal(buildingDetails.updatedcity);'
+    - '    pq.expect(response.data.addressDetails.state).to.equal(buildingDetails.state);'
+    - '    pq.expect(response.data.addressDetails.zipCode).to.equal(buildingDetails.zipCode);'
+    - '  });'
+    - '} else {'
+    - '  console.log("building not found");'
+    - '}'
 type: request

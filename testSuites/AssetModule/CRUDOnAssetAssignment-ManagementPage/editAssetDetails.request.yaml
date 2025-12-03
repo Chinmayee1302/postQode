@@ -3,69 +3,264 @@ name: editAssetDetails
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/assets/{{AssetManagement.asset2.assetlevId}}
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets/{{AssetManagement.asset2.assetlevId}}
     host:
-      - '{{API_Base_URL}}'
+    - '{{API_Base_URL}}'
     path:
-      - interface
-      - '{{SYSTEM_ID}}'
-      - hospital
-      - '{{AssetManagement.hopitalDetails.HospitalId}}'
-      - assets
-      - '{{AssetManagement.asset2.assetlevId}}'
+    - interface
+    - '{{SYSTEM_ID}}'
+    - hospital
+    - '{{AssetManagement.hospitalDetails.HospitalId}}'
+    - assets
+    - '{{AssetManagement.asset2.assetlevId}}'
   method: PATCH
   headers:
-    - key: sec-ch-ua-platform
-      value: '"Windows"'
-    - key: Authorization
-      value: >-
-        Bearer
-        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY0NzM3Mjc1LCJleHAiOjE3NjQ4MjM2NzUsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDJSWnVScTE0b1h5MWlwVGdXV3ZQNCJ9.370Nlv_DLuityTxIziNazLJqrjo_uFp96RwjVD0yK88
-    - key: Referer
-      value: https://stg-cognosos.web.app/
-    - key: sec-ch-ua
-      value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
-    - key: sec-ch-ua-mobile
-      value: '?0'
-    - key: User-Agent
-      value: >-
-        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/142.0.0.0 Safari/537.36
-    - key: Accept
-      value: application/json
-    - key: Content-Type
-      value: application/json
+  - key: sec-ch-ua-platform
+    value: '"Windows"'
+  - key: Authorization
+    value: >-
+      Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY0NzM3Mjc1LCJleHAiOjE3NjQ4MjM2NzUsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDJSWnVScTE0b1h5MWlwVGdXV3ZQNCJ9.370Nlv_DLuityTxIziNazLJqrjo_uFp96RwjVD0yK88
+  - key: Referer
+    value: https://stg-cognosos.web.app/
+  - key: sec-ch-ua
+    value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
+  - key: sec-ch-ua-mobile
+    value: '?0'
+  - key: User-Agent
+    value: >-
+      Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
+  - key: Accept
+    value: application/json
+  - key: Content-Type
+    value: application/json
   body:
     mode: raw
     modeOfBody: JSON
-    raw: "{\r\n    \"networkAliases\": {\r\n        \"assets\": {\r\n            \"deviceId\": \"{{AssetManagement.editedAssetDetails.assetId}}\",\r\n            \"name\": \"{{AssetManagement.editedAssetDetails.assetName}}\"\r\n        }\r\n    },\r\n    \"networkId\": \"assets\",\r\n    \"name\": \"{{AssetManagement.editedAssetDetails.assetName}}\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"assetId\",\r\n            \"value\": \"{{AssetManagement.editedAssetDetails.assetId}}\"\r\n        },\r\n        {\r\n            \"path\": \"assetType\",\r\n            \"value\": \"{{AssetManagement.editedAssetDetails.assetType}}\"\r\n        },\r\n        {\r\n            \"path\": \"assignedDepartment/id\",\r\n            \"value\": \"{{AssetManagement.editedAssetDetails.departmentID}}\"\r\n        },\r\n        {\r\n            \"path\": \"assignedDepartment/name\",\r\n            \"value\": \"{{AssetManagement.editedAssetDetails.departmentName}}\"\r\n        },\r\n        {\r\n            \"path\": \"isRental\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"maintenance/nextPreventativeMaintenanceDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceInterval\",\r\n            \"value\": \"monthly\"\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"manufacturer\"\r\n        },\r\n        {\r\n            \"path\": \"manufacturerPrice\",\r\n            \"value\": 2500\r\n        },\r\n        {\r\n            \"path\": \"modelNumber\"\r\n        },\r\n        {\r\n            \"path\": \"name\",\r\n            \"value\": \"{{AssetManagement.editedAssetDetails.assetName}}\"\r\n        },\r\n        {\r\n            \"path\": \"rentalDueDate\"\r\n        },\r\n        {\r\n            \"path\": \"rentedDate\"\r\n        },\r\n        {\r\n            \"path\": \"serialNumber\",\r\n            \"value\": \"1F:TM:9J:74:edited\"\r\n        },\r\n        {\r\n            \"path\": \"status/operational\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"status/available\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/cleaningRequired\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/maintenanceRequired\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/inMaintenance\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/missing\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/outOfCirculation\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r\n            \"value\": {{prevmonthlyDue}}\r\n        }\r\n    ]\r\n}"
+    raw: "{\r
+
+      \    \"networkAliases\": {\r
+
+      \        \"assets\": {\r
+
+      \            \"deviceId\": \"{{AssetManagement.editedAssetDetails.assetId}}\",\r
+
+      \            \"name\": \"{{AssetManagement.editedAssetDetails.assetName}}\"\r
+
+      \        }\r
+
+      \    },\r
+
+      \    \"networkId\": \"assets\",\r
+
+      \    \"name\": \"{{AssetManagement.editedAssetDetails.assetName}}\",\r
+
+      \    \"data\": [\r
+
+      \        {\r
+
+      \            \"path\": \"assetId\",\r
+
+      \            \"value\": \"{{AssetManagement.editedAssetDetails.assetId}}\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"assetType\",\r
+
+      \            \"value\": \"{{AssetManagement.editedAssetDetails.assetType}}\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"assignedDepartment/id\",\r
+
+      \            \"value\": \"{{AssetManagement.editedAssetDetails.departmentID}}\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"assignedDepartment/name\",\r
+
+      \            \"value\": \"{{AssetManagement.editedAssetDetails.departmentName}}\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"isRental\",\r
+
+      \            \"value\": false\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"maintenance/nextPreventativeMaintenanceDate\",\r
+
+      \            \"value\": null\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"maintenance/preventativeMaintenanceInterval\",\r
+
+      \            \"value\": \"monthly\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r
+
+      \            \"value\": null\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"manufacturer\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"manufacturerPrice\",\r
+
+      \            \"value\": 2500\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"modelNumber\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"name\",\r
+
+      \            \"value\": \"{{AssetManagement.editedAssetDetails.assetName}}\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"rentalDueDate\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"rentedDate\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"serialNumber\",\r
+
+      \            \"value\": \"1F:TM:9J:74:edited\"\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"status/operational\",\r
+
+      \            \"value\": true\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"status/available\",\r
+
+      \            \"value\": false\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"status/cleaningRequired\",\r
+
+      \            \"value\": false\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"status/maintenanceRequired\",\r
+
+      \            \"value\": false\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"status/inMaintenance\",\r
+
+      \            \"value\": false\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"status/missing\",\r
+
+      \            \"value\": false\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"status/outOfCirculation\",\r
+
+      \            \"value\": false\r
+
+      \        },\r
+
+      \        {\r
+
+      \            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r
+
+      \            \"value\": {{prevmonthlyDue}}\r
+
+      \        }\r
+
+      \    ]\r
+
+      }"
   auth:
     type: bearer
     bearer:
       token: '{{idToken}}'
 events:
-  - listen: prerequest
-    script:
-      type: javascript
-      exec:
-        - ''
-        - const response = await pq.sendRequest({
-        - '  url: `${pq.globals.get("API_Base_URL")}/interface/${pq.globals.get("SYSTEM_ID")}/${pq.globals.get("hsptlBluePrintID")}/${pq.environment.get("AssetManagement.hopitalDetails.HospitalId")}/departments?startIndex=0&perPage=100&search=`,'
-        - '  method: "GET",'
-        - '  headers: {'
-        - '    accept: "application/json",'
-        - '    authorization: `Bearer ${pq.globals.get("idToken")}`'
-        - '  }'
-        - '});'
-        - const data = response.json();
-        - const dept = data.items.find(
-        - '  ele => ele.name === pq.environment.get("AssetManagement.editedAssetDetails.departmentName")'
-        - );
-        - if (dept) {
-        - '  pq.environment.set("AssetManagement.editedAssetDetails.departmentID", dept.id);'
-        - '}'
-        - >-
-          pq.variables.set("prevmonthlyDue", Date.now() + 14 * 24 * 60 * 60 *
-          1000);
-        - ''
+- listen: prerequest
+  script:
+    type: javascript
+    exec:
+    - ''
+    - const response = await pq.sendRequest({
+    - '  url: `${pq.globals.get("API_Base_URL")}/interface/${pq.globals.get("SYSTEM_ID")}/${pq.globals.get("hsptlBluePrintID")}/${pq.environment.get("AssetManagement.hospitalDetails.HospitalId")}/departments?startIndex=0&perPage=100&search=`,'
+    - '  method: "GET",'
+    - '  headers: {'
+    - '    accept: "application/json",'
+    - '    authorization: `Bearer ${pq.globals.get("idToken")}`'
+    - '  }'
+    - '});'
+    - const data = response.json();
+    - const dept = data.items.find(
+    - '  ele => ele.name === pq.environment.get("AssetManagement.editedAssetDetails.departmentName")'
+    - );
+    - if (dept) {
+    - '  pq.environment.set("AssetManagement.editedAssetDetails.departmentID", dept.id);'
+    - '}'
+    - >-
+      pq.variables.set("prevmonthlyDue", Date.now() + 14 * 24 * 60 * 60 * 1000);
+    - ''
 type: request

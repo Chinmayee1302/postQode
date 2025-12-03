@@ -3,14 +3,14 @@ name: step6-updateRoomId
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/rooms.search
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/rooms.search
     host:
     - '{{API_Base_URL}}'
     path:
     - interface
     - '{{SYSTEM_ID}}'
     - hospital
-    - '{{AssetManagement.hopitalDetails.HospitalId}}'
+    - '{{AssetManagement.hospitalDetails.HospitalId}}'
     - rooms.search
   method: POST
   headers:

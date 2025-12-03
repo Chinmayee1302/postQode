@@ -3,14 +3,14 @@ name: step7-createDepartmentBoundary
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/departmentBoundaries
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/departmentBoundaries
     host:
     - '{{API_Base_URL}}'
     path:
     - interface
     - '{{SYSTEM_ID}}'
     - hospital
-    - '{{AssetManagement.hopitalDetails.HospitalId}}'
+    - '{{AssetManagement.hospitalDetails.HospitalId}}'
     - departmentBoundaries
   method: POST
   headers:
@@ -74,7 +74,7 @@ events:
     - const baseUrl    = pq.globals.get('API_Base_URL');
     - const sysId      = pq.globals.get('SYSTEM_ID');
     - >-
-      const hospId     = pq.environment.get('AssetManagement.hopitalDetails.HospitalId');
+      const hospId     = pq.environment.get('AssetManagement.hospitalDetails.HospitalId');
     - const idToken    = pq.globals.get('idToken');
     - const deptId     = pq.environment.get('AssetManagement.departmentID');
     - >-

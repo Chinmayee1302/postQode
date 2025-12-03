@@ -3,55 +3,83 @@ name: verifyAssetDetailsinLocPage
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/assets.search
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets.search
     host:
-      - '{{API_Base_URL}}'
+    - '{{API_Base_URL}}'
     path:
-      - interface
-      - '{{SYSTEM_ID}}'
-      - hospital
-      - '{{AssetManagement.hopitalDetails.HospitalId}}'
-      - assets.search
+    - interface
+    - '{{SYSTEM_ID}}'
+    - hospital
+    - '{{AssetManagement.hospitalDetails.HospitalId}}'
+    - assets.search
   method: POST
   headers:
-    - key: sec-ch-ua-platform
-      value: '"Windows"'
-    - key: Authorization
-      value: >-
-        Bearer
-        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY0NjkxNTE4LCJleHAiOjE3NjQ3Nzc5MTgsImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiIySElCUWtGSmJDNTBLTmdOTUhQaUt4In0.Z1mi1ab-GePKT0bPydixROKw-d1MA3LqrdPBBfECMoM
-    - key: Referer
-      value: https://dev-cognosos.web.app/
-    - key: sec-ch-ua
-      value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
-    - key: sec-ch-ua-mobile
-      value: '?0'
-    - key: User-Agent
-      value: >-
-        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/142.0.0.0 Safari/537.36
-    - key: Accept
-      value: application/json
-    - key: Content-Type
-      value: application/json
+  - key: sec-ch-ua-platform
+    value: '"Windows"'
+  - key: Authorization
+    value: >-
+      Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY0NjkxNTE4LCJleHAiOjE3NjQ3Nzc5MTgsImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiIySElCUWtGSmJDNTBLTmdOTUhQaUt4In0.Z1mi1ab-GePKT0bPydixROKw-d1MA3LqrdPBBfECMoM
+  - key: Referer
+    value: https://dev-cognosos.web.app/
+  - key: sec-ch-ua
+    value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
+  - key: sec-ch-ua-mobile
+    value: '?0'
+  - key: User-Agent
+    value: >-
+      Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
+  - key: Accept
+    value: application/json
+  - key: Content-Type
+    value: application/json
   body:
     mode: raw
     modeOfBody: JSON
-    raw: "{\r\n    \"limit\": 100,\r\n    \"offset\": 0,\r\n    \"filter\": {\r\n        \"type\": \"exists\",\r\n        \"field\": \"data/tag/id\",\r\n        \"not\": false\r\n    },\r\n    \"sort\": [\r\n        {\r\n            \"field\": \"lastModified\",\r\n            \"order\": \"desc\"\r\n        }\r\n    ],\r\n    \"nextToken\": null\r\n}"
+    raw: "{\r
+
+      \    \"limit\": 100,\r
+
+      \    \"offset\": 0,\r
+
+      \    \"filter\": {\r
+
+      \        \"type\": \"exists\",\r
+
+      \        \"field\": \"data/tag/id\",\r
+
+      \        \"not\": false\r
+
+      \    },\r
+
+      \    \"sort\": [\r
+
+      \        {\r
+
+      \            \"field\": \"lastModified\",\r
+
+      \            \"order\": \"desc\"\r
+
+      \        }\r
+
+      \    ],\r
+
+      \    \"nextToken\": null\r
+
+      }"
   auth:
     type: bearer
     bearer:
       token: '{{idToken}}'
 events:
-  - listen: test
-    script:
-      type: javascript
-      exec:
-        - "const response = pq.response.json()\r"
-        - "let newArr = response.items.filter(ele => ele.id === pq.environment.get(\"AssetManagement.asset1.assetlevId\"))\r"
-        - "\r"
-        - "pq.test(\"Verifying Asset in Loc Page\", function () {\r"
-        - "  pq.expect(newArr).to.have.length.greaterThan(0);\r"
-        - "})\r"
-        - ''
+- listen: test
+  script:
+    type: javascript
+    exec:
+    - "const response = pq.response.json()\r"
+    - "let newArr = response.items.filter(ele => ele.id === pq.environment.get(\"AssetManagement.asset1.assetlevId\"))\r"
+    - "\r"
+    - "pq.test(\"Verifying Asset in Loc Page\", function () {\r"
+    - "  pq.expect(newArr).to.have.length.greaterThan(0);\r"
+    - "})\r"
+    - ''
 type: request

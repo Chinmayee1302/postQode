@@ -3,7 +3,7 @@ name: Delete_Hospital
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/project/{{PROJECT_ID}}/system/{{SYSTEM_ID}}/srv/prosightApiServer/hospital/{{AssetManagement.hopitalDetails.HospitalId}}
+      {{API_Base_URL}}/project/{{PROJECT_ID}}/system/{{SYSTEM_ID}}/srv/prosightApiServer/hospital/{{AssetManagement.hospitalDetails.HospitalId}}
     host:
     - '{{API_Base_URL}}'
     path:
@@ -14,7 +14,7 @@ request:
     - srv
     - prosightApiServer
     - hospital
-    - '{{AssetManagement.hopitalDetails.HospitalId}}'
+    - '{{AssetManagement.hospitalDetails.HospitalId}}'
   method: DELETE
   headers:
   - key: sec-ch-ua-platform

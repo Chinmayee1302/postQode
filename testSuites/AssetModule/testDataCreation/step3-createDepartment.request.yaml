@@ -3,14 +3,14 @@ name: step3-createDepartment
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/departments
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/departments
     host:
     - '{{API_Base_URL}}'
     path:
     - interface
     - '{{SYSTEM_ID}}'
     - hospital
-    - '{{AssetManagement.hopitalDetails.HospitalId}}'
+    - '{{AssetManagement.hospitalDetails.HospitalId}}'
     - departments
   method: POST
   headers:
@@ -67,7 +67,7 @@ events:
     - const baseUrl = pq.globals.get('API_Base_URL');
     - const sysId   = pq.globals.get('SYSTEM_ID');
     - >-
-      const hospId  = pq.environment.get('AssetManagement.hopitalDetails.HospitalId');
+      const hospId  = pq.environment.get('AssetManagement.hospitalDetails.HospitalId');
     - >-
       const bldgId  = pq.environment.get("AssetManagement.buildingDetails.BuildingId");
     - const idToken = pq.globals.get("idToken");

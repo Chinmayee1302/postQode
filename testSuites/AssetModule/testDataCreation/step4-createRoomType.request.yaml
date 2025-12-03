@@ -3,14 +3,14 @@ name: step4-createRoomType
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{AssetManagement.hopitalDetails.HospitalId}}/srv/prosightBypass/resourceEnum
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{AssetManagement.hospitalDetails.HospitalId}}/srv/prosightBypass/resourceEnum
     host:
     - '{{API_Base_URL}}'
     path:
     - system
     - '{{SYSTEM_ID}}'
     - device
-    - '{{AssetManagement.hopitalDetails.HospitalId}}'
+    - '{{AssetManagement.hospitalDetails.HospitalId}}'
     - srv
     - prosightBypass
     - resourceEnum

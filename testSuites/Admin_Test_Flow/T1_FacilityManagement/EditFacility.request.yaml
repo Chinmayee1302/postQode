@@ -5,58 +5,58 @@ request:
     raw: >-
       {{API_Base_URL}}/project/{{PROJECT_ID}}/system/{{SYSTEM_ID}}/srv/prosightApiServer/hospital/{{HospitalId}}
     host:
-      - '{{API_Base_URL}}'
+    - '{{API_Base_URL}}'
     path:
-      - project
-      - '{{PROJECT_ID}}'
-      - system
-      - '{{SYSTEM_ID}}'
-      - srv
-      - prosightApiServer
-      - hospital
-      - '{{HospitalId}}'
+    - project
+    - '{{PROJECT_ID}}'
+    - system
+    - '{{SYSTEM_ID}}'
+    - srv
+    - prosightApiServer
+    - hospital
+    - '{{HospitalId}}'
   method: PUT
   headers:
-    - description: ''
-      disabled: false
-      key: Cache-Control
-      value: no-cache
-    - description: ''
-      disabled: false
-      key: Accept
-      value: '*/*'
-    - description: ''
-      disabled: false
-      key: Accept-Encoding
-      value: gzip, deflate
-    - description: ''
-      disabled: false
-      key: Connection
-      value: keep-alive
+  - description: ''
+    disabled: false
+    key: Cache-Control
+    value: no-cache
+  - description: ''
+    disabled: false
+    key: Accept
+    value: '*/*'
+  - description: ''
+    disabled: false
+    key: Accept-Encoding
+    value: gzip, deflate
+  - description: ''
+    disabled: false
+    key: Connection
+    value: keep-alive
   body:
     mode: raw
     modeOfBody: JSON
     raw: |-
       {
-      "name": "{{hopitalDetails.hospitalName}}",
+      "name": "{{hospitalDetails.hospitalName}}",
       "data": {
-          "name": "{{hopitalDetails.hospitalName}}",
+          "name": "{{hospitalDetails.hospitalName}}",
           "address": {
-              "street": "{{hopitalDetails.updatedstreetAddress}}",
-              "city": "{{hopitalDetails.city}}",
-              "state": "{{hopitalDetails.state}}",
-              "zipCode": "{{hopitalDetails.zipCode}}"
+              "street": "{{hospitalDetails.updatedstreetAddress}}",
+              "city": "{{hospitalDetails.city}}",
+              "state": "{{hospitalDetails.state}}",
+              "zipCode": "{{hospitalDetails.zipCode}}"
           },
           "contact": {},
           "hospitalType": "Default",
-          "timezone": "{{hopitalDetails.timezone}}",
+          "timezone": "{{hospitalDetails.timezone}}",
           "position": {
               "lat": 42.32694,
               "lon": -71.83355
           }
       },
       "metadata": {
-          "timeZone": "{{hopitalDetails.timezone}}",
+          "timeZone": "{{hospitalDetails.timezone}}",
           "allowedApplications": [
               "Prosight Assets",
               "Prosight Safety",
@@ -69,27 +69,27 @@ request:
     bearer:
       token: '{{idToken}}'
 events:
-  - listen: prerequest
-    script:
-      type: javascript
-      exec:
-        - let response = pq.response.json();
-        - if (pq.response.code === 201) {
-        - '  const hospitalDetails = pq.environment.get("hopitalDetails");'
-        - '  pq.test("Validate hospital details", function () {'
-        - '    pq.expect(response.name).to.equal(hospitalDetails.hospitalName);'
-        - '    pq.expect(response.data.name).to.equal(hospitalDetails.hospitalName);'
-        - '    pq.expect(response.data.address.street).to.equal(hospitalDetails.updatedstreetAddress);'
-        - '    pq.expect(response.data.address.city).to.equal(hospitalDetails.city);'
-        - '    pq.expect(response.data.address.state).to.equal(hospitalDetails.state);'
-        - '    pq.expect(response.data.address.zipCode).to.equal(hospitalDetails.zipCode);'
-        - '    pq.expect(response.data.timezone).to.equal(hospitalDetails.timezone);'
-        - '    pq.expect(response.metadata.timeZone).to.equal(hospitalDetails.timezone);'
-        - '  });'
-        - '} else {'
-        - '  console.log(pq.environment.get(''hopitalDetails'').hospitalName);'
-        - '  console.log("Hospital creation failed with status code: " + pq.response.code);'
-        - '  console.log(response);'
-        - '}'
-        - ''
+- listen: prerequest
+  script:
+    type: javascript
+    exec:
+    - let response = pq.response.json();
+    - if (pq.response.code === 201) {
+    - '  const hospitalDetails = pq.environment.get("hospitalDetails");'
+    - '  pq.test("Validate hospital details", function () {'
+    - '    pq.expect(response.name).to.equal(hospitalDetails.hospitalName);'
+    - '    pq.expect(response.data.name).to.equal(hospitalDetails.hospitalName);'
+    - '    pq.expect(response.data.address.street).to.equal(hospitalDetails.updatedstreetAddress);'
+    - '    pq.expect(response.data.address.city).to.equal(hospitalDetails.city);'
+    - '    pq.expect(response.data.address.state).to.equal(hospitalDetails.state);'
+    - '    pq.expect(response.data.address.zipCode).to.equal(hospitalDetails.zipCode);'
+    - '    pq.expect(response.data.timezone).to.equal(hospitalDetails.timezone);'
+    - '    pq.expect(response.metadata.timeZone).to.equal(hospitalDetails.timezone);'
+    - '  });'
+    - '} else {'
+    - '  console.log(pq.environment.get(''hospitalDetails'').hospitalName);'
+    - '  console.log("Hospital creation failed with status code: " + pq.response.code);'
+    - '  console.log(response);'
+    - '}'
+    - ''
 type: request
