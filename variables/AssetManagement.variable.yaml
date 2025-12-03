@@ -68,13 +68,13 @@ AssetManagement:
       deviceId: assetMngmemntTag
       type: Asset Tag
       manufacturer: HID
-      model: Asset Tag 2
+      model: Asset Tag 3
       tagID: 7JT3Rvp4fKODCmIqeT404K
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
       manufacturer: HID
-      model: Asset Tag 2
+      model: Asset Tag 3
   locationDetails[room0]: 6vIr8LFYPfpY8uaXKRlCi8
   locationDetails[room1]: 3wBt3ja5qPMIYA1hpbHN0H
   editedAssetDetails:
