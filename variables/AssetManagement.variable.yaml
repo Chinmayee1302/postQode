@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 7tY9rzdtrRj7vv8VVGIiRD
+    HospitalId: 2aN7RlEsFOq7oLPjbSEBQZ
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,7 +18,7 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 7qxF2CVdxiAkRCf7rim38N
+    BuildingId: 31MAquCzm9vA2l4P0ZG1la
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
@@ -34,9 +34,9 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
-    assetlevId: 44O1sHPPKBUpjkO7cLOLfP
+    assetlevId: 7lF6qbzzOR7mAlvHKOpe9w
   asset2:
-    assetName: ASSET2-SMARTHOSP-TC-4974
+    assetName: ASSET2-SMARTHOSP-TC-49742536235721142244436102193928
     assetId: '2345'
     serialNumber: 1F:TM:9J:74
     departmentName: assetManagementdepo
@@ -46,50 +46,42 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
+    assetlevId: 1rpkp2LRE5p4jCkxzBmsMk
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 0zPmaVQmWgMtpJXFBFEqCJ
-    room1: 7dTz7ud0OWNNlcQgAqyhVm
+    room0: 0C39taXB3YArTB3YD3JojG
+    room1: 3R7YZF0pqBhWtqT5uXWX1i
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 5TxZoXz6aiaCcwqaCyODz7
-  roomId: 0zPmaVQmWgMtpJXFBFEqCJ
+    floorId: 7CalfANAvMC1DhmIup7ngK
+  roomId: 0C39taXB3YArTB3YD3JojG
   tagDetails:
     tag1:
       deviceId: assetMngmemntTag
       type: Asset Tag
       manufacturer: HID
       model: Asset Tag 2
-      floorName: Jahnavi's Test Floor
-      floorId: 4oYyKIqKBcgU7KLMHqZlIZ
-      locationName: New Room for testing
-      locationId: 0qmrlFNP8PIkXbgXx6ZRMx
-      previousRoomName: '132'
-      previousRoomId: 6tffugZujJZXkKMECorKwo
-      departmentName: Test depo for new room for testing updated
-      departmentId: 2SbxTcMckih1nyQ9V07Oxk
-      buildingName: Test Building-J's
-      buildingId: 4rIkCzxkXXs85lwJjMN2Aj
-      tagID: 6Z41ZmuVE6y5gp583mT6Xr
+      tagID: 4t3Br2l5erP6DeqLBzYNYj
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
       manufacturer: HID
       model: Asset Tag 2
-      floorName: Jahnavi's Test Floor
-      floorId: 4oYyKIqKBcgU7KLMHqZlIZ
-      locationName: New Room for testing
-      locationId: 0qmrlFNP8PIkXbgXx6ZRMx
-      previousRoomName: '132'
-      previousRoomId: 6tffugZujJZXkKMECorKwo
-      departmentName: Test depo for new room for testing updated
-      departmentId: 2SbxTcMckih1nyQ9V07Oxk
-      buildingName: Test Building-J's
-      buildingId: 4rIkCzxkXXs85lwJjMN2Aj
   locationDetails[room0]: 6vIr8LFYPfpY8uaXKRlCi8
   locationDetails[room1]: 3wBt3ja5qPMIYA1hpbHN0H
-  departmentID: 4T1d5CPNm9vY17mMgxG4bp
-  departmentBoundaryId: 3y16jerdrxprQgEXOzY6oM
+  departmentID: 2CWqn6zCeTOpb04GPbK3K7
+  departmentBoundaryId: 1zBBzXMuz8xwBmPemlViOc
+  editedAssetDetails:
+    assetName: assetEdited
+    assetId: 2345-edited
+    serialNumber: 1F:TM:9J:74:edited
+    departmentName: Accident and emergency
+    assetType: BiPap
+    manufacturer: SMITH MEDICAL1
+    modelNum: HL977
+    maintenanceDay: Monthly
+    rentedOption: Owned
+    departmentID: 1rKQA4kilNIg5F71EKZfFH

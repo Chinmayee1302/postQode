@@ -1,0 +1,15 @@
+description: ''
+id: e3ceea3e-c6b7-4147-a677-6d1145a5f130
+name: CRUDOnAssetAssignment-ManagementPage
+disabled: false
+dependencies: []
+type: TESTCASE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+testSteps:
+  - fileReference: AssetCreationAPI.request.yaml
+    type: request
+  - fileReference: editAssetDetails.request.yaml
+    type: request
+  - fileReference: deleteAsset.request.yaml
+    type: request

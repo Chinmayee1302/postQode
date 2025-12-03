@@ -3,9 +3,14 @@ description: Whole AssetManagement Module
 id: 89b886a1-25fe-4b0b-be1b-214196b9fe16
 disabled: false
 runConfigs:
-  - name: Dev_Config
-    global: variables/Global_Variabel.variable.yaml
-    environment: variables/AssetModuleVariables.variable.yaml
-  - name: stageConfig
-    global: variables/stageConfigGlobal.variable.yaml
-    environment: variables/AssetModuleVariables.variable.yaml
+- name: Dev_Config
+  global: variables/Global_Variabel.variable.yaml
+  environment: variables/AssetManagement.variable.yaml
+- name: stageConfig
+  global: variables/stageConfigGlobal.variable.yaml
+  environment: variables/AssetManagement.variable.yaml
+testCases:
+- name: CRUDOnAssetAssignment-ManagementPage
+  type: TESTCASE
+- name: E2EforAssetManagementModule
+  type: TESTCASE
