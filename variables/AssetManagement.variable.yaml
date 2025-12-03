@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 4kWUKu4jNgI2VkEq7eEarE
+    HospitalId: 4vXMB5Uc4v85Uc7NTDCVVt
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,7 +18,7 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 4DJERBVRyAgwVCXH3jxD55
+    BuildingId: 4eyEx2Wf6k3WOjT09r3zO3
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
@@ -34,9 +34,9 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
-    assetlevId: 6WsNWZdcPsjFB08NWSEyi2
+    assetlevId: 7CGU6OYpvDhrZ8Pju9IA25
   asset2:
-    assetName: ASSET2-SMARTHOSP-TC-4974253623572114224443610219392830
+    assetName: ASSET2-SMARTHOSP-TC-497425362357211422444361021939283058
     assetId: '2345'
     serialNumber: 1F:TM:9J:74
     departmentName: assetManagementdepo
@@ -46,25 +46,25 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
-    assetlevId: 5n7K2GVEObModIr5LfWkJr
+    assetlevId: 5s5dBZHtSrJ5r4mwO69eNl
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 7wBlt3UV6reUBPx4Fi3OUk
-    room1: 1JJemOzSLzwBmCij0EbxI7
+    room0: 5BcOCEi4JJVkbc413bxWJr
+    room1: 6dAG9Ql7vupv1mdRzJeRBu
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 3hBnf4k5zGR0kj263fo2ff
-  roomId: 7wBlt3UV6reUBPx4Fi3OUk
+    floorId: 4ZLKvTP3VafzuE5fiHBDdG
+  roomId: 5BcOCEi4JJVkbc413bxWJr
   tagDetails:
     tag1:
       deviceId: assetMngmemntTag
       type: Asset Tag
       manufacturer: HID
       model: Asset Tag 2
-      tagID: 4r7dPQQur9LTeyo8Kkot6C
+      tagID: 3T3NF3LafGCg1jj78IwjJC
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -72,8 +72,8 @@ AssetManagement:
       model: Asset Tag 2
   locationDetails[room0]: 6vIr8LFYPfpY8uaXKRlCi8
   locationDetails[room1]: 3wBt3ja5qPMIYA1hpbHN0H
-  departmentID: 0imi02KHySY5eS9ie6zkwn
-  departmentBoundaryId: 3wdOsBzppLMqQNkoRMoG1u
+  departmentID: 6cNdiOuTsAGzxcBQANtey9
+  departmentBoundaryId: 02oyK5JZ8sWlQpImsNPkeu
   editedAssetDetails:
     assetName: assetEdited
     assetId: 2345-edited
@@ -84,4 +84,4 @@ AssetManagement:
     modelNum: HL977
     maintenanceDay: Monthly
     rentedOption: Owned
-    departmentID: 4PRAwEeRJksPNuGcMWDpQH
+    departmentID: 104OFYLyLkMZeXYk3N9Mka
