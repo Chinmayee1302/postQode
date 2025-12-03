@@ -1,0 +1,44 @@
+name: API Tests - DEV
+
+on:
+  push:
+    branches: [ postQode-AssetManagementModule ]
+
+jobs:
+  api-tests-dev:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.20.0'
+
+    - name: Install PostQode CLI
+      run: npm install -g @postqode/cli
+
+    - name: Run DEV API Tests
+      run: |
+        postqode execute \
+          -s testSuites/AssetModule/_meta.suite.yaml \
+          -c Dev_Config \
+          --report-formats junit html \
+          --report-dir ./test-results/dev
+
+    - name: Publish Test Results (DEV)
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: DEV API Test Results
+        path: 'test-results/dev/postqode-junit-*.xml'
+        reporter: java-junit
+
+    - name: Upload HTML Reports (DEV)
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: dev-api-test-reports
+        path: test-results/dev

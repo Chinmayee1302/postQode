@@ -2,9 +2,9 @@ id: 282c51b6-0212-494a-8d32-0e89b42efe50
 name: visitBaseURL
 request:
   url:
-    raw: '{{API_Base_URL_Dev}}/login'
+    raw: '{{API_Base_URL}}/login'
     host:
-      - '{{API_Base_URL_Dev}}'
+      - '{{API_Base_URL}}'
     path:
       - login
   method: POST
@@ -28,7 +28,7 @@ request:
   body:
     mode: raw
     modeOfBody: JSON
-    raw: "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"projectId\": \"{{PROJECT_ID_Dev}}\"\r\n}"
+    raw: "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"projectId\": \"{{PROJECT_ID}}\"\r\n}"
 events:
   - listen: test
     script:

@@ -3,18 +3,18 @@ name: linkAssetandTag
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HOSPITAL_ID}}/assets/7jRi0FrJSWTtCfTeZn2Srz/tag
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/assets/{{AssetManagement.asset1.assetlevId}}/tag
     host:
       - '{{API_Base_URL}}'
     path:
       - interface
       - '{{SYSTEM_ID}}'
       - hospital
-      - '{{HOSPITAL_ID}}'
+      - '{{AssetManagement.hopitalDetails.HospitalId}}'
       - assets
-      - 7jRi0FrJSWTtCfTeZn2Srz
+      - '{{AssetManagement.asset1.assetlevId}}'
       - tag
-  method: post
+  method: POST
   headers:
     - key: sec-ch-ua-platform
       value: '"Windows"'
@@ -39,7 +39,7 @@ request:
   body:
     mode: raw
     modeOfBody: JSON
-    raw: "{\r\n    \"id\": \"{{tagID}}\"\r\n}"
+    raw: "{\r\n    \"id\": \"{{AssetManagement.tagDetails.tag1.tagID}}\"\r\n}"
   auth:
     type: bearer
     bearer:

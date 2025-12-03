@@ -3,33 +3,33 @@ name: step7-createDepartmentBoundary
 request:
   url:
     raw: >-
-      {{API_Base_URL_Dev}}/interface/{{SYSTEM_ID_Dev}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/departmentBoundaries
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hopitalDetails.HospitalId}}/departmentBoundaries
     host:
-      - '{{API_Base_URL_Dev}}'
+    - '{{API_Base_URL}}'
     path:
-      - interface
-      - '{{SYSTEM_ID_Dev}}'
-      - hospital
-      - '{{AssetManagement.hopitalDetails.HospitalId}}'
-      - departmentBoundaries
+    - interface
+    - '{{SYSTEM_ID}}'
+    - hospital
+    - '{{AssetManagement.hopitalDetails.HospitalId}}'
+    - departmentBoundaries
   method: POST
   headers:
-    - description: ''
-      disabled: false
-      key: Cache-Control
-      value: no-cache
-    - description: ''
-      disabled: false
-      key: Accept
-      value: '*/*'
-    - description: ''
-      disabled: false
-      key: Accept-Encoding
-      value: gzip, deflate
-    - description: ''
-      disabled: false
-      key: Connection
-      value: keep-alive
+  - description: ''
+    disabled: false
+    key: Cache-Control
+    value: no-cache
+  - description: ''
+    disabled: false
+    key: Accept
+    value: '*/*'
+  - description: ''
+    disabled: false
+    key: Accept-Encoding
+    value: gzip, deflate
+  - description: ''
+    disabled: false
+    key: Connection
+    value: keep-alive
   body:
     mode: raw
     modeOfBody: JSON
@@ -61,185 +61,179 @@ request:
     bearer:
       token: '{{idToken}}'
 events:
-  - listen: test
-    script:
-      type: javascript
-      exec:
-        - let response = pq.response.json();
-        - >-
-          pq.environment.set('AssetManagement.departmentBoundaryId',
-          response.id);
-        - ''
-        - >-
-          const deptBoundId =
-          pq.environment.get('AssetManagement.departmentBoundaryId');
-        - const baseUrl    = pq.globals.get('API_Base_URL_Dev');
-        - const sysId      = pq.globals.get('SYSTEM_ID_Dev');
-        - >-
-          const hospId     =
-          pq.environment.get('AssetManagement.hopitalDetails.HospitalId');
-        - const idToken    = pq.globals.get('idToken');
-        - const deptId     = pq.environment.get('AssetManagement.departmentID');
-        - >-
-          const floorId    =
-          pq.environment.get('AssetManagement.floorDetails.floorId');
-        - ''
-        - // Optional debug logs
-        - console.log('deptBoundId:', deptBoundId);
-        - console.log('hospId:', hospId);
-        - console.log('deptId:', deptId);
-        - console.log('floorId:', floorId);
-        - console.log('baseUrl:', baseUrl);
-        - console.log('sysId:', sysId);
-        - ''
-        - // 2️⃣ Define all request objects
-        - ''
-        - >-
-          // Request1: PATCH test=true on departmentBoundary (validation /
-          allowed)
-        - const request1 = {
-        - '    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/departmentBoundaries/${deptBoundId}?test=true`,'
-        - '    method: ''PATCH'','
-        - '    headers: {'
-        - '        ''Cache-Control'': ''no-cache'','
-        - '        ''Accept'': ''*/*'','
-        - '        ''Accept-Encoding'': ''gzip, deflate'','
-        - '        ''Connection'': ''keep-alive'','
-        - '        ''Authorization'': `Bearer ${idToken}`'
-        - '    },'
-        - '    auth: {'
-        - '        type: ''bearer'','
-        - '        bearer: {'
-        - '            token: idToken'
-        - '        }'
-        - '    }'
-        - '};'
-        - ''
-        - '// Request2: Attach boundary to department'
-        - const request2 = {
-        - '    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments/${deptId}/departmentBoundaries`,'
-        - '    method: ''POST'','
-        - '    headers: {'
-        - '        ''Content-Type'': ''application/json'','
-        - '        ''Authorization'': `Bearer ${idToken}`'
-        - '    },'
-        - '    body: {'
-        - '        mode: ''raw'','
-        - '        modeOfBody: ''JSON'','
-        - '        raw: JSON.stringify({'
-        - '            id: deptBoundId,'
-        - '            force: true'
-        - '        })'
-        - '    },'
-        - '    auth: {'
-        - '        type: ''bearer'','
-        - '        bearer: {'
-        - '            token: idToken'
-        - '        }'
-        - '    }'
-        - '};'
-        - ''
-        - '// Request3: Attach boundary to floor'
-        - const request3 = {
-        - '    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/floors/${floorId}/departmentBoundaries`,'
-        - '    method: ''POST'','
-        - '    headers: {'
-        - '        ''Content-Type'': ''application/json'','
-        - '        ''Authorization'': `Bearer ${idToken}`'
-        - '    },'
-        - '    body: {'
-        - '        mode: ''raw'','
-        - '        modeOfBody: ''JSON'','
-        - '        raw: JSON.stringify({'
-        - '            id: deptBoundId,'
-        - '            force: true'
-        - '        })'
-        - '    },'
-        - '    auth: {'
-        - '        type: ''bearer'','
-        - '        bearer: {'
-        - '            token: idToken'
-        - '        }'
-        - '    }'
-        - '};'
-        - ''
-        - >-
-          // Request4: prosightBypass service call with boundary + hospital +
-          floor + department
-        - const request4 = {
-        - '    url: `${baseUrl}/system/${sysId}/device/${hospId}/srv/prosightBypass/boundary`,'
-        - '    method: ''PUT'','
-        - '    headers: {'
-        - '        ''Content-Type'': ''application/json'','
-        - '        ''Authorization'': `Bearer ${idToken}`'
-        - '    },'
-        - '    body: {'
-        - '        mode: ''raw'','
-        - '        modeOfBody: ''JSON'','
-        - '        raw: JSON.stringify({'
-        - '            boundaryId: deptBoundId,'
-        - '            hospitalId: hospId,'
-        - '            floorId: floorId,'
-        - '            departmentId: deptId'
-        - '        })'
-        - '    },'
-        - '};'
-        - ''
-        - // 3️⃣ Chain the requests in sequence
-        - ''
-        - pq.sendRequest(request1, (err1, res1) => {
-        - '    if (err1) {'
-        - '        console.error(''Request1 error (PATCH test=true):'', err1);'
-        - '        return;'
-        - '    }'
-        - ''
-        - '    const r1Body = res1.json();'
-        - '    console.log(''Response from request1 (PATCH test=true):'', r1Body);'
-        - ''
-        - '    // If backend returns { allowed: true }'
-        - '    if (r1Body && r1Body.allowed === false) {'
-        - '        console.error(''Boundary not allowed, stopping flow.'');'
-        - '        return;'
-        - '    }'
-        - ''
-        - '    // 2️⃣ Now attach boundary to department'
-        - '    console.log(''Request body for request2:'', request2.body.raw);'
-        - ''
-        - '    pq.sendRequest(request2, (err2, res2) => {'
-        - '        if (err2) {'
-        - '            console.error(''Request2 error (departments -> departmentBoundaries):'', err2);'
-        - '            return;'
-        - '        }'
-        - ''
-        - '        const r2Body = res2.json ? res2.json() : res2;'
-        - '        console.log(''Response from request2 (departments -> departmentBoundaries):'', r2Body);'
-        - ''
-        - '        // 3️⃣ Now attach boundary to floor'
-        - '        console.log(''Request body for request3:'', request3.body.raw);'
-        - ''
-        - '        pq.sendRequest(request3, (err3, res3) => {'
-        - '            if (err3) {'
-        - '                console.error(''Request3 error (floors -> departmentBoundaries):'', err3);'
-        - '                return;'
-        - '            }'
-        - ''
-        - '            const r3Body = res3.json ? res3.json() : res3;'
-        - '            console.log(''Response from request3 (floors -> departmentBoundaries):'', r3Body);'
-        - ''
-        - '            // 4️⃣ Finally, call prosightBypass service'
-        - '            console.log(''Request body for request4:'', request4.body.raw);'
-        - ''
-        - '            pq.sendRequest(request4, (err4, res4) => {'
-        - '                if (err4) {'
-        - '                    console.error(''Request4 error (prosightBypass/boundary):'', err4);'
-        - '                    return;'
-        - '                }'
-        - ''
-        - '                const r4Body = res4.json ? res4.json() : res4;'
-        - '                console.log(''Response from request4 (prosightBypass/boundary):'', r4Body);'
-        - '            });'
-        - '        });'
-        - '    });'
-        - '});'
-        - ''
+- listen: test
+  script:
+    type: javascript
+    exec:
+    - let response = pq.response.json();
+    - >-
+      pq.environment.set('AssetManagement.departmentBoundaryId', response.id);
+    - ''
+    - >-
+      const deptBoundId = pq.environment.get('AssetManagement.departmentBoundaryId');
+    - const baseUrl    = pq.globals.get('API_Base_URL');
+    - const sysId      = pq.globals.get('SYSTEM_ID');
+    - >-
+      const hospId     = pq.environment.get('AssetManagement.hopitalDetails.HospitalId');
+    - const idToken    = pq.globals.get('idToken');
+    - const deptId     = pq.environment.get('AssetManagement.departmentID');
+    - >-
+      const floorId    = pq.environment.get('AssetManagement.floorDetails.floorId');
+    - ''
+    - // Optional debug logs
+    - console.log('deptBoundId:', deptBoundId);
+    - console.log('hospId:', hospId);
+    - console.log('deptId:', deptId);
+    - console.log('floorId:', floorId);
+    - console.log('baseUrl:', baseUrl);
+    - console.log('sysId:', sysId);
+    - ''
+    - // 2️⃣ Define all request objects
+    - ''
+    - >-
+      // Request1: PATCH test=true on departmentBoundary (validation / allowed)
+    - const request1 = {
+    - '    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/departmentBoundaries/${deptBoundId}?test=true`,'
+    - '    method: ''PATCH'','
+    - '    headers: {'
+    - '        ''Cache-Control'': ''no-cache'','
+    - '        ''Accept'': ''*/*'','
+    - '        ''Accept-Encoding'': ''gzip, deflate'','
+    - '        ''Connection'': ''keep-alive'','
+    - '        ''Authorization'': `Bearer ${idToken}`'
+    - '    },'
+    - '    auth: {'
+    - '        type: ''bearer'','
+    - '        bearer: {'
+    - '            token: idToken'
+    - '        }'
+    - '    }'
+    - '};'
+    - ''
+    - '// Request2: Attach boundary to department'
+    - const request2 = {
+    - '    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments/${deptId}/departmentBoundaries`,'
+    - '    method: ''POST'','
+    - '    headers: {'
+    - '        ''Content-Type'': ''application/json'','
+    - '        ''Authorization'': `Bearer ${idToken}`'
+    - '    },'
+    - '    body: {'
+    - '        mode: ''raw'','
+    - '        modeOfBody: ''JSON'','
+    - '        raw: JSON.stringify({'
+    - '            id: deptBoundId,'
+    - '            force: true'
+    - '        })'
+    - '    },'
+    - '    auth: {'
+    - '        type: ''bearer'','
+    - '        bearer: {'
+    - '            token: idToken'
+    - '        }'
+    - '    }'
+    - '};'
+    - ''
+    - '// Request3: Attach boundary to floor'
+    - const request3 = {
+    - '    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/floors/${floorId}/departmentBoundaries`,'
+    - '    method: ''POST'','
+    - '    headers: {'
+    - '        ''Content-Type'': ''application/json'','
+    - '        ''Authorization'': `Bearer ${idToken}`'
+    - '    },'
+    - '    body: {'
+    - '        mode: ''raw'','
+    - '        modeOfBody: ''JSON'','
+    - '        raw: JSON.stringify({'
+    - '            id: deptBoundId,'
+    - '            force: true'
+    - '        })'
+    - '    },'
+    - '    auth: {'
+    - '        type: ''bearer'','
+    - '        bearer: {'
+    - '            token: idToken'
+    - '        }'
+    - '    }'
+    - '};'
+    - ''
+    - >-
+      // Request4: prosightBypass service call with boundary + hospital + floor + department
+    - const request4 = {
+    - '    url: `${baseUrl}/system/${sysId}/device/${hospId}/srv/prosightBypass/boundary`,'
+    - '    method: ''PUT'','
+    - '    headers: {'
+    - '        ''Content-Type'': ''application/json'','
+    - '        ''Authorization'': `Bearer ${idToken}`'
+    - '    },'
+    - '    body: {'
+    - '        mode: ''raw'','
+    - '        modeOfBody: ''JSON'','
+    - '        raw: JSON.stringify({'
+    - '            boundaryId: deptBoundId,'
+    - '            hospitalId: hospId,'
+    - '            floorId: floorId,'
+    - '            departmentId: deptId'
+    - '        })'
+    - '    },'
+    - '};'
+    - ''
+    - // 3️⃣ Chain the requests in sequence
+    - ''
+    - pq.sendRequest(request1, (err1, res1) => {
+    - '    if (err1) {'
+    - '        console.error(''Request1 error (PATCH test=true):'', err1);'
+    - '        return;'
+    - '    }'
+    - ''
+    - '    const r1Body = res1.json();'
+    - '    console.log(''Response from request1 (PATCH test=true):'', r1Body);'
+    - ''
+    - '    // If backend returns { allowed: true }'
+    - '    if (r1Body && r1Body.allowed === false) {'
+    - '        console.error(''Boundary not allowed, stopping flow.'');'
+    - '        return;'
+    - '    }'
+    - ''
+    - '    // 2️⃣ Now attach boundary to department'
+    - '    console.log(''Request body for request2:'', request2.body.raw);'
+    - ''
+    - '    pq.sendRequest(request2, (err2, res2) => {'
+    - '        if (err2) {'
+    - '            console.error(''Request2 error (departments -> departmentBoundaries):'', err2);'
+    - '            return;'
+    - '        }'
+    - ''
+    - '        const r2Body = res2.json ? res2.json() : res2;'
+    - '        console.log(''Response from request2 (departments -> departmentBoundaries):'', r2Body);'
+    - ''
+    - '        // 3️⃣ Now attach boundary to floor'
+    - '        console.log(''Request body for request3:'', request3.body.raw);'
+    - ''
+    - '        pq.sendRequest(request3, (err3, res3) => {'
+    - '            if (err3) {'
+    - '                console.error(''Request3 error (floors -> departmentBoundaries):'', err3);'
+    - '                return;'
+    - '            }'
+    - ''
+    - '            const r3Body = res3.json ? res3.json() : res3;'
+    - '            console.log(''Response from request3 (floors -> departmentBoundaries):'', r3Body);'
+    - ''
+    - '            // 4️⃣ Finally, call prosightBypass service'
+    - '            console.log(''Request body for request4:'', request4.body.raw);'
+    - ''
+    - '            pq.sendRequest(request4, (err4, res4) => {'
+    - '                if (err4) {'
+    - '                    console.error(''Request4 error (prosightBypass/boundary):'', err4);'
+    - '                    return;'
+    - '                }'
+    - ''
+    - '                const r4Body = res4.json ? res4.json() : res4;'
+    - '                console.log(''Response from request4 (prosightBypass/boundary):'', r4Body);'
+    - '            });'
+    - '        });'
+    - '    });'
+    - '});'
+    - ''
 type: request

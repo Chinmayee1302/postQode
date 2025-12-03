@@ -12,3 +12,9 @@ testSteps:
     type: request
   - fileReference: linkAssetandTag.request.yaml
     type: request
+  - fileReference: verifyAssetDetailsinLocPage.request.yaml
+    type: request
+  - fileReference: unlinkAssetandTag.request.yaml
+    type: request
+  - fileReference: verifyAssetDetailsinLocPageafterunlinking.request.yaml
+    type: request

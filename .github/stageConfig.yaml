@@ -1,0 +1,44 @@
+name: API Tests - STAGE
+
+on:
+  push:
+    branches: [ postQode-AssetManagementModule ]
+
+jobs:
+  api-tests-stage:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.20.0'
+
+    - name: Install PostQode CLI
+      run: npm install -g @postqode/cli
+
+    - name: Run STAGE API Tests
+      run: |
+        postqode execute \
+          -s testSuites/AssetModule/_meta.suite.yaml \
+          -c stageConfig \
+          --report-formats junit html \
+          --report-dir ./test-results/stage
+
+    - name: Publish Test Results (STAGE)
+      uses: dorny/test-reporter@v1
+      if: always()
+      with:
+        name: STAGE API Test Results
+        path: 'test-results/stage/postqode-junit-*.xml'
+        reporter: java-junit
+
+    - name: Upload HTML Reports (STAGE)
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: stage-api-test-reports
+        path: test-results/stage

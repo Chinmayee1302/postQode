@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 6nrAnkw8wMisXqLG3aAaXI
+    HospitalId: 0rLuuLLuZim1fS5uyEp4LO
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,68 +18,48 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 3HeFeI4tX7k0MhNBIv5HY7
+    BuildingId: 2Ypfvix0wAAKilCUAnDXi5
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
   departmentName: assetManagementdepo
-  assetType: OAAssetmangtype
+  assetType: Bed
   asset1:
     assetName: ASSET1-Automation test
     assetId: '00225'
     serialNumber: 1H:T6:9O:78
     departmentName: assetManagementdepo
-    assetType: OAAssetmangtype
+    assetType: Bed
     manufacturer: SMITH MEDICAL1
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
+    assetlevId: 3yqZsOiirkKCGtUb9AMOne
   asset2:
     assetName: ASSET2-SMARTHOSP-TC-4974
     assetId: '2345'
     serialNumber: 1F:TM:9J:74
     departmentName: assetManagementdepo
-    assetType: OAAssetmangtype
+    assetType: Bed
     manufacturer: SMITH MEDICAL1
     modelNum: HL977
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
-  asset3:
-    assetName: ASSET3-SMARTHOSP-TC-4974
-    assetId: '2385'
-    serialNumber: '56788'
-    assetType: OAAssetmangtype
-    modelNum: HL970
-    departmentName: assetManagementdepo
-  asset4:
-    assetName: ASSET4-SMARTHOSP-TC-4974
-    assetId: '2300'
-    serialNumber: '56722'
-    departmentName: 10th East North
-    assetType: OAAssetmangtype
-    manufacturer: SMITH MEDICAL1
-    modelNum: HL970
-    rentedOption: Owned
-    roomDetails: null
-    roomTypeName: assetManagementroom
-    status: Available
-    utilizationState: Not Utilized
-    monitorCompliance: 'No'
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 0fNNoXTwz5bciAlPnhoFit
-    room1: 0aCDYXf70LqediQdHyvd29
+    room0: 4UVXsNngxpml5Z7MAXiMVr
+    room1: 5bWJ43dLtY9lVUpmZsgJNr
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 7uvUaB6cEKMJGeXWhTy4EN
-  roomId: 0fNNoXTwz5bciAlPnhoFit
+    floorId: 3RdF5uurKVLTwkn3PJYkGe
+  roomId: 4UVXsNngxpml5Z7MAXiMVr
   tagDetails:
     tag1:
-      deviceId: Automation Asset testing device
+      deviceId: assetMngmemntTag
       type: Asset Tag
       manufacturer: HID
       model: Asset Tag 2
@@ -93,6 +73,7 @@ AssetManagement:
       departmentId: 2SbxTcMckih1nyQ9V07Oxk
       buildingName: Test Building-J's
       buildingId: 4rIkCzxkXXs85lwJjMN2Aj
+      tagID: 5VNd8o3tM3qfXFt3MNOVUz
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -110,7 +91,5 @@ AssetManagement:
       buildingId: 4rIkCzxkXXs85lwJjMN2Aj
   locationDetails[room0]: 6vIr8LFYPfpY8uaXKRlCi8
   locationDetails[room1]: 3wBt3ja5qPMIYA1hpbHN0H
-  tag1:
-    tagID: 20ickWLpACWRIdTlRuha05
-  departmentID: 2qJyQb1TXxALAfncVCtRgj
-  departmentBoundaryId: 2lMG2DWhtTIkjN3zu67kax
+  departmentID: 6P5d4FbKFZ4QJKw8cCom3R
+  departmentBoundaryId: 4PztfiJR8zmdXZcnxGfKfT

@@ -6,3 +6,6 @@ runConfigs:
   - name: Dev_Config
     global: variables/Global_Variabel.variable.yaml
     environment: variables/AssetModuleVariables.variable.yaml
+  - name: stageConfig
+    global: variables/stageConfigGlobal.variable.yaml
+    environment: variables/AssetModuleVariables.variable.yaml

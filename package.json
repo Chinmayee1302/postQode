@@ -2,5 +2,8 @@
   "dependencies": {
     "@postqode/cli": "^0.1.32"
   },
-  "scripts": {}
+  "scripts": {
+    "executeStageConfigAssetModule": "postqode execute -s testSuites/AssetModule/_meta.suite.yaml -w . -c stageConfig",
+    "executeDevConfigAssetModule": "postqode execute -s testSuites/AssetModule/_meta.suite.yaml -w . -c Dev_Config"
+  }
 }

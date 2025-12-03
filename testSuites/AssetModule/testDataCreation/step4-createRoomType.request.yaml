@@ -3,35 +3,35 @@ name: step4-createRoomType
 request:
   url:
     raw: >-
-      {{API_Base_URL_Dev}}/system/{{SYSTEM_ID_Dev}}/device/{{AssetManagement.hopitalDetails.HospitalId}}/srv/prosightBypass/resourceEnum
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{AssetManagement.hopitalDetails.HospitalId}}/srv/prosightBypass/resourceEnum
     host:
-      - '{{API_Base_URL_Dev}}'
+    - '{{API_Base_URL}}'
     path:
-      - system
-      - '{{SYSTEM_ID_Dev}}'
-      - device
-      - '{{AssetManagement.hopitalDetails.HospitalId}}'
-      - srv
-      - prosightBypass
-      - resourceEnum
+    - system
+    - '{{SYSTEM_ID}}'
+    - device
+    - '{{AssetManagement.hopitalDetails.HospitalId}}'
+    - srv
+    - prosightBypass
+    - resourceEnum
   method: POST
   headers:
-    - description: ''
-      disabled: false
-      key: Cache-Control
-      value: no-cache
-    - description: ''
-      disabled: false
-      key: Accept
-      value: '*/*'
-    - description: ''
-      disabled: false
-      key: Accept-Encoding
-      value: gzip, deflate
-    - description: ''
-      disabled: false
-      key: Connection
-      value: keep-alive
+  - description: ''
+    disabled: false
+    key: Cache-Control
+    value: no-cache
+  - description: ''
+    disabled: false
+    key: Accept
+    value: '*/*'
+  - description: ''
+    disabled: false
+    key: Accept-Encoding
+    value: gzip, deflate
+  - description: ''
+    disabled: false
+    key: Connection
+    value: keep-alive
   body:
     mode: raw
     modeOfBody: JSON
@@ -55,13 +55,13 @@ request:
     bearer:
       token: '{{idToken}}'
 events:
-  - listen: test
-    script:
-      type: javascript
-      exec:
-        - pq.test("Status code is 200.", function () {
-        - '    pq.response.to.have.status(200);'
-        - '});'
-        - ''
-        - ''
+- listen: test
+  script:
+    type: javascript
+    exec:
+    - pq.test("Status code is 200.", function () {
+    - '    pq.response.to.have.status(200);'
+    - '});'
+    - ''
+    - ''
 type: request
