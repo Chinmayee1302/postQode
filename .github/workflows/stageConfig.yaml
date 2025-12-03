@@ -21,20 +21,13 @@ jobs:
       run: npm install -g @postqode/cli
 
     - name: Run STAGE API Tests
-      run: |
+      run: |+
+        mkdir -p test-results/stage
         postqode execute \
           -s testSuites/AssetModule/_meta.suite.yaml \
           -c stageConfig \
           --report-formats junit html \
           --report-dir ./test-results/stage
-
-    - name: Publish Test Results (STAGE)
-      uses: dorny/test-reporter@v1
-      if: always()
-      with:
-        name: STAGE API Test Results
-        path: 'test-results/stage/postqode-junit-*.xml'
-        reporter: java-junit
 
     - name: Upload HTML Reports (STAGE)
       uses: actions/upload-artifact@v4

@@ -21,20 +21,13 @@ jobs:
       run: npm install -g @postqode/cli
 
     - name: Run DEV API Tests
-      run: |
+      run: |+
+        mkdir -p test-results/dev
         postqode execute \
           -s testSuites/AssetModule/_meta.suite.yaml \
           -c Dev_Config \
           --report-formats junit html \
           --report-dir ./test-results/dev
-
-    - name: Publish Test Results (DEV)
-      uses: dorny/test-reporter@v1
-      if: always()
-      with:
-        name: DEV API Test Results
-        path: 'test-results/dev/postqode-junit-*.xml'
-        reporter: java-junit
 
     - name: Upload HTML Reports (DEV)
       uses: actions/upload-artifact@v4
