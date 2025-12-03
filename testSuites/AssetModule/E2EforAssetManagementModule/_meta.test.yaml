@@ -18,3 +18,7 @@ testSteps:
     type: request
   - fileReference: verifyAssetDetailsinLocPageafterunlinking.request.yaml
     type: request
+  - fileReference: deleteAsset.request.yaml
+    type: request
+  - fileReference: deleteTag.request.yaml
+    type: request

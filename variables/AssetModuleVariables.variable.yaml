@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 0rLuuLLuZim1fS5uyEp4LO
+    HospitalId: 7tY9rzdtrRj7vv8VVGIiRD
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,7 +18,7 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 2Ypfvix0wAAKilCUAnDXi5
+    BuildingId: 7qxF2CVdxiAkRCf7rim38N
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
@@ -34,7 +34,7 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
-    assetlevId: 3yqZsOiirkKCGtUb9AMOne
+    assetlevId: 44O1sHPPKBUpjkO7cLOLfP
   asset2:
     assetName: ASSET2-SMARTHOSP-TC-4974
     assetId: '2345'
@@ -50,13 +50,13 @@ AssetManagement:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 4UVXsNngxpml5Z7MAXiMVr
-    room1: 5bWJ43dLtY9lVUpmZsgJNr
+    room0: 0zPmaVQmWgMtpJXFBFEqCJ
+    room1: 7dTz7ud0OWNNlcQgAqyhVm
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 3RdF5uurKVLTwkn3PJYkGe
-  roomId: 4UVXsNngxpml5Z7MAXiMVr
+    floorId: 5TxZoXz6aiaCcwqaCyODz7
+  roomId: 0zPmaVQmWgMtpJXFBFEqCJ
   tagDetails:
     tag1:
       deviceId: assetMngmemntTag
@@ -73,7 +73,7 @@ AssetManagement:
       departmentId: 2SbxTcMckih1nyQ9V07Oxk
       buildingName: Test Building-J's
       buildingId: 4rIkCzxkXXs85lwJjMN2Aj
-      tagID: 5VNd8o3tM3qfXFt3MNOVUz
+      tagID: 6Z41ZmuVE6y5gp583mT6Xr
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -91,5 +91,5 @@ AssetManagement:
       buildingId: 4rIkCzxkXXs85lwJjMN2Aj
   locationDetails[room0]: 6vIr8LFYPfpY8uaXKRlCi8
   locationDetails[room1]: 3wBt3ja5qPMIYA1hpbHN0H
-  departmentID: 6P5d4FbKFZ4QJKw8cCom3R
-  departmentBoundaryId: 4PztfiJR8zmdXZcnxGfKfT
+  departmentID: 4T1d5CPNm9vY17mMgxG4bp
+  departmentBoundaryId: 3y16jerdrxprQgEXOzY6oM
