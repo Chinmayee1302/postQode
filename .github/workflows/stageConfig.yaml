@@ -3,6 +3,8 @@ name: API Tests - STAGE
 on:
   push:
     branches: [ postQode-AssetManagementModule ]
+  pull:
+    branches: [ postQode-AssetManagementModule ]
 
 jobs:
   api-tests-stage:
