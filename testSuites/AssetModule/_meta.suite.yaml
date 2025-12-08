@@ -11,9 +11,9 @@ testSuiteSettings:
   retries: 0
   testSuiteTimeout: 180000
 runConfigs:
-- name: Dev_Config
-  global: variables/Global_Variabel.variable.yaml
-  environment: variables/AssetManagement.variable.yaml
-- name: stageConfig
-  global: variables/stageConfigGlobal.variable.yaml
-  environment: variables/AssetManagement.variable.yaml
+  - name: stageConfig
+    global: variables/stageConfigGlobal.variable.yaml
+    environment: variables/AssetManagement.variable.yaml
+  - name: Dev_Config
+    global: variables/devConfig.variable.yaml
+    environment: variables/AssetManagement.variable.yaml
