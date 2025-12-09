@@ -18,14 +18,12 @@ request:
       value: >-
         Bearer
         eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzYwNDEyNTU5LCJleHAiOjE3NjA0OTg5NTksImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDlzWjgwV3kxd25qQ1QwYWtZaFgxeSJ9.7sAqhSSZV28-HaiXJXDHdab_yYO5gjKFWRbttNr6sQ4
-    - key: Referer
-      value: https://staging-commercial-cox-health.firebaseapp.com/
     - key: Content-Type
       value: application/json
   body:
     mode: raw
     modeOfBody: JSON
-    raw: "{\r\n    \"networkAliases\": {\r\n        \"assets\": {\r\n            \"deviceId\": \"{{AssetManagement.hospitalDetails.HospitalId}}-{{AssetManagement.tagDetails.tag1.deviceId}}\",\r\n            \"name\": \"{{AssetManagement.hospitalDetails.HospitalId}}-{{AssetManagement.asset2.assetName}}\"\r\n        }\r\n    },\r\n    \"networkId\": \"assets\",\r\n    \"name\": \"{{AssetManagement.hospitalDetails.HospitalId}}-{{AssetManagement.asset2.assetName}}\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"assetId\",\r\n            \"value\": \"{{AssetManagement.asset2.assetId}}\"\r\n        },\r\n        {\r\n            \"path\": \"assetType\",\r\n            \"value\": \"{{AssetManagement.asset2.assetType}}\"\r\n        },\r\n        {\r\n            \"path\": \"assignedDepartment/id\",\r\n            \"value\": \"{{AssetManagement.departmentID}}\"\r\n        },\r\n        {\r\n            \"path\": \"assignedDepartment/name\",\r\n            \"value\": \"{{AssetManagement.departmentName}}\"\r\n        },\r\n        {\r\n            \"path\": \"isRental\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"maintenance/nextPreventativeMaintenanceDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceInterval\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"manufacturer\"\r\n        },\r\n        {\r\n            \"path\": \"manufacturerPrice\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"modelNumber\"\r\n        },\r\n        {\r\n            \"path\": \"name\",\r\n            \"value\": \"{{AssetManagement.hospitalDetails.HospitalId}}-{{AssetManagement.asset2.assetName}}\"\r\n        },\r\n        {\r\n            \"path\": \"rentalDueDate\",\r\n            \"value\": {{rentalDueDate}}\r\n        },\r\n        {\r\n            \"path\": \"rentedDate\",\r\n            \"value\": {{rentalDate}}\r\n        },\r\n        {\r\n            \"path\": \"serialNumber\",\r\n            \"value\": \"{{AssetManagement.asset2.serialNumber}}\"\r\n        },\r\n        {\r\n            \"path\": \"status/operational\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"status/available\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/cleaningRequired\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/maintenanceRequired\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/inMaintenance\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/missing\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/outOfCirculation\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r\n            \"value\": null\r\n        }\r\n    ]\r\n}"
+    raw: "{\r\n    \"networkAliases\": {\r\n        \"assets\": {\r\n            \"deviceId\": \"{{AssetManagement.tagDetails.tag1.deviceId}}\",\r\n            \"name\": \"{{AssetManagement.asset2.assetName}}\"\r\n        }\r\n    },\r\n    \"networkId\": \"assets\",\r\n    \"name\": \"{{AssetManagement.asset2.assetName}}\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"assetId\",\r\n            \"value\": \"{{AssetManagement.asset2.assetId}}\"\r\n        },\r\n        {\r\n            \"path\": \"assetType\",\r\n            \"value\": \"{{AssetManagement.asset2.assetType}}\"\r\n        },\r\n        {\r\n            \"path\": \"assignedDepartment/id\",\r\n            \"value\": \"{{AssetManagement.departmentID}}\"\r\n        },\r\n        {\r\n            \"path\": \"assignedDepartment/name\",\r\n            \"value\": \"{{AssetManagement.departmentName}}\"\r\n        },\r\n        {\r\n            \"path\": \"isRental\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"maintenance/nextPreventativeMaintenanceDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceInterval\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"manufacturer\"\r\n        },\r\n        {\r\n            \"path\": \"manufacturerPrice\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"modelNumber\"\r\n        },\r\n        {\r\n            \"path\": \"name\",\r\n            \"value\": \"{{AssetManagement.hospitalDetails.HospitalId}}-{{AssetManagement.asset2.assetName}}\"\r\n        },\r\n        {\r\n            \"path\": \"rentalDueDate\",\r\n            \"value\": {{rentalDueDate}}\r\n        },\r\n        {\r\n            \"path\": \"rentedDate\",\r\n            \"value\": {{rentalDate}}\r\n        },\r\n        {\r\n            \"path\": \"serialNumber\",\r\n            \"value\": \"{{AssetManagement.asset2.serialNumber}}\"\r\n        },\r\n        {\r\n            \"path\": \"status/operational\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"status/available\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/cleaningRequired\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/maintenanceRequired\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/inMaintenance\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/missing\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/outOfCirculation\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r\n            \"value\": null\r\n        }\r\n    ]\r\n}"
   auth:
     type: bearer
     bearer:
@@ -36,11 +34,39 @@ events:
       type: javascript
       exec:
         - "pq.variables.set(\"rentalDate\", Date.now() - 14 * 24 * 60 * 60 * 1000)\r"
-        - pq.variables.set("rentalDueDate", Date.now())
+        - "pq.variables.set(\"rentalDueDate\", Date.now())\r"
+        - "const baseUrl  = pq.globals.get('API_Base_URL');\r"
+        - "const sysId    = pq.globals.get('SYSTEM_ID');\r"
+        - "const hospId   = pq.environment.get('AssetManagement.hospitalDetails.HospitalId');\r"
+        - "const idToken  = pq.globals.get(\"idToken\");\r"
+        - "const hsptlBluePrint=pq.globals.get(\"hsptlBluePrintID\")\r"
+        - "pq.sendRequest({\r"
+        - "  url: `${baseUrl}/interface/${sysId}/${hsptlBluePrint}/${hospId}/assets?startIndex=0&perPage=100&search=`,\r"
+        - "  method: \"GET\",\r"
+        - "  headers: {\r"
+        - "    Authorization: `Bearer ${idToken}`,\r"
+        - "    'Content-Type': 'application/json',\r"
+        - "  },\r"
+        - "}, (err, res) => {\r"
+        - "  if (err) {\r"
+        - "    console.log(\"Request error:\", err);\r"
+        - "    return;\r"
+        - "  }\r"
+        - "  console.log(res.json())\r"
+        - "  const responseBody = res.json()\r"
+        - "  responseBody.items.forEach((ele, ind) => {\r"
+        - "      const key=`asset${ind}`\r"
+        - "      pq.testSuiteVariables.set(key,ele.id)\r"
+        - "  })\r"
+        - "  console.log(pq.testSuiteVariables.get(\"asset0\"))\r"
+        - "});\r"
+        - "\r"
+        - ''
   - listen: test
     script:
       type: javascript
       exec:
         - const response=pq.response.json()
-        - pq.environment.set("AssetManagement.asset2.assetlevId",response.id)
+        - pq.environment.set("AssetManagement.asset2.assetlevId", response.id)
+        - ''
 type: request
