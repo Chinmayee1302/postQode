@@ -1,0 +1,14 @@
+description: ''
+id: 51c5ba77-6066-4712-8d13-d3c7f2fc41b4
+name: CRUDOnAssettype
+dependencies: []
+type: TESTCASE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+testSteps:
+  - fileReference: createAssetType.request.yaml
+    type: request
+  - fileReference: editAssetType.request.yaml
+    type: request
+  - fileReference: deleteAssetType.request.yaml
+    type: request

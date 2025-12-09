@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 5SpqN7LEBYPWUStRKG3e8y
+    HospitalId: 2KC9YABxE0BHWYM1v6Ago3
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,7 +18,7 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 7qpQvnYJP5luL6nCHVdq2C
+    BuildingId: 6PTx3Rzfn4CUrtKiyyNArO
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
@@ -34,7 +34,7 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
-    assetlevId: 05DnBHSMfyX5HvE2wtTDHX
+    assetlevId: 1rRNCc1Y6GhAXXAOr7P1wd
   asset2:
     assetName: assetPostQode
     assetId: '2345'
@@ -46,29 +46,30 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
+    assetlevId: 65nNimZTaO69vzc4IoJabT
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 4EGl8zXU4vs8b7SnUzyxHo
-    room1: 5N9kBFGPvNC1pmxzWu3nkN
+    room0: 62YJdqwjSyjBTNe5CYNckq
+    room1: 5earfIXu4xek6OyUyWIvFN
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 0FeDxUX1rKZymBKxPTswcN
+    floorId: 6YMvgsajIQ5c7Wss3GRaYg
   roomDetails:
     roomTypeName: assetManagementroom
     status: Available
     utilizationState: Not Utilized
     monitorCompliance: 'No'
-  roomId: 4EGl8zXU4vs8b7SnUzyxHo
+  roomId: 62YJdqwjSyjBTNe5CYNckq
   tagDetails:
     tag1:
       deviceId: assetMngmemntTag
       type: Asset Tag
       manufacturer: HID
       model: Asset Tag 3
-      tagID: 57GfNYXr5FZ8CSevYGIY4D
+      tagID: 0eO8zyYFOHz3PwDYyvVDPg
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -87,5 +88,8 @@ AssetManagement:
     maintenanceDay: Monthly
     rentedOption: Owned
     departmentID: 104OFYLyLkMZeXYk3N9Mka
-  departmentID: 6m0sE5xh8Rv9aIvbgL9gRi
-  departmentBoundaryId: 3eMk8NWJoLF8wcJijQiSJZ
+  departmentID: 2GzgQEzvwP845HZqqBkkfJ
+  departmentBoundaryId: 2B6VMnuHAoKAQ2dVCDvv7A
+  assetTypeDetails:
+    assetTypeName: postqodeAssetType
+    editedAssetTypeName: editedPostqodeAssetType

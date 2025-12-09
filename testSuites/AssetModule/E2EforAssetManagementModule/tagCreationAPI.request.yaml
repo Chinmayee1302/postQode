@@ -5,231 +5,117 @@ request:
     raw: >-
       {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/tags
     host:
-    - '{{API_Base_URL}}'
+      - '{{API_Base_URL}}'
     path:
-    - interface
-    - '{{SYSTEM_ID}}'
-    - hospital
-    - '{{AssetManagement.hospitalDetails.HospitalId}}'
-    - tags
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}'
+      - tags
   method: POST
   headers: []
   body:
     mode: raw
     modeOfBody: JSON
-    raw: "{\r
-
-      \  \"networkAliases\": {\r
-
-      \    \"hid-beacons\": {\r
-
-      \      \"deviceId\": \"{{AssetManagement.tagDetails.tag1.deviceId}}\"\r
-
-      \    }\r
-
-      \  },\r
-
-      \  \"networkId\": \"hid-beacons\",\r
-
-      \  \"data\": [\r
-
-      \    {\r
-
-      \      \"path\": \"uniqueDeviceId\",\r
-
-      \      \"value\": \"{{AssetManagement.tagDetails.tag1.deviceId}}\"\r
-
-      \    },\r
-
-      \    {\r
-
-      \      \"path\": \"type\",\r
-
-      \      \"value\": \"{{AssetManagement.tagDetails.tag1.type}}\"\r
-
-      \    },\r
-
-      \    {\r
-
-      \      \"path\": \"manufacturer\",\r
-
-      \      \"value\":  \"{{AssetManagement.tagDetails.tag1.manufacturer}}\"\r
-
-      \    },\r
-
-      \    {\r
-
-      \      \"path\": \"model\",\r
-
-      \      \"value\": \"{{AssetManagement.tagDetails.tag1.model}}\"\r
-
-      \    },\r
-
-      \    {\r
-
-      \      \"path\": \"tagType\",\r
-
-      \      \"value\": \"{{AssetManagement.tagDetails.tag1.model}}\"\r
-
-      \    },\r
-
-      \    {\r
-
-      \      \"path\": \"location\",\r
-
-      \      \"value\": {\r
-
-      \        \"floor\": {\r
-
-      \          \"name\": \"{{AssetManagement.floorDetails.floorName}}\",\r
-
-      \          \"id\": \"{{AssetManagement.floorDetails.floorId}}\"\r
-
-      \        },\r
-
-      \        \"department\": {\r
-
-      \          \"name\": \"{{AssetManagement.departmentName}}\",\r
-
-      \          \"id\": \"{{AssetManagement.departmentID}}\"\r
-
-      \        },\r
-
-      \        \"room\": {\r
-
-      \          \"name\": \"{{AssetManagement.locationDetails.roomName_1}}\",\r
-
-      \          \"id\": \"{{AssetManagement.locationDetails.room0}}\"\r
-
-      \        },\r
-
-      \        \"building\": {\r
-
-      \          \"name\": \"{{AssetManagement.buildingDetails.buildingName}}\",\r
-
-      \          \"id\": \"{{AssetManagement.buildingDetails.BuildingId}}\"\r
-
-      \        },\r
-
-      \        \"timestamp\": {{timestamp}}\r
-
-      \      }\r
-
-      \    },\r
-
-      \    {\r
-
-      \      \"path\": \"p\",\r
-
-      \      \"value\": {\r
-
-      \        \"floor\": {\r
-
-      \          \"name\": \"{{AssetManagement.floorDetails.floorName}}\",\r
-
-      \          \"id\": \"{{AssetManagement.floorDetails.floorId}}\"\r
-
-      \        },\r
-
-      \        \"department\": {\r
-
-      \          \"name\": \"{{AssetManagement.departmentName}}\",\r
-
-      \          \"id\": \"{{AssetManagement.departmentID}}\"\r
-
-      \        },\r
-
-      \        \"room\": {\r
-
-      \          \"name\": \"{{AssetManagement.locationDetails.roomName_1}}\",\r
-
-      \          \"id\": \"{{AssetManagement.locationDetails.room0}}\"\r
-
-      \        },\r
-
-      \        \"building\": {\r
-
-      \          \"name\": \"{{AssetManagement.buildingDetails.buildingName}}\",\r
-
-      \          \"id\": \"{{AssetManagement.buildingDetails.BuildingId}}\"\r
-
-      \        },\r
-
-      \        \"timestamp\": {{timestamp}}\r
-
-      \      }\r
-
-      \    },\r
-
-      \    {\r
-
-      \      \"path\": \"prevLocation\",\r
-
-      \      \"value\": {\r
-
-      \        \"floor\": {\r
-
-      \          \"name\": \"{{AssetManagement.floorDetails.floorName}}\",\r
-
-      \          \"id\": \"{{AssetManagement.floorDetails.floorId}}\"\r
-
-      \        },\r
-
-      \        \"department\": {\r
-
-      \          \"name\": \"{{AssetManagement.departmentName}}\",\r
-
-      \          \"id\": \"{{AssetManagement.departmentID}}\"\r
-
-      \        },\r
-
-      \        \"room\": {\r
-
-      \          \"name\": \"{{AssetManagement.locationDetails.roomName_2}}\",\r
-
-      \          \"id\": \"{{AssetManagement.locationDetails.room1}}\"\r
-
-      \        },\r
-
-      \        \"building\": {\r
-
-      \           \"name\": \"{{AssetManagement.buildingDetails.buildingName}}\",\r
-
-      \          \"id\": \"{{AssetManagement.buildingDetails.BuildingId}}\"\r
-
-      \        },\r
-
-      \        \"timestamp\": {{timestamp}}\r
-
-      \      }\r
-
-      \    }\r
-
-      \  ],\r
-
-      \  \"name\": \"{{AssetManagement.tagDetails.tag1.deviceId}}\"\r
-
-      }\r\n"
+    raw: "{\r\n  \"networkAliases\": {\r\n    \"hid-beacons\": {\r\n      \"deviceId\": \"{{AssetManagement.tagDetails.tag1.deviceId}}\"\r\n    }\r\n  },\r\n  \"networkId\": \"hid-beacons\",\r\n  \"data\": [\r\n    {\r\n      \"path\": \"uniqueDeviceId\",\r\n      \"value\": \"{{AssetManagement.tagDetails.tag1.deviceId}}\"\r\n    },\r\n    {\r\n      \"path\": \"type\",\r\n      \"value\": \"{{AssetManagement.tagDetails.tag1.type}}\"\r\n    },\r\n    {\r\n      \"path\": \"manufacturer\",\r\n      \"value\":  \"{{AssetManagement.tagDetails.tag1.manufacturer}}\"\r\n    },\r\n    {\r\n      \"path\": \"model\",\r\n      \"value\": \"{{AssetManagement.tagDetails.tag1.model}}\"\r\n    },\r\n    {\r\n      \"path\": \"tagType\",\r\n      \"value\": \"{{AssetManagement.tagDetails.tag1.model}}\"\r\n    },\r\n    {\r\n      \"path\": \"location\",\r\n      \"value\": {\r\n        \"floor\": {\r\n          \"name\": \"{{AssetManagement.floorDetails.floorName}}\",\r\n          \"id\": \"{{AssetManagement.floorDetails.floorId}}\"\r\n        },\r\n        \"department\": {\r\n          \"name\": \"{{AssetManagement.departmentName}}\",\r\n          \"id\": \"{{AssetManagement.departmentID}}\"\r\n        },\r\n        \"room\": {\r\n          \"name\": \"{{AssetManagement.locationDetails.roomName_1}}\",\r\n          \"id\": \"{{AssetManagement.locationDetails.room0}}\"\r\n        },\r\n        \"building\": {\r\n          \"name\": \"{{AssetManagement.buildingDetails.buildingName}}\",\r\n          \"id\": \"{{AssetManagement.buildingDetails.BuildingId}}\"\r\n        },\r\n        \"timestamp\": {{timestamp}}\r\n      }\r\n    },\r\n    {\r\n      \"path\": \"p\",\r\n      \"value\": {\r\n        \"floor\": {\r\n          \"name\": \"{{AssetManagement.floorDetails.floorName}}\",\r\n          \"id\": \"{{AssetManagement.floorDetails.floorId}}\"\r\n        },\r\n        \"department\": {\r\n          \"name\": \"{{AssetManagement.departmentName}}\",\r\n          \"id\": \"{{AssetManagement.departmentID}}\"\r\n        },\r\n        \"room\": {\r\n          \"name\": \"{{AssetManagement.locationDetails.roomName_1}}\",\r\n          \"id\": \"{{AssetManagement.locationDetails.room0}}\"\r\n        },\r\n        \"building\": {\r\n          \"name\": \"{{AssetManagement.buildingDetails.buildingName}}\",\r\n          \"id\": \"{{AssetManagement.buildingDetails.BuildingId}}\"\r\n        },\r\n        \"timestamp\": {{timestamp}}\r\n      }\r\n    },\r\n    {\r\n      \"path\": \"prevLocation\",\r\n      \"value\": {\r\n        \"floor\": {\r\n          \"name\": \"{{AssetManagement.floorDetails.floorName}}\",\r\n          \"id\": \"{{AssetManagement.floorDetails.floorId}}\"\r\n        },\r\n        \"department\": {\r\n          \"name\": \"{{AssetManagement.departmentName}}\",\r\n          \"id\": \"{{AssetManagement.departmentID}}\"\r\n        },\r\n        \"room\": {\r\n          \"name\": \"{{AssetManagement.locationDetails.roomName_2}}\",\r\n          \"id\": \"{{AssetManagement.locationDetails.room1}}\"\r\n        },\r\n        \"building\": {\r\n           \"name\": \"{{AssetManagement.buildingDetails.buildingName}}\",\r\n          \"id\": \"{{AssetManagement.buildingDetails.BuildingId}}\"\r\n        },\r\n        \"timestamp\": {{timestamp}}\r\n      }\r\n    }\r\n  ],\r\n  \"name\": \"{{AssetManagement.tagDetails.tag1.deviceId}}\"\r\n}\r\n"
   auth:
     type: bearer
     bearer:
       token: '{{idToken}}'
 events:
-- listen: prerequest
-  script:
-    type: javascript
-    exec:
-    - pq.variables.set("timestamp", Date.now())
-- listen: test
-  script:
-    type: javascript
-    exec:
-    - const response=pq.response.json()
-    - >-
-      pq.test("Status code is 200", function () { pq.response.to.have.status(200); });
-    - >-
-      pq.environment.set("AssetManagement.tagDetails.tag1.tagID", response.id);
-    - if (!pq.response.ok) {
-    - '    console.log(pq.request.url);'
-    - '}'
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "pq.variables.set(\"timestamp\", Date.now())\r"
+        - "const baseUrl  = pq.globals.get(\"API_Base_URL\");\r"
+        - "const sysId    = pq.globals.get(\"SYSTEM_ID\");\r"
+        - "const hospId   = pq.environment.get(\"AssetManagement.hospitalDetails.HospitalId\");\r"
+        - "const idToken  = pq.globals.get(\"idToken\");\r"
+        - "const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\");\r"
+        - "\r"
+        - "const tagids = [];\r"
+        - "let url=`${baseUrl}/interface/${sysId}/hospital/${hospId}/tags.search`\r"
+        - "pq.sendRequest({\r"
+        - "  url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/tags.search`,\r"
+        - "  method: \"POST\",\r"
+        - "  headers: {\r"
+        - "    Authorization: `Bearer ${idToken}`,\r"
+        - "    \"Content-Type\": \"application/json\",\r"
+        - "  },\r"
+        - "}, (err, res) => {\r"
+        - "  if (err) {\r"
+        - "    console.log(\"Request error:\", err,res.code);\r"
+        - "    return;\r"
+        - "  }\r"
+        - "\r"
+        - "  const responseBody = res.json();\r"
+        - "  console.log(\"GET /assets response:\", responseBody);\r"
+        - "\r"
+        - "  if (!responseBody || !Array.isArray(responseBody.items)) {\r"
+        - "    console.log(\"No items array in response, nothing to delete\");\r"
+        - "    return;\r"
+        - "  }\r"
+        - "\r"
+        - "  const targetName = pq.environment.get(\"AssetManagement.tagDetails.tag1.deviceId\");\r"
+        - "  console.log(\"Target asset name:\", targetName);\r"
+        - "\r"
+        - "  responseBody.items.forEach((ele) => {\r"
+        - "    if (ele.name === targetName) {\r"
+        - "      tagids.push(ele.id);\r"
+        - "    }\r"
+        - "  });\r"
+        - "\r"
+        - "  console.log(\"Matched assetIds to delete:\", tagids);\r"
+        - "\r"
+        - "  if (tagids.length === 0) {\r"
+        - "    console.log(\"No matching assets found, skipping deletion\");\r"
+        - "    return;\r"
+        - "  }\r"
+        - "\r"
+        - "  tagids.forEach((assetId) => {\r"
+        - "    pq.sendRequest({\r"
+        - "      url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/tags/${assetId}`,\r"
+        - "      method: \"DELETE\",\r"
+        - "      headers: {\r"
+        - "        Authorization: `Bearer ${idToken}`,\r"
+        - "        \"Content-Type\": \"application/json\",\r"
+        - "      },\r"
+        - "      body: {\r"
+        - "        mode: 'raw',\r"
+        - "        raw: JSON.stringify({\r"
+        - "          deleteDevice:\"force\"\r"
+        - "        })\r"
+        - "      }\r"
+        - "    }, (err, res) => {\r"
+        - "      if (err) {\r"
+        - "        console.log(\"Unable to delete\", assetId, err);\r"
+        - "        return;\r"
+        - "      }\r"
+        - "\r"
+        - "      if (res.code === 200) {\r"
+        - "        console.log(\"Asset deleted successfully:\", res.json());\r"
+        - "      } else {\r"
+        - "        console.log(\"Delete failed for\", assetId, \"status:\", res.json());\r"
+        - "      }\r"
+        - "    });\r"
+        - "  });\r"
+        - "  \r"
+        - "});\r"
+        - ''
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - const response=pq.response.json()
+        - >-
+          pq.test("Status code is 200", function () {
+          pq.response.to.have.status(200); });
+        - >-
+          pq.environment.set("AssetManagement.tagDetails.tag1.tagID",
+          response.id);
+        - if (!pq.response.ok) {
+        - '    console.log(pq.request.url);'
+        - '}'
+        - ''
 type: request
