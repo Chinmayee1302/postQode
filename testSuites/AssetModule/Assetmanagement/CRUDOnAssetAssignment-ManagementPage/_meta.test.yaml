@@ -5,7 +5,7 @@ disabled: false
 dependencies: []
 type: TESTCASE
 testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
-parentId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 36ecee14-8b0b-4597-a1a2-f151d4d72afe
 testSteps:
   - fileReference: AssetCreationAPI.request.yaml
     type: request

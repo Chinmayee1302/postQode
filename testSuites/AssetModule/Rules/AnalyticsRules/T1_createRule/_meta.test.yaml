@@ -1,0 +1,8 @@
+description: ''
+id: 65c53255-8439-416d-b60b-9c15dfadee22
+name: T1_createRule
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: createRule.request.yaml
+    type: request

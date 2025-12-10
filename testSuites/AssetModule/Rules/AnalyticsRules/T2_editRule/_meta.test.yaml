@@ -1,0 +1,9 @@
+description: ''
+id: 05326efa-8dd9-4ae0-a4df-c16e90f92055
+name: T2_editRule
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: editRule.request.yaml
+    type: request
+dataset: data/editRuleDataSet - Sheet1.csv

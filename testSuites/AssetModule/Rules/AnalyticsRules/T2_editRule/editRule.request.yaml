@@ -1,0 +1,70 @@
+id: 90dee8d8-9d31-4be0-a617-14f1fe0ad31d
+name: editRule
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.rsrc/p/rules/p/assets/p/smartRules/p/ordering/p/assetManagementroom/p/Bed
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.rsrc'
+      - p
+      - rules
+      - p
+      - assets
+      - p
+      - smartRules
+      - p
+      - ordering
+      - p
+      - assetManagementroom
+      - p
+      - Bed
+  method: PATCH
+  headers:
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "[\r\n  {\r\n    \"op\": \"replace\",\r\n    \"path\": \"data\",\r\n    \"value\": {\r\n      \"type\": \"rule\",\r\n      \"ruleName\": \"editOrderingRule\",\r\n      \"roomType\": \"assetManagementroom\",\r\n      \"assetType\": \"Balloon Pump\",\r\n\r\n      \"status\": \"{{status}}\",                  \r\n      \"utilized\": {{utilized}},                  \r\n      \"utilizationFactor\": {{utilizationFactor}},\r\n      \"shrinkage\": \"{{shrinkage}}\",              \r\n      \"shrinkageWindow\": null,                  \r\n      \"isCleanRequiredAlertEnabled\": {{isCleanRequiredAlertEnabled}}\r\n    }\r\n  }\r\n]\r\n"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "const statuspass = pq.iterationData.get(\"status\");\r"
+        - "\r"
+        - "pq.variables.set(\r"
+        - "  \"shrinkageWindow\",\r"
+        - "  statuspass !== \"missing\"\r"
+        - "    ? null\r"
+        - "    : { value: 0, text: \"Immediately\" }\r"
+        - ");\r"
+        - "\r"
+        - "const utilized = pq.iterationData.get(\"utilized\");\r"
+        - "const uf       = pq.iterationData.get(\"utilizationFactor\");\r"
+        - "const shrink   = pq.iterationData.get(\"shrinkage\");\r"
+        - "const clean    = pq.iterationData.get(\"isCleanRequiredAlertEnabled\");\r"
+        - "\r"
+        - "pq.variables.set(\"status\", statuspass);\r"
+        - "pq.variables.set(\"utilized\", utilized === \"true\");\r"
+        - "pq.variables.set(\"utilizationFactor\", Number(uf));\r"
+        - "pq.variables.set(\"shrinkage\", shrink);\r"
+        - "pq.variables.set(\"isCleanRequiredAlertEnabled\", clean === \"true\");\r"
+        - ''
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - console.log(pq.response.json())
+type: request

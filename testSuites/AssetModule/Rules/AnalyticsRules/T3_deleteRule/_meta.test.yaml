@@ -1,0 +1,8 @@
+description: ''
+id: b549c346-0bfe-4a65-89c8-9e3f448670dc
+name: T3_deleteRule
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: deleteRule.request.yaml
+    type: request

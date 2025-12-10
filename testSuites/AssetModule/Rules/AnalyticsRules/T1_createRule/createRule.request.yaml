@@ -1,0 +1,48 @@
+id: f136196b-2a05-4590-9565-bbef064a8f54
+name: createRule
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.rsrc/p/rules/p/assets/p/smartRules/p/ordering/p/assetManagementroom/p/Bed
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.rsrc'
+      - p
+      - rules
+      - p
+      - assets
+      - p
+      - smartRules
+      - p
+      - ordering
+      - p
+      - assetManagementroom
+      - p
+      - Bed
+  method: POST
+  headers:
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY1MzM2MzU4LCJleHAiOjE3NjU0MjI3NTgsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDJSWnVScTE0b1h5MWlwVGdXV3ZQNCJ9.ikLka414_tP1FK3tXoGcQWSd6v4-ccEcerB64GZApwU
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"type\": \"rule\",\r\n    \"ruleName\": \"createOrderingRule\",\r\n    \"roomType\": \"assetManagementroom\",\r\n    \"assetType\": \"Bed\",\r\n    \"status\": \"available\",\r\n    \"utilized\": true,\r\n    \"shrinkage\": \"N/A\",\r\n    \"utilizationFactor\": 60,\r\n    \"shrinkageWindow\": null,\r\n    \"isCleanRequiredAlertEnabled\": false\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - console.log(pq.response.json())
+type: request

@@ -1,0 +1,9 @@
+status,isCleanRequiredAlertEnabled,shrinkage,utilizationFactor,utilized
+maintenanceRequired,false,N/A,60,true
+cleaningRequired,false,N/A,60,true
+operational,false,N/A,60,true
+inMaintenance,false,N/A,60,true
+outOfCirculation,false,N/A,60,true
+N/A,false,N/A,60,true
+cleaningRequired,true,N/A,60,true
+missing,false,lost,60,true
