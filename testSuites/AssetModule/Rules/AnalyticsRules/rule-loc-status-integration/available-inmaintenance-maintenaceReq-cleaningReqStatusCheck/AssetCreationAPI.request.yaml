@@ -1,0 +1,194 @@
+id: 00b3f4fd-1e6e-4a21-8714-186f86fb19a2
+name: AssetCreationAPI
+request:
+    url:
+        raw: >-
+            {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets
+        host:
+          - '{{API_Base_URL}}'
+        path:
+          - interface
+          - '{{SYSTEM_ID}}'
+          - hospital
+          - '{{AssetManagement.hospitalDetails.HospitalId}}'
+          - assets
+    method: POST
+    headers:
+      - key: Authorization
+        value: >-
+            Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzYwNDEyNTU5LCJleHAiOjE3NjA0OTg5NTksImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDlzWjgwV3kxd25qQ1QwYWtZaFgxeSJ9.7sAqhSSZV28-HaiXJXDHdab_yYO5gjKFWRbttNr6sQ4
+      - key: Content-Type
+        value: application/json
+    body:
+        mode: raw
+        modeOfBody: JSON
+        raw: >-
+            {
+                "networkAliases": {
+                    "assets": {
+                        "deviceId": "{{AssetManagement.rulesData.availableruleName.tagDetails.deviceId}}",
+                        "name": "{{AssetManagement.rulesData.availableruleName.assetDetails.assetName}}"
+                    }
+                },
+                "networkId": "assets",
+                "name": "{{AssetManagement.rulesData.availableruleName.assetDetails.assetName}}",
+                "data": [
+                    {
+                        "path": "assetId",
+                        "value": "{{AssetManagement.rulesData.availableruleName.assetDetails.assetId}}"
+                    },
+                    {
+                        "path": "assetType",
+                        "value": "{{AssetManagement.rulesData.availableruleName.assetDetails.assetType}}"
+                    },
+                    {
+                        "path": "assignedDepartment/id",
+                        "value": "{{AssetManagement.departmentID}}"
+                    },
+                    {
+                        "path": "assignedDepartment/name",
+                        "value": "{{AssetManagement.rulesData.availableruleName.assetDetails.departmentName}}"
+                    },
+                    {
+                        "path": "isRental",
+                        "value": false
+                    },
+                    {
+                        "path": "manufacturer",
+                        "value": null
+                    },
+                    {
+                        "path": "modelNumber",
+                        "value": null
+                    },
+                    {
+                        "path": "name",
+                        "value": "{{AssetManagement.hospitalDetails.hospitalName}}-{{AssetManagement.rulesData.availableruleName.assetDetails.assetName}}"
+                    },
+                    {
+                        "path": "serialNumber",
+                        "value": "{{AssetManagement.rulesData.availableruleName.assetDetails.serialNumber}}"
+                    },
+                    {
+                        "path": "status/operational",
+                        "value": true
+                    },
+                    {
+                        "path": "status/available",
+                        "value": true
+                    },
+                    {
+                        "path": "status/cleaningRequired",
+                        "value": false
+                    },
+                    {
+                        "path": "status/maintenanceRequired",
+                        "value": false
+                    },
+                    {
+                        "path": "status/inMaintenance",
+                        "value": false
+                    },
+                    {
+                        "path": "status/missing",
+                        "value": false
+                    },
+                    {
+                        "path": "status/outOfCirculation",
+                        "value": false
+                    }
+                ]
+            }
+    auth:
+        type: bearer
+        bearer:
+            token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+        type: javascript
+        exec:
+          - "pq.variables.set(\"rentalDate\", Date.now() - 14 * 24 * 60 * 60 * 1000);\r"
+          - "pq.variables.set(\"rentalDueDate\", Date.now());\r"
+          - "const baseUrl  = pq.globals.get(\"API_Base_URL\");\r"
+          - "const sysId    = pq.globals.get(\"SYSTEM_ID\");\r"
+          - "const hospId   = pq.environment.get(\"AssetManagement.hospitalDetails.HospitalId\");\r"
+          - "const idToken  = pq.globals.get(\"idToken\");\r"
+          - "const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\");\r"
+          - "\r"
+          - "const assetIds = [];\r"
+          - "let url=`${baseUrl}/interface/${sysId}/hospital/${hospId}/assets.search`\r"
+          - "pq.sendRequest({\r"
+          - "  url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/assets.search`,\r"
+          - "  method: \"POST\",\r"
+          - "  headers: {\r"
+          - "    Authorization: `Bearer ${idToken}`,\r"
+          - "    \"Content-Type\": \"application/json\",\r"
+          - "  },\r"
+          - "}, (err, res) => {\r"
+          - "  if (err) {\r"
+          - "    console.log(\"Request error:\", err);\r"
+          - "    return;\r"
+          - "  }\r"
+          - "\r"
+          - "  const responseBody = res.json();\r"
+          - "  console.log(\"GET /assets response:\", responseBody,url);\r"
+          - "\r"
+          - "  if (!responseBody || !Array.isArray(responseBody.items)) {\r"
+          - "    console.log(\"No items array in response, nothing to delete\");\r"
+          - "    return;\r"
+          - "  }\r"
+          - "\r"
+          - "  const targetName = pq.environment.get(\"AssetManagement.rulesData.availableruleName.assetDetails.assetName\");\r"
+          - "  console.log(\"Target asset name:\", targetName);\r"
+          - "\r"
+          - "  responseBody.items.forEach((ele) => {\r"
+          - "    if (ele.name === targetName) {\r"
+          - "      assetIds.push(ele.id);\r"
+          - "    }\r"
+          - "  });\r"
+          - "\r"
+          - "  console.log(\"Matched assetIds to delete:\", assetIds);\r"
+          - "\r"
+          - "  if (assetIds.length === 0) {\r"
+          - "    console.log(\"No matching assets found, skipping deletion\");\r"
+          - "    return;\r"
+          - "  }\r"
+          - "\r"
+          - "  assetIds.forEach((assetId) => {\r"
+          - "    pq.sendRequest({\r"
+          - "      url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/assets/${assetId}`,\r"
+          - "      method: \"DELETE\",\r"
+          - "      headers: {\r"
+          - "        Authorization: `Bearer ${idToken}`,\r"
+          - "        \"Content-Type\": \"application/json\",\r"
+          - "      },\r"
+          - "      body: {\r"
+          - "        mode: 'raw',\r"
+          - "        raw: JSON.stringify({\r"
+          - "          deleteDevice:\"force\"\r"
+          - "        })\r"
+          - "      }\r"
+          - "    }, (err, res) => {\r"
+          - "      if (err) {\r"
+          - "        console.log(\"Unable to delete\", assetId, err);\r"
+          - "        return;\r"
+          - "      }\r"
+          - "\r"
+          - "      if (res.code === 200) {\r"
+          - "        console.log(\"Asset deleted successfully:\", res.json());\r"
+          - "      } else {\r"
+          - "        console.log(\"Delete failed for\", assetId, \"status:\", res.code);\r"
+          - "      }\r"
+          - "    });\r"
+          - "  });\r"
+          - "  \r"
+          - "});\r"
+          - ''
+  - listen: test
+    script:
+        type: javascript
+        exec:
+          - const response=pq.response.json()
+          - pq.environment.set("AssetManagement.rulesData.availableruleName.assetDetails.assetlevId", response.id)
+type: request

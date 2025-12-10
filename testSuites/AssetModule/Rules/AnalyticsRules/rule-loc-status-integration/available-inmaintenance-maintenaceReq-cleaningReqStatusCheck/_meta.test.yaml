@@ -1,24 +1,23 @@
 description: ''
-id: b55dc819-9746-4882-97d1-cebb0d19f5c3
-name: E2EforAssetManagementModule
+id: cdcca75e-ee42-4ecb-bb20-ae356d760e10
+name: available/inmaintenance/maintenaceReq/cleaningReqStatusCheck
 dependencies: []
 type: TESTCASE
-testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
-parentId: 36ecee14-8b0b-4597-a1a2-f151d4d72afe
 testSteps:
+  - fileReference: createRule.request.yaml
+    type: request
   - fileReference: AssetCreationAPI.request.yaml
     type: request
   - fileReference: tagCreationAPI.request.yaml
     type: request
   - fileReference: linkAssetandTag.request.yaml
     type: request
-  - fileReference: verifyAssetDetailsinLocPage.request.yaml
-    type: request
-  - fileReference: unlinkAssetandTag.request.yaml
-    type: request
-  - fileReference: verifyAssetDetailsinLocPageafterunlinking.request.yaml
+  - fileReference: checkStatus.request.yaml
     type: request
   - fileReference: deleteAsset.request.yaml
     type: request
   - fileReference: deleteTag.request.yaml
     type: request
+  - fileReference: deleteRule.request.yaml
+    type: request
+dataset: data/editRuleDataSet - Sheet1.csv

@@ -1,0 +1,216 @@
+id: 115a4fc2-76e2-4140-b745-b4dafafa2101
+name: tagCreationAPI
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/tags
+    host:
+    - '{{API_Base_URL}}'
+    path:
+    - interface
+    - '{{SYSTEM_ID}}'
+    - hospital
+    - '{{AssetManagement.hospitalDetails.HospitalId}}'
+    - tags
+  method: POST
+  headers: []
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: >-
+      {
+        "networkAliases": {
+          "hid-beacons": {
+            "deviceId": "{{AssetManagement.rulesData.availableruleName.tagDetails.deviceId}}"
+          }
+        },
+        "networkId": "hid-beacons",
+        "data": [
+          {
+            "path": "uniqueDeviceId",
+            "value": "{{AssetManagement.rulesData.availableruleName.tagDetails.deviceId}}"
+          },
+          {
+            "path": "type",
+            "value": "{{AssetManagement.rulesData.availableruleName.tagDetails.type}}"
+          },
+          {
+            "path": "manufacturer",
+            "value": "{{AssetManagement.rulesData.availableruleName.tagDetails.manufacturer}}"
+          },
+          {
+            "path": "model",
+            "value": "{{AssetManagement.rulesData.availableruleName.tagDetails.model}}"
+          },
+          {
+            "path": "tagType",
+            "value": "{{AssetManagement.rulesData.availableruleName.tagDetails.model}}"
+          },
+          {
+            "path": "location",
+            "value": {
+              "floor": {
+                "name": "{{AssetManagement.floorDetails.floorName}}",
+                "id": "{{AssetManagement.floorDetails.floorId}}"
+              },
+              "department": {
+                "name": "{{AssetManagement.departmentName}}",
+                "id": "{{AssetManagement.departmentID}}"
+              },
+              "room": {
+                "name": "{{AssetManagement.locationDetails.roomName_1}}",
+                "id": "{{AssetManagement.locationDetails.room0}}"
+              },
+              "building": {
+                "name": "{{AssetManagement.buildingDetails.buildingName}}",
+                "id": "{{AssetManagement.buildingDetails.BuildingId}}"
+              },
+              "timestamp": "{{timestamp}}"
+            }
+          },
+          {
+            "path": "p",
+            "value": {
+              "floor": {
+                "name": "{{AssetManagement.floorDetails.floorName}}",
+                "id": "{{AssetManagement.floorDetails.floorId}}"
+              },
+              "department": {
+                "name": "{{AssetManagement.departmentName}}",
+                "id": "{{AssetManagement.departmentID}}"
+              },
+              "room": {
+                "name": "{{AssetManagement.locationDetails.roomName_1}}",
+                "id": "{{AssetManagement.locationDetails.room0}}"
+              },
+              "building": {
+                "name": "{{AssetManagement.buildingDetails.buildingName}}",
+                "id": "{{AssetManagement.buildingDetails.BuildingId}}"
+              },
+              "timestamp": "{{timestamp}}"
+            }
+          },
+          {
+            "path": "prevLocation",
+            "value": {
+              "floor": {
+                "name": "{{AssetManagement.floorDetails.floorName}}",
+                "id": "{{AssetManagement.floorDetails.floorId}}"
+              },
+              "department": {
+                "name": "{{AssetManagement.departmentName}}",
+                "id": "{{AssetManagement.departmentID}}"
+              },
+              "room": {
+                "name": "{{AssetManagement.locationDetails.roomName_2}}",
+                "id": "{{AssetManagement.locationDetails.room1}}"
+              },
+              "building": {
+                "name": "{{AssetManagement.buildingDetails.buildingName}}",
+                "id": "{{AssetManagement.buildingDetails.BuildingId}}"
+              },
+              "timestamp": "{{timestamp}}"
+            }
+          }
+        ],
+        "name": "{{AssetManagement.rulesData.availableruleName.tagDetails.deviceId}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+- listen: prerequest
+  script:
+    type: javascript
+    exec:
+    - "pq.variables.set(\"timestamp\", Date.now())\r"
+    - "const baseUrl  = pq.globals.get(\"API_Base_URL\");\r"
+    - "const sysId    = pq.globals.get(\"SYSTEM_ID\");\r"
+    - "const hospId   = pq.environment.get(\"AssetManagement.hospitalDetails.HospitalId\");\r"
+    - "const idToken  = pq.globals.get(\"idToken\");\r"
+    - "const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\");\r"
+    - "\r"
+    - "const tagids = [];\r"
+    - "let url=`${baseUrl}/interface/${sysId}/hospital/${hospId}/tags.search`\r"
+    - "pq.sendRequest({\r"
+    - "  url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/tags.search`,\r"
+    - "  method: \"POST\",\r"
+    - "  headers: {\r"
+    - "    Authorization: `Bearer ${idToken}`,\r"
+    - "    \"Content-Type\": \"application/json\",\r"
+    - "  },\r"
+    - "}, (err, res) => {\r"
+    - "  if (err) {\r"
+    - "    console.log(\"Request error:\", err,res.code);\r"
+    - "    return;\r"
+    - "  }\r"
+    - "\r"
+    - "  const responseBody = res.json();\r"
+    - "  console.log(\"GET /assets response:\", responseBody);\r"
+    - "\r"
+    - "  if (!responseBody || !Array.isArray(responseBody.items)) {\r"
+    - "    console.log(\"No items array in response, nothing to delete\");\r"
+    - "    return;\r"
+    - "  }\r"
+    - "\r"
+    - "  const targetName = pq.environment.get(\"AssetManagement.rulesData.availableruleName.tagDetails.deviceId\");\r"
+    - "  console.log(\"Target asset name:\", targetName);\r"
+    - "\r"
+    - "  responseBody.items.forEach((ele) => {\r"
+    - "    if (ele.name === targetName) {\r"
+    - "      tagids.push(ele.id);\r"
+    - "    }\r"
+    - "  });\r"
+    - "\r"
+    - "  console.log(\"Matched assetIds to delete:\", tagids);\r"
+    - "\r"
+    - "  if (tagids.length === 0) {\r"
+    - "    console.log(\"No matching assets found, skipping deletion\");\r"
+    - "    return;\r"
+    - "  }\r"
+    - "\r"
+    - "  tagids.forEach((assetId) => {\r"
+    - "    pq.sendRequest({\r"
+    - "      url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/tags/${assetId}`,\r"
+    - "      method: \"DELETE\",\r"
+    - "      headers: {\r"
+    - "        Authorization: `Bearer ${idToken}`,\r"
+    - "        \"Content-Type\": \"application/json\",\r"
+    - "      },\r"
+    - "      body: {\r"
+    - "        mode: 'raw',\r"
+    - "        raw: JSON.stringify({\r"
+    - "          deleteDevice:\"force\"\r"
+    - "        })\r"
+    - "      }\r"
+    - "    }, (err, res) => {\r"
+    - "      if (err) {\r"
+    - "        console.log(\"Unable to delete\", assetId, err);\r"
+    - "        return;\r"
+    - "      }\r"
+    - "\r"
+    - "      if (res.code === 200) {\r"
+    - "        console.log(\"Asset deleted successfully:\", res.json());\r"
+    - "      } else {\r"
+    - "        console.log(\"Delete failed for\", assetId, \"status:\", res.json());\r"
+    - "      }\r"
+    - "    });\r"
+    - "  });\r"
+    - "  \r"
+    - "});\r"
+    - ''
+- listen: test
+  script:
+    type: javascript
+    exec:
+    - const response=pq.response.json()
+    - >-
+      pq.test("Status code is 200", function () { pq.response.to.have.status(200); });
+    - >-
+      pq.environment.set("AssetManagement.rulesData.availableruleName.tagDetails.tagID", response.id);
+    - if (!pq.response.ok) {
+    - '    console.log(pq.request.url);'
+    - '}'
+    - ''
+type: request

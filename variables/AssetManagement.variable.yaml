@@ -34,7 +34,7 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
-    assetlevId: 3kUqQWhkazfCLbP0gX5s7a
+    assetlevId: 1FsXMLOh4WXF03IjQPWgmH
   asset2:
     assetName: assetPostQode
     assetId: '2345'
@@ -46,7 +46,7 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
-    assetlevId: 19meyNYjm86Aq83KgqqrP7
+    assetlevId: 6ee2CHEVHi8BOYgTaPJOMD
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
@@ -69,7 +69,7 @@ AssetManagement:
       type: Asset Tag
       manufacturer: HID
       model: Asset Tag 3
-      tagID: 7c4UCeWCcPNdN8276wTSi1
+      tagID: 5SijvcRE7XITZuSYjU73xL
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -93,3 +93,29 @@ AssetManagement:
   assetTypeDetails:
     assetTypeName: postqodeAssetType
     editedAssetTypeName: editedPostqodeAssetType
+  rulesData:
+    availableruleName:
+      rulename: assetstatusCheckRule
+      status: available
+      roomType: assetManagementroom
+      assetType: Pacemaker
+      utilized: true
+      utilizationFactor: 80
+      shrinkage: N/A
+      shrinkageWindow: null
+      isCleanRequiredAlertEnabled: false
+      assetDetails:
+        assetName: availableAsset
+        assetId: '0012225'
+        serialNumber: 1H:T6:9O:78
+        departmentName: assetManagementdepo
+        assetType: Pacemaker
+        rentedOption: Owned
+        assetlevId: 3puVjrp3RGh3SO4413UFk6
+      tagDetails:
+        deviceId: ruleTag
+        type: Asset Tag
+        manufacturer: HID
+        model: Asset Tag 3
+        tagID: 2EjntBIoHg2x1w13cSGe7f
+    maintenanceReqruleName: null

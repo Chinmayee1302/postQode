@@ -1,0 +1,72 @@
+id: cc69a98b-2bd0-41e4-be74-c629fef439e3
+name: createRule
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.rsrc/p/rules/p/assets/p/smartRules/p/ordering/p/{{AssetManagement.roomDetails.roomTypeName}}/p/{{AssetManagement.assetType}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.rsrc'
+      - p
+      - rules
+      - p
+      - assets
+      - p
+      - smartRules
+      - p
+      - ordering
+      - p
+      - '{{AssetManagement.roomDetails.roomTypeName}}'
+      - p
+      - '{{AssetManagement.assetType}}'
+  method: POST
+  headers:
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY1MzM2MzU4LCJleHAiOjE3NjU0MjI3NTgsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDJSWnVScTE0b1h5MWlwVGdXV3ZQNCJ9.ikLka414_tP1FK3tXoGcQWSd6v4-ccEcerB64GZApwU
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+          "type": "rule",
+          "ruleName": "{{AssetManagement.rulesData.availableruleName.rulename}}",
+          "roomType": "{{AssetManagement.rulesData.availableruleName.roomType}}",
+          "assetType": "{{AssetManagement.rulesData.availableruleName.assetType}}",
+          "status": "{{statuspassed}}",
+          "utilized": {{AssetManagement.rulesData.availableruleName.utilized}},
+          "shrinkage": "{{AssetManagement.rulesData.availableruleName.shrinkage}}",
+          "utilizationFactor": {{AssetManagement.rulesData.availableruleName.utilizationFactor}},
+          "shrinkageWindow": {{AssetManagement.rulesData.availableruleName.shrinkageWindow}},
+          "isCleanRequiredAlertEnabled": {{AssetManagement.rulesData.availableruleName.isCleanRequiredAlertEnabled}}
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "const statuspassed = pq.iterationData.get(\"status\")\r"
+        - "pq.variables.set(\"statuspassed\", statuspassed)\r"
+        - "\r"
+        - ''
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "console.log(pq.response.json())\r"
+        - "\r"
+        - "setTimeout(() => {\r"
+        - "  console.log(\"wait for 10 secs\")\r"
+        - '},3000)'
+type: request
