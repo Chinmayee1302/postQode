@@ -1,0 +1,24 @@
+description: ''
+id: 514f3436-c17c-4759-bef8-18128d772dd3
+name: missing-rule-loc
+dependencies: []
+type: TESTCASE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: cee15d2c-27a1-4223-ba51-f94b85cd03fa
+testSteps:
+  - fileReference: createRule.request.yaml
+    type: request
+  - fileReference: AssetCreationAPI.request.yaml
+    type: request
+  - fileReference: tagCreationAPI.request.yaml
+    type: request
+  - fileReference: linkAssetandTag.request.yaml
+    type: request
+  - fileReference: checkStatus.request.yaml
+    type: request
+  - fileReference: deleteAsset.request.yaml
+    type: request
+  - fileReference: deleteTag.request.yaml
+    type: request
+  - fileReference: deleteRule.request.yaml
+    type: request

@@ -1,4 +1,4 @@
-id: cc69a98b-2bd0-41e4-be74-c629fef439e3
+id: b488e8fd-f989-40d2-be95-a37871cb7aaf
 name: createRule
 request:
   url:
@@ -37,29 +37,24 @@ request:
     raw: |-
       {
           "type": "rule",
-          "ruleName": "{{AssetManagement.rulesData.availableruleName.rulename}}",
-          "roomType": "{{AssetManagement.rulesData.availableruleName.roomType}}",
+          "ruleName": "missingRule",
+          "roomType": "Exit-P",
           "assetType": "{{AssetManagement.rulesData.availableruleName.assetType}}",
-          "status": "{{statuspassed}}",
-          "utilized": {{AssetManagement.rulesData.availableruleName.utilized}},
+          "status": "missing",
+          "utilized": null,
           "shrinkage": "{{AssetManagement.rulesData.availableruleName.shrinkage}}",
-          "utilizationFactor": {{AssetManagement.rulesData.availableruleName.utilizationFactor}},
-          "shrinkageWindow": {{AssetManagement.rulesData.availableruleName.shrinkageWindow}},
-          "isCleanRequiredAlertEnabled": {{AssetManagement.rulesData.availableruleName.isCleanRequiredAlertEnabled}}
+          "utilizationFactor": null,
+          "shrinkageWindow":  {
+                  "text": "Immediately",
+                  "value": 0
+              },
+          "isCleanRequiredAlertEnabled": false
       }
   auth:
     type: bearer
     bearer:
       token: '{{idToken}}'
 events:
-  - listen: prerequest
-    script:
-      type: javascript
-      exec:
-        - "const statuspassed = pq.iterationData.get(\"status\")\r"
-        - "pq.variables.set(\"statuspassed\", statuspassed)\r"
-        - "\r"
-        - ''
   - listen: test
     script:
       type: javascript

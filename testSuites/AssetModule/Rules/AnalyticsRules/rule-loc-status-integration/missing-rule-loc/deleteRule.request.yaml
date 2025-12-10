@@ -1,0 +1,53 @@
+id: e12cdd10-56e3-43cf-8c29-4f5a7684f064
+name: deleteRule
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.rsrc/p/rules/p/assets/p/smartRules/p/ordering/p/assetManagementroom/p/Bed
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.rsrc'
+      - p
+      - rules
+      - p
+      - assets
+      - p
+      - smartRules
+      - p
+      - ordering
+      - p
+      - assetManagementroom
+      - p
+      - Bed
+  method: DELETE
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY1MzQ0ODk0LCJleHAiOjE3NjU0MzEyOTQsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDJSWnVScTE0b1h5MWlwVGdXV3ZQNCJ9.U4CVIW_TPqNA0C44xXAeOxdEYRkrSF0ZXarY40GWeww
+    - key: Referer
+      value: https://stg-cognosos.web.app/
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/142.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: sec-ch-ua
+      value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request
