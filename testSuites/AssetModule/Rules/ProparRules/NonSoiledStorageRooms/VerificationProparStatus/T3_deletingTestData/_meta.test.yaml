@@ -1,0 +1,12 @@
+description: ''
+id: 9cce7f95-0cf3-42ca-82a5-725f3f0e3b6c
+name: T3_deletingTestData
+disabled: false
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: deleteAsset.request.yaml
+    type: request
+  - fileReference: deleteTag.request.yaml
+    type: request
+dataset: data/testData.csv

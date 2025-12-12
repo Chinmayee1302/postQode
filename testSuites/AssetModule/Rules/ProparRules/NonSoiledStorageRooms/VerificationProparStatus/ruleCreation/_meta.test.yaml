@@ -1,0 +1,13 @@
+description: ''
+id: 71492707-09bf-4739-8819-950058f0961c
+name: ruleCreation
+disabled: false
+dependencies: []
+type: BEFORE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: dca35e3e-5c69-444d-bb35-2f7792c256f0
+testSteps:
+  - fileReference: createRuletocheckstatus.request.yaml
+    type: request
+  - fileReference: statusCheckinPAR.request.yaml
+    type: request

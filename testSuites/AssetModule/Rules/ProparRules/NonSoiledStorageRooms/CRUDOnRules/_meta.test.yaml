@@ -1,0 +1,12 @@
+description: ''
+id: 1702d2f1-5499-4f49-8af7-f5f390296929
+name: CRUDOnRules
+dependencies: []
+type: TESTCASE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: b1d1a13b-cac3-49b3-a863-21b12b9c577b
+testSteps:
+  - fileReference: createRule.request.yaml
+    type: request
+  - fileReference: deleteRule.request.yaml
+    type: request

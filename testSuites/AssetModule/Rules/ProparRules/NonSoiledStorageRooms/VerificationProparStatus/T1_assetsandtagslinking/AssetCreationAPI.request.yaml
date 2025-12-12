@@ -1,0 +1,161 @@
+id: 5d61b7ef-3313-4997-a341-1a0d73349f47
+name: AssetCreationAPI
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}'
+      - assets
+  method: POST
+  headers:
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzYwNDEyNTU5LCJleHAiOjE3NjA0OTg5NTksImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDlzWjgwV3kxd25qQ1QwYWtZaFgxeSJ9.7sAqhSSZV28-HaiXJXDHdab_yYO5gjKFWRbttNr6sQ4
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"networkAliases\": {\r\n        \"assets\": {\r\n            \"deviceId\": \"{{deviceId}}\",\r\n            \"name\": \"{{assetName}}\"\r\n        }\r\n    },\r\n    \"networkId\": \"assets\",\r\n    \"name\": \"{{assetName}}\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"assetId\",\r\n            \"value\": \"{{AssetManagement.asset2.assetId}}\"\r\n        },\r\n        {\r\n            \"path\": \"assetType\",\r\n            \"value\": \"{{AssetManagement.asset2.assetType}}\"\r\n        },\r\n        {\r\n            \"path\": \"assignedDepartment/id\",\r\n            \"value\": \"{{AssetManagement.departmentID}}\"\r\n        },\r\n        {\r\n            \"path\": \"assignedDepartment/name\",\r\n            \"value\": \"{{AssetManagement.departmentName}}\"\r\n        },\r\n        {\r\n            \"path\": \"isRental\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"maintenance/nextPreventativeMaintenanceDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceInterval\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"manufacturer\"\r\n        },\r\n        {\r\n            \"path\": \"manufacturerPrice\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"modelNumber\"\r\n        },\r\n        {\r\n            \"path\": \"name\",\r\n            \"value\": \"{{assetName}}\"\r\n        },\r\n        {\r\n            \"path\": \"rentalDueDate\",\r\n            \"value\": {{rentalDueDate}}\r\n        },\r\n        {\r\n            \"path\": \"rentedDate\",\r\n            \"value\": {{rentalDate}}\r\n        },\r\n        {\r\n            \"path\": \"serialNumber\",\r\n            \"value\": \"{{AssetManagement.asset2.serialNumber}}\"\r\n        },\r\n        {\r\n            \"path\": \"status/operational\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"status/available\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/cleaningRequired\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/maintenanceRequired\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/inMaintenance\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/missing\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/outOfCirculation\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r\n            \"value\": null\r\n        }\r\n    ]\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "pq.variables.set(\"rentalDate\", Date.now() - 14 * 24 * 60 * 60 * 1000);\r"
+        - "pq.variables.set(\"rentalDueDate\", Date.now());\r"
+        - "// const baseUrl  = pq.globals.get(\"API_Base_URL\");\r"
+        - "// const sysId    = pq.globals.get(\"SYSTEM_ID\");\r"
+        - "// const hospId   = pq.environment.get(\"AssetManagement.hospitalDetails.HospitalId\");\r"
+        - "// const idToken  = pq.globals.get(\"idToken\");\r"
+        - "// const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\");\r"
+        - "\r"
+        - "// const assetIds = [];\r"
+        - "// let url=`${baseUrl}/interface/${sysId}/hospital/${hospId}/assets.search`\r"
+        - "// pq.sendRequest({\r"
+        - "//   url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/assets.search`,\r"
+        - "//   method: \"POST\",\r"
+        - "//   headers: {\r"
+        - "//     Authorization: `Bearer ${idToken}`,\r"
+        - "//     \"Content-Type\": \"application/json\",\r"
+        - "//   },\r"
+        - "// }, (err, res) => {\r"
+        - "//   if (err) {\r"
+        - "//     console.log(\"Request error:\", err);\r"
+        - "//     return;\r"
+        - "//   }\r"
+        - "\r"
+        - "//   const responseBody = res.json();\r"
+        - "//   console.log(\"GET /assets response:\", responseBody,url);\r"
+        - "\r"
+        - "//   if (!responseBody || !Array.isArray(responseBody.items)) {\r"
+        - "//     console.log(\"No items array in response, nothing to delete\");\r"
+        - "//     return;\r"
+        - "//   }\r"
+        - "\r"
+        - "//   const targetName = pq.environment.get(\"AssetManagement.asset2.assetName\");\r"
+        - "//   console.log(\"Target asset name:\", targetName);\r"
+        - "\r"
+        - "//   responseBody.items.forEach((ele) => {\r"
+        - "//     if (ele.name === targetName) {\r"
+        - "//       assetIds.push(ele.id);\r"
+        - "//     }\r"
+        - "//   });\r"
+        - "\r"
+        - "//   console.log(\"Matched assetIds to delete:\", assetIds);\r"
+        - "\r"
+        - "//   if (assetIds.length === 0) {\r"
+        - "//     console.log(\"No matching assets found, skipping deletion\");\r"
+        - "//     return;\r"
+        - "//   }\r"
+        - "\r"
+        - "//   assetIds.forEach((assetId) => {\r"
+        - "//     pq.sendRequest({\r"
+        - "//       url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/assets/${assetId}`,\r"
+        - "//       method: \"DELETE\",\r"
+        - "//       headers: {\r"
+        - "//         Authorization: `Bearer ${idToken}`,\r"
+        - "//         \"Content-Type\": \"application/json\",\r"
+        - "//       },\r"
+        - "//       body: {\r"
+        - "//         mode: 'raw',\r"
+        - "//         raw: JSON.stringify({\r"
+        - "//           deleteDevice:\"force\"\r"
+        - "//         })\r"
+        - "//       }\r"
+        - "//     }, (err, res) => {\r"
+        - "//       if (err) {\r"
+        - "//         console.log(\"Unable to delete\", assetId, err);\r"
+        - "//         return;\r"
+        - "//       }\r"
+        - "\r"
+        - "//       if (res.code === 200) {\r"
+        - "//         console.log(\"Asset deleted successfully:\", res.json());\r"
+        - "//       } else {\r"
+        - "//         console.log(\"Delete failed for\", assetId, \"status:\", res.code);\r"
+        - "//       }\r"
+        - "//     });\r"
+        - "//   });\r"
+        - "\r"
+        - "// });\r"
+        - "\r"
+        - "const baseName = pq.iterationData.get(\"AssetName\"); // static from YAML\r"
+        - "console.log(baseName)\r"
+        - "const randomInt = Math.floor(Math.random() * 900) + 100;\r"
+        - "\r"
+        - "const finalName = `${baseName}${randomInt}`;\r"
+        - "pq.variables.set(\"assetName\", finalName);\r"
+        - "\r"
+        - "console.log(finalName)\r"
+        - "\r"
+        - "const deviceId = pq.iterationData.get(\"tagnames\"); \r"
+        - "console.log(deviceId)\r"
+        - "\r"
+        - "\r"
+        - "const finaldeviceId = `${deviceId}${randomInt}`;\r"
+        - "\r"
+        - "console.log(finaldeviceId)\r"
+        - "\r"
+        - "pq.testSuiteVariables.set(\"deviceId\", finaldeviceId);\r"
+        - "\r"
+        - "\r"
+        - "\r"
+        - "\r"
+        - "\r"
+        - "\r"
+        - ''
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - const response = pq.response.json()
+        - ''
+        - ''
+        - ''
+        - pq.environment.set("AssetManagement.asset1.assetlevId", response.id)
+        - ''
+        - let rulesData = pq.environment.get("propartTestIDs_assetIDs");
+        - 'rulesData = rulesData ? JSON.parse(rulesData) : [];'
+        - console.log(rulesData.length)
+        - if (rulesData.length >= 4) {
+        - '  rulesData = []'
+        - '  console.log(rulesData.length,"if")'
+        - '} '
+        - '  rulesData.push(response.id);'
+        - '   console.log(rulesData.length,"else")'
+        - '  pq.environment.set("propartTestIDs_assetIDs", JSON.stringify(rulesData));'
+        - ''
+        - ''
+type: request
+disabled: false

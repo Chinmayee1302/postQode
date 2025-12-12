@@ -1,0 +1,13 @@
+description: ''
+id: d8237a16-3f22-4104-b893-1547f2d6c337
+name: ruleDeletion
+disabled: false
+dependencies: []
+type: AFTER
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: dca35e3e-5c69-444d-bb35-2f7792c256f0
+testSteps:
+  - fileReference: statusCheckinPAR.request.yaml
+    type: request
+  - fileReference: deleteRuleaftercheck.request.yaml
+    type: request

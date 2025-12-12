@@ -1,0 +1,41 @@
+id: 286872e3-9546-4d42-b2b6-e2f47036127c
+name: createRuletocheckstatus
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.rsrc/p/rules/p/assets/p/smartRules/p/operations/p/{{AssetManagement.locationDetails.room0}}/p/Bed
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.rsrc'
+      - p
+      - rules
+      - p
+      - assets
+      - p
+      - smartRules
+      - p
+      - operations
+      - p
+      - '{{AssetManagement.locationDetails.room0}}'
+      - p
+      - Bed
+  method: POST
+  headers:
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"type\": \"rule\",\r\n    \"assetType\": \"Bed\",\r\n    \"buildingId\": \"{{AssetManagement.buildingDetails.BuildingId}}\",\r\n    \"departmentId\": \"{{AssetManagement.departmentID}}\",\r\n    \"departmentName\": \"{{AssetManagement.departmentName}}\",\r\n    \"roomId\": \"{{AssetManagement.locationDetails.room0}}\",\r\n    \"roomName\": \"{{AssetManagement.locationDetails.roomName_1}}\",\r\n    \"par\": 3,\r\n    \"underPar\": 2,\r\n    \"overPar\": 4,\r\n    \"criticallyUnderPar\": 1,\r\n    \"floorIds\": [\r\n        \"{{AssetManagement.floorDetails.floorId}}\"\r\n    ],\r\n    \"floorName\": \"{{AssetManagement.floorDetails.floorName}}\",\r\n    \"roomType\": \"{{AssetManagement.roomDetails.roomTypeName}}\",\r\n    \"isFavorite\": true,\r\n    \"proParDelayTime\": 0\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request

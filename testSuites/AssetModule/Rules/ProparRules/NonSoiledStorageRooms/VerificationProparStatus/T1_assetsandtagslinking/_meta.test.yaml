@@ -1,0 +1,15 @@
+description: ''
+id: 8281c408-22cb-4ce9-85a7-151e8f747f9b
+name: T1_assetsandtagslinking
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: AssetCreationAPI.request.yaml
+    type: request
+  - fileReference: tagCreationAPI.request.yaml
+    type: request
+  - fileReference: linkAssetandTag.request.yaml
+    type: request
+  - fileReference: statusCheckinPAR.request.yaml
+    type: request
+dataset: data/testData.csv

@@ -1,0 +1,37 @@
+id: e68f2a86-1fb2-4ae2-be8d-a8530d3b0119
+name: deleteRule
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.rsrc/p/rules/p/assets/p/smartRules/p/operations/p/{{AssetManagement.locationDetails.room0}}/p/Camera
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.rsrc'
+      - p
+      - rules
+      - p
+      - assets
+      - p
+      - smartRules
+      - p
+      - operations
+      - p
+      - '{{AssetManagement.locationDetails.room0}}'
+      - p
+      - Camera
+  method: DELETE
+  headers:
+    - key: Accept
+      value: application/json
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request

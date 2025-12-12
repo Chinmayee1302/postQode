@@ -1,0 +1,38 @@
+id: ea627c2a-8660-475a-881d-2a6f0f6305ac
+name: statusCheckinPAR
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.srv/prosightAnalytics/par
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.srv'
+      - prosightAnalytics
+      - par
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n  \"filters\":{\r\n    \"buildingIds\":[],\r\n    \"departmentIds\":[],\r\n    \"floorIds\":[],\r\n    \"status\":[],\r\n    \"search\":\"\"\r\n    }\r\n    }"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const response = pq.response.json()\r"
+        - "pq.test(\"validate the status in propar page\", () => {\r"
+        - "   pq.expect(response[0].status).to.eql(\"out\")\r"
+        - "})\r"
+        - ''
+type: request
