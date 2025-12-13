@@ -1,0 +1,17 @@
+description: ''
+id: a06b06fa-0e20-402c-8b4a-d2bc59de7c44
+name: testDataCreation
+disabled: true
+dependencies: []
+type: BEFORE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 0fb4ba8d-ebbb-464f-8780-1ea27d552afb
+testSteps:
+  - fileReference: AssetCreationAPI.request.yaml
+    type: request
+  - fileReference: tagCreationAPI.request.yaml
+    type: request
+  - fileReference: linkAssetandTag.request.yaml
+    type: request
+  - fileReference: levLogin.request.yaml
+    type: request

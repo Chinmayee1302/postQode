@@ -1,0 +1,129 @@
+id: 800cf4da-4b5a-4842-a524-78928f03a80a
+name: linkAssetandTag
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets/{{AssetManagement.asset2.assetlevId}}/tag
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}'
+      - assets
+      - '{{AssetManagement.asset2.assetlevId}}'
+      - tag
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzYwNDE2MTY2LCJleHAiOjE3NjA1MDI1NjYsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDlzWjgwV3kxd25qQ1QwYWtZaFgxeSJ9.l94tyyV23sXg2R_fr4LuS6jeqvRaoqqzms8Ug7ajf3Q
+    - key: Referer
+      value: https://staging-commercial-cox-health.firebaseapp.com/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/141.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"id\": \"{{AssetManagement.tagDetails.tag1.tagID}}\"\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const assetName = pq.testSuiteVariables.get(\"assetName\");\r"
+        - "console.log(\"assetName:\", assetName);\r"
+        - "\r"
+        - "const baseUrl  = pq.globals.get(\"API_Base_URL\");\r"
+        - "const sysId    = pq.globals.get(\"SYSTEM_ID\");\r"
+        - "const hospId   = pq.environment.get(\"AssetManagement.hospitalDetails.HospitalId\");\r"
+        - "const idToken  = pq.globals.get(\"levidToken\");\r"
+        - "const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\");\r"
+        - "\r"
+        - "const assetIds = [];\r"
+        - "pq.sendRequest({\r"
+        - "  url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/assets.search`,\r"
+        - "  method: \"POST\",\r"
+        - "  headers: {\r"
+        - "    Authorization: `Bearer ${idToken}`,\r"
+        - "    \"Content-Type\": \"application/json\",\r"
+        - "  },\r"
+        - "  body: {\r"
+        - "    limit: 100,\r"
+        - "    offset: 0,\r"
+        - "    filter: {\r"
+        - "      type: \"logical\",\r"
+        - "      operator: \"and\",\r"
+        - "      conditions: [\r"
+        - "        {\r"
+        - "          type: \"equals\",\r"
+        - "          field: \"data/name\",\r"
+        - "          value: assetName,\r"
+        - "          empty: false,\r"
+        - "          fieldType: \"string\",\r"
+        - "        },\r"
+        - "      ],\r"
+        - "    },\r"
+        - "    sort: [\r"
+        - "      {\r"
+        - "        field: \"created\",\r"
+        - "        order: \"desc\",\r"
+        - "      },\r"
+        - "    ],\r"
+        - "    nextToken: null,\r"
+        - "  }\r"
+        - "}, (err, res) => {\r"
+        - "  // Better error logging so you can see hidden fields\r"
+        - "  if (err) {\r"
+        - "    console.log(\"Request error (raw):\", err);\r"
+        - "    try { console.log(\"Request error (json):\", JSON.stringify(err)); } catch(e) {}\r"
+        - "    return;\r"
+        - "  }\r"
+        - "  let body=res.json()\r"
+        - "  console.log(\"Response (body):\", res.json());\r"
+        - "  if (!body || !Array.isArray(body.items) || body.items.length === 0) {\r"
+        - "    console.log(\"No items returned for assetName:\", assetName);\r"
+        - "    return;\r"
+        - "  }\r"
+        - "\r"
+        - "  // collect IDs from all matches (not just first)\r"
+        - "  body.items.forEach(item => {\r"
+        - "    if (item && item.id) {\r"
+        - "      assetIds.push(item.id);\r"
+        - "    }\r"
+        - "  });\r"
+        - "\r"
+        - "  // log first item's device info safely\r"
+        - "  const first = body.items[0];\r"
+        - "  const deviceId = first.id;\r"
+        - "  // uniqueDeviceId might be nested under tag.data.p.uniqueDeviceId or tag.data.uniqueDeviceId\r"
+        - "  const hardwareExternalId =\r"
+        - "    first.data?.tag?.data?.uniqueDeviceId\r"
+        - "    ?? first.data?.tag?.data?.p?.uniqueDeviceId\r"
+        - "    ?? null;\r"
+        - "\r"
+        - "  console.log(\"First deviceId:\", deviceId, \"hardwareExternalId:\", hardwareExternalId);\r"
+        - "  console.log(\"All matching asset IDs:\", assetIds);\r"
+        - "  pq.environment.set(\"deviceId\", deviceId)\r"
+        - "  pq.environment.set(\"hardwareExternalId\",hardwareExternalId)\r"
+        - "});\r"
+        - ''
+type: request

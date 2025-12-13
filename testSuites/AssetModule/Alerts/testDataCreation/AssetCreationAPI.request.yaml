@@ -1,0 +1,66 @@
+id: 2b8904d2-9bb3-405b-89b7-8556bee3d02e
+name: AssetCreationAPI
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}'
+      - assets
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"networkAliases\": {\r\n        \"assets\": {\r\n            \"deviceId\": \"{{deviceId}}\",\r\n            \"name\": \"{{assetName}}\"\r\n        }\r\n    },\r\n    \"networkId\": \"assets\",\r\n    \"name\": \"{{assetName}}\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"assetId\",\r\n            \"value\": \"{{AssetManagement.asset2.assetId}}\"\r\n        },\r\n        {\r\n            \"path\": \"assetType\",\r\n            \"value\": \"{{AssetManagement.asset2.assetType}}\"\r\n        },\r\n        {\r\n            \"path\": \"assignedDepartment/id\",\r\n            \"value\": \"{{AssetManagement.departmentID}}\"\r\n        },\r\n        {\r\n            \"path\": \"assignedDepartment/name\",\r\n            \"value\": \"{{AssetManagement.departmentName}}\"\r\n        },\r\n        {\r\n            \"path\": \"isRental\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"maintenance/nextPreventativeMaintenanceDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceInterval\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"manufacturer\"\r\n        },\r\n        {\r\n            \"path\": \"manufacturerPrice\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"modelNumber\"\r\n        },\r\n        {\r\n            \"path\": \"name\",\r\n            \"value\": \"{{assetName}}\"\r\n        },\r\n        {\r\n            \"path\": \"rentalDueDate\",\r\n            \"value\": {{rentalDueDate}}\r\n        },\r\n        {\r\n            \"path\": \"rentedDate\",\r\n            \"value\": {{rentalDate}}\r\n        },\r\n        {\r\n            \"path\": \"serialNumber\",\r\n            \"value\": \"{{AssetManagement.asset2.serialNumber}}\"\r\n        },\r\n        {\r\n            \"path\": \"status/operational\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"status/available\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/cleaningRequired\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/maintenanceRequired\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/inMaintenance\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/missing\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"status/outOfCirculation\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"maintenance/preventativeMaintenanceIntervalDueDate\",\r\n            \"value\": null\r\n        }\r\n    ]\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "pq.variables.set(\"rentalDate\", Date.now());\r"
+        - "pq.variables.set(\"rentalDueDate\", Date.now()+ 10 * 24 * 60 * 60 * 1000);\r"
+        - "\r"
+        - "\r"
+        - "const baseName = pq.environment.get(\"AssetManagement.asset2.assetName\"); // static from YAML\r"
+        - "const randomInt = Math.floor(Math.random() * 900) + 100;\r"
+        - "\r"
+        - "const finalName = `${baseName}${randomInt}`;\r"
+        - "pq.testSuiteVariables.set(\"assetName\", finalName);\r"
+        - "\r"
+        - "const deviceId = pq.environment.get(\"AssetManagement.tagDetails.tag1.deviceId\"); \r"
+        - "\r"
+        - "const finaldeviceId = `${deviceId}${randomInt}`;\r"
+        - "pq.testSuiteVariables.set(\"deviceId\", finaldeviceId);\r"
+        - "\r"
+        - "\r"
+        - "\r"
+        - "\r"
+        - "\r"
+        - "\r"
+        - ''
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - // parse previous response (from create/post) and set env if valid
+        - const response = pq.response.json();
+        - if (response && response.id) {
+        - '  pq.environment.set("AssetManagement.asset2.assetlevId", response.id);'
+        - '} else {'
+        - '  console.log("Warning: create response missing id:", JSON.stringify(response));'
+        - '}'
+        - ''
+        - ''
+type: request

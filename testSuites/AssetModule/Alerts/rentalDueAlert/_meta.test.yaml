@@ -1,0 +1,13 @@
+description: ''
+id: 4f298a3a-132f-4dd2-98e8-356000fcf931
+name: rentalDueAlert
+disabled: true
+dependencies: []
+type: TESTCASE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 0fb4ba8d-ebbb-464f-8780-1ea27d552afb
+testSteps:
+  - fileReference: createTimer.request.yaml
+    type: request
+  - fileReference: startTimer.request.yaml
+    type: request

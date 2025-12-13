@@ -123,6 +123,10 @@ request:
           {
           "path": "timestampCleared",
             "value": "{{timestamp}}"
+          },
+          {
+            "path":"lastReported",
+            "value":"{{timestamp}}"
           }
         ],
         "name": "{{AssetManagement.rulesData.availableruleName.tagDetails.deviceId}}"

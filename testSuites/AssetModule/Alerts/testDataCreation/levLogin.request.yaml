@@ -1,0 +1,23 @@
+id: 0913b76b-f6af-4aa5-b1a4-f8f6996bc942
+name: levLogin
+request:
+  url:
+    raw: '{{API_Base_URL}}/login'
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - login
+  method: POST
+  headers: []
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n          \"username\": \"madhu.cs@cox.com\",\r\n          \"password\": \"eiyae4iexee4Thai@\"\r\n}"
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const res = pq.response.json()\r"
+        - pq.globals.set("levidToken",res.idToken)
+type: request

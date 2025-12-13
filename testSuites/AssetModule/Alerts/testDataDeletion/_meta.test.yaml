@@ -1,0 +1,13 @@
+description: ''
+id: d91ffeb1-780a-4f5a-89b9-42ebcfc42c46
+name: testDataDeletion
+disabled: true
+dependencies: []
+type: AFTER
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 0fb4ba8d-ebbb-464f-8780-1ea27d552afb
+testSteps:
+  - fileReference: deleteAsset.request.yaml
+    type: request
+  - fileReference: deleteTag.request.yaml
+    type: request

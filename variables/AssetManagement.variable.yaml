@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 55VMCxiUcd9TPn76IbWDCt
+    HospitalId: 708VhZo7hrCdTRceAW3vjx
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,7 +18,7 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 0il6jWzl7zQhTDQtLAjmMe
+    BuildingId: 0sWMDy2gMnPvbN33RVRxb1
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
@@ -34,7 +34,7 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
-    assetlevId: 4xctqgJZSnym3P4l6pJheH
+    assetlevId: 0j4I9eLC1hoVPGANUe4pDy
   asset2:
     assetName: assetPostQode
     assetId: '2345'
@@ -46,30 +46,30 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
-    assetlevId: 1DqcTMmt932vDQtV0etuXU
+    assetlevId: 3xMxaNHIFtWNEw4x4yywvA
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 39yq26tSnxgNCe2rL9VG5h
-    room1: 2gyjK119scNMBdkMmieaHp
+    room0: 4w1gvPmoyp9dxdHMSpQSrC
+    room1: 27A3j3BYucpEfFCue9w3F4
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 59gOzG1GU6QWe34WX03ILx
+    floorId: 3SD4rNIIy1PecD1Jrht7Do
   roomDetails:
     roomTypeName: assetManagementroom
     status: Available
     utilizationState: Not Utilized
     monitorCompliance: 'No'
-  roomId: 39yq26tSnxgNCe2rL9VG5h
+  roomId: 4w1gvPmoyp9dxdHMSpQSrC
   tagDetails:
     tag1:
       deviceId: assetMngmemntTag
       type: Asset Tag
       manufacturer: HID
       model: Asset Tag 3
-      tagID: 5nyH706gxMIuXox6gU34gd
+      tagID: 1hgCn5y9acN5wEmZznY1Y9
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -88,8 +88,8 @@ AssetManagement:
     maintenanceDay: Monthly
     rentedOption: Owned
     departmentID: 104OFYLyLkMZeXYk3N9Mka
-  departmentID: 4bgN833OF2ISSuJTxzkNMO
-  departmentBoundaryId: 3ur80ihkGQhJT6Sa3UTXWW
+  departmentID: 2gvagHDFC9ZNSu9pjuPByc
+  departmentBoundaryId: 4tjVbkdzQXc2fu5wDiQix4
   assetTypeDetails:
     assetTypeName: postqodeAssetType
     editedAssetTypeName: editedPostqodeAssetType
@@ -111,16 +111,19 @@ AssetManagement:
         departmentName: assetManagementdepo
         assetType: Bed
         rentedOption: Owned
-        assetlevId: 3fjzqjNWpsoO7l9fPzDLy7
+        assetlevId: 2c6oZDvOlPqilPsa0DQY2g
       tagDetails:
         deviceId: ruleTag
         type: Asset Tag
         manufacturer: HID
         model: Asset Tag 3
-        tagID: 7J56bIq28jE8EXL3t3rjeU
+        tagID: 078pUtIP9Nxu7IVwNqhqCJ
 propartTestIDs_assetIDs: >-
-  ["4FS8tfDy9aDa7XusBsOjO8","5iWp21TBZuVeosXvsYq668","0j9qFI8bcIlggigWf7LuxH","4xctqgJZSnym3P4l6pJheH"]
+  ["7cpcwbwSz5sYor6QGMgRZ8","2C3waYMie2ddtxf671InlF","6lI4OJ4U10oErp8eFme0UA","0j4I9eLC1hoVPGANUe4pDy"]
 propartTestIDs_tagIDs: >-
-  ["5Azrk2lF20KDUiVN24nvza","2j5FOkbKSOJICaQd9vstLB","6lpk3jvvqdmN6yTN8ismih","5nyH706gxMIuXox6gU34gd"]
-deleteAssetID: 4xctqgJZSnym3P4l6pJheH
-deletetagID: 5nyH706gxMIuXox6gU34gd
+  ["0KgQ7UaR18QBqu78D0FP1N","6NnWwOLfaU9ATL0ejoJKy7","6wnmOeIG65abspWXOr7Pqz","1hgCn5y9acN5wEmZznY1Y9"]
+deleteAssetID: 0j4I9eLC1hoVPGANUe4pDy
+deletetagID: 1hgCn5y9acN5wEmZznY1Y9
+rentalDue: 3WS6mOBft5a0bn7uBWrnnk
+deviceId: 2CSRqOYuuIKSVCktBQW7JD
+hardwareExternalId: assetMngmemntTag
