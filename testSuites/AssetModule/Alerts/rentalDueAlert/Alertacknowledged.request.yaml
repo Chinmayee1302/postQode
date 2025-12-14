@@ -1,0 +1,29 @@
+id: 4331add0-bd77-4004-91e5-2f4095a8cd8d
+name: Alertacknowledged
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{OLGHospitalDetails.hospitalID}}/incidents/{{OLGHospitalDetails.rentalIncID}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{OLGHospitalDetails.hospitalID}}'
+      - incidents
+      - '{{OLGHospitalDetails.rentalIncID}}'
+  method: PATCH
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"data\": [\r\n        {\r\n            \"path\": \"acknowledged/userId\",\r\n            \"value\": \"02RZuRq14oXy1ipTgWWvP4\"\r\n        },\r\n        {\r\n            \"path\": \"acknowledged/username\",\r\n            \"value\": \"jahnavi.b@codecraft.co.in\"\r\n        },\r\n        {\r\n            \"path\": \"acknowledged/status\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"acknowledged/time\",\r\n            \"value\": 1765686971042\r\n        },\r\n        {\r\n            \"path\": \"eventLog/history\",\r\n            \"value\": [\r\n                {\r\n                    \"name\": \"jahnavi.b@codecraft.co.in\",\r\n                    \"value\": \"\",\r\n                    \"status\": \"Acknowledged\",\r\n                    \"time\": 1765686971042\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request

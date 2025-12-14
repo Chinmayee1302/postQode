@@ -1,8 +1,8 @@
-id: 42f2fba6-1097-465a-9dee-bca3fd71daae
-name: startTimer
+id: 5899c6d2-6362-4bd9-a71d-a8449b1b9905
+name: stopTimer
 request:
   url:
-    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/5QU4XuXrjBjdCfsnRkwcwS/start'
+    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/5QU4XuXrjBjdCfsnRkwcwS/stop'
     host:
       - '{{API_Base_URL}}'
     path:
@@ -10,7 +10,7 @@ request:
       - '{{PROJECT_ID}}'
       - timer
       - 5QU4XuXrjBjdCfsnRkwcwS
-      - start
+      - stop
   method: PUT
   headers:
     - key: accept
@@ -20,7 +20,7 @@ request:
     - key: authorization
       value: >-
         Bearer
-        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NjU1MzA0MzYsImV4cCI6MTc2NTYxNjgzNiwiYXVkIjoiOTU3OGUwNDYwYzk4ZDRhZGMwZjg3ZjcwIiwiaXNzIjoiaHR0cHM6Ly9zdGctY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiIwVlNFYkdHQlJtYmhNT3R2VzJyZ0JHIn0.XWbHtxIOBW2SGPpQ_UVzc9o-pjZS57S4KxtFmi_VckI
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NjU2ODIwNjAsImV4cCI6MTc2NTc2ODQ2MCwiYXVkIjoiOTU3OGUwNDYwYzk4ZDRhZGMwZjg3ZjcwIiwiaXNzIjoiaHR0cHM6Ly9zdGctY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiIwVlNFYkdHQlJtYmhNT3R2VzJyZ0JHIn0.XwOcSwVpCapc51mK5lic7x2E4FLANJMB3lHLGOonIN4
     - key: content-length
       value: '0'
     - key: origin
@@ -28,7 +28,7 @@ request:
     - key: priority
       value: u=1, i
     - key: sec-ch-ua
-      value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
     - key: sec-ch-ua-mobile
       value: '?0'
     - key: sec-ch-ua-platform
@@ -42,7 +42,7 @@ request:
     - key: user-agent
       value: >-
         Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/142.0.0.0 Safari/537.36
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
   body:
     mode: none
   auth:
@@ -50,19 +50,4 @@ request:
     bearer:
       token: '{{levidToken}}'
 events: []
-requestSettings:
-  requestTimeout: 800000
-  scriptTimeout: 800000
-  stopOnError: false
-  stopOnFailure: false
-  followRedirects: true
-  followOriginalHttpMethod: false
-  maxRedirects: 10
-  maxResponseSize: 1048576
-  useWhatWGUrlParser: true
-  removeRefererHeaderOnRedirect: false
-  strictSSL: false
-  insecureHTTPParser: false
-  implicitCacheControl: false
-  implicitTraceHeader: false
 type: request

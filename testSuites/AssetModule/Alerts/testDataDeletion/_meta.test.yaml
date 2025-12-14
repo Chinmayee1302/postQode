@@ -1,7 +1,7 @@
 description: ''
 id: d91ffeb1-780a-4f5a-89b9-42ebcfc42c46
 name: testDataDeletion
-disabled: true
+disabled: false
 dependencies: []
 type: AFTER
 testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16

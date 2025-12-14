@@ -1,7 +1,7 @@
 description: ''
 id: abcc8d4a-a41c-4814-b8fa-7531ec121509
 name: testDataCleanUp
-disabled: false
+disabled: true
 dependencies: []
 type: AFTER
 testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16

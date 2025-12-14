@@ -3,14 +3,14 @@ name: deleteAsset
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets/{{AssetManagement.asset1.assetlevId}}
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{OLGHospitalDetails.hospitalID}}/assets/{{AssetManagement.asset1.assetlevId}}
     host:
       - '{{API_Base_URL}}'
     path:
       - interface
       - '{{SYSTEM_ID}}'
       - hospital
-      - '{{AssetManagement.hospitalDetails.HospitalId}}'
+      - '{{OLGHospitalDetails.hospitalID}}'
       - assets
       - '{{AssetManagement.asset1.assetlevId}}'
   method: DELETE

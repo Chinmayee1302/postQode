@@ -1,0 +1,16 @@
+description: ''
+id: d0854838-5ea1-4551-b3ed-65468abfc80b
+name: maintenanceDueAlert
+dependencies: []
+type: TESTCASE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 0fb4ba8d-ebbb-464f-8780-1ea27d552afb
+testSteps:
+- fileReference: startTimer.request.yaml
+  type: request
+- fileReference: alertSearch.request.yaml
+  type: request
+- fileReference: Alertacknowledged.request.yaml
+  type: request
+- fileReference: stopTimer.request.yaml
+  type: request

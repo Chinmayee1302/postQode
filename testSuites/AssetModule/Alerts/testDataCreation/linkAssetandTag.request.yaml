@@ -3,16 +3,16 @@ name: linkAssetandTag
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets/{{AssetManagement.asset2.assetlevId}}/tag
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{OLGHospitalDetails.hospitalID}}/assets/{{AssetManagement.asset1.assetlevId}}/tag
     host:
       - '{{API_Base_URL}}'
     path:
       - interface
       - '{{SYSTEM_ID}}'
       - hospital
-      - '{{AssetManagement.hospitalDetails.HospitalId}}'
+      - '{{OLGHospitalDetails.hospitalID}}'
       - assets
-      - '{{AssetManagement.asset2.assetlevId}}'
+      - '{{AssetManagement.asset1.assetlevId}}'
       - tag
   method: POST
   headers:
@@ -54,7 +54,7 @@ events:
         - "\r"
         - "const baseUrl  = pq.globals.get(\"API_Base_URL\");\r"
         - "const sysId    = pq.globals.get(\"SYSTEM_ID\");\r"
-        - "const hospId   = pq.environment.get(\"AssetManagement.hospitalDetails.HospitalId\");\r"
+        - "const hospId   = pq.environment.get(\"OLGHospitalDetails.hospitalID\");\r"
         - "const idToken  = pq.globals.get(\"levidToken\");\r"
         - "const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\");\r"
         - "\r"

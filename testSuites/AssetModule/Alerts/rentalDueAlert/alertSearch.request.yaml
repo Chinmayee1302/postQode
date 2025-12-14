@@ -1,0 +1,65 @@
+id: e0a5d1eb-eb4f-4292-8c0a-09bf5e43cc7f
+name: alertSearch
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{OLGHospitalDetails.hospitalID}}/incidents.search
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{OLGHospitalDetails.hospitalID}}'
+      - incidents.search
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"limit\": 100,\r\n    \"offset\": 0,\r\n    \"filter\": {\r\n        \"type\": \"logical\",\r\n        \"operator\": \"and\",\r\n        \"conditions\": [\r\n            {\r\n                \"empty\": false,\r\n                \"type\": \"equals\",\r\n                \"field\": \"data/source/type\",\r\n                \"value\": [\r\n                    \"asset\"\r\n                ]\r\n            },\r\n            {\r\n                \"empty\": false,\r\n                \"type\": \"equals\",\r\n                \"field\": \"data/acknowledged/status\",\r\n                \"value\": [\r\n                    false\r\n                ]\r\n            },\r\n            {\r\n                \"type\": \"exists\",\r\n                \"field\": \"data/description\",\r\n                \"not\": true\r\n            }\r\n        ]\r\n    },\r\n    \"sort\": [\r\n        {\r\n            \"field\": \"created\",\r\n            \"order\": \"desc\"\r\n        }\r\n    ],\r\n    \"nextToken\": null\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "setTimeout(() => {\r"
+        - "  console.log(\"wait for 3 secs\")\r"
+        - '},4000)'
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const res = pq.response.json();\r"
+        - "const assetId = pq.environment.get(\"AssetManagement.asset1.assetlevId\");\r"
+        - "\r"
+        - "pq.test(\"Response has items array\", () => {\r"
+        - "  pq.expect(res.items).to.be.an(\"array\");\r"
+        - "  pq.expect(res.items.length).to.be.greaterThan(0);\r"
+        - "});\r"
+        - "\r"
+        - "const matchingAlerts = res.items.filter(\r"
+        - "  ele => ele?.data?.source?.id === assetId\r"
+        - ");\r"
+        - "\r"
+        - "console.log(\"Matching alerts count:\", matchingAlerts.length);\r"
+        - "\r"
+        - "// 🔁 Poll until alert exists\r"
+        - "if (matchingAlerts.length === 0) {\r"
+        - "  console.log(\"Alert not found\");\r"
+        - "  return;\r"
+        - "}\r"
+        - "\r"
+        - "\r"
+        - "pq.test(\"Rental Due alert exists\", () => {\r"
+        - "  pq.expect(matchingAlerts[0].name).to.include(\"Rental Due\");\r"
+        - "  pq.environment.set(\"OLGHospitalDetails.rentalIncID\",matchingAlerts[0].id)\r"
+        - "});\r"
+        - ''
+type: request

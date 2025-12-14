@@ -1,15 +1,15 @@
-id: 42f2fba6-1097-465a-9dee-bca3fd71daae
+id: f862a6e5-9301-445b-89bb-9703aed8f5f1
 name: startTimer
 request:
   url:
-    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/5QU4XuXrjBjdCfsnRkwcwS/start'
+    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/7dTKgvMG7uA4ZzPtcqNhiw/start'
     host:
       - '{{API_Base_URL}}'
     path:
       - project
       - '{{PROJECT_ID}}'
       - timer
-      - 5QU4XuXrjBjdCfsnRkwcwS
+      - 7dTKgvMG7uA4ZzPtcqNhiw
       - start
   method: PUT
   headers:
