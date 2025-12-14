@@ -1,15 +1,15 @@
 id: 42f2fba6-1097-465a-9dee-bca3fd71daae
-name: startTimer
+name: startMaintenanceTimer
 request:
   url:
-    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/5QU4XuXrjBjdCfsnRkwcwS/start'
+    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/7dTKgvMG7uA4ZzPtcqNhiw/start'
     host:
       - '{{API_Base_URL}}'
     path:
       - project
       - '{{PROJECT_ID}}'
       - timer
-      - 5QU4XuXrjBjdCfsnRkwcwS
+      - 7dTKgvMG7uA4ZzPtcqNhiw
       - start
   method: PUT
   headers:
@@ -49,7 +49,17 @@ request:
     type: bearer
     bearer:
       token: '{{levidToken}}'
-events: []
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "setTimeout(() => {\r"
+        - "  console.log(\"wait for 3 secs\")\r"
+        - "}, 4000)\r"
+        - "for (let i = 0; i < 1000; i++){\r"
+        - "  console.log(i)\r"
+        - '}'
 requestSettings:
   requestTimeout: 800000
   scriptTimeout: 800000

@@ -1,15 +1,15 @@
 id: 2a8a7c69-a761-49dc-8a10-6ecefb6eb45e
-name: stopTimer
+name: stopRentalTimer
 request:
   url:
-    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/7dTKgvMG7uA4ZzPtcqNhiw/stop'
+    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/5QU4XuXrjBjdCfsnRkwcwS/stop'
     host:
       - '{{API_Base_URL}}'
     path:
       - project
       - '{{PROJECT_ID}}'
       - timer
-      - 7dTKgvMG7uA4ZzPtcqNhiw
+      - 5QU4XuXrjBjdCfsnRkwcwS
       - stop
   method: PUT
   headers:
@@ -49,5 +49,15 @@ request:
     type: bearer
     bearer:
       token: '{{levidToken}}'
-events: []
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "setTimeout(() => {\r"
+        - "  console.log(\"wait for 3 secs\")\r"
+        - "}, 4000)\r"
+        - "for (let i = 0; i < 1000; i++){\r"
+        - "  console.log(i)\r"
+        - '}'
 type: request

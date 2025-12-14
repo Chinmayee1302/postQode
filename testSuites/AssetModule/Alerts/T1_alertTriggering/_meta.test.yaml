@@ -1,0 +1,14 @@
+description: ''
+id: d0854838-5ea1-4551-b3ed-65468abfc80b
+name: T1_alertTriggering
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: startRentalTimer.request.yaml
+    type: request
+  - fileReference: stopRentalTimer.request.yaml
+    type: request
+  - fileReference: startMaintenanceTimer.request.yaml
+    type: request
+  - fileReference: stopMaintenanceTimer.request.yaml
+    type: request

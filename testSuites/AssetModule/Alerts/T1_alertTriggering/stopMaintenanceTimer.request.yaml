@@ -1,15 +1,15 @@
 id: 5899c6d2-6362-4bd9-a71d-a8449b1b9905
-name: stopTimer
+name: stopMaintenanceTimer
 request:
   url:
-    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/5QU4XuXrjBjdCfsnRkwcwS/stop'
+    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/7dTKgvMG7uA4ZzPtcqNhiw/stop'
     host:
       - '{{API_Base_URL}}'
     path:
       - project
       - '{{PROJECT_ID}}'
       - timer
-      - 5QU4XuXrjBjdCfsnRkwcwS
+      - 7dTKgvMG7uA4ZzPtcqNhiw
       - stop
   method: PUT
   headers:
@@ -49,5 +49,15 @@ request:
     type: bearer
     bearer:
       token: '{{levidToken}}'
-events: []
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "setTimeout(() => {\r"
+        - "  console.log(\"wait for 3 secs\")\r"
+        - "}, 4000)\r"
+        - "for (let i = 0; i < 1000; i++){\r"
+        - "  console.log(i)\r"
+        - '}'
 type: request

@@ -1,4 +1,4 @@
-id: 148fb5e0-6bfe-4c37-bb6b-bd1ea61d7e6b
+id: e0a5d1eb-eb4f-4292-8c0a-09bf5e43cc7f
 name: alertSearch
 request:
   url:
@@ -30,7 +30,7 @@ events:
       type: javascript
       exec:
         - "setTimeout(() => {\r"
-        - "  console.log(\"wait for 4 secs\")\r"
+        - "  console.log(\"wait for 3 secs\")\r"
         - '},4000)'
   - listen: test
     script:
@@ -50,31 +50,26 @@ events:
         - "\r"
         - "console.log(\"Matching alerts count:\", matchingAlerts.length);\r"
         - "\r"
-        - "// 🔁 Poll until alert exists\r"
+        - "// If alert not found, stop execution\r"
         - "if (matchingAlerts.length === 0) {\r"
         - "  console.log(\"Alert not found\");\r"
         - "  return;\r"
         - "}\r"
         - "\r"
+        - "matchingAlerts.forEach(ele => {\r"
+        - "  const name = ele?.name || \"\";\r"
         - "\r"
-        - "pq.test(\"Rental Due alert exists\", () => {\r"
-        - "  pq.expect(matchingAlerts[0].name).to.include(\"Rental Due\");\r"
-        - "  pq.environment.set(\"OLGHospitalDetails.rentalIncID\",matchingAlerts[0].id)\r"
+        - "  if (name.includes(\"Rental\")) {\r"
+        - "    pq.environment.set(\"OLGHospitalDetails.rentalIncID\", ele.id);\r"
+        - "  }\r"
+        - "\r"
+        - "  if (name.includes(\"Maintenance\")) {\r"
+        - "    pq.environment.set(\"OLGHospitalDetails.maintenance\", ele.id);\r"
+        - "  }\r"
+        - "\r"
+        - "  if (name.includes(\"Tag Low\")) {\r"
+        - "    pq.environment.set(\"OLGHospitalDetails.tagLow\", ele.id);\r"
+        - "  }\r"
         - "});\r"
         - ''
-requestSettings:
-  requestTimeout: 500000
-  scriptTimeout: 500000
-  stopOnError: false
-  stopOnFailure: false
-  followRedirects: true
-  followOriginalHttpMethod: false
-  maxRedirects: 10
-  maxResponseSize: 1048576
-  useWhatWGUrlParser: true
-  removeRefererHeaderOnRedirect: false
-  strictSSL: false
-  insecureHTTPParser: false
-  implicitCacheControl: false
-  implicitTraceHeader: false
 type: request

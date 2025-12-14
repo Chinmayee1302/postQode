@@ -1,0 +1,52 @@
+id: cdd924e5-5e46-43e8-90ee-087c4427cc63
+name: taskeditandComplete
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{OLGHospitalDetails.hospitalID}}/incidents/{{OLGHospitalDetails.maintenance}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{OLGHospitalDetails.hospitalID}}'
+      - incidents
+      - '{{OLGHospitalDetails.maintenance}}'
+  method: PATCH
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY1NzIyNTg0LCJleHAiOjE3NjU4MDg5ODQsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDJSWnVScTE0b1h5MWlwVGdXV3ZQNCJ9.lkcAYUq8qMni5IYrR69yEkwtQ7rObt5_YfQ44jhaMgE
+    - key: Referer
+      value: https://stg-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"data\": [\r\n        {\r\n            \"path\": \"acknowledged/userId\",\r\n            \"value\": \"02RZuRq14oXy1ipTgWWvP4\"\r\n        },\r\n        {\r\n            \"path\": \"acknowledged/username\",\r\n            \"value\": \"jahnavi.b@codecraft.co.in\"\r\n        },\r\n        {\r\n            \"path\": \"acknowledged/status\",\r\n            \"value\": true\r\n        },\r\n        {\r\n            \"path\": \"acknowledged/time\",\r\n            \"value\": {{timestamp}}\r\n        },\r\n        {\r\n            \"path\": \"eventLog/history\",\r\n            \"value\": [\r\n                {\r\n                    \"name\": \"jahnavi.b@codecraft.co.in\",\r\n                    \"value\": \"\",\r\n                    \"status\": \"Task Completed\",\r\n                    \"time\": {{timestamp}}\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - pq.variables.set("timestamp",Date.now())
+type: request

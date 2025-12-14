@@ -1,15 +1,15 @@
 id: f862a6e5-9301-445b-89bb-9703aed8f5f1
-name: startTimer
+name: startRentalTimer
 request:
   url:
-    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/7dTKgvMG7uA4ZzPtcqNhiw/start'
+    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/5QU4XuXrjBjdCfsnRkwcwS/start'
     host:
       - '{{API_Base_URL}}'
     path:
       - project
       - '{{PROJECT_ID}}'
       - timer
-      - 7dTKgvMG7uA4ZzPtcqNhiw
+      - 5QU4XuXrjBjdCfsnRkwcwS
       - start
   method: PUT
   headers:
@@ -49,7 +49,17 @@ request:
     type: bearer
     bearer:
       token: '{{levidToken}}'
-events: []
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "setTimeout(() => {\r"
+        - "  console.log(\"wait for 3 secs\")\r"
+        - "}, 4000)\r"
+        - "for (let i = 0; i < 1000; i++){\r"
+        - "  console.log(i)\r"
+        - '}'
 requestSettings:
   requestTimeout: 800000
   scriptTimeout: 800000

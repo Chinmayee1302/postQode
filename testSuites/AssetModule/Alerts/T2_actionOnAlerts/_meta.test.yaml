@@ -1,0 +1,17 @@
+description: ''
+id: 04f02d37-0f9f-4f65-95a6-70660add0946
+name: T2_actionOnAlerts
+dependencies: []
+type: TESTCASE
+disabled: false
+testSteps:
+  - fileReference: alertSearch.request.yaml
+    type: request
+  - fileReference: Alertacknowledged.request.yaml
+    type: request
+  - fileReference: taskCreation.request.yaml
+    type: request
+  - fileReference: taskeditandComplete.request.yaml
+    type: request
+  - fileReference: clearAlert.request.yaml
+    type: request

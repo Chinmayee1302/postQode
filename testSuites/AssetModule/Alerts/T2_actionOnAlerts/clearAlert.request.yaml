@@ -1,0 +1,29 @@
+id: f994966e-bb77-4642-bb02-40cfa7fe539f
+name: clearAlert
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{OLGHospitalDetails.hospitalID}}/incidents/{{OLGHospitalDetails.tagLow}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{OLGHospitalDetails.hospitalID}}'
+      - incidents
+      - '{{OLGHospitalDetails.tagLow}}'
+  method: DELETE
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: '{"deleteDevice":"force"}'
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request
