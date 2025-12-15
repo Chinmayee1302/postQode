@@ -2,14 +2,14 @@ id: 5899c6d2-6362-4bd9-a71d-a8449b1b9905
 name: stopMaintenanceTimer
 request:
   url:
-    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/7dTKgvMG7uA4ZzPtcqNhiw/stop'
+    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/{{maintenancetimerID}}/stop'
     host:
       - '{{API_Base_URL}}'
     path:
       - project
       - '{{PROJECT_ID}}'
       - timer
-      - 7dTKgvMG7uA4ZzPtcqNhiw
+      - '{{maintenancetimerID}}'
       - stop
   method: PUT
   headers:
