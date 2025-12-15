@@ -1,0 +1,15 @@
+description: ''
+id: a73ebe5d-15ee-4c95-8b16-0a977d08bb17
+name: CrudOnEquipmentAssignment
+disabled: false
+dependencies: []
+type: TESTCASE
+testSuiteId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+parentId: fec8f9c0-0c8f-4391-8c2e-59eeed6b0c3d
+testSteps:
+  - fileReference: createEquipment.request.yaml
+    type: request
+  - fileReference: editEquipment.request.yaml
+    type: request
+  - fileReference: deleteEquipment.request.yaml
+    type: request

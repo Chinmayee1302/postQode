@@ -1,0 +1,25 @@
+id: b09e7f95-4857-4519-9a58-d87c5e3269eb
+name: IEM Test Flow
+description: Test suite for IEM Test Flow
+hooks:
+  - id: 872552f7-232e-4978-bf61-a677de08d3f4
+    name: TestDataCreation
+    description: This block will be used to visit the base URL and authenticate the user.
+    path: ./TestDataCreation
+    type: BEFORE
+  - id: 6d4a352e-78b1-42b0-a926-92e3afe5b2a3
+    name: TestDataCleanup
+    description: Clean up test data after test execution.
+    path: ./TestDataCleanup
+    type: AFTER
+tests:
+  - name: CrudOnEquipmentAssignment
+    path: ./CrudOnEquipmentAssignment
+  - name: CrudOnEquipmentType
+    path: ./CrudOnEquipmentType
+  - name: E2EforEquipmentManagementModule
+    path: ./E2EforEquipmentManagementModule
+runConfigs:
+  - name: equipment-management-dev
+    global: variables/devConfig.variable.yaml
+    environment: variables/Env_Dev_IEM.variable.yaml

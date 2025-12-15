@@ -1,0 +1,57 @@
+id: c3d4e5f6-a7b8-9012-3456-7890abcdef12
+name: Delete_RoomType
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{EquipmentManagement.hospitalDetails.hospitalId}}/srv/prosightBypass/resourceEnum
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - system
+      - '{{SYSTEM_ID}}'
+      - device
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - srv
+      - prosightBypass
+      - resourceEnum
+  method: DELETE
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+          "resEnum": {
+              "name": "roomType",
+              "valueDefault": "at at-default"
+          },
+          "enumValue": "{{EquipmentManagement.roomDetails.roomType}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - console.log(pq.environment.get('roomDetails.roomType'))
+type: request
+disabled: false

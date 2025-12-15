@@ -1,0 +1,36 @@
+id: bfafc787-acd6-4848-9eab-b30b18032673
+name: deleteEquipment
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/equipment/{{EquipmentManagement.editEquipmentDetails.equipmentId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - equipment
+      - '{{EquipmentManagement.editEquipmentDetails.equipmentId}}'
+  method: DELETE
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: '{"deleteDevice":"force"}'
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+type: request

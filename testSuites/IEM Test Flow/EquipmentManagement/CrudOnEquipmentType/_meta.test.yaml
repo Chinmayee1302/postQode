@@ -1,0 +1,15 @@
+description: ''
+id: 80a32d72-f4f5-4bdc-a842-7a5e30d0707d
+name: CrudOnEquipmentType
+disabled: false
+dependencies: []
+type: TESTCASE
+testSuiteId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+parentId: fec8f9c0-0c8f-4391-8c2e-59eeed6b0c3d
+testSteps:
+  - fileReference: createEqpType.request.yaml
+    type: request
+  - fileReference: editEqpType.request.yaml
+    type: request
+  - fileReference: deleteEqpType.request.yaml
+    type: request
