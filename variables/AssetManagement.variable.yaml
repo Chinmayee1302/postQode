@@ -34,7 +34,6 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
-    assetlevId: 7oUioSIgsB042wNVtJB6Fa
   asset2:
     assetName: assetPostQode
     assetId: '2345'
@@ -46,7 +45,6 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
-    assetlevId: 64NT3HguRpCIMshrL6bMHN
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
@@ -69,7 +67,6 @@ AssetManagement:
       type: Asset Tag
       manufacturer: HID
       model: iBeek Mini
-      tagID: 1NXIvb8ylRnkqG69Kx75pi
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -111,13 +108,11 @@ AssetManagement:
         departmentName: assetManagementdepo
         assetType: Bed
         rentedOption: Owned
-        assetlevId: 1w0I0HXdwg8ThKcPc7cNoH
       tagDetails:
         deviceId: ruleTag
         type: Asset Tag
         manufacturer: HID
         model: iBeek Mini
-        tagID: 0DPwbbJd3jVks2oqSshT4a
   propar:
     assetlevid: 3fR1M72qwfSNkNw9MNbHBu
     taglevid: 3UpCcBSQ1oRW166CercrK1
@@ -133,6 +128,6 @@ OLGHospitalDetails:
   hospitalID: 1nHFSsaZpNXyE5dbfA4Wvv
   rentalIncID: 62ABGLPWogj2QL6LXfkBBb
   maintenance: 3ftMkF8Q4jxL5JhooagXy9
-  tagLow: 4Sah0Qk8ukwTkhbc32L8PT
+  tagLow: 43abd4XrYiUofqrG9UG8jV
 rentalDueTimerID: 0vWcQ42iS1fu6PH5gis86t
 deviceId: 1bW8Q1zE0QlKr00scuh95h
