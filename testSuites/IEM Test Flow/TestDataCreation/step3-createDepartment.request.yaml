@@ -1,0 +1,96 @@
+id: 5ab82960-8804-457e-b6ba-62ce37cdf2ee
+name: step3-createDepartment
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/departments
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - departments
+  method: POST
+  headers:
+    - key: Cache-Control
+      value: no-cache
+    - key: Accept
+      value: '*/*'
+    - key: Accept-Encoding
+      value: gzip, deflate
+    - key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "data": [
+          {
+            "path": "name",
+            "value": "{{EquipmentManagement.departmentDetails.departmentName}}"
+          }
+        ],
+        "name": "{{EquipmentManagement.departmentDetails.departmentName}}"
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - const depResponse = pq.response.json();
+        - ''
+        - // Validate department name
+        - pq.test("Department Creation", () => {
+        - '  pq.expect(depResponse.name).to.equal(pq.environment.get(''EquipmentManagement.departmentDetails.departmentName''));'
+        - '});'
+        - ''
+        - // Set department ID
+        - const deptId = depResponse.id;
+        - >-
+          pq.environment.set("EquipmentManagement.departmentDetails.departmentID",
+          deptId);
+        - ''
+        - // Gather required variables
+        - const baseUrl = pq.globals.get('API_Base_URL');
+        - const sysId   = pq.globals.get('SYSTEM_ID');
+        - >-
+          const hospId  =
+          pq.environment.get('EquipmentManagement.hospitalDetails.hospitalId');
+        - >-
+          const bldgId  =
+          pq.environment.get("EquipmentManagement.buildingDetails.buildingId");
+        - const idToken = pq.globals.get("idToken");
+        - ''
+        - ''
+        - // Send department link request
+        - pq.sendRequest({
+        - '  url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/buildings/${bldgId}/departments`,'
+        - '  method: "POST",'
+        - '  headers: {'
+        - '    Authorization: `Bearer ${idToken}`,'
+        - '    "Content-Type": "application/json"'
+        - '  },'
+        - '  body: {'
+        - '    mode: "raw",'
+        - '    raw: JSON.stringify({'
+        - '      id: deptId,'
+        - '      force: true'
+        - '    })'
+        - '  }'
+        - '}, (err, res) => {'
+        - '  if (err || res.code !== 200) {'
+        - '    console.warn("Department linking failed", err || res.text());'
+        - '    return;'
+        - '  }'
+        - '  console.log("Department linked successfully:", res.json());'
+        - '});'
+        - ''
+type: request
+disabled: false

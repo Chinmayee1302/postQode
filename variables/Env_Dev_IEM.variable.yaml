@@ -1,0 +1,84 @@
+EquipmentManagement:
+  hospitalDetails:
+    hospitalName: PostQode123IEM
+    streetAddress: 1214 Coolidge Street
+    city: Birmingham
+    zipCode: '35205'
+    timezone: Eastern Standard Time
+    state: Alabama
+    updatedstreetAddress: 1214 Coolidge Street_Updated
+    hospitalId: 6PBNV9FppoTMJIKPHQR46y
+  buildingDetails:
+    buildingName: EquipmentBuilding
+    streetAddress: Koramangala
+    city: Bengaluru
+    zipCode: '35205'
+    contactName: Parker
+    contactPhoneNumber: '9285963258'
+    contactEmail: parker@mailinator.com
+    timezone: Eastern Standard Time
+    state: Alabama
+    buildingId: 26hhN9TtYpfoc6R1NfE3JR
+  floorDetails:
+    floorName: FirstFloorIEM
+    floorNumber: iem123
+    floorId: 0GzopLNRM2SfdbZisXa6am
+  roomDetails:
+    roomName_1: Equipment Room101
+    roomName_2: Equipment Room102
+    roomNumber_1: EqPRoom 101
+    roomNumber_2: EqpRoom 102
+    roomType: postqodeTypeIEM
+    assetStatus: Available
+    utilizationState: Not Utilized
+    monitorCompliance: 'No'
+    roomId: 2FgBJRZFydPXl1Z7pGE3wH
+  departmentDetails:
+    departmentName: PostQodeDeptIEM
+    departmentBoundaryName: DeptBoundaryIEM
+    departmentID: 2uLAF9G8huq5Fcv83o7bmV
+    departmentBoundaryId: 1Nn4nSHLs3TVOohygxckmS
+  sensorDetails:
+    deviceId: IEMSensor
+    sensorType: Ambient
+    manufacturer: Sonicu
+    model: postSensorModel
+    sensorId: 5XSGO3ieQ6UsAaQty1kXHu
+  equipmentType: EquipmentTypeIEM
+  equipmentDetails:
+    equipment1:
+      name: Test-Equipment-1223
+      id: iem454546
+      isRental: false
+      operatingMax: 10
+      operatingMin: 20
+      buildingName: EquipmentBuilding
+      floorName: First Floor IEM
+      departmentName: PostQodeDeptIEM
+      roomName: Equipment Room101
+      equipmentId: 3X6C36PTUrpScSfUqwzNBC
+    equipment2:
+      name: Test-Equipment-4556
+      id: iem898987
+      isRental: false
+      operatingMax: 20
+      operatingMin: 30
+      buildingName: EquipmentBuilding
+      floorName: FirstFloorIEM
+      departmentName: PostQodeDeptIEM
+      roomName: Equipment Room101
+      equipmentId: 1Z9bVmYJAtgo8XyxGyyoej
+  editEquipmentDetails:
+    name: Test-Equipment-6778
+    id: iem45454689
+    isRental: false
+    operatingMax: 11
+    operatingMin: 22
+    buildingName: EquipmentBuilding
+    floorName: FirstFloorIEM
+    departmentName: PostQodeDeptIEM
+    roomName: Equipment Room101
+    equipmentId: 1Z9bVmYJAtgo8XyxGyyoej
+  equipmentTypeDetails:
+    initialEquipmentType: postQodeIEMType
+    updatedEquipmentType: updatedPostQodeIEMType

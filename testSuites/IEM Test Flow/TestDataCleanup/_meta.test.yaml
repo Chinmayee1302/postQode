@@ -1,0 +1,25 @@
+description: Clean up test data after test execution.
+id: 6d4a352e-78b1-42b0-a926-92e3afe5b2a3
+name: TestDataCleanup
+disabled: false
+dependencies: []
+type: AFTER
+testSuiteId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+parentId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+testSteps:
+  - fileReference: deleteEqpType.request.yaml
+    type: request
+  - fileReference: deleteSensor.request.yaml
+    type: request
+  - fileReference: DeleteDepartmentBoundary.request.yaml
+    type: request
+  - fileReference: DeleteFloor.request.yaml
+    type: request
+  - fileReference: Delete_RoomType.request.yaml
+    type: request
+  - fileReference: DeleteDepartment.request.yaml
+    type: request
+  - fileReference: Delete_Building.request.yaml
+    type: request
+  - fileReference: Delete_Hospital.request.yaml
+    type: request

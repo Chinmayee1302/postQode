@@ -1,0 +1,93 @@
+id: abfa462f-d34c-452d-863a-1eee59b1b282
+name: step6-updateRoomId
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/rooms.search
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - rooms.search
+  method: post
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"macOS"'
+    - key: Referer
+      value: https://dev-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+          "limit": 100,
+          "offset": 0,
+          "filter": {
+              "type": "logical",
+              "operator": "and",
+              "conditions": [
+                  {
+                      "type": "logical",
+                      "operator": "and",
+                      "conditions": [
+                          {
+                              "type": "equals",
+                              "fieldType": "string",
+                              "empty": false,
+                              "field": "data/floor/name",
+                              "value": [
+                                  "{{EquipmentManagement.floorDetails.floorName}}"
+                              ],
+                              "floorId": "{{EquipmentManagement.floorDetails.floorId}}"
+                          }
+                      ]
+                  },
+                  {
+                      "type": "groupedText",
+                      "value": "{{EquipmentManagement.roomDetails.roomName_1}}"
+                  }
+              ]
+          },
+          "sort": [
+              {
+                  "field": "lastModified",
+                  "order": "desc"
+              }
+          ],
+          "nextToken": null
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - let res = pq.response.json();
+        - // const id = response.json().items[0].id
+        - >-
+          pq.environment.set("EquipmentManagement.roomDetails.roomId",
+          res.items[0].id);
+        - >-
+          console.log(pq.environment.get("EquipmentManagement.roomDetails.roomId"))
+      src: ''
+      packages: []
+type: request
+disabled: false

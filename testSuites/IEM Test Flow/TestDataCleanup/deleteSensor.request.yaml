@@ -1,0 +1,38 @@
+id: 5a9a8b1f-3a2c-4b1d-8e4a-5a6b7c8d9e0f
+name: deleteSensor
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/sensors/{{EquipmentManagement.sensorDetails.sensorId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - sensors
+      - '{{EquipmentManagement.sensorDetails.sensorId}}'
+  method: DELETE
+  headers:
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: '{"deleteDevice":"force"}'
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test("Status code is 200", function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+type: request

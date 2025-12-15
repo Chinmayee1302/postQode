@@ -1,0 +1,54 @@
+id: 84720e52-6895-4695-acf6-506590ee0eb6
+name: step8-createEqpType
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{EquipmentManagement.hospitalDetails.hospitalId}}/srv/prosightBypass/resourceEnum
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - system
+      - '{{SYSTEM_ID}}'
+      - device
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - srv
+      - prosightBypass
+      - resourceEnum
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: '{{Authorization}}'
+    - key: Referer
+      value: https://dev-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"resEnum\": {\r\n        \"name\": \"equipmentType\"\r\n    },\r\n    \"value\": {\r\n        \"metadata/icon\": \"eq eq-default\",\r\n        \"name\": \"{{EquipmentManagement.equipmentType}}\"\r\n    }\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+type: request
+disabled: false

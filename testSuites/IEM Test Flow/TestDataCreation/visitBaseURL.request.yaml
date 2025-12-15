@@ -1,0 +1,50 @@
+description: Visit base URL and authenticate
+id: 529acc6c-8c0c-448e-89a0-dea32bbe05a2
+name: visitBaseURL
+request:
+  url:
+    raw: '{{API_Base_URL}}/login'
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - login
+  method: post
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Referer
+      value: https://staging-commercial-cox-health.firebaseapp.com/
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/137.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="137", "Chromium";v="137", "Not/A)Brand";v="24"'
+    - key: Content-Type
+      value: application/json
+    - key: sec-ch-ua-mobile
+      value: '?0'
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"username\": \"{{username}}\",\r\n    \"password\": \"{{password}}\",\r\n    \"projectId\": \"{{PROJECT_ID}}\"\r\n}"
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - let response = pq.response.json();
+        - if (response && response.idToken) {
+        - '    pq.globals.set("idToken", response.idToken.trim());'
+        - '}'
+        - const token = pq.globals.get("idToken");
+        - ''
+        - // Verify it's set
+        - pq.test("Check idToken is set", function () {
+        - '    pq.expect(token).to.not.be.null;'
+        - '});'
+      src: ''
+      packages: []
+type: request

@@ -1,0 +1,69 @@
+id: 08c532e5-12dd-4deb-bed3-e885c181a482
+name: step9-createSensor
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/sensors
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - sensors
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: '{{Authorization}}'
+    - key: Referer
+      value: https://dev-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"networkAliases\": {\r\n        \"cognosos-sensors\": {\r\n            \"deviceId\": \"{{EquipmentManagement.sensorDetails.deviceId}}\"\r\n        }\r\n    },\r\n    \"networkId\": \"cognosos-sensors\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"deviceId\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.deviceId}}\"\r\n        },\r\n        {\r\n            \"path\": \"sensorType\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.sensorType}}\"\r\n        },\r\n        {\r\n            \"path\": \"manufacturer\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.manufacturer}}\"\r\n        },\r\n        {\r\n            \"path\": \"model\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.model}}\"\r\n        }\r\n    ],\r\n    \"name\": \"Sonicu Sensor {{EquipmentManagement.sensorDetails.deviceId}}\"\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - ''
+        - const response = pq.response.json();
+        - >-
+          const sensorDetails =
+          pq.environment.get('EquipmentManagement.sensorDetails')
+        - ''
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
+        - pq.test('Sensor details are correct', function() {
+        - '    pq.expect(response.data.deviceId).to.equal(sensorDetails.deviceId);'
+        - '    pq.expect(response.data.model).to.equal(sensorDetails.model);'
+        - '    pq.expect(response.data.sensorType).to.equal(sensorDetails.sensorType);'
+        - '    pq.expect(response.data.manufacturer).to.equal(sensorDetails.manufacturer);      '
+        - '});'
+        - pq.test('Set sensorId environment variable', function() {
+        - '    const responseData = pq.response.json();'
+        - '    pq.environment.set(''EquipmentManagement.sensorDetails.sensorId'', responseData.id);'
+        - '});'
+type: request
+disabled: false
