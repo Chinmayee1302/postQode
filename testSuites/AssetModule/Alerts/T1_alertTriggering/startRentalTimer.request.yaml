@@ -2,14 +2,14 @@ id: f862a6e5-9301-445b-89bb-9703aed8f5f1
 name: startRentalTimer
 request:
   url:
-    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/5QU4XuXrjBjdCfsnRkwcwS/start'
+    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/{{rentaltimerID}}/start'
     host:
       - '{{API_Base_URL}}'
     path:
       - project
       - '{{PROJECT_ID}}'
       - timer
-      - 5QU4XuXrjBjdCfsnRkwcwS
+      - '{{rentaltimerID}}'
       - start
   method: PUT
   headers:

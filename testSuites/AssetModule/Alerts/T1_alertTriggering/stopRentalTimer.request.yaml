@@ -2,14 +2,14 @@ id: 2a8a7c69-a761-49dc-8a10-6ecefb6eb45e
 name: stopRentalTimer
 request:
   url:
-    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/5QU4XuXrjBjdCfsnRkwcwS/stop'
+    raw: '{{API_Base_URL}}/project/{{PROJECT_ID}}/timer/{{rentaltimerID}}/stop'
     host:
       - '{{API_Base_URL}}'
     path:
       - project
       - '{{PROJECT_ID}}'
       - timer
-      - 5QU4XuXrjBjdCfsnRkwcwS
+      - '{{rentaltimerID}}'
       - stop
   method: PUT
   headers:
