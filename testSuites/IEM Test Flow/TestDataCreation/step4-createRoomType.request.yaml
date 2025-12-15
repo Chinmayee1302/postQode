@@ -1,0 +1,60 @@
+id: a13e4628-f319-4da8-b100-4301e7ece08f
+name: step4-createRoomType
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{EquipmentManagement.hospitalDetails.hospitalId}}/srv/prosightBypass/resourceEnum
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - system
+      - '{{SYSTEM_ID}}'
+      - device
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - srv
+      - prosightBypass
+      - resourceEnum
+  method: POST
+  headers:
+    - key: Cache-Control
+      value: no-cache
+    - key: Accept
+      value: '*/*'
+    - key: Accept-Encoding
+      value: gzip, deflate
+    - key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+          "resEnum": {
+              "name": "roomType"
+          },
+          "value": {
+              "metadata/isCompliant": true,
+              "name": "{{EquipmentManagement.roomDetails.roomType}}",
+              "metadata/shrinkage": "N/A",
+              "metadata/color": "^#C6C6C6",
+              "metadata/defaultColor": "^#C6C6C6",
+              "metadata/status": "{{EquipmentManagement.roomDetails.assetStatus}}",
+              "metadata/utilized": "{{EquipmentManagement.roomDetails.utilizationState}}"
+          }
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test("Status code is 200.", function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
+        - ''
+type: request
+disabled: false

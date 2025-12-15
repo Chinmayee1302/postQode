@@ -1,0 +1,17 @@
+description: End-to-end test for the Equipment Management Module.
+id: 821b785d-e3c9-4931-bd06-45c435f5363d
+name: E2EforEquipmentManagementModule
+disabled: false
+dependencies: []
+type: TESTCASE
+testSuiteId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+parentId: fec8f9c0-0c8f-4391-8c2e-59eeed6b0c3d
+testSteps:
+  - fileReference: createEquipment.request.yaml
+    type: request
+  - fileReference: linkEquipmentWithSensor.request.yaml
+    type: request
+  - fileReference: unlinkEquipmentWIthSensor.request.yaml
+    type: request
+  - fileReference: deleteEquipment.request.yaml
+    type: request

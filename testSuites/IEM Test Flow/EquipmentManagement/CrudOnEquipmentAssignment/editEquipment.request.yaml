@@ -1,0 +1,43 @@
+id: 64c9d6b9-d591-44fa-86f0-ba5be9e74b6f
+name: editEquipment
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/equipment/{{EquipmentManagement.equipmentDetails.equipment2.equipmentId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - equipment
+      - '{{EquipmentManagement.equipmentDetails.equipment2.equipmentId}}'
+  method: PATCH
+  headers:
+    - key: accept
+      value: application/json
+    - key: content-type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"networkAliases\": {\r\n        \"equipment\": {\r\n            \"deviceId\": \"{{SYSTEM_ID}}-{{EquipmentManagement.equipmentDetails.equipment1.id}}\",\r\n            \"name\": \"{{SYSTEM_ID}}-{{EquipmentManagement.equipmentDetails.equipment1.name}}\"\r\n        }\r\n    },\r\n    \"networkId\": \"equipment\",\r\n    \"name\": \"{{EquipmentManagement.editEquipmentDetails.name}}\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"equipmentId\",\r\n            \"value\": \"{{EquipmentManagement.editEquipmentDetails.id}}\"\r\n        },\r\n        {\r\n            \"path\": \"equipmentType\",\r\n            \"value\": \"{{EquipmentManagement.equipmentType}}\"\r\n        },\r\n        {\r\n            \"path\": \"isRental\",\r\n            \"value\": \"{{EquipmentManagement.editEquipmentDetails.isRental}}\"\r\n        },\r\n        {\r\n            \"path\": \"name\",\r\n            \"value\": \"{{EquipmentManagement.editEquipmentDetails.name}}\"\r\n        },\r\n        {\r\n            \"path\": \"range/temperature/operatingMax\",\r\n            \"value\": \"{{EquipmentManagement.editEquipmentDetails.operatingMax}}\"\r\n        },\r\n        {\r\n            \"path\": \"range/temperature/operatingMin\",\r\n            \"value\": \"{{EquipmentManagement.editEquipmentDetails.operatingMin}}\"\r\n        }\r\n    ]\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test('Status code is 200', function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - pq.test("set equipment id", function() {
+        - '  const response = pq.response.json();'
+        - ''
+        - '  pq.environment.set("EquipmentManagement.editEquipmentDetails.equipmentId", response.id);'
+        - '});'
+type: request

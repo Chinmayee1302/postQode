@@ -1,0 +1,39 @@
+id: 1a81b08d-3ea5-4c69-b94c-5fc38ea162b6
+name: deleteEqpType
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{EquipmentManagement.hospitalDetails.hospitalId}}/srv/prosightBypass/resourceEnum
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - system
+      - '{{SYSTEM_ID}}'
+      - device
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - srv
+      - prosightBypass
+      - resourceEnum
+  method: DELETE
+  headers:
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"resEnum\": {\r\n        \"name\": \"equipmentType\",\r\n        \"valueDefault\": \"\"\r\n    },\r\n    \"enumValue\": \"{{EquipmentManagement.equipmentType}}\"\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test("Status code is 200", function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+type: request

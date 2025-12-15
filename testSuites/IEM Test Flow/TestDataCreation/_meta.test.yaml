@@ -1,0 +1,29 @@
+description: This block will be used to visit the base URL and authenticate the user.
+id: 872552f7-232e-4978-bf61-a677de08d3f4
+name: TestDataCreation
+disabled: false
+dependencies: []
+type: BEFORE
+testSuiteId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+parentId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+testSteps:
+  - fileReference: visitBaseURL.request.yaml
+    type: request
+  - fileReference: step1-createFacility.request.yaml
+    type: request
+  - fileReference: step2-createBuilding.request.yaml
+    type: request
+  - fileReference: step3-createDepartment.request.yaml
+    type: request
+  - fileReference: step4-createRoomType.request.yaml
+    type: request
+  - fileReference: step5-createFloorID.request.yaml
+    type: request
+  - fileReference: step6-updateRoomId.request.yaml
+    type: request
+  - fileReference: step7-createDepartmentBoundary.request.yaml
+    type: request
+  - fileReference: step8-createEqpType.request.yaml
+    type: request
+  - fileReference: step9-createSensor.request.yaml
+    type: request
