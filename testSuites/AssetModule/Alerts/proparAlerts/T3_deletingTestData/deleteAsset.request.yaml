@@ -1,9 +1,9 @@
-id: 8a090bc6-7378-4076-b502-8a1a86edd1d1
+id: ea63b7b7-e0c5-497c-8d9f-ede320f1b3a7
 name: deleteAsset
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets/{{AssetManagement.deleteAssetID}}
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets/{{deleteAssetID}}
     host:
       - '{{API_Base_URL}}'
     path:
@@ -12,7 +12,7 @@ request:
       - hospital
       - '{{AssetManagement.hospitalDetails.HospitalId}}'
       - assets
-      - '{{AssetManagement.deleteAssetID}}'
+      - '{{deleteAssetID}}'
   method: DELETE
   headers:
     - key: sec-ch-ua-platform
@@ -57,7 +57,7 @@ events:
         - "const assetId = arr[idx];\r"
         - "\r"
         - "// expose for URL templating\r"
-        - "pq.environment.set(\"AssetManagement.deleteAssetID\", assetId);\r"
+        - "pq.environment.set(\"deleteAssetID\", assetId);\r"
         - "\r"
         - "\r"
         - ''

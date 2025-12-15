@@ -1,0 +1,11 @@
+description: ''
+id: 2d9c2128-d64c-4618-877d-94d038b32d8f
+name: ruleDeletion
+disabled: true
+dependencies: []
+type: AFTER
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 424285b4-a1cc-43a0-a40f-0f2dd0487f24
+testSteps:
+  - fileReference: deleteRuleaftercheck.request.yaml
+    type: request

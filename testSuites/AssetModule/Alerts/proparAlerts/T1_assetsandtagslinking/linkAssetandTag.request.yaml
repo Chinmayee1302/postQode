@@ -1,9 +1,9 @@
-id: 4d053c38-9fee-4625-b786-41719c41c83d
+id: 34c4465d-31d1-465a-8678-61af48b17560
 name: linkAssetandTag
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets/{{AssetManagement.propar.assetlevid}}/tag
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets/{{AssetManagement.asset1.assetlevId}}/tag
     host:
       - '{{API_Base_URL}}'
     path:
@@ -12,7 +12,7 @@ request:
       - hospital
       - '{{AssetManagement.hospitalDetails.HospitalId}}'
       - assets
-      - '{{AssetManagement.propar.assetlevid}}'
+      - '{{AssetManagement.asset1.assetlevId}}'
       - tag
   method: POST
   headers:
@@ -39,7 +39,7 @@ request:
   body:
     mode: raw
     modeOfBody: JSON
-    raw: "{\r\n    \"id\": \"{{AssetManagement.propar.taglevid}}\"\r\n}"
+    raw: "{\r\n    \"id\": \"{{AssetManagement.tagDetails.tag1.tagID}}\"\r\n}"
   auth:
     type: bearer
     bearer:

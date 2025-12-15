@@ -1,0 +1,5 @@
+sno,AssetName,tagnames,assetids,tagids,status
+1,assettest-1,tagDevice-1,asset1,tag1,critical
+2,assettest-2,tagDevice-2,asset2,tag2,under
+3,assettest-3,tagDevice-3,asset3,tag3,ok
+4,assettest-4,tagDevice-4,asset4,tag4,over

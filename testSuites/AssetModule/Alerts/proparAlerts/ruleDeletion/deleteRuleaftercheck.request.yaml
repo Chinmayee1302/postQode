@@ -1,0 +1,37 @@
+id: 047bc1c5-6ffc-41af-a0c6-c96558283acb
+name: deleteRuleaftercheck
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.rsrc/p/rules/p/assets/p/smartRules/p/operations/p/{{AssetManagement.locationDetails.room0}}/p/Bed
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.rsrc'
+      - p
+      - rules
+      - p
+      - assets
+      - p
+      - smartRules
+      - p
+      - operations
+      - p
+      - '{{AssetManagement.locationDetails.room0}}'
+      - p
+      - Bed
+  method: DELETE
+  headers:
+    - key: Accept
+      value: application/json
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request

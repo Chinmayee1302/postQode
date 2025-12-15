@@ -1,4 +1,4 @@
-id: 5d61b7ef-3313-4997-a341-1a0d73349f47
+id: 831fc7bd-53e2-4b26-84ed-9bca67a722d6
 name: AssetCreationAPI
 request:
   url:
@@ -117,7 +117,7 @@ events:
         - "const finalName = `${baseName}${randomInt}`;\r"
         - "pq.variables.set(\"assetName\", finalName);\r"
         - "\r"
-        - "console.log(finalName,\"finalassetName\")\r"
+        - "console.log(finalName)\r"
         - "\r"
         - "const deviceId = pq.iterationData.get(\"tagnames\"); \r"
         - "console.log(deviceId)\r"
@@ -125,8 +125,9 @@ events:
         - "\r"
         - "const finaldeviceId = `${deviceId}${randomInt}`;\r"
         - "\r"
-        - "console.log(finaldeviceId,\"finaltagdevideID\")\r"
-        - "pq.variables.set(\"deviceId\", finaldeviceId);\r"
+        - "console.log(finaldeviceId)\r"
+        - "\r"
+        - "pq.testSuiteVariables.set(\"deviceId\", finaldeviceId);\r"
         - "\r"
         - "\r"
         - "\r"
@@ -142,33 +143,18 @@ events:
         - ''
         - ''
         - ''
-        - pq.environment.set("AssetManagement.propar.assetlevid", response.id)
-        - const key = "propartTestIDs_assetIDs";
+        - pq.environment.set("AssetManagement.asset1.assetlevId", response.id)
         - ''
-        - let rulesData = [];
+        - let rulesData = pq.environment.get("propartTestIDs_assetIDs");
+        - 'rulesData = rulesData ? JSON.parse(rulesData) : [];'
+        - console.log(rulesData.length)
+        - if (rulesData.length >= 4) {
+        - '  rulesData = []'
+        - '  console.log(rulesData.length,"if")'
+        - '} '
+        - '  rulesData.push(response.id);'
+        - '   console.log(rulesData.length,"else")'
+        - '  pq.environment.set("propartTestIDs_assetIDs", JSON.stringify(rulesData));'
         - ''
-        - // read safely
-        - try {
-        - '  rulesData = JSON.parse(pq.environment.get(key) || "[]");'
-        - '} catch {'
-        - '  rulesData = [];'
-        - '}'
-        - ''
-        - // explicit reset has highest priority
-        - const mustReset = pq.environment.get("RESET_ASSET_IDS") === "true";
-        - ''
-        - if (
-        - '  mustReset ||'
-        - '  !Array.isArray(rulesData) ||'
-        - '  rulesData.length >= 4'
-        - ) {
-        - '  rulesData = [];'
-        - '  pq.environment.unset("RESET_ASSET_IDS");'
-        - '}'
-        - ''
-        - rulesData.push(response.id);
-        - pq.environment.set(key, JSON.stringify(rulesData));
-        - ''
-        - console.log("rulesData:", rulesData);
         - ''
 type: request

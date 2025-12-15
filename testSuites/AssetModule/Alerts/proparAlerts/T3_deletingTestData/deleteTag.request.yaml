@@ -1,9 +1,9 @@
-id: 8a090bc6-7378-4076-b502-8a1a86edd1d1
-name: deleteAsset
+id: 14429b8d-4caf-4beb-bc03-2bdcd6b741cd
+name: deleteTag
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/assets/{{AssetManagement.deleteAssetID}}
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/tags/{{deletetagID}}
     host:
       - '{{API_Base_URL}}'
     path:
@@ -11,8 +11,8 @@ request:
       - '{{SYSTEM_ID}}'
       - hospital
       - '{{AssetManagement.hospitalDetails.HospitalId}}'
-      - assets
-      - '{{AssetManagement.deleteAssetID}}'
+      - tags
+      - '{{deletetagID}}'
   method: DELETE
   headers:
     - key: sec-ch-ua-platform
@@ -20,7 +20,7 @@ request:
     - key: Authorization
       value: >-
         Bearer
-        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY0NzM1MzU5LCJleHAiOjE3NjQ4MjE3NTksImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDJSWnVScTE0b1h5MWlwVGdXV3ZQNCJ9.X4uYEzGQGVdgvTe9V1PJkkohiKDmEqKQ0wOT4iVE6YI
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY0NzM2MDE3LCJleHAiOjE3NjQ4MjI0MTcsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDJSWnVScTE0b1h5MWlwVGdXV3ZQNCJ9.vzywpM7MkVdqcXgEO9ydXuOkwk5mVYwrBsj-EEFuvVQ
     - key: Referer
       value: https://stg-cognosos.web.app/
     - key: sec-ch-ua
@@ -49,15 +49,15 @@ events:
       type: javascript
       exec:
         - "// Safe pick from env array using index column\r"
-        - "const raw = pq.environment.get(\"propartTestIDs_assetIDs\");\r"
+        - "const raw = pq.environment.get(\"propartTestIDs_tagIDs\");\r"
         - "const arr = raw ? JSON.parse(raw) : [];\r"
-        - "\r"
+        - "console.log(arr)\r"
         - "const idxRaw = pq.iterationData.get(\"index\");\r"
         - "const idx = (idxRaw === undefined || idxRaw === null) ? NaN : Number(String(idxRaw).trim());\r"
         - "const assetId = arr[idx];\r"
-        - "\r"
+        - "console.log(assetId)\r"
         - "// expose for URL templating\r"
-        - "pq.environment.set(\"AssetManagement.deleteAssetID\", assetId);\r"
+        - "pq.environment.set(\"deletetagID\", assetId);\r"
         - "\r"
         - "\r"
         - ''

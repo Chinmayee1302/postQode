@@ -1,4 +1,4 @@
-id: 21ceea18-e807-43c2-85ee-c0db79743147
+id: e0556d1b-53da-4491-99b8-f6cc9eea6d1c
 name: tagCreationAPI
 request:
   url:
@@ -32,7 +32,7 @@ events:
         - "// const sysId    = pq.globals.get(\"SYSTEM_ID\");\r"
         - "// const hospId   = pq.environment.get(\"AssetManagement.hospitalDetails.HospitalId\");\r"
         - "// const idToken  = pq.globals.get(\"idToken\");\r"
-        - "// const hsptlBluePrint = pq.globals.get(\"hsptlBluePrrandomInt intID\");\r"
+        - "// const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\");\r"
         - "\r"
         - "// const tagids = [];\r"
         - "// let url=`${baseUrl}/interface/${sysId}/hospital/${hospId}/tags.search`\r"
@@ -103,14 +103,7 @@ events:
         - "\r"
         - "// });\r"
         - "\r"
-        - "const deviceId = pq.iterationData.get(\"tagnames\"); \r"
-        - "console.log(deviceId)\r"
-        - "\r"
-        - "const randomInt = Math.floor(Math.random() * 900) + 100;\r"
-        - "const finaldeviceId = `${deviceId}${randomInt}`;\r"
-        - "\r"
-        - "console.log(finaldeviceId,\"finaltagdevideID\")\r"
-        - "pq.variables.set(\"deviceId\", finaldeviceId);\r"
+        - "console.log(pq.testSuiteVariables.get(\"deviceId\"))\r"
         - "\r"
         - ''
   - listen: test
@@ -121,33 +114,24 @@ events:
         - >-
           pq.test("Status code is 200", function () {
           pq.response.to.have.status(200); });
-        - pq.environment.set("AssetManagement.propar.taglevid", response.id);
-        - const key = "propartTestIDs_tagIDs";
-        - ''
-        - let rulesData = [];
-        - ''
-        - // read safely
-        - try {
-        - '  rulesData = JSON.parse(pq.environment.get(key) || "[]");'
-        - '} catch {'
-        - '  rulesData = [];'
+        - >-
+          pq.environment.set("AssetManagement.tagDetails.tag1.tagID",
+          response.id);
+        - if (!pq.response.ok) {
+        - '    console.log(pq.request.url);'
         - '}'
         - ''
-        - // explicit reset has highest priority
-        - const mustReset = pq.environment.get("RESET_ASSET_IDS") === "true";
+        - let rulesData = pq.environment.get("propartTestIDs_tagIDs");
+        - 'rulesData = rulesData ? JSON.parse(rulesData) : [];'
+        - if (rulesData.length >= 4) {
+        - '    rulesData=[]'
+        - '} '
+        - '    rulesData.push(response.id);'
         - ''
-        - if (
-        - '  mustReset ||'
-        - '  !Array.isArray(rulesData) ||'
-        - '  rulesData.length >= 4'
-        - ) {
-        - '  rulesData = [];'
-        - '  pq.environment.unset("RESET_ASSET_IDS");'
-        - '}'
+        - >-
+          pq.environment.set("propartTestIDs_tagIDs",
+          JSON.stringify(rulesData));
         - ''
-        - rulesData.push(response.id);
-        - pq.environment.set(key, JSON.stringify(rulesData));
         - ''
-        - console.log("rulesData:", rulesData);
         - ''
 type: request

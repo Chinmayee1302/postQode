@@ -1,0 +1,11 @@
+description: ''
+id: be23c933-f82a-4eff-a7e3-34ac9f7e3aec
+name: ruleCreation
+disabled: true
+dependencies: []
+type: BEFORE
+testSuiteId: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+parentId: 424285b4-a1cc-43a0-a40f-0f2dd0487f24
+testSteps:
+  - fileReference: createRuletocheckstatus.request.yaml
+    type: request

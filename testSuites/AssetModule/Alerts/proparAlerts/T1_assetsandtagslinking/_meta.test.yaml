@@ -1,0 +1,15 @@
+description: ''
+id: 33a5c00b-6153-47a8-80b4-ae75284fd3ed
+name: T1_assetsandtagslinking
+disabled: true
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: AssetCreationAPI.request.yaml
+    type: request
+  - fileReference: tagCreationAPI.request.yaml
+    type: request
+  - fileReference: linkAssetandTag.request.yaml
+    type: request
+  - fileReference: statusCheckinPAR.request.yaml
+    type: request

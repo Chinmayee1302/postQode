@@ -3,7 +3,7 @@ name: deleteTag
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/tags/{{deletetagID}}
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/tags/{{AssetManagement.deletetagID}}
     host:
       - '{{API_Base_URL}}'
     path:
@@ -12,7 +12,7 @@ request:
       - hospital
       - '{{AssetManagement.hospitalDetails.HospitalId}}'
       - tags
-      - '{{deletetagID}}'
+      - '{{AssetManagement.deletetagID}}'
   method: DELETE
   headers:
     - key: sec-ch-ua-platform
@@ -57,7 +57,7 @@ events:
         - "const assetId = arr[idx];\r"
         - "console.log(assetId)\r"
         - "// expose for URL templating\r"
-        - "pq.environment.set(\"deletetagID\", assetId);\r"
+        - "pq.environment.set(\"AssetManagement.deletetagID\", assetId);\r"
         - "\r"
         - "\r"
         - ''

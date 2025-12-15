@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 4u09VyeZLUghYv7Wxovzeu
+    HospitalId: 11oyfbKzVO8IG0Y7XZzhIr
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,7 +18,7 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 4gG92JGJGd5ddJlpJc2GVY
+    BuildingId: 1sdjAxIWFznKt4nJ02pIYd
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
@@ -34,7 +34,7 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
-    assetlevId: 49BhlcNZhNcz1Vxaj47PW8
+    assetlevId: 7oUioSIgsB042wNVtJB6Fa
   asset2:
     assetName: assetPostQode
     assetId: '2345'
@@ -46,30 +46,30 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
-    assetlevId: 4vMwqorzV0icnZZBub3J1P
+    assetlevId: 64NT3HguRpCIMshrL6bMHN
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 20J8hORhfznfPuICkLcDrR
-    room1: 6r9OF1IcRCajhtIF6Wkbkc
+    room0: 4mCYBDRk6kMypGkZyRBWAm
+    room1: 7vBbEKcudB2O3y6XbHbJ2m
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 0p3oZfQ41Cmgzj0wwbZXkk
+    floorId: 1Klrs4AExTHFjlO7pDLLOE
   roomDetails:
     roomTypeName: assetManagementroom
     status: Available
     utilizationState: Not Utilized
     monitorCompliance: 'No'
-  roomId: 20J8hORhfznfPuICkLcDrR
+  roomId: 4mCYBDRk6kMypGkZyRBWAm
   tagDetails:
     tag1:
       deviceId: assetMngmemntTag
       type: Asset Tag
       manufacturer: HID
       model: iBeek Mini
-      tagID: 1JyNri1MKriWUaluFCBsiG
+      tagID: 1NXIvb8ylRnkqG69Kx75pi
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -88,8 +88,8 @@ AssetManagement:
     maintenanceDay: Monthly
     rentedOption: Owned
     departmentID: 104OFYLyLkMZeXYk3N9Mka
-  departmentID: 6Uqp2QMtTNPrpPUT4rrTP4
-  departmentBoundaryId: 7bWOGEBgCzfma7Q2JlQNV0
+  departmentID: 1I2upnzv1ZvwcD3BBASqYR
+  departmentBoundaryId: 3KiVGQ0pWmZM3akvbOEfBy
   assetTypeDetails:
     assetTypeName: postqodeAssetType
     editedAssetTypeName: editedPostqodeAssetType
@@ -111,25 +111,28 @@ AssetManagement:
         departmentName: assetManagementdepo
         assetType: Bed
         rentedOption: Owned
-        assetlevId: 6IM2lAOoKqehGYYicEgJnz
+        assetlevId: 1w0I0HXdwg8ThKcPc7cNoH
       tagDetails:
         deviceId: ruleTag
         type: Asset Tag
         manufacturer: HID
         model: iBeek Mini
-        tagID: 7urGMX7VIQx9ATMSca0ejk
+        tagID: 0DPwbbJd3jVks2oqSshT4a
+  propar:
+    assetlevid: 3fR1M72qwfSNkNw9MNbHBu
+    taglevid: 3UpCcBSQ1oRW166CercrK1
+  deleteAssetID: 3fR1M72qwfSNkNw9MNbHBu
+  deletetagID: 3UpCcBSQ1oRW166CercrK1
 propartTestIDs_assetIDs: >-
-  ["4cf7YKTFnXcMjUB9LjpBVB","1tcplPNrTool1hULsgwZ5W","6DornPT59u17BoOtf2V606","49BhlcNZhNcz1Vxaj47PW8"]
+  ["7pe3nXuTtDQ0dOrEEelPX4","798AMCdGvwHN9BEkkqGzb8","0C38qLNK9scTUBQ43fLzQ0","3fR1M72qwfSNkNw9MNbHBu"]
 propartTestIDs_tagIDs: >-
-  ["0RwTw5FAHoIVeWAeZV9w54","5r3dDcosJ5KRhiSHOpL0CH","4RuksUFyd2n2IKQDTq8USK","1JyNri1MKriWUaluFCBsiG"]
-deleteAssetID: 49BhlcNZhNcz1Vxaj47PW8
-deletetagID: 1JyNri1MKriWUaluFCBsiG
-deviceId: 0iOCoWPYR1KPX3dQsioN3V
-hardwareExternalId: null
+  ["0XZG905uNKoRY4Y5OtYZzM","2TybHw8qYIDePUhoaNA0lO","5GLJPlJpAqWkp31XXWdHFL","3UpCcBSQ1oRW166CercrK1"]
+hardwareExternalId: TESTINGTAG ONE
 OLGHospitalDetails:
   hospitalName: Oschner Lafayette General1
   hospitalID: 1nHFSsaZpNXyE5dbfA4Wvv
-  rentalIncID: 56ZmNezYFTUBcFKkWOfqHd
-  maintenance: 0ROMb5BPFb8PB2b3C00BTw
-  tagLow: 50yJjbvHsdEALKP03LXbpH
+  rentalIncID: 62ABGLPWogj2QL6LXfkBBb
+  maintenance: 3ftMkF8Q4jxL5JhooagXy9
+  tagLow: 4Sah0Qk8ukwTkhbc32L8PT
 rentalDueTimerID: 0vWcQ42iS1fu6PH5gis86t
+deviceId: 1bW8Q1zE0QlKr00scuh95h
