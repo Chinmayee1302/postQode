@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 7A31KHxfFSvNowPj2Ibcpv
+    HospitalId: 33EpjVYGzxV8oXQQj5iEaD
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,7 +18,7 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 7cANYOxhr8s39SXNLNhFGK
+    BuildingId: 76aKYvsUnhR6c6XVyJhBHv
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
@@ -34,7 +34,7 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
-    assetlevId: 2E1yAiVN0BTVfY4XxPtT61
+    assetlevId: 4whxEzyUkAFA06ve010iMA
   asset2:
     assetName: assetPostQode
     assetId: '2345'
@@ -46,30 +46,30 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
-    assetlevId: 3ZrH7z9fzjF8vbnyAuSOvV
+    assetlevId: 1ZFJ72TEzL6mYcpn2xDt24
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 0gkNzFa0Ky5YDx23DyxP2O
-    room1: 4hWRUJ9x3BeebAcU0iSt5f
+    room0: 3UOKocCBeX8YqgI7mdd8wX
+    room1: 2LY4hu5ZGLHo3hksscKrx7
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 12ny1FsBenVgDxla9i4Pnl
+    floorId: 1X95s6JmT93YCyEo4Yye4B
   roomDetails:
     roomTypeName: assetManagementroom
     status: Available
     utilizationState: Not Utilized
     monitorCompliance: 'No'
-  roomId: 0gkNzFa0Ky5YDx23DyxP2O
+  roomId: 3UOKocCBeX8YqgI7mdd8wX
   tagDetails:
     tag1:
       deviceId: assetMngmemntTag
       type: Asset Tag
       manufacturer: HID
       model: iBeek Mini
-      tagID: 0Yj40svVZjm1Lpm4NNVYzz
+      tagID: 7CLAQ1uCklKjKZdusQIaOS
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -87,8 +87,6 @@ AssetManagement:
     modelNum: HL977
     maintenanceDay: Monthly
     rentedOption: Owned
-  departmentID: 7DIiXcAnTFiKW7sOAZTjfl
-  departmentBoundaryId: 46jP3KHFDL9wCS9I4IEPDA
   assetTypeDetails:
     assetTypeName: postqodeAssetType
     editedAssetTypeName: editedPostqodeAssetType
@@ -110,29 +108,31 @@ AssetManagement:
         departmentName: assetManagementdepo
         assetType: Bed
         rentedOption: Owned
-        assetlevId: 3LqFgxpTeFXEb4lt1ae1HJ
+        assetlevId: 4wWPYO8V0X76S1Cm4mk6Sl
       tagDetails:
         deviceId: ruleTag
         type: Asset Tag
         manufacturer: HID
         model: iBeek Mini
-        tagID: 0L9SW21oitiFrVyzfh6FgQ
+        tagID: 3dGJ6I0ZKGtXeSkf5mafeK
   propar:
-    assetlevid: 6Tiyx93M5UftpkXmBrsYll
-    taglevid: 5NLN3Iq49uypbK04TdZFKc
-  deleteAssetID: 6Tiyx93M5UftpkXmBrsYll
-  deletetagID: 5NLN3Iq49uypbK04TdZFKc
+    assetlevid: 6S9ye3RENXDhpgVqOzKvbt
+    taglevid: 69FoLIoux74VtsFyTRVPTF
+  deleteAssetID: 6S9ye3RENXDhpgVqOzKvbt
+  deletetagID: 69FoLIoux74VtsFyTRVPTF
+  departmentID: 1c0A3zZQzUEPlOoNNUl3Ca
+  departmentBoundaryId: 08NwKiQRXnhPsUytPHh4WX
 propartTestIDs_assetIDs: >-
-  ["0gOB97sFXaIvbdyqU19YAS","56qqjSAUsVhwdknKXIkRGD","7a9NEUh556U6N4c4T9fhEX","6Tiyx93M5UftpkXmBrsYll"]
+  ["2BOb7CiHlVI2lgyhh25YU2","2g90OjEFnGSj6s7LLRyabw","3InYny331WnUsdClAddeiE","6S9ye3RENXDhpgVqOzKvbt"]
 propartTestIDs_tagIDs: >-
-  ["6HvKpLLhsQcejEPnvBTUzO","1aPXYqJdYf9tucQiLPjvs9","5xtdNw9NzUT0oybA12vjFi","5NLN3Iq49uypbK04TdZFKc"]
+  ["3W8lMQGDi7wl6las0sTIqj","1N31fxnGBlrS1LgRdRulRu","3TcCu2nj1ARYxoRcygoMHX","69FoLIoux74VtsFyTRVPTF"]
 hardwareExternalId: TESTINGTAG ONE
 rentalDueTimerID: 0vWcQ42iS1fu6PH5gis86t
 deviceId: 1bW8Q1zE0QlKr00scuh95h
-onetimeReportId: 24d57d03-c80d-4a2f-a78a-f6262384f6ff
-scheduledReportId: 137b879b-b701-4cbf-9910-b5f895f375a1
-recurringReportID: 9a7bb576-180f-47d7-9964-ec4b63873f73
+onetimeReportId: cd4ac012-2622-4da7-9d1e-12ea7d0d9293
+scheduledReportId: c2bffed9-0e1a-4418-a35c-4afe9fe3c67c
+recurringReportID: c3745757-ff28-4fa5-84eb-7aeda0a3bfc9
 OLGHospitalDetails:
-  maintenance: 4228tr8COZngB0MfEYQNHF
-  rentalIncID: 4gMjFPTh90Xp2d3CROdcsK
-  tagLow: 0MfGB7f25zNeptl6yTzhXL
+  maintenance: 5JSEgMCt6sMTG6fvDYUteW
+  rentalIncID: 4qtpDQFL10mZ3HGssG7OjS
+  tagLow: 7iAD3DpxSsewB9IHsayi4M
