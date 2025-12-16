@@ -26,7 +26,7 @@ jobs:
       run: |+
         mkdir -p test-results/dev
         postqode execute \
-          -s testSuites/AssetModule/_meta.suite.yaml \
+          -s testSuites/IAP Test Flow/_meta.suite.yaml \
           -c Dev_Config \
           --report-formats junit html \
           --report-dir ./test-results/dev
