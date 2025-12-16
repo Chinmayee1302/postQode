@@ -1,0 +1,58 @@
+id: 94ca7669-2fea-4379-b94c-6e8e6ad451d7
+name: reportCreation
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.srv/prosightAnalytics/scheduledReports
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.srv'
+      - prosightAnalytics
+      - scheduledReports
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY1ODY1NDc2LCJleHAiOjE3NjU5NTE4NzYsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDJSWnVScTE0b1h5MWlwVGdXV3ZQNCJ9.Q6Ra6ChQxTnwoWDDge9i_8gOurTTsBeahsls1s7JswI
+    - key: Referer
+      value: https://stg-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"form\": {\r\n        \"basicInformation\": {\r\n            \"type\": \"assets.smartReports.utilization\",\r\n            \"name\": \"frompostman\",\r\n            \"schedule\": \"oneTime\",\r\n            \"disabled\": false\r\n        },\r\n        \"filters\": {\r\n            \"application\": \"assets\",\r\n            \"dateRange\": \"last7Days\",\r\n            \"department\": [\r\n                \"{{AssetManagement.departmentID}}\"\r\n            ],\r\n            \"itemType\": [\r\n                \"Balloon Pump\",\r\n                \"Drug Box\"\r\n            ],\r\n            \"itemTypeList\": [\r\n                {\r\n                    \"name\": \"Balloon Pump\",\r\n                    \"value\": \"Balloon Pump\",\r\n                    \"icon\": \"at at-balloonPump\"\r\n                },\r\n                {\r\n                    \"name\": \"Drug Box\",\r\n                    \"value\": \"Drug Box\",\r\n                    \"icon\": \"at at-drugBox\"\r\n                }\r\n            ],\r\n            \"showCalendar\": true,\r\n            \"itemName\": null,\r\n            \"itemNamesList\": [],\r\n            \"dateRangeType\": \"RANGE_TYPES_BACKWARD\",\r\n            \"departmentLabel\": \"Assigned Owner\"\r\n        },\r\n        \"delivery\": {\r\n            \"application\": \"assets\",\r\n            \"sendWhen\": \"now\",\r\n            \"sendReportOn\": null,\r\n            \"sendReportAt\": null,\r\n            \"sendReportStartingOn\": null,\r\n            \"sendReportStartingAt\": null,\r\n            \"sendReportEndingOn\": null,\r\n            \"sendReportFrequency\": null,\r\n            \"sendReportEndingOnMax\": null,\r\n            \"dateTimeSelectMin\": null,\r\n            \"enableSendReportEndingOn\": false,\r\n            \"disabled\": false,\r\n            \"type\": \"assets.smartReports.inventory\"\r\n        },\r\n        \"data/itemType\": null,\r\n        \"data/itemName\": null,\r\n        \"recipients\": [\r\n            \"jahnavi.b@coderaft.co.in\"\r\n        ]\r\n    },\r\n    \"config\": {\r\n        \"title\": \"Asset Utilization Report\",\r\n        \"type\": \"assets.smartReports.utilization\",\r\n        \"dataType\": \"powerBI\",\r\n        \"interface\": [\r\n            {\r\n                \"path\": [\r\n                    [\r\n                        \"interface\",\r\n                        \"{systemId}\",\r\n                        \"hospital\"\r\n                    ],\r\n                    [\r\n                        \"obj\",\r\n                        \"{hospitalId}\"\r\n                    ],\r\n                    [\r\n                        \"srv\",\r\n                        \"prosightAnalytics\"\r\n                    ],\r\n                    [\r\n                        \"get\",\r\n                        \"embed/{type}\"\r\n                    ]\r\n                ]\r\n            }\r\n        ],\r\n        \"form\": {\r\n            \"defaults\": {\r\n                \"basicInformation\": {\r\n                    \"type\": \"assets.smartReports.utilization\",\r\n                    \"schedule\": \"oneTime\"\r\n                },\r\n                \"filters\": {\r\n                    \"dateRange\": \"last7Days\"\r\n                }\r\n            },\r\n            \"useDateRangeDirection\": \"backward\",\r\n            \"useItemTypeFilter\": true\r\n        }\r\n    },\r\n    \"context\": {\r\n        \"systemId\": \"{{SYSTEM_ID}}\",\r\n        \"hospitalId\": \"{{AssetManagement.hospitalDetails.HospitalId}}\",\r\n        \"type\": \"assets.smartReports.utilization\",\r\n        \"filters\": {\r\n            \"hospitalId\": \"{{AssetManagement.hospitalDetails.HospitalId}}\",\r\n            \"buildingIds\": [\r\n                \"{{AssetManagement.buildingDetails.BuildingId}}\"\r\n            ],\r\n            \"departmentIds\": [],\r\n            \"itemTypeValues\": [],\r\n            \"itemNameValues\": [],\r\n            \"dateRange\": \"last7Days\"\r\n        },\r\n        \"offset\": 0,\r\n        \"limit\": 9999\r\n    },\r\n    \"updatedBy\": \"jahnavi.b@codecraft.co.in\",\r\n    \"createdBy\": \"jahnavi.b@codecraft.co.in\",\r\n    \"updatedAt\": {{curtimestamp}},\r\n    \"createdAt\": {{curtimestamp}}\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - pq.variables.set("curtimestamp",Date.now())
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const response=pq.response.json()\r"
+        - pq.environment.set("onetimeReportId",response.id)
+type: request

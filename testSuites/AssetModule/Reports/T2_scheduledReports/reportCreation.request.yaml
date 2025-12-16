@@ -1,0 +1,41 @@
+id: 7ef4f4a7-ceb8-44c3-945a-f4ef88510e97
+name: reportCreation
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.srv/prosightAnalytics/scheduledReports
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.srv'
+      - prosightAnalytics
+      - scheduledReports
+  method: POST
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"form\": {\r\n        \"basicInformation\": {\r\n            \"type\": \"assets.smartReports.shrinkage\",\r\n            \"name\": \"scheduledfrompostqode\",\r\n            \"schedule\": \"oneTime\",\r\n            \"disabled\": false\r\n        },\r\n        \"filters\": {\r\n            \"application\": \"assets\",\r\n            \"dateRange\": \"last7Days\",\r\n            \"department\": [\r\n                \"{{AssetManagement.departmentID}}\"\r\n            ],\r\n            \"itemType\": [\r\n                \"Bed\"\r\n            ],\r\n            \"itemTypeList\": [\r\n                {\r\n                    \"name\": \"Bed\",\r\n                    \"value\": \"Bed\",\r\n                    \"icon\": \"at at-bed\"\r\n                }\r\n            ],\r\n            \"showCalendar\": true,\r\n            \"itemName\": null,\r\n            \"itemNamesList\": [],\r\n            \"dateRangeType\": \"RANGE_TYPES_BACKWARD\",\r\n            \"departmentLabel\": \"Assigned Owner\"\r\n        },\r\n        \"delivery\": {\r\n            \"application\": \"assets\",\r\n            \"sendWhen\": \"later\",\r\n            \"sendReportOn\": \"{{timestamp}}\",\r\n            \"sendReportAt\": \"{{timestamp}}\",\r\n            \"sendReportStartingOn\": null,\r\n            \"sendReportStartingAt\": null,\r\n            \"sendReportEndingOn\": null,\r\n            \"sendReportFrequency\": null,\r\n            \"sendReportEndingOnMax\": null,\r\n            \"dateTimeSelectMin\": null,\r\n            \"enableSendReportEndingOn\": false,\r\n            \"disabled\": false,\r\n            \"type\": \"assets.smartReports.shrinkage\"\r\n        },\r\n        \"data/itemType\": null,\r\n        \"data/itemName\": null,\r\n        \"recipients\": [\r\n            \"jahnavi.b@codecraft.co.in\"\r\n        ]\r\n    },\r\n    \"config\": {\r\n        \"title\": \"Missing Report\",\r\n        \"type\": \"assets.smartReports.shrinkage\",\r\n        \"dataType\": \"powerBI\",\r\n        \"interface\": [\r\n            {\r\n                \"path\": [\r\n                    [\r\n                        \"interface\",\r\n                        \"{systemId}\",\r\n                        \"hospital\"\r\n                    ],\r\n                    [\r\n                        \"obj\",\r\n                        \"{hospitalId}\"\r\n                    ],\r\n                    [\r\n                        \"srv\",\r\n                        \"prosightAnalytics\"\r\n                    ],\r\n                    [\r\n                        \"get\",\r\n                        \"embed/{type}\"\r\n                    ]\r\n                ]\r\n            }\r\n        ],\r\n        \"form\": {\r\n            \"defaults\": {\r\n                \"basicInformation\": {\r\n                    \"type\": \"assets.smartReports.shrinkage\",\r\n                    \"schedule\": \"oneTime\"\r\n                },\r\n                \"filters\": {\r\n                    \"dateRange\": \"last7Days\"\r\n                }\r\n            },\r\n            \"useDateRangeDirection\": \"backward\",\r\n            \"useItemTypeFilter\": true\r\n        }\r\n    },\r\n    \"context\": {\r\n        \"systemId\": \"23fqm29hl188zLLfhodrp9\",\r\n        \"hospitalId\": \"5pareFln4Y1VNlYRH32K4h\",\r\n        \"type\": \"assets.smartReports.shrinkage\",\r\n        \"filters\": {\r\n            \"hospitalId\": \"5pareFln4Y1VNlYRH32K4h\",\r\n            \"buildingIds\": [\r\n                \"6n3Nc10sA3qNxkL27KnCKC\"\r\n            ],\r\n            \"departmentIds\": [],\r\n            \"itemTypeValues\": [],\r\n            \"itemNameValues\": [],\r\n            \"dateRange\": \"last7Days\"\r\n        },\r\n        \"offset\": 0,\r\n        \"limit\": 9999\r\n    },\r\n    \"updatedBy\": \"jahnavi.b@codecraft.co.in\",\r\n    \"createdBy\": \"jahnavi.b@codecraft.co.in\",\r\n    \"updatedAt\": {{curtimestamp}},\r\n    \"createdAt\": {{curtimestamp}}\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "pq.variables.set(\"timestamp\", new Date().toISOString())\r"
+        - pq.variables.set("curtimestamp",Date.now())
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const response=pq.response.json()\r"
+        - pq.environment.set("scheduledReportId",response.id)
+type: request

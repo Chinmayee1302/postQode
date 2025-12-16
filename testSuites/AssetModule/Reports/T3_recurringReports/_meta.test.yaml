@@ -1,0 +1,16 @@
+description: ''
+id: 4fb5684d-0b54-4bdc-9468-db57f3d61773
+name: T3_recurringReports
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: AssetCreationAPI.request.yaml
+    type: request
+  - fileReference: reportCreationRecurring.request.yaml
+    type: request
+  - fileReference: editReport.request.yaml
+    type: request
+  - fileReference: deleteReport.request.yaml
+    type: request
+  - fileReference: deleteAsset.request.yaml
+    type: request

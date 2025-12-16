@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 1hRgkyfzFshOePXbKIuyJw
+    HospitalId: 5pareFln4Y1VNlYRH32K4h
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,7 +18,7 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 07URY4cGzsABQ2We0QsU1z
+    BuildingId: 6n3Nc10sA3qNxkL27KnCKC
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
@@ -46,23 +46,23 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
-    assetlevId: 3xBauUCyTIgWOOneJo6T19
+    assetlevId: 3eODO6bbOYdooBGRgUyhcO
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 70Ypb3VU3lgugA1OLuxXde
-    room1: 1KPU4zbhuJYpas4iWhmcVj
+    room0: 6RgWe2vqIEQ3xbmHXPcvFi
+    room1: 6FyiLeksAZ4KENgPeJLtNU
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 7EXXN3wLMJsNTycR0gaq8y
+    floorId: 3XEfFEt34qxcqfqHuIQPZE
   roomDetails:
     roomTypeName: assetManagementroom
     status: Available
     utilizationState: Not Utilized
     monitorCompliance: 'No'
-  roomId: 70Ypb3VU3lgugA1OLuxXde
+  roomId: 6RgWe2vqIEQ3xbmHXPcvFi
   tagDetails:
     tag1:
       deviceId: assetMngmemntTag
@@ -87,9 +87,8 @@ AssetManagement:
     modelNum: HL977
     maintenanceDay: Monthly
     rentedOption: Owned
-    departmentID: 104OFYLyLkMZeXYk3N9Mka
-  departmentID: 1lh8mjA6UxX4aExWj5jqBe
-  departmentBoundaryId: 5mE5M0CZnQmXdCJTUkdbHi
+  departmentID: 39uNC0IHBrIwH4u77EX1X6
+  departmentBoundaryId: 7AYQxitpLsUGvoCvsp8YUV
   assetTypeDetails:
     assetTypeName: postqodeAssetType
     editedAssetTypeName: editedPostqodeAssetType
@@ -130,3 +129,6 @@ propartTestIDs_tagIDs: >-
 hardwareExternalId: TESTINGTAG ONE
 rentalDueTimerID: 0vWcQ42iS1fu6PH5gis86t
 deviceId: 1bW8Q1zE0QlKr00scuh95h
+onetimeReportId: 37434a84-ef8a-453a-8fde-95e0478865d9
+scheduledReportId: b2532cc7-9fc3-410c-9ec9-1fc034518e70
+recurringReportID: fbfc3bda-8c99-48a3-9e22-884fd6bdc830

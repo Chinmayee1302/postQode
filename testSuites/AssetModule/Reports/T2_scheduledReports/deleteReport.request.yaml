@@ -1,0 +1,44 @@
+id: 0580fdef-f9f1-4914-972a-0a3d26d159c3
+name: deleteReport
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}.srv/prosightAnalytics/scheduledReports/{{scheduledReportId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}.srv'
+      - prosightAnalytics
+      - scheduledReports
+      - '{{scheduledReportId}}'
+  method: DELETE
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY1ODY5MTI2LCJleHAiOjE3NjU5NTU1MjYsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMDJSWnVScTE0b1h5MWlwVGdXV3ZQNCJ9.L7wD3KPO22-wNBFhxxKU-FRS4wPTOY51W6ezDC4YvL4
+    - key: Referer
+      value: https://stg-cognosos.web.app/
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request

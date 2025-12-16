@@ -1,0 +1,10 @@
+description: ''
+id: 783ab513-ba47-4d59-a1e1-6edc40d684bf
+name: T2_scheduledReports
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: reportCreation.request.yaml
+    type: request
+  - fileReference: deleteReport.request.yaml
+    type: request

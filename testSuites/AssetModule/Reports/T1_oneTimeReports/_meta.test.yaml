@@ -1,0 +1,10 @@
+description: ''
+id: 5eeef262-f024-4ebb-9284-91a1d1d3b2cf
+name: T1_oneTimeReports
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: reportCreation.request.yaml
+    type: request
+  - fileReference: deleteReport.request.yaml
+    type: request
