@@ -53,7 +53,7 @@ events:
         - "}, 3000)\r"
         - "\r"
         - "for (let i = 0; i < 1000; i++){\r"
-        - "  console.lo(i)\r"
+        - "  console.log(i)\r"
         - '}'
   - listen: test
     script:
