@@ -5,32 +5,32 @@ request:
     raw: >-
       {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/departments/{{AssetManagement.departmentID}}
     host:
-    - '{{API_Base_URL}}'
+      - '{{API_Base_URL}}'
     path:
-    - interface
-    - '{{SYSTEM_ID}}'
-    - hospital
-    - '{{AssetManagement.hospitalDetails.HospitalId}}'
-    - departments
-    - '{{AssetManagement.departmentID}}'
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}'
+      - departments
+      - '{{AssetManagement.departmentID}}'
   method: DELETE
   headers:
-  - description: ''
-    disabled: false
-    key: Cache-Control
-    value: no-cache
-  - description: ''
-    disabled: false
-    key: Accept
-    value: '*/*'
-  - description: ''
-    disabled: false
-    key: Accept-Encoding
-    value: gzip, deflate
-  - description: ''
-    disabled: false
-    key: Connection
-    value: keep-alive
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
   body:
     mode: raw
     modeOfBody: JSON
@@ -43,9 +43,79 @@ request:
     bearer:
       token: '{{idToken}}'
 events:
-- listen: prerequest
-  script:
-    type: javascript
-    exec:
-    - console.log(pq.environment.get("AssetManagement.departmentID"))
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - console.log(pq.environment.get("AssetManagement.departmentID"))
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const baseUrl  = pq.globals.get(\"API_Base_URL\");\r"
+        - "const sysId    = pq.globals.get(\"SYSTEM_ID\");\r"
+        - "const hospId   = pq.environment.get(\"AssetManagement.hospitalDetails.HospitalId\");\r"
+        - "const idToken  = pq.globals.get(\"idToken\");\r"
+        - "const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\");\r"
+        - "\r"
+        - "const assetIds = [];\r"
+        - "let url=`${baseUrl}/interface/${sysId}/hospital/${hospId}/departments.search`\r"
+        - "pq.sendRequest({\r"
+        - "  url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments.search`,\r"
+        - "  method: \"POST\",\r"
+        - "  headers: {\r"
+        - "    Authorization: `Bearer ${idToken}`,\r"
+        - "    \"Content-Type\": \"application/json\",\r"
+        - "  },\r"
+        - "}, (err, res) => {\r"
+        - "  if (err) {\r"
+        - "    console.log(\"Request error:\", err);\r"
+        - "    return;\r"
+        - "  }\r"
+        - "\r"
+        - "  const responseBody = res.json();\r"
+        - "\r"
+        - "  if (!responseBody || !Array.isArray(responseBody.items)) {\r"
+        - "    console.log(\"No items array in response, nothing to delete\");\r"
+        - "    return;\r"
+        - "  }\r"
+        - "  \r"
+        - "\r"
+        - "  console.log(\"Matched assetIds to delete:\", assetIds);\r"
+        - "\r"
+        - "  if (responseBody.items.length === 0) {\r"
+        - "    console.log(\"No matching assets found, skipping deletion\");\r"
+        - "    return;\r"
+        - "  }\r"
+        - "\r"
+        - "  responseBody.items.forEach((assetId) => {\r"
+        - "    pq.sendRequest({\r"
+        - "      url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments/${assetId.id}`,\r"
+        - "      method: \"DELETE\",\r"
+        - "      headers: {\r"
+        - "        Authorization: `Bearer ${idToken}`,\r"
+        - "        \"Content-Type\": \"application/json\",\r"
+        - "      },\r"
+        - "      body: {\r"
+        - "        mode: 'raw',\r"
+        - "        raw: JSON.stringify({\r"
+        - "          deleteDevice:\"force\"\r"
+        - "        })\r"
+        - "      }\r"
+        - "    }, (err, res) => {\r"
+        - "      if (err) {\r"
+        - "        console.log(\"Unable to delete\", assetId, err);\r"
+        - "        return;\r"
+        - "      }\r"
+        - "\r"
+        - "      if (res.code === 200) {\r"
+        - "        console.log(\"Department deleted successfully:\", res.json());\r"
+        - "      } else {\r"
+        - "        console.log(\"Delete failed for\", assetId, \"status:\", res.json());\r"
+        - "      }\r"
+        - "    });\r"
+        - "  });\r"
+        - "\r"
+        - "});\r"
+        - ''
 type: request
