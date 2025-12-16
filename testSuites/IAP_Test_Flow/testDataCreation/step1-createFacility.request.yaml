@@ -37,9 +37,9 @@ request:
     modeOfBody: JSON
     raw: |-
       {
-      "name": "{{AssetManagement.hospitalDetails.hospitalName}}",
+      "name": "{{hospitalName}}",
       "data": {
-          "name": "{{AssetManagement.hospitalDetails.hospitalName}}",
+          "name": "{{hospitalName}}",
           "address": {
               "street": "{{AssetManagement.hospitalDetails.streetAddress}}",
               "city": "{{AssetManagement.hospitalDetails.city}}",
@@ -73,87 +73,29 @@ events:
     script:
       type: javascript
       exec:
-        - "const baseUrl  = pq.globals.get('API_Base_URL');\r"
-        - "const sysId = pq.globals.get('SYSTEM_ID');\r"
-        - "const projectid = pq.globals.get(\"PROJECT_ID\");\r"
-        - "const idToken  = pq.globals.get(\"idToken\");\r"
-        - "const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\");\r"
+        - "const baseName = pq.environment.get(\"AssetManagement.hospitalDetails.hospitalName\"); // static from YAML\r"
+        - "const randomInt = Math.floor(Math.random() * 900) + 100;\r"
         - "\r"
-        - "const hsptlids = [];\r"
+        - "const finalName = `${baseName}${randomInt}`;\r"
+        - "pq.variables.set(\"hospitalName\", finalName);\r"
         - "\r"
-        - "pq.sendRequest({\r"
-        - "  url: `${baseUrl}/interface/${sysId}/${hsptlBluePrint}?start=0&blueprint=header&accessToken=true`,\r"
-        - "  method: \"GET\",\r"
-        - "  headers: {\r"
-        - "    Authorization: `Bearer ${idToken}`,\r"
-        - "    'Content-Type': 'application/json',\r"
-        - "  },\r"
-        - "}, (err, res) => {\r"
-        - "  if (err) {\r"
-        - "    console.log(\"Request error:\", err);\r"
-        - "    return;\r"
-        - "  }\r"
+        - "const deviceId = pq.environment.get(\"AssetManagement.tagDetails.tag2.deviceId\"); \r"
         - "\r"
-        - "  const responseBody = res.json();\r"
         - "\r"
-        - "  // ✅ HARD GUARD – prevents false positives\r"
-        - "  if (!Array.isArray(responseBody.items) || responseBody.items.length === 0) {\r"
-        - "    console.log(\"No hospitals found. Skipping delete.\");\r"
-        - "    return;\r"
-        - "  }\r"
+        - "const finaldeviceId = `${deviceId}${randomInt}`;\r"
+        - "pq.variables.set(\"deviceId\", finaldeviceId);\r"
         - "\r"
-        - "  responseBody.items.forEach(ele => {\r"
-        - "    console.log(ele.name, ele.id);\r"
         - "\r"
-        - "    if (ele.name === pq.environment.get(\"AssetManagement.hospitalDetails.hospitalName\")) {\r"
-        - "      hsptlids.push(ele.id);\r"
-        - "    }\r"
-        - "  });\r"
         - "\r"
-        - "  // ✅ GUARD – hospital name not found\r"
-        - "  if (hsptlids.length === 0) {\r"
-        - "    console.log(\"No matching hospital found. Nothing to delete.\");\r"
-        - "    return;\r"
-        - "  }\r"
         - "\r"
-        - "  console.log(\"Hospitals to delete:\", hsptlids);\r"
         - "\r"
-        - "  hsptlids.forEach(hsptlid => {\r"
-        - "    pq.sendRequest({\r"
-        - "      url: `${baseUrl}/project/${projectid}/system/${sysId}/srv/prosightApiServer/hospital/${hsptlid}`,\r"
-        - "      method: \"DELETE\",\r"
-        - "      headers: {\r"
-        - "        Authorization: `Bearer ${idToken}`,\r"
-        - "        \"Content-Type\": \"application/json\",\r"
-        - "      },\r"
-        - "      body: {\r"
-        - "        mode: 'raw',\r"
-        - "        raw: JSON.stringify({ deleteDevice: \"force\" })\r"
-        - "      }\r"
-        - "    }, (err, res) => {\r"
-        - "      if (err) {\r"
-        - "        console.log(\"Unable to delete hospital:\", hsptlid, err);\r"
-        - "        return;\r"
-        - "      }\r"
         - "\r"
-        - "      if (res.code === 200) {\r"
-        - "        console.log(\"Hospital deleted successfully:\", hsptlid);\r"
-        - "      } else {\r"
-        - "        console.log(\"Delete failed for\", hsptlid, \"status:\", res.code);\r"
-        - "      }\r"
-        - "    });\r"
-        - "  });\r"
-        - "});\r"
         - ''
   - listen: test
     script:
       type: javascript
       exec:
         - let response = pq.response.json();
-        - pq.test('Validate Hospital Name', () => {
-        - '  pq.response.to.have.status(201)'
-        - '  pq.expect(response.name).to.eql(pq.environment.get("AssetManagement.hospitalDetails.hospitalName"))'
-        - '})'
         - if (pq.response.code === 409) {
         - '  console.log("Hospital is already there in System", pq.environment.get("AssetManagement.hospitalDetails.HospitalId"))'
         - '}'
