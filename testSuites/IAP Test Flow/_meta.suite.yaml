@@ -1,0 +1,19 @@
+name: IAP Test Flow
+description: Whole AssetManagement Module
+id: 89b886a1-25fe-4b0b-be1b-214196b9fe16
+disabled: false
+runConfigs:
+  - name: stageConfig
+    global: variables/stageConfigGlobal.variable.yaml
+    environment: variables/AssetManagement.variable.yaml
+  - name: Dev_Config
+    global: variables/devConfig.variable.yaml
+    environment: variables/AssetManagement.variable.yaml
+testSuiteSettings:
+  testTimeout: 180000
+  requestTimeout: 30000
+  scriptTimeout: 180000
+  stopOnError: false
+  stopOnFailure: false
+  retries: 1
+  testSuiteTimeout: 180000
