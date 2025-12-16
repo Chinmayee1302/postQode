@@ -1,9 +1,9 @@
-id: 80e75a1a-7b2b-4fca-abc6-28c8ef29c093
-name: linkEquipmentWithSensor
+id: 8df5f0b8-67f6-451e-b3de-083652309191
+name: step11-linkEquipmentWithSensor
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/equipment/{{EquipmentManagement.equipmentDetails.equipment1.equipmentId}}/sensor
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/equipment/{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}/sensor
     host:
       - '{{API_Base_URL}}'
     path:
@@ -12,9 +12,9 @@ request:
       - hospital
       - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
       - equipment
-      - '{{EquipmentManagement.equipmentDetails.equipment1.equipmentId}}'
+      - '{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}'
       - sensor
-  method: POST
+  method: post
   headers:
     - key: sec-ch-ua-platform
       value: '"Windows"'
@@ -37,7 +37,7 @@ request:
   body:
     mode: raw
     modeOfBody: JSON
-    raw: "{\r\n    \"id\": \"{{EquipmentManagement.sensorDetails.sensor2.sensorId}}\"\r\n}"
+    raw: "{\r\n    \"id\": \"{{EquipmentManagement.sensorDetails.sensor1.sensorId}}\"\r\n}"
   auth:
     type: bearer
     bearer:
@@ -50,4 +50,6 @@ events:
         - pq.test('Status code is 200', function () {
         - '    pq.response.to.have.status(200);'
         - '});'
+      src: ''
+      packages: []
 type: request

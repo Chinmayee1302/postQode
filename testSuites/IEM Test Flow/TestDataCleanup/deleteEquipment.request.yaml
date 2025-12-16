@@ -1,9 +1,9 @@
-id: 80e75a1a-7b2b-4fca-abc6-28c8ef29c093
-name: linkEquipmentWithSensor
+id: 5f3b764d-511c-4b6a-8a58-86d120f2696e
+name: deleteEquipment
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/equipment/{{EquipmentManagement.equipmentDetails.equipment1.equipmentId}}/sensor
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/equipment/{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}
     host:
       - '{{API_Base_URL}}'
     path:
@@ -12,9 +12,8 @@ request:
       - hospital
       - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
       - equipment
-      - '{{EquipmentManagement.equipmentDetails.equipment1.equipmentId}}'
-      - sensor
-  method: POST
+      - '{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}'
+  method: delete
   headers:
     - key: sec-ch-ua-platform
       value: '"Windows"'
@@ -37,7 +36,7 @@ request:
   body:
     mode: raw
     modeOfBody: JSON
-    raw: "{\r\n    \"id\": \"{{EquipmentManagement.sensorDetails.sensor2.sensorId}}\"\r\n}"
+    raw: '{"deleteDevice":"force"}'
   auth:
     type: bearer
     bearer:
@@ -50,4 +49,6 @@ events:
         - pq.test('Status code is 200', function () {
         - '    pq.response.to.have.status(200);'
         - '});'
+      src: ''
+      packages: []
 type: request

@@ -1,0 +1,58 @@
+id: af08b7bf-678f-43c5-af1a-cac6b325d351
+name: editEqp
+request:
+  url:
+    raw: >-
+      https://dev-cox-health-imagine-api.leverege.com/v1/interface/1WZp0PBZ2Y9BB5nYWnaDmx/hospital/64FedOEJwjdQVD27GZiAeH/equipment/1TjcQnGnw9nRyZRh6jV3hu
+    protocol: https
+    host:
+      - dev-cox-health-imagine-api
+      - leverege
+      - com
+    path:
+      - v1
+      - interface
+      - 1WZp0PBZ2Y9BB5nYWnaDmx
+      - hospital
+      - 64FedOEJwjdQVD27GZiAeH
+      - equipment
+      - 1TjcQnGnw9nRyZRh6jV3hu
+  method: PATCH
+  headers:
+    - key: accept
+      value: application/json
+    - key: accept-language
+      value: en-GB,en-US;q=0.9,en;q=0.8
+    - key: authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY1NTQ0NTA4LCJleHAiOjE3NjU2MzA5MDgsImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiI1a1hkbkNBbDk2aldxYWN5ZkZoZEhzIn0.m4A2gAPLpRH6IclLbTCMoFg5GxPF8i1IVC_-gyGu5y8
+    - key: content-type
+      value: application/json
+    - key: origin
+      value: https://dev-cognosos.web.app
+    - key: priority
+      value: u=1, i
+    - key: referer
+      value: https://dev-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: sec-fetch-dest
+      value: empty
+    - key: sec-fetch-mode
+      value: cors
+    - key: sec-fetch-site
+      value: cross-site
+    - key: user-agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"networkAliases\": {\r\n        \"equipment\": {\r\n            \"deviceId\": \"1WZp0PBZ2Y9BB5nYWnaDmx-8989874545\",\r\n            \"name\": \"1WZp0PBZ2Y9BB5nYWnaDmx-Test-Equipment-455634\"\r\n        }\r\n    },\r\n    \"networkId\": \"equipment\",\r\n    \"name\": \"Test-Equipment-455634\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"calibration/date\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"calibration/dueDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"compliance/complianceDueDate\",\r\n            \"value\": null\r\n        },\r\n        {\r\n            \"path\": \"equipmentId\",\r\n            \"value\": \"8989874545\"\r\n        },\r\n        {\r\n            \"path\": \"equipmentType\",\r\n            \"value\": \"Ambient\"\r\n        },\r\n        {\r\n            \"path\": \"isRental\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"location/building/id\",\r\n            \"value\": \"4txfzzBXTfEo1z0H7u1vXj\"\r\n        },\r\n        {\r\n            \"path\": \"location/building/name\",\r\n            \"value\": \"Apollo Care Hospital IEM\"\r\n        },\r\n        {\r\n            \"path\": \"location/department/id\",\r\n            \"value\": \"5XfqedlnFtc1DznDSjpOIo\"\r\n        },\r\n        {\r\n            \"path\": \"location/department/name\",\r\n            \"value\": \"PostQodeDept\"\r\n        },\r\n        {\r\n            \"path\": \"location/floor/id\",\r\n            \"value\": \"0DrtjVhS8Or1zAP0hbqgaZ\"\r\n        },\r\n        {\r\n            \"path\": \"location/floor/name\",\r\n            \"value\": \"First Floor IEM\"\r\n        },\r\n        {\r\n            \"path\": \"location/room/id\",\r\n            \"value\": \"0YZJGimNBUzjUni7Dp7GWN\"\r\n        },\r\n        {\r\n            \"path\": \"location/room/name\",\r\n            \"value\": \"Room 101\"\r\n        },\r\n        {\r\n            \"path\": \"manufacturer\"\r\n        },\r\n        {\r\n            \"path\": \"modelNumber\"\r\n        },\r\n        {\r\n            \"path\": \"name\",\r\n            \"value\": \"Test-Equipment-455634\"\r\n        },\r\n        {\r\n            \"path\": \"range/temperature/operatingMax\",\r\n            \"value\": 35.55555555555556\r\n        },\r\n        {\r\n            \"path\": \"range/temperature/operatingMin\",\r\n            \"value\": 31.111111111111114\r\n        },\r\n        {\r\n            \"path\": \"rentalDueDate\",\r\n            \"value\": null\r\n        }\r\n    ]\r\n}"
+events: []

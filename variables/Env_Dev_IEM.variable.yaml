@@ -7,7 +7,7 @@ EquipmentManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    hospitalId: 6PBNV9FppoTMJIKPHQR46y
+    hospitalId: 7pH30LCWH8LKLTtLucy0LN
   buildingDetails:
     buildingName: EquipmentBuilding
     streetAddress: Koramangala
@@ -18,11 +18,11 @@ EquipmentManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    buildingId: 26hhN9TtYpfoc6R1NfE3JR
+    buildingId: 06dCleueLHRleruopnEXrq
   floorDetails:
     floorName: FirstFloorIEM
     floorNumber: iem123
-    floorId: 0GzopLNRM2SfdbZisXa6am
+    floorId: 56h5OPOaR0JrwnYmJIuNJz
   roomDetails:
     roomName_1: Equipment Room101
     roomName_2: Equipment Room102
@@ -32,18 +32,25 @@ EquipmentManagement:
     assetStatus: Available
     utilizationState: Not Utilized
     monitorCompliance: 'No'
-    roomId: 2FgBJRZFydPXl1Z7pGE3wH
+    roomId: 1ytlmgROo9ltHp6xc5eBmu
   departmentDetails:
     departmentName: PostQodeDeptIEM
     departmentBoundaryName: DeptBoundaryIEM
-    departmentID: 2uLAF9G8huq5Fcv83o7bmV
-    departmentBoundaryId: 1Nn4nSHLs3TVOohygxckmS
+    departmentID: 79WGbk38OsO7xhZVummB8j
+    departmentBoundaryId: 0nN3lLB2yyMr5muVYcPkma
   sensorDetails:
-    deviceId: IEMSensor
-    sensorType: Ambient
-    manufacturer: Sonicu
-    model: postSensorModel
-    sensorId: 5XSGO3ieQ6UsAaQty1kXHu
+    sensor1:
+      deviceId: EquipmentSensor
+      sensorType: Ambient
+      manufacturer: Sonicu
+      model: postSensorModel
+      sensorId: 0Ft4W7f3gY9H5X3pzRiJan
+    sensor2:
+      deviceId: EqpManagementSensor
+      sensorType: Ambient
+      manufacturer: Sonicu
+      model: postSensorModel
+      sensorId: 6wTIfXAnhFqhxerZq4KrGk
   equipmentType: EquipmentTypeIEM
   equipmentDetails:
     equipment1:
@@ -56,7 +63,7 @@ EquipmentManagement:
       floorName: First Floor IEM
       departmentName: PostQodeDeptIEM
       roomName: Equipment Room101
-      equipmentId: 3X6C36PTUrpScSfUqwzNBC
+      equipmentId: 6ytOnzf3pVhVob8bmPU57e
     equipment2:
       name: Test-Equipment-4556
       id: iem898987
@@ -67,7 +74,18 @@ EquipmentManagement:
       floorName: FirstFloorIEM
       departmentName: PostQodeDeptIEM
       roomName: Equipment Room101
-      equipmentId: 1Z9bVmYJAtgo8XyxGyyoej
+      equipmentId: 5vYRIh9XxHOglTimGI7lDJ
+    equipment3:
+      name: Test-Equipment-9001
+      id: iem78778
+      isRental: false
+      operatingMax: 10
+      operatingMin: 20
+      buildingName: EquipmentBuilding
+      floorName: First Floor IEM
+      departmentName: PostQodeDeptIEM
+      roomName: Equipment Room101
+      equipmentId: 2JrzvHeSIPzHEAKhrRGRTW
   editEquipmentDetails:
     name: Test-Equipment-6778
     id: iem45454689
@@ -78,7 +96,35 @@ EquipmentManagement:
     floorName: FirstFloorIEM
     departmentName: PostQodeDeptIEM
     roomName: Equipment Room101
-    equipmentId: 1Z9bVmYJAtgo8XyxGyyoej
+    equipmentId: 5vYRIh9XxHOglTimGI7lDJ
   equipmentTypeDetails:
     initialEquipmentType: postQodeIEMType
     updatedEquipmentType: updatedPostQodeIEMType
+Rules:
+  environmentRuleDetails:
+    minTemp: 10
+    maxTemp: 20
+    optimalMinTemp: 12
+    optimalMaxTemp: 18
+    minHumidity: 11
+    maxHumidity: 22
+    delay: 0
+    lastModified: 1765782670525
+  inspectionRuleDetails:
+    autoInspect: true
+    frequency: daily
+    firstInspectionTime: 3:00 AM
+    firstInspectionUTC: '{"hour":21,"minute":30,"day":1,"date":15}'
+    secondInspection: true
+    secondInspectionTime: 7:00 AM
+    secondInspectionUTC: '{"hour":1,"minute":30,"day":2,"date":16}'
+    lastModified: 1765894227676
+    firstInspectionTimestamp: 1765834200000
+    secondInspectionTimestamp: 1765848600000
+  creatEnvironmentRule:
+    lastModified: 1765894226761
+Monitoring:
+  inpspectionDetails:
+    comment: inspected is doneeef
+    time: 1765894226249
+    complianceDueDate: '2025-12-17T14:10:26.249Z'

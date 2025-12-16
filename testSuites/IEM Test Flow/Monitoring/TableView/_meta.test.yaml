@@ -1,0 +1,11 @@
+description: ''
+id: dc78e091-26f0-4183-8f52-07511c7a41af
+name: TableView
+disabled: false
+dependencies: []
+type: TESTCASE
+testSuiteId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+parentId: c09d1001-3b4f-4252-b720-b6d4d4b0087b
+testSteps:
+  - fileReference: inspectEquipment.request.yaml
+    type: request
