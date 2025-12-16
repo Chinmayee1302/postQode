@@ -1,0 +1,45 @@
+id: 4944cb6d-67c7-4aba-b542-61c7018a00fd
+name: createSensor
+request:
+  url:
+    raw: >-
+      https://dev-cox-health-imagine-api.leverege.com/v1/interface/1WZp0PBZ2Y9BB5nYWnaDmx/hospital/0qsdrAwPwozPnYptvlWL0d/sensors
+    protocol: https
+    host:
+      - dev-cox-health-imagine-api
+      - leverege
+      - com
+    path:
+      - v1
+      - interface
+      - 1WZp0PBZ2Y9BB5nYWnaDmx
+      - hospital
+      - 0qsdrAwPwozPnYptvlWL0d
+      - sensors
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY1Mjk2NDU4LCJleHAiOjE3NjUzODI4NTgsImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiI1a1hkbkNBbDk2aldxYWN5ZkZoZEhzIn0.ujDe0tfIVUQPnrMcccnus6RWo6wf-WI2IGvkkbNdeUI
+    - key: Referer
+      value: https://dev-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"networkAliases\": {\r\n        \"cognosos-sensors\": {\r\n            \"deviceId\": \"test sensor 111q1\"\r\n        }\r\n    },\r\n    \"networkId\": \"cognosos-sensors\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"deviceId\",\r\n            \"value\": \"test sensor 111q1\"\r\n        },\r\n        {\r\n            \"path\": \"sensorType\",\r\n            \"value\": \"Ambient\"\r\n        },\r\n        {\r\n            \"path\": \"manufacturer\",\r\n            \"value\": \"Sonicu\"\r\n        },\r\n        {\r\n            \"path\": \"model\",\r\n            \"value\": \"test model\"\r\n        }\r\n    ],\r\n    \"name\": \"Sonicu Sensor test sensor 111q1\"\r\n}"
+events: []

@@ -1,0 +1,48 @@
+id: b9f3993d-9aae-410a-9cae-3f62003ac5ab
+name: clearContactDetails
+request:
+  url:
+    raw: >-
+      https://dev-cox-health-imagine-api.leverege.com/v1/interface/1WZp0PBZ2Y9BB5nYWnaDmx/hospital/0qsdrAwPwozPnYptvlWL0d.rsrc/p/environment/p/escalationContacts
+    protocol: https
+    host:
+      - dev-cox-health-imagine-api
+      - leverege
+      - com
+    path:
+      - v1
+      - interface
+      - 1WZp0PBZ2Y9BB5nYWnaDmx
+      - hospital
+      - 0qsdrAwPwozPnYptvlWL0d.rsrc
+      - p
+      - environment
+      - p
+      - escalationContacts
+  method: PATCH
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY1NzgyNjA0LCJleHAiOjE3NjU4NjkwMDQsImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiI1a1hkbkNBbDk2aldxYWN5ZkZoZEhzIn0.LzegTgcVdkEQY_FTlsqccRUK5PBcY2ik3foRd-YXUIo
+    - key: Referer
+      value: https://dev-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "[\r\n    {\r\n        \"op\": \"replace\",\r\n        \"path\": \"data\",\r\n        \"value\": {\r\n            \"primary\": {\r\n                \"email\": [],\r\n                \"phone\": [],\r\n                \"autoEscalateTimer\": null\r\n            },\r\n            \"secondary\": {\r\n                \"phone\": [],\r\n                \"email\": [],\r\n                \"escalateTimer\": null\r\n            },\r\n            \"tertiary\": {\r\n                \"phone\": [],\r\n                \"email\": [],\r\n                \"escalateTimer\": null\r\n            }\r\n        }\r\n    }\r\n]"
+events: []

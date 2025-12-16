@@ -1,0 +1,13 @@
+description: ''
+id: 362c12fb-a232-4617-95a7-23196d84541e
+name: InspectionRules
+disabled: false
+dependencies: []
+type: TESTCASE
+testSuiteId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+parentId: d2c90369-7865-4b70-82fb-f67300457552
+testSteps:
+  - fileReference: createRule.request.yaml
+    type: request
+  - fileReference: deleteRule.request.yaml
+    type: request

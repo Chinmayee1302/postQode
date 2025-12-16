@@ -7,9 +7,13 @@ type: AFTER
 testSuiteId: b09e7f95-4857-4519-9a58-d87c5e3269eb
 parentId: b09e7f95-4857-4519-9a58-d87c5e3269eb
 testSteps:
-  - fileReference: deleteEqpType.request.yaml
+  - fileReference: unlinkSensorFromEquipment.request.yaml
     type: request
   - fileReference: deleteSensor.request.yaml
+    type: request
+  - fileReference: deleteEquipment.request.yaml
+    type: request
+  - fileReference: deleteEqpType.request.yaml
     type: request
   - fileReference: DeleteDepartmentBoundary.request.yaml
     type: request

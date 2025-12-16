@@ -1,9 +1,9 @@
-id: 80e75a1a-7b2b-4fca-abc6-28c8ef29c093
-name: linkEquipmentWithSensor
+id: 5e8e3b5e-9b2f-4a06-a199-8d1e3a7a3b4f
+name: unlinkSensorFromEquipment
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/equipment/{{EquipmentManagement.equipmentDetails.equipment1.equipmentId}}/sensor
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/equipment/{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}/sensor
     host:
       - '{{API_Base_URL}}'
     path:
@@ -12,9 +12,9 @@ request:
       - hospital
       - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
       - equipment
-      - '{{EquipmentManagement.equipmentDetails.equipment1.equipmentId}}'
+      - '{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}'
       - sensor
-  method: POST
+  method: delete
   headers:
     - key: sec-ch-ua-platform
       value: '"Windows"'
@@ -22,22 +22,18 @@ request:
       value: '{{Authorization}}'
     - key: Referer
       value: https://dev-cognosos.web.app/
-    - key: sec-ch-ua
-      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
-    - key: sec-ch-ua-mobile
-      value: '?0'
     - key: User-Agent
       value: >-
         Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
         like Gecko) Chrome/143.0.0.0 Safari/537.36
     - key: Accept
       value: application/json
-    - key: Content-Type
-      value: application/json
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
   body:
-    mode: raw
-    modeOfBody: JSON
-    raw: "{\r\n    \"id\": \"{{EquipmentManagement.sensorDetails.sensor2.sensorId}}\"\r\n}"
+    mode: none
   auth:
     type: bearer
     bearer:
@@ -50,4 +46,6 @@ events:
         - pq.test('Status code is 200', function () {
         - '    pq.response.to.have.status(200);'
         - '});'
+      src: ''
+      packages: []
 type: request

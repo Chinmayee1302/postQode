@@ -27,3 +27,7 @@ testSteps:
     type: request
   - fileReference: step9-createSensor.request.yaml
     type: request
+  - fileReference: step10-createEquipment.request.yaml
+    type: request
+  - fileReference: step11-linkEquipmentWithSensor.request.yaml
+    type: request

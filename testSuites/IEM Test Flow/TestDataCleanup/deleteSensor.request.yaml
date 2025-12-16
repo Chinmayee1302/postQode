@@ -3,7 +3,7 @@ name: deleteSensor
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/sensors/{{EquipmentManagement.sensorDetails.sensorId}}
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/sensors/{{EquipmentManagement.sensorDetails.sensor1.sensorId}}
     host:
       - '{{API_Base_URL}}'
     path:
@@ -12,7 +12,7 @@ request:
       - hospital
       - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
       - sensors
-      - '{{EquipmentManagement.sensorDetails.sensorId}}'
+      - '{{EquipmentManagement.sensorDetails.sensor1.sensorId}}'
   method: DELETE
   headers:
     - key: Accept

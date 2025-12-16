@@ -9,9 +9,13 @@ parentId: fec8f9c0-0c8f-4391-8c2e-59eeed6b0c3d
 testSteps:
   - fileReference: createEquipment.request.yaml
     type: request
+  - fileReference: createSensor.request.yaml
+    type: request
   - fileReference: linkEquipmentWithSensor.request.yaml
     type: request
   - fileReference: unlinkEquipmentWIthSensor.request.yaml
     type: request
   - fileReference: deleteEquipment.request.yaml
+    type: request
+  - fileReference: deleteSensor.request.yaml
     type: request

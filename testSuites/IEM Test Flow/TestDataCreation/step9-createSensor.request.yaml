@@ -35,7 +35,7 @@ request:
   body:
     mode: raw
     modeOfBody: JSON
-    raw: "{\r\n    \"networkAliases\": {\r\n        \"cognosos-sensors\": {\r\n            \"deviceId\": \"{{EquipmentManagement.sensorDetails.deviceId}}\"\r\n        }\r\n    },\r\n    \"networkId\": \"cognosos-sensors\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"deviceId\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.deviceId}}\"\r\n        },\r\n        {\r\n            \"path\": \"sensorType\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.sensorType}}\"\r\n        },\r\n        {\r\n            \"path\": \"manufacturer\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.manufacturer}}\"\r\n        },\r\n        {\r\n            \"path\": \"model\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.model}}\"\r\n        }\r\n    ],\r\n    \"name\": \"Sonicu Sensor {{EquipmentManagement.sensorDetails.deviceId}}\"\r\n}"
+    raw: "{\r\n    \"networkAliases\": {\r\n        \"cognosos-sensors\": {\r\n            \"deviceId\": \"{{EquipmentManagement.sensorDetails.sensor1.deviceId}}\"\r\n        }\r\n    },\r\n    \"networkId\": \"cognosos-sensors\",\r\n    \"data\": [\r\n        {\r\n            \"path\": \"deviceId\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.sensor1.deviceId}}\"\r\n        },\r\n        {\r\n            \"path\": \"sensorType\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.sensor1.sensorType}}\"\r\n        },\r\n        {\r\n            \"path\": \"manufacturer\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.sensor1.manufacturer}}\"\r\n        },\r\n        {\r\n            \"path\": \"model\",\r\n            \"value\": \"{{EquipmentManagement.sensorDetails.sensor1.model}}\"\r\n        }\r\n    ],\r\n    \"name\": \"Sonicu Sensor {{EquipmentManagement.sensorDetails.sensor1.deviceId}}\"\r\n}"
   auth:
     type: bearer
     bearer:
@@ -49,7 +49,7 @@ events:
         - const response = pq.response.json();
         - >-
           const sensorDetails =
-          pq.environment.get('EquipmentManagement.sensorDetails')
+          pq.environment.get('EquipmentManagement.sensorDetails.sensor1')
         - ''
         - pq.test('Status code is 200', function () {
         - '    pq.response.to.have.status(200);'
@@ -63,7 +63,6 @@ events:
         - '});'
         - pq.test('Set sensorId environment variable', function() {
         - '    const responseData = pq.response.json();'
-        - '    pq.environment.set(''EquipmentManagement.sensorDetails.sensorId'', responseData.id);'
+        - '    pq.environment.set(''EquipmentManagement.sensorDetails.sensor1.sensorId'', responseData.id);'
         - '});'
 type: request
-disabled: false
