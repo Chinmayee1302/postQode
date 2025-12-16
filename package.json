@@ -3,7 +3,7 @@
     "@postqode/cli": "^0.1.32"
   },
   "scripts": {
-    "executeStageConfigIAP Test Flow": "postqode execute -s testSuites/IAP Test Flow/_meta.suite.yaml -w . -c stageConfig",
-    "executeDevConfigIAP Test Flow": "postqode execute -s testSuites/IAP Test Flow/_meta.suite.yaml -w . -c Dev_Config"
+    "executeStageConfig": "postqode execute -s testSuites/IAP_Test_Flow/_meta.suite.yaml -w . -c stageConfig",
+    "executeDevConfig": "postqode execute -s testSuites/IAP_Test_Flow/_meta.suite.yaml -w . -c Dev_Config"
   }
 }

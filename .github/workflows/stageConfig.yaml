@@ -26,7 +26,7 @@ jobs:
       run: |+
         mkdir -p test-results/stage
         postqode execute \
-          -s testSuites/IAP Test Flow/_meta.suite.yaml \
+          -s testSuites/IAP_Test_Flow/_meta.suite.yaml \
           -c stageConfig \
           --report-formats junit html \
           --report-dir ./test-results/stage
