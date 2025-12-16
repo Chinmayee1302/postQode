@@ -1,0 +1,13 @@
+description: ''
+id: c1a34a02-1b78-4df5-b944-540a03fd7b81
+name: EnvironmentRules
+disabled: false
+dependencies: []
+type: TESTCASE
+testSuiteId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+parentId: d2c90369-7865-4b70-82fb-f67300457552
+testSteps:
+  - fileReference: createRule.request.yaml
+    type: request
+  - fileReference: deleteRule.request.yaml
+    type: request

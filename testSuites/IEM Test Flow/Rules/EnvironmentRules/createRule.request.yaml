@@ -1,0 +1,69 @@
+id: 34ca781e-b666-43a1-b1c4-cb2c2c0b85f5
+name: createRule
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/equipment/{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - equipment
+      - '{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}'
+  method: PATCH
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: Bearer {{idToken}}
+    - key: Referer
+      value: https://dev-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"data\": [\r\n        {\r\n            \"path\": \"rule/lastModified\",\r\n            \"value\": \"{{Rules.environmentRuleDetails.lastModified}}\"\r\n        },\r\n        {\r\n            \"path\": \"delayedAlerts/delay\",\r\n            \"value\": \"{{Rules.environmentRuleDetails.delay}}\"\r\n        },\r\n        {\r\n            \"path\": \"range/temperature/min\",\r\n            \"value\": \"{{Rules.environmentRuleDetails.minTemp}}\"\r\n        },\r\n        {\r\n            \"path\": \"range/temperature/max\",\r\n            \"value\": \"{{Rules.environmentRuleDetails.maxTemp}}\"\r\n        },\r\n        {\r\n            \"path\": \"range/temperature/optimalMin\",\r\n            \"value\": \"{{Rules.environmentRuleDetails.optimalMinTemp}}\"\r\n        },\r\n        {\r\n            \"path\": \"range/temperature/optimalMax\",\r\n            \"value\": \"{{Rules.environmentRuleDetails.optimalMaxTemp}}\"\r\n        },\r\n        {\r\n            \"path\": \"range/humidity/min\",\r\n            \"value\": \"{{Rules.environmentRuleDetails.minHumidity}}\"\r\n        },\r\n        {\r\n            \"path\": \"range/humidity/max\",\r\n            \"value\": \"{{Rules.environmentRuleDetails.maxHumidity}}\"\r\n        },\r\n        {\r\n            \"path\": \"rule/createdBy\",\r\n            \"value\": \"{{name}}\"\r\n        }\r\n    ]\r\n}"
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - >-
+          pq.environment.set('Rules.creatEnvironmentRule.lastModified',
+          Date.now());
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test("Validate temperature and humidity values", function () {
+        - '    const res = pq.response.json().data.range;'
+        - '    const env = pq.environment.get;'
+        - ''
+        - '    const num = v => Number(v);'
+        - ''
+        - '    // Temperature'
+        - '    pq.expect(num(res.temperature.min)).to.equal(num(env("Rules.environmentRuleDetails.minTemp")));'
+        - '    pq.expect(num(res.temperature.max)).to.equal(num(env("Rules.environmentRuleDetails.maxTemp")));'
+        - '    pq.expect(num(res.temperature.optimalMin)).to.equal(num(env("Rules.environmentRuleDetails.optimalMinTemp")));'
+        - '    pq.expect(num(res.temperature.optimalMax)).to.equal(num(env("Rules.environmentRuleDetails.optimalMaxTemp")));'
+        - ''
+        - '    // Humidity'
+        - '    pq.expect(num(res.humidity.min)).to.equal(num(env("Rules.environmentRuleDetails.minHumidity")));'
+        - '    pq.expect(num(res.humidity.max)).to.equal(num(env("Rules.environmentRuleDetails.maxHumidity")));'
+        - '});'
+        - ''
+type: request

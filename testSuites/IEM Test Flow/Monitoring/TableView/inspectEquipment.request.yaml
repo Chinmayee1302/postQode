@@ -1,0 +1,63 @@
+id: 680a61ed-9d8c-4709-b577-4f7904a5b64e
+name: inspectEquipment
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}/equipment/{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
+      - equipment
+      - '{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}'
+  method: PATCH
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY1ODg2NDk5LCJleHAiOjE3NjU5NzI4OTksImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiI1a1hkbkNBbDk2aldxYWN5ZkZoZEhzIn0.XvZisMLhfZjrTFp57zTZbYWxqZSMF33ErdjnNSDd25E
+    - key: Referer
+      value: https://dev-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"data\": {\r\n        \"inspection\": {\r\n            \"comment\": \"{{Monitoring.inpspectionDetails.comment}}\",\r\n            \"inspectorName\": \"{{username}}\",\r\n            \"time\": 1765889136218,\r\n            \"temperature\": \"20\",\r\n            \"humidity\": \"30\",\r\n            \"status\": \"Complete\"\r\n        },\r\n         \"history\": {\r\n            \"inspection\": {\r\n                \"status\": \"Inspected\"\r\n            }\r\n        },\r\n        \"compliance\": {\r\n            \"compliant\": true,\r\n            \"complianceDueDate\": \"2025-12-17T12:45:23.573Z\"\r\n        }\r\n    }\r\n}"
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "pq.environment.set(\"Monitoring.inpspectionDetails.time\", Date.now())\r"
+        - "\r"
+        - "console.log(Date.now())\r"
+        - "\r"
+        - >-
+          pq.environment.set("Monitoring.inpspectionDetails.complianceDueDate",new
+          Date(Date.now() + 24 * 60 * 60 * 1000).toISOString())
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test("verify inspection status and comment", function() {
+        - '      const responseData = pq.response.json().data;'
+        - '       pq.expect(responseData.history.inspection.status).to.equal("Inspected")'
+        - '      pq.expect(responseData.inspection.comment).to.equal(pq.environment.get("Monitoring.inpspectionDetails.comment"));'
+        - '});'
+type: request
