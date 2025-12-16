@@ -5,31 +5,31 @@ request:
     raw: >-
       {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/departments
     host:
-    - '{{API_Base_URL}}'
+      - '{{API_Base_URL}}'
     path:
-    - interface
-    - '{{SYSTEM_ID}}'
-    - hospital
-    - '{{AssetManagement.hospitalDetails.HospitalId}}'
-    - departments
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}'
+      - departments
   method: POST
   headers:
-  - description: ''
-    disabled: false
-    key: Cache-Control
-    value: no-cache
-  - description: ''
-    disabled: false
-    key: Accept
-    value: '*/*'
-  - description: ''
-    disabled: false
-    key: Accept-Encoding
-    value: gzip, deflate
-  - description: ''
-    disabled: false
-    key: Connection
-    value: keep-alive
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
   body:
     mode: raw
     modeOfBody: JSON
@@ -48,51 +48,133 @@ request:
     bearer:
       token: '{{idToken}}'
 events:
-- listen: test
-  script:
-    type: javascript
-    exec:
-    - const depResponse = pq.response.json();
-    - ''
-    - // Validate department name
-    - pq.test("Department Creation", () => {
-    - '  pq.expect(depResponse.name).to.equal(pq.environment.get(''AssetManagement.departmentName''));'
-    - '});'
-    - ''
-    - // Set department ID
-    - const deptId = depResponse.id;
-    - pq.environment.set("AssetManagement.departmentID", deptId);
-    - ''
-    - // Gather required variables
-    - const baseUrl = pq.globals.get('API_Base_URL');
-    - const sysId   = pq.globals.get('SYSTEM_ID');
-    - >-
-      const hospId  = pq.environment.get('AssetManagement.hospitalDetails.HospitalId');
-    - >-
-      const bldgId  = pq.environment.get("AssetManagement.buildingDetails.BuildingId");
-    - const idToken = pq.globals.get("idToken");
-    - ''
-    - // Send department link request
-    - pq.sendRequest({
-    - '  url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/buildings/${bldgId}/departments`,'
-    - '  method: "POST",'
-    - '  headers: {'
-    - '    Authorization: `Bearer ${idToken}`,'
-    - '    "Content-Type": "application/json"'
-    - '  },'
-    - '  body: {'
-    - '    mode: "raw",'
-    - '    raw: JSON.stringify({'
-    - '      id: deptId,'
-    - '      force: true'
-    - '    })'
-    - '  }'
-    - '}, (err, res) => {'
-    - '  if (err || res.code !== 200) {'
-    - '    console.warn("Department linking failed", err || res.text());'
-    - '    return;'
-    - '  }'
-    - '  console.log("Department linked successfully:", res.json());'
-    - '});'
-    - ''
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "const baseUrl  = pq.globals.get(\"API_Base_URL\");\r"
+        - "const sysId    = pq.globals.get(\"SYSTEM_ID\");\r"
+        - "const hospId   = pq.environment.get(\"AssetManagement.hospitalDetails.HospitalId\");\r"
+        - "const idToken  = pq.globals.get(\"idToken\");\r"
+        - "const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\");\r"
+        - "\r"
+        - "const assetIds = [];\r"
+        - "let url=`${baseUrl}/interface/${sysId}/hospital/${hospId}/departments.search`\r"
+        - "pq.sendRequest({\r"
+        - "  url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments.search`,\r"
+        - "  method: \"POST\",\r"
+        - "  headers: {\r"
+        - "    Authorization: `Bearer ${idToken}`,\r"
+        - "    \"Content-Type\": \"application/json\",\r"
+        - "  },\r"
+        - "}, (err, res) => {\r"
+        - "  if (err) {\r"
+        - "    console.log(\"Request error:\", err);\r"
+        - "    return;\r"
+        - "  }\r"
+        - "\r"
+        - "  const responseBody = res.json();\r"
+        - "  console.log(\"GET /assets response:\", responseBody,url);\r"
+        - "\r"
+        - "  if (!responseBody || !Array.isArray(responseBody.items)) {\r"
+        - "    console.log(\"No items array in response, nothing to delete\");\r"
+        - "    return;\r"
+        - "  }\r"
+        - "\r"
+        - "  const targetName = pq.environment.get(\"AssetManagement.departmentName\");\r"
+        - "  console.log(\"Target asset name:\", targetName);\r"
+        - "\r"
+        - "  responseBody.items.forEach((ele) => {\r"
+        - "    if (ele.name === targetName) {\r"
+        - "      assetIds.push(ele.id);\r"
+        - "    }\r"
+        - "  });\r"
+        - "\r"
+        - "  console.log(\"Matched assetIds to delete:\", assetIds);\r"
+        - "\r"
+        - "  if (assetIds.length === 0) {\r"
+        - "    console.log(\"No matching assets found, skipping deletion\");\r"
+        - "    return;\r"
+        - "  }\r"
+        - "\r"
+        - "  assetIds.forEach((assetId) => {\r"
+        - "    pq.sendRequest({\r"
+        - "      url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments/${assetId}`,\r"
+        - "      method: \"DELETE\",\r"
+        - "      headers: {\r"
+        - "        Authorization: `Bearer ${idToken}`,\r"
+        - "        \"Content-Type\": \"application/json\",\r"
+        - "      },\r"
+        - "      body: {\r"
+        - "        mode: 'raw',\r"
+        - "        raw: JSON.stringify({\r"
+        - "          deleteDevice:\"force\"\r"
+        - "        })\r"
+        - "      }\r"
+        - "    }, (err, res) => {\r"
+        - "      if (err) {\r"
+        - "        console.log(\"Unable to delete\", assetId, err);\r"
+        - "        return;\r"
+        - "      }\r"
+        - "\r"
+        - "      if (res.code === 200) {\r"
+        - "        console.log(\"Asset deleted successfully:\", res.json());\r"
+        - "      } else {\r"
+        - "        console.log(\"Delete failed for\", assetId, \"status:\", res);\r"
+        - "      }\r"
+        - "    });\r"
+        - "  });\r"
+        - "\r"
+        - "});\r"
+        - ''
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - const depResponse = pq.response.json();
+        - ''
+        - // Validate department name
+        - pq.test("Department Creation", () => {
+        - '  pq.expect(depResponse.name).to.equal(pq.environment.get(''AssetManagement.departmentName''));'
+        - '});'
+        - ''
+        - // Set department ID
+        - const deptId = depResponse.id;
+        - pq.environment.set("AssetManagement.departmentID", deptId);
+        - ''
+        - // Gather required variables
+        - const baseUrl = pq.globals.get('API_Base_URL');
+        - const sysId   = pq.globals.get('SYSTEM_ID');
+        - >-
+          const hospId  =
+          pq.environment.get('AssetManagement.hospitalDetails.HospitalId');
+        - >-
+          const bldgId  =
+          pq.environment.get("AssetManagement.buildingDetails.BuildingId");
+        - const idToken = pq.globals.get("idToken");
+        - ''
+        - // Send department link request
+        - pq.sendRequest({
+        - '  url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/buildings/${bldgId}/departments`,'
+        - '  method: "POST",'
+        - '  headers: {'
+        - '    Authorization: `Bearer ${idToken}`,'
+        - '    "Content-Type": "application/json"'
+        - '  },'
+        - '  body: {'
+        - '    mode: "raw",'
+        - '    raw: JSON.stringify({'
+        - '      id: deptId,'
+        - '      force: true'
+        - '    })'
+        - '  }'
+        - '}, (err, res) => {'
+        - '  if (err || res.code !== 200) {'
+        - '    console.warn("Department linking failed", err || res.text());'
+        - '    return;'
+        - '  }'
+        - '  console.log("Department linked successfully:", res.json());'
+        - '});'
+        - ''
 type: request
+disabled: false

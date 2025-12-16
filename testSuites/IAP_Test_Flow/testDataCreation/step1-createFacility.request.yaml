@@ -5,32 +5,33 @@ request:
     raw: >-
       {{API_Base_URL}}/project/{{PROJECT_ID}}/system/{{SYSTEM_ID}}/srv/prosightApiServer/hospital
     host:
-    - '{{API_Base_URL}}'
+      - '{{API_Base_URL}}'
     path:
-    - project
-    - '{{PROJECT_ID}}'
-    - system
-    - '{{SYSTEM_ID}}'
-    - srv
-    - prosightApiServer
-    - hospital
+      - project
+      - '{{PROJECT_ID}}'
+      - system
+      - '{{SYSTEM_ID}}'
+      - srv
+      - prosightApiServer
+      - hospital
   method: POST
   headers:
-  - key: sec-ch-ua-platform
-    value: '"macOS"'
-  - key: Referer
-    value: https://staging-commercial-cox-health.firebaseapp.com/
-  - key: sec-ch-ua
-    value: '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"'
-  - key: sec-ch-ua-mobile
-    value: '?0'
-  - key: User-Agent
-    value: >-
-      Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
-  - key: Accept
-    value: application/json
-  - key: Content-Type
-    value: application/json
+    - key: sec-ch-ua-platform
+      value: '"macOS"'
+    - key: Referer
+      value: https://staging-commercial-cox-health.firebaseapp.com/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="141", "Not?A_Brand";v="8", "Chromium";v="141"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
   body:
     mode: raw
     modeOfBody: JSON
@@ -68,24 +69,90 @@ request:
     bearer:
       token: '{{idToken}}'
 events:
-- listen: test
-  script:
-    type: javascript
-    exec:
-    - let response = pq.response.json();
-    - pq.test('Validate Hospital Name', () => {
-    - '  pq.response.to.have.status(201)'
-    - '  pq.expect(response.name).to.eql(pq.environment.get("AssetManagement.hospitalDetails.hospitalName"))'
-    - '})'
-    - if (pq.response.code === 409) {
-    - '  console.log("Hospital is already there in System", pq.environment.get("AssetManagement.hospitalDetails.HospitalId"))'
-    - '}'
-    - if (pq.response.code === 201) {
-    - '  pq.environment.set("AssetManagement.hospitalDetails.HospitalId", response.id);'
-    - '} else {'
-    - '  console.log("Hospital creation failed with status code: " + pq.response.code);'
-    - '  console.log(response);'
-    - '}'
-    - ''
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "const baseUrl  = pq.globals.get('API_Base_URL');\r"
+        - "const sysId = pq.globals.get('SYSTEM_ID');\r"
+        - "const projectid = pq.globals.get(\"PROJECT_ID\")\r"
+        - "\r"
+        - "// const hospId   = pq.environment.get('AssetManagement.hospitalDetails.HospitalId');\r"
+        - "const idToken  = pq.globals.get(\"idToken\");\r"
+        - "const hsptlBluePrint = pq.globals.get(\"hsptlBluePrintID\")\r"
+        - "const hsptlids=[]\r"
+        - "pq.sendRequest({\r"
+        - "  url: `${baseUrl}/interface/${sysId}/${hsptlBluePrint}?start=0&blueprint=header&accessToken=true`,\r"
+        - "  method: \"GET\",\r"
+        - "  headers: {\r"
+        - "    Authorization: `Bearer ${idToken}`,\r"
+        - "    'Content-Type': 'application/json',\r"
+        - "  },\r"
+        - "}, (err, res) => {\r"
+        - "  if (err) {\r"
+        - "    console.log(\"Request error:\", err);\r"
+        - "    return;\r"
+        - "  }\r"
+        - "  const responseBody = res.json()\r"
+        - " \r"
+        - "  responseBody.items.forEach((ele, ind) => {\r"
+        - "     console.log(ele.name,ele.id)\r"
+        - "    if (ele.name === pq.environment.get(\"AssetManagement.hospitalDetails.hospitalName\")) {\r"
+        - "      console.log(ele.id)\r"
+        - "         hsptlids.push(ele.id)\r"
+        - "      }\r"
+        - "  })\r"
+        - "  console.log(hsptlids)\r"
+        - "    hsptlids.forEach((hsptlid) => {\r"
+        - "    pq.sendRequest({\r"
+        - "      url: `${baseUrl}/project/${projectid}/system/${sysId}/srv/prosightApiServer/hospital/${hsptlid}`,\r"
+        - "      method: \"DELETE\",\r"
+        - "      headers: {\r"
+        - "        Authorization: `Bearer ${idToken}`,\r"
+        - "        \"Content-Type\": \"application/json\",\r"
+        - "      },\r"
+        - "      body: {\r"
+        - "        mode: 'raw',\r"
+        - "        raw: JSON.stringify({\r"
+        - "          deleteDevice:\"force\"\r"
+        - "        })\r"
+        - "      }\r"
+        - "    }, (err, res) => {\r"
+        - "      if (err) {\r"
+        - "        console.log(\"Unable to delete\", assetId, err);\r"
+        - "        return;\r"
+        - "      }\r"
+        - "\r"
+        - "      if (res.code === 200) {\r"
+        - "        console.log(\"Asset deleted successfully:\", res.json());\r"
+        - "      } else {\r"
+        - "        console.log(\"Delete failed for\", assetId, \"status:\", res.code);\r"
+        - "      }\r"
+        - "    });\r"
+        - "  });\r"
+        - "\r"
+        - "});\r"
+        - "\r"
+        - "\r"
+        - ''
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - let response = pq.response.json();
+        - pq.test('Validate Hospital Name', () => {
+        - '  pq.response.to.have.status(201)'
+        - '  pq.expect(response.name).to.eql(pq.environment.get("AssetManagement.hospitalDetails.hospitalName"))'
+        - '})'
+        - if (pq.response.code === 409) {
+        - '  console.log("Hospital is already there in System", pq.environment.get("AssetManagement.hospitalDetails.HospitalId"))'
+        - '}'
+        - if (pq.response.code === 201) {
+        - '  pq.environment.set("AssetManagement.hospitalDetails.HospitalId", response.id);'
+        - '} else {'
+        - '  console.log("Hospital creation failed with status code: " + pq.response.code);'
+        - '  console.log(response);'
+        - '}'
+        - ''
 type: request
 disabled: false

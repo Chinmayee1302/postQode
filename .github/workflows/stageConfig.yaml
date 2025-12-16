@@ -3,8 +3,6 @@ name: API Tests - STAGE
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   api-tests-stage:

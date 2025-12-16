@@ -5,33 +5,33 @@ request:
     raw: >-
       {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{AssetManagement.hospitalDetails.HospitalId}}/srv/prosightBypass/resourceEnum
     host:
-    - '{{API_Base_URL}}'
+      - '{{API_Base_URL}}'
     path:
-    - system
-    - '{{SYSTEM_ID}}'
-    - device
-    - '{{AssetManagement.hospitalDetails.HospitalId}}'
-    - srv
-    - prosightBypass
-    - resourceEnum
+      - system
+      - '{{SYSTEM_ID}}'
+      - device
+      - '{{AssetManagement.hospitalDetails.HospitalId}}'
+      - srv
+      - prosightBypass
+      - resourceEnum
   method: POST
   headers:
-  - description: ''
-    disabled: false
-    key: Cache-Control
-    value: no-cache
-  - description: ''
-    disabled: false
-    key: Accept
-    value: '*/*'
-  - description: ''
-    disabled: false
-    key: Accept-Encoding
-    value: gzip, deflate
-  - description: ''
-    disabled: false
-    key: Connection
-    value: keep-alive
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
   body:
     mode: raw
     modeOfBody: JSON
@@ -55,13 +55,65 @@ request:
     bearer:
       token: '{{idToken}}'
 events:
-- listen: test
-  script:
-    type: javascript
-    exec:
-    - pq.test("Status code is 200.", function () {
-    - '    pq.response.to.have.status(200);'
-    - '});'
-    - ''
-    - ''
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "const baseUrl  = pq.globals.get('API_Base_URL');\r"
+        - "const sysId    = pq.globals.get('SYSTEM_ID');\r"
+        - "const projectid = pq.globals.get(\"PROJECT_ID\");\r"
+        - "const hospId   = pq.environment.get('AssetManagement.hospitalDetails.HospitalId');\r"
+        - "const idToken  = pq.globals.get(\"idToken\");\r"
+        - "\r"
+        - "const roomtypename = pq.environment.get(\"AssetManagement.locationDetails.roomType\");\r"
+        - "\r"
+        - "const url = `${baseUrl}/system/${sysId}/device/${hospId}/srv/prosightBypass/resourceEnum`;\r"
+        - "\r"
+        - "const requestBody = {\r"
+        - "  resEnum: {\r"
+        - "    name: \"roomType\",\r"
+        - "    valueDefault: \"at at-default\"\r"
+        - "  },\r"
+        - "  enumValue: roomtypename\r"
+        - "};\r"
+        - "\r"
+        - "/* ✅ Console BEFORE sending */\r"
+        - "console.log(\"DELETE resourceEnum URL:\", url);\r"
+        - "console.log(\"DELETE request body (object):\", requestBody);\r"
+        - "console.log(\r"
+        - "  \"DELETE request body (JSON):\",\r"
+        - "  JSON.stringify(requestBody, null, 2)\r"
+        - ");\r"
+        - "\r"
+        - "\r"
+        - "pq.sendRequest(\r"
+        - "  {\r"
+        - "    url,\r"
+        - "    method: \"DELETE\",\r"
+        - "    headers: {\r"
+        - "      Authorization: `Bearer ${idToken}`,\r"
+        - "      \"Content-Type\": \"application/json\",\r"
+        - "    },\r"
+        - "    body: {\r"
+        - "      mode: \"raw\",\r"
+        - "      raw: JSON.stringify(requestBody),\r"
+        - "    },\r"
+        - "  },\r"
+        - "  (err, res) => {\r"
+        - "    if (err) {\r"
+        - "      console.log(\"Unable to delete resourceEnum\", err);\r"
+        - "      return;\r"
+        - "    }\r"
+        - "  }\r"
+        - ");\r"
+        - ''
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - pq.test("Status code is 200.", function () {
+        - '    pq.response.to.have.status(200);'
+        - '});'
+        - ''
+        - ''
 type: request

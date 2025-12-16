@@ -3,8 +3,6 @@ name: API Tests - DEV
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   api-tests-dev:
