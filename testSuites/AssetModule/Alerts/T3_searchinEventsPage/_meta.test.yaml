@@ -3,4 +3,6 @@ id: 484835b2-7e22-453c-9fd9-5cd80191c4f7
 name: T3_searchinEventsPage
 dependencies: []
 type: TESTCASE
-testSteps: []
+testSteps:
+  - fileReference: eventSearch.request.yaml
+    type: request

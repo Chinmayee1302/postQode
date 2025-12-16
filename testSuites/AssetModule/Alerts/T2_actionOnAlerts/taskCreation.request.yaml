@@ -39,6 +39,10 @@ request:
     mode: raw
     modeOfBody: JSON
     raw: "{\r\n    \"data\": [\r\n        {\r\n            \"path\": \"description\",\r\n            \"value\": \"taskCreated\"\r\n        },\r\n        {\r\n            \"path\": \"acknowledged/status\",\r\n            \"value\": false\r\n        },\r\n        {\r\n            \"path\": \"task/time\",\r\n            \"value\": {{timestamp}}\r\n        },\r\n        {\r\n            \"path\": \"task/userId\",\r\n            \"value\": \"02RZuRq14oXy1ipTgWWvP4\"\r\n        },\r\n        {\r\n            \"path\": \"task/username\",\r\n            \"value\": \"jahnavi.b@codecraft.co.in\"\r\n        }\r\n    ]\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
 events:
   - listen: prerequest
     script:

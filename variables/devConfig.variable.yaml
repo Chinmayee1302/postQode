@@ -15,5 +15,11 @@ ASSET_BLUEPRINT_ID: 5fauRxVdghMnOTwbFKkgTB
 STAFF_BLUEPRINT_ID: 6m7smeRtSJ9AYW16KOGbWH
 levidToken: >-
   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE3NjU2MjgyMjIsImV4cCI6MTc2NTcxNDYyMiwiYXVkIjoiTG9fbG5VeEZMM1p2TW5GTjVlTWpGaUNVdjF4RnFGLUgiLCJpc3MiOiJodHRwczovL2Rldi1jb3gtaGVhbHRoLWltYWdpbmUtYXBpLmxldmVyZWdlLmNvbSIsInN1YiI6IjRHMU9WU3k0VkkybVhZT2lOc0h3b2oifQ.3cS8ShFP0lN2srpwz8RW7d_B7Mn3OvI-BJVYPefZHtg
-rentaltimerID: 5QU4XuXrjBjdCfsnRkwcwS
-maintenancetimerID: 7dTKgvMG7uA4ZzPtcqNhiw
+rentaltimerID: 6s4iOs96fVWmAE2tCMcrD7
+maintenancetimerID: 3aG2kXeninOgoWUYtuMn99
+OLGHospitalDetails:
+  hospitalName: Oschner Lafayette General1
+  hospitalID: 0qsdrAwPwozPnYptvlWL0d
+  rentalIncID: 0K5pz4MjIP0B9im7T1plOb
+  maintenance: 0hBoKLjLENTpLvkCbGRQEz
+  tagLow: 0pDvBn1mrxExBfScw00akC

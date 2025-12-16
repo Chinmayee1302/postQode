@@ -7,7 +7,7 @@ AssetManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    HospitalId: 11oyfbKzVO8IG0Y7XZzhIr
+    HospitalId: 1hRgkyfzFshOePXbKIuyJw
   buildingDetails:
     buildingName: assetManagementBuilding
     streetAddress: 1214 Coolidge Street
@@ -18,7 +18,7 @@ AssetManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    BuildingId: 1sdjAxIWFznKt4nJ02pIYd
+    BuildingId: 07URY4cGzsABQ2We0QsU1z
   departmentBoundaryName: assetManagementBoundary
   locationName: assetManagementroom1
   previousRoomName: assetManagementroom2
@@ -34,6 +34,7 @@ AssetManagement:
     modelNum: HL-3901
     maintenanceDay: Quarterly
     rentedOption: Owned
+    assetlevId: 2fnO5Bp2yLl08SEPg1o1CB
   asset2:
     assetName: assetPostQode
     assetId: '2345'
@@ -45,28 +46,30 @@ AssetManagement:
     maintenanceDay: Annually
     rentedOption: Rented
     rentalDueDate: 07/04/2024
+    assetlevId: 3xBauUCyTIgWOOneJo6T19
   locationDetails:
     roomName_1: assetManagementroom1
     roomName_2: assetManagementroom2
     roomType: assetManagementroom
-    room0: 4mCYBDRk6kMypGkZyRBWAm
-    room1: 7vBbEKcudB2O3y6XbHbJ2m
+    room0: 70Ypb3VU3lgugA1OLuxXde
+    room1: 1KPU4zbhuJYpas4iWhmcVj
   floorDetails:
     floorName: assetManagementFloor
     floorNumber: a123456756
-    floorId: 1Klrs4AExTHFjlO7pDLLOE
+    floorId: 7EXXN3wLMJsNTycR0gaq8y
   roomDetails:
     roomTypeName: assetManagementroom
     status: Available
     utilizationState: Not Utilized
     monitorCompliance: 'No'
-  roomId: 4mCYBDRk6kMypGkZyRBWAm
+  roomId: 70Ypb3VU3lgugA1OLuxXde
   tagDetails:
     tag1:
       deviceId: assetMngmemntTag
       type: Asset Tag
       manufacturer: HID
       model: iBeek Mini
+      tagID: 323F7vJtDdydiDFa6fHxuK
     tag2:
       deviceId: Automation Asset Tag 001
       type: Asset Tag
@@ -85,8 +88,8 @@ AssetManagement:
     maintenanceDay: Monthly
     rentedOption: Owned
     departmentID: 104OFYLyLkMZeXYk3N9Mka
-  departmentID: 1I2upnzv1ZvwcD3BBASqYR
-  departmentBoundaryId: 3KiVGQ0pWmZM3akvbOEfBy
+  departmentID: 1lh8mjA6UxX4aExWj5jqBe
+  departmentBoundaryId: 5mE5M0CZnQmXdCJTUkdbHi
   assetTypeDetails:
     assetTypeName: postqodeAssetType
     editedAssetTypeName: editedPostqodeAssetType
@@ -108,26 +111,22 @@ AssetManagement:
         departmentName: assetManagementdepo
         assetType: Bed
         rentedOption: Owned
+        assetlevId: 7KDr7nEbMc6VHwtlm3ZycU
       tagDetails:
         deviceId: ruleTag
         type: Asset Tag
         manufacturer: HID
         model: iBeek Mini
+        tagID: 1ydKl7yXBJnBcg9hBKC3fz
   propar:
-    assetlevid: 3fR1M72qwfSNkNw9MNbHBu
-    taglevid: 3UpCcBSQ1oRW166CercrK1
-  deleteAssetID: 3fR1M72qwfSNkNw9MNbHBu
-  deletetagID: 3UpCcBSQ1oRW166CercrK1
+    assetlevid: 6uwPhcig1EOAIP3Yu7mS49
+    taglevid: 5ZvXTWcj7avXCR7JK7Z76C
+  deleteAssetID: 6uwPhcig1EOAIP3Yu7mS49
+  deletetagID: 5ZvXTWcj7avXCR7JK7Z76C
 propartTestIDs_assetIDs: >-
-  ["7pe3nXuTtDQ0dOrEEelPX4","798AMCdGvwHN9BEkkqGzb8","0C38qLNK9scTUBQ43fLzQ0","3fR1M72qwfSNkNw9MNbHBu"]
+  ["1qtXRbZLVbIFSKMO56frMY","5omA8JoNphm90RzDtqWg2A","3Dn7Af21nDRxR6tgNxIImG","6uwPhcig1EOAIP3Yu7mS49"]
 propartTestIDs_tagIDs: >-
-  ["0XZG905uNKoRY4Y5OtYZzM","2TybHw8qYIDePUhoaNA0lO","5GLJPlJpAqWkp31XXWdHFL","3UpCcBSQ1oRW166CercrK1"]
+  ["4e34enVDJm7VCmIbvu53pX","6sMARD7JOPWPfPSzzw8Fhp","7qJ84bRHx5ueKNHXRQmmYs","5ZvXTWcj7avXCR7JK7Z76C"]
 hardwareExternalId: TESTINGTAG ONE
-OLGHospitalDetails:
-  hospitalName: Oschner Lafayette General1
-  hospitalID: 1nHFSsaZpNXyE5dbfA4Wvv
-  rentalIncID: 62ABGLPWogj2QL6LXfkBBb
-  maintenance: 3ftMkF8Q4jxL5JhooagXy9
-  tagLow: 43abd4XrYiUofqrG9UG8jV
 rentalDueTimerID: 0vWcQ42iS1fu6PH5gis86t
 deviceId: 1bW8Q1zE0QlKr00scuh95h
