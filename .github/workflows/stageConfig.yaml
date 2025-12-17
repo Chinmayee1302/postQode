@@ -33,6 +33,16 @@ jobs:
           -c equipment-management-stage \
           --report-formats junit html \
           --report-dir ./test-results/stage
+        postqode execute \
+          -s "testSuites/Admin_Test_Flow/_meta.suite.yaml" \
+          -c stageCofig \
+          --report-formats junit html \
+          --report-dir ./test-results/stage
+        postqode execute \
+          -s "testSuites/ISDR Test Flow/_meta.suite.yaml" \
+          -c ISDR_Staging \
+          --report-formats junit html \
+          --report-dir ./test-results/stage
 
     - name: Upload HTML Reports (STAGE)
       uses: actions/upload-artifact@v4

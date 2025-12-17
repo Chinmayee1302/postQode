@@ -36,6 +36,17 @@ jobs:
           --report-formats junit html \
           --report-dir ./test-results/dev
 
+        postqode execute \
+          -s "testSuites/Admin_Test_Flow/_meta.suite.yaml" \
+          -c devConfig \
+          --report-formats junit html \
+          --report-dir ./test-results/dev
+
+        postqode execute \
+          -s "testSuites/ISDR Test Flow/_meta.suite.yaml" \
+          -c ISDR_Staging \
+          --report-formats junit html \
+          --report-dir ./test-results/dev
     - name: Upload HTML Reports (DEV)
       uses: actions/upload-artifact@v4
       if: always()
