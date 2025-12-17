@@ -6,8 +6,8 @@ hospitalDetails:
   timezone: Eastern Standard Time
   state: Alabama
   updatedstreetAddress: 1214 Coolidge Street_Updated
-HospitalId: 5b4k3ed9i9e2oXGsOlcMs3
-BuildingId: 1JBdJPpiJ4VBPfLYVtwItg
+HospitalId: 3w0pF1w9wSGoQ0O96PK0fX
+BuildingId: 46RN9gFc465Xw4Zzt5OofY
 buildingDetails:
   buildingName: Apollo Care Hospital
   streetAddress: Koramangala
@@ -35,10 +35,10 @@ roomDetails:
   monitorCompliance: 'No'
 departmentName: PostQodeDept
 updatedDepartmentName: PostQodeDept_Updated
-departmentID: 5Msp7Y3u17sl3038JsFjtG
+departmentID: 5k4GPxLGOmS8mTtumF604H
 departmentBoundaryName: DeptBoundary
 updatedDepartmentBoundaryName: DeptBoundaryUpdated
-departmentBoundaryId: 4pdTtmC7wnD5pxMga7R3kF
+departmentBoundaryId: 7A77OGr8pvJSki98i8gNWr
 tagDetails:
   deviceId: postTag
   model: iBeek Mini
@@ -49,7 +49,7 @@ updatedTagDetails:
   model: Beacon Card V4
   type: Staff Tag
   manufacturer: HID
-tagId: 73WmEDmwe68nZ9YNvTLdTV
+tagId: 0KLiYURJgNEzmhvdJBtSXA
 sensorDetails:
   deviceId: postSensor
   sensorType: Ambient
@@ -72,7 +72,7 @@ updatedSensorDetails:
   sensorType: Ambient
   manufacturer: Centrak
   model: postSensorModelUpdated
-sensorId: 72It7bREptGIDhOwyO9Pyn
+sensorId: 4lct53KfVRkmwpIcl3ZSpO
 roomId: 3snIxUatPOyG36MEagjYk8
-gatewayID: 2tejfR8XdSeTlebESfS8TR
-floorId: 4wY8qaJVMX8EbGUqqP9qlr
+gatewayID: 2Q276pwMJTYgbTDVfX1VSV
+floorId: 09KFifrL3dTWQaj91ZaYl8

@@ -29,4 +29,4 @@ datasets:
 runConfigs:
   - name: dev
     global: variables/Global_Variabel.variable.yaml
-    environment: variables/Env_Dev.variable.yaml
+    environment: variables/AdminModule.variable.yaml
