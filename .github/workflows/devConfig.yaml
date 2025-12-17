@@ -28,6 +28,12 @@ jobs:
           -c Dev_Config \
           --report-formats junit html \
           --report-dir ./test-results/dev
+        mkdir -p test-results/dev
+        postqode execute \
+          -s testSuites/IEM Test Flow/_meta.suite.yaml \
+          -c equipment-management-dev \
+          --report-formats junit html \
+          --report-dir ./test-results/dev
 
     - name: Upload HTML Reports (DEV)
       uses: actions/upload-artifact@v4

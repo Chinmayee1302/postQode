@@ -23,3 +23,6 @@ runConfigs:
   - name: equipment-management-dev
     global: variables/devConfig.variable.yaml
     environment: variables/Env_Dev_IEM.variable.yaml
+  - name: equipment-management-stage
+    global: variables/stageConfigGlobal.variable.yaml
+    environment: variables/Env_Dev_IEM.variable.yaml

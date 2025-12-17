@@ -4,6 +4,8 @@
   },
   "scripts": {
     "executeStageConfig": "postqode execute -s testSuites/IAP_Test_Flow/_meta.suite.yaml -w . -c stageConfig",
-    "executeDevConfig": "postqode execute -s testSuites/IAP_Test_Flow/_meta.suite.yaml -w . -c Dev_Config"
+    "executeDevConfig": "postqode execute -s testSuites/IAP_Test_Flow/_meta.suite.yaml -w . -c Dev_Config",
+    "executeIEMConfig": "postqode execute -s testSuites/IAP_Test_Flow/_meta.suite.yaml -w . -c equipment-management-dev",
+    "executeIEMStageConfig": "postqode execute -s testSuites/IAP_Test_Flow/_meta.suite.yaml -w . -c equipment-management-stage"
   }
 }
