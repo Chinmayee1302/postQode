@@ -7,7 +7,7 @@ EquipmentManagement:
     timezone: Eastern Standard Time
     state: Alabama
     updatedstreetAddress: 1214 Coolidge Street_Updated
-    hospitalId: 7pH30LCWH8LKLTtLucy0LN
+    hospitalId: 252HURK5INpIMM7oh9a9L4
   buildingDetails:
     buildingName: EquipmentBuilding
     streetAddress: Koramangala
@@ -18,11 +18,11 @@ EquipmentManagement:
     contactEmail: parker@mailinator.com
     timezone: Eastern Standard Time
     state: Alabama
-    buildingId: 06dCleueLHRleruopnEXrq
+    buildingId: 6I0uGxFLuIY2qY7y4dzSY9
   floorDetails:
     floorName: FirstFloorIEM
     floorNumber: iem123
-    floorId: 56h5OPOaR0JrwnYmJIuNJz
+    floorId: 6GtdUGAyXYfpS4upunkXJp
   roomDetails:
     roomName_1: Equipment Room101
     roomName_2: Equipment Room102
@@ -32,25 +32,25 @@ EquipmentManagement:
     assetStatus: Available
     utilizationState: Not Utilized
     monitorCompliance: 'No'
-    roomId: 1ytlmgROo9ltHp6xc5eBmu
+    roomId: 3TtV5CpqeHfj04IMcUdYbE
   departmentDetails:
     departmentName: PostQodeDeptIEM
     departmentBoundaryName: DeptBoundaryIEM
-    departmentID: 79WGbk38OsO7xhZVummB8j
-    departmentBoundaryId: 0nN3lLB2yyMr5muVYcPkma
+    departmentID: 2tYBWpGA0e4lSvliNtpoy0
+    departmentBoundaryId: 7qhLkjIE8TA7jvXC2oSbro
   sensorDetails:
     sensor1:
       deviceId: EquipmentSensor
       sensorType: Ambient
       manufacturer: Sonicu
       model: postSensorModel
-      sensorId: 0Ft4W7f3gY9H5X3pzRiJan
+      sensorId: 543qXR35S5LsfUIwQQywOV
     sensor2:
       deviceId: EqpManagementSensor
       sensorType: Ambient
       manufacturer: Sonicu
       model: postSensorModel
-      sensorId: 6wTIfXAnhFqhxerZq4KrGk
+      sensorId: 1eRdq7iCHU0I2VVhADx0C1
   equipmentType: EquipmentTypeIEM
   equipmentDetails:
     equipment1:
@@ -63,7 +63,7 @@ EquipmentManagement:
       floorName: First Floor IEM
       departmentName: PostQodeDeptIEM
       roomName: Equipment Room101
-      equipmentId: 6ytOnzf3pVhVob8bmPU57e
+      equipmentId: 5lA25wAHeMA5Ywwa4stzes
     equipment2:
       name: Test-Equipment-4556
       id: iem898987
@@ -74,7 +74,7 @@ EquipmentManagement:
       floorName: FirstFloorIEM
       departmentName: PostQodeDeptIEM
       roomName: Equipment Room101
-      equipmentId: 5vYRIh9XxHOglTimGI7lDJ
+      equipmentId: 0m5jMyHryV7jSz6TFsVGtY
     equipment3:
       name: Test-Equipment-9001
       id: iem78778
@@ -85,7 +85,7 @@ EquipmentManagement:
       floorName: First Floor IEM
       departmentName: PostQodeDeptIEM
       roomName: Equipment Room101
-      equipmentId: 2JrzvHeSIPzHEAKhrRGRTW
+      equipmentId: 4UA4wxKSZx6XZIW0mlMKlR
   editEquipmentDetails:
     name: Test-Equipment-6778
     id: iem45454689
@@ -96,7 +96,7 @@ EquipmentManagement:
     floorName: FirstFloorIEM
     departmentName: PostQodeDeptIEM
     roomName: Equipment Room101
-    equipmentId: 5vYRIh9XxHOglTimGI7lDJ
+    equipmentId: 0m5jMyHryV7jSz6TFsVGtY
   equipmentTypeDetails:
     initialEquipmentType: postQodeIEMType
     updatedEquipmentType: updatedPostQodeIEMType
@@ -114,17 +114,24 @@ Rules:
     autoInspect: true
     frequency: daily
     firstInspectionTime: 3:00 AM
-    firstInspectionUTC: '{"hour":21,"minute":30,"day":1,"date":15}'
+    firstInspectionUTC: '{"hour":21,"minute":30,"day":2,"date":16}'
     secondInspection: true
     secondInspectionTime: 7:00 AM
-    secondInspectionUTC: '{"hour":1,"minute":30,"day":2,"date":16}'
-    lastModified: 1765894227676
-    firstInspectionTimestamp: 1765834200000
-    secondInspectionTimestamp: 1765848600000
+    secondInspectionUTC: '{"hour":1,"minute":30,"day":3,"date":17}'
+    lastModified: 1765965576271
+    firstInspectionTimestamp: 1765920600000
+    secondInspectionTimestamp: 1765935000000
   creatEnvironmentRule:
-    lastModified: 1765894226761
+    lastModified: 1765965575166
 Monitoring:
   inpspectionDetails:
     comment: inspected is doneeef
-    time: 1765894226249
-    complianceDueDate: '2025-12-17T14:10:26.249Z'
+    time: 1765965563719
+    complianceDueDate: '2025-12-18T09:59:23.719Z'
+Reports:
+  curtimestamp: '2025-12-17T09:59:30.382Z'
+  oneTimeReportID: null
+  onetimeReportId: 951e6267-e22e-4917-843e-009af400bc9c
+  recurringReportId: df1991bd-14b6-4048-9f6f-e8757c7f90a4
+  startDate: null
+  endDate: null

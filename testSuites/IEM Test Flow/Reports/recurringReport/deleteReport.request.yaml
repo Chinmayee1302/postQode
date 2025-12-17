@@ -1,0 +1,46 @@
+id: 50d9ddd6-6b32-4b13-93ed-096d5cd66e03
+name: deleteReport
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}.srv/prosightAnalytics/scheduledReports/{{Reports.recurringReportId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}.srv'
+      - prosightAnalytics
+      - scheduledReports
+      - '{{Reports.recurringReportId}}'
+  method: DELETE
+  headers:
+    - key: accept
+      value: application/json
+    - key: accept-language
+      value: en-GB,en-US;q=0.9,en;q=0.8
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: sec-fetch-dest
+      value: empty
+    - key: sec-fetch-mode
+      value: cors
+    - key: sec-fetch-site
+      value: cross-site
+    - key: user-agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request

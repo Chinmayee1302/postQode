@@ -3,12 +3,12 @@ name: deleteRule
 request:
   url:
     raw: >-
-      {{API_Base_URL}}/system/{{SYSTEM_ID}/device/{{EquipmentManagement.hospitalDetails.hospitalId}}/srv/prosightBypass/rules/delete
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{EquipmentManagement.hospitalDetails.hospitalId}}/srv/prosightBypass/rules/delete
     host:
       - '{{API_Base_URL}}'
     path:
       - system
-      - '{{SYSTEM_ID}'
+      - '{{SYSTEM_ID}}'
       - device
       - '{{EquipmentManagement.hospitalDetails.hospitalId}}'
       - srv
