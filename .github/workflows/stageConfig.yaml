@@ -35,7 +35,7 @@ jobs:
           --report-dir ./test-results/stage
         postqode execute \
           -s "testSuites/Admin_Test_Flow/_meta.suite.yaml" \
-          -c stageCofig \
+          -c stageConfig \
           --report-formats junit html \
           --report-dir ./test-results/stage
         postqode execute \

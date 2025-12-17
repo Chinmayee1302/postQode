@@ -17,14 +17,6 @@ request:
   headers:
     - key: sec-ch-ua-platform
       value: '"Windows"'
-    - key: Authorization
-      value: >-
-        Bearer
-        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY1ODg2NDk5LCJleHAiOjE3NjU5NzI4OTksImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiI1a1hkbkNBbDk2aldxYWN5ZkZoZEhzIn0.XvZisMLhfZjrTFp57zTZbYWxqZSMF33ErdjnNSDd25E
-    - key: Referer
-      value: https://dev-cognosos.web.app/
-    - key: sec-ch-ua
-      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
     - key: sec-ch-ua-mobile
       value: '?0'
     - key: User-Agent
@@ -39,6 +31,10 @@ request:
     mode: raw
     modeOfBody: JSON
     raw: "{\r\n    \"data\": {\r\n        \"inspection\": {\r\n            \"comment\": \"{{Monitoring.inpspectionDetails.comment}}\",\r\n            \"inspectorName\": \"{{username}}\",\r\n            \"time\": 1765889136218,\r\n            \"temperature\": \"20\",\r\n            \"humidity\": \"30\",\r\n            \"status\": \"Complete\"\r\n        },\r\n         \"history\": {\r\n            \"inspection\": {\r\n                \"status\": \"Inspected\"\r\n            }\r\n        },\r\n        \"compliance\": {\r\n            \"compliant\": true,\r\n            \"complianceDueDate\": \"2025-12-17T12:45:23.573Z\"\r\n        }\r\n    }\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
 events:
   - listen: prerequest
     script:

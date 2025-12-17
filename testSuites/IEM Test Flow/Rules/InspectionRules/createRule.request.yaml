@@ -15,20 +15,6 @@ request:
       - '{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}'
   method: PATCH
   headers:
-    - key: sec-ch-ua-platform
-      value: '"Windows"'
-    - key: Authorization
-      value: Bearer {{idToken}}
-    - key: Referer
-      value: https://dev-cognosos.web.app/
-    - key: sec-ch-ua
-      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
-    - key: sec-ch-ua-mobile
-      value: '?0'
-    - key: User-Agent
-      value: >-
-        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/143.0.0.0 Safari/537.36
     - key: Accept
       value: application/json
     - key: Content-Type
@@ -91,6 +77,10 @@ request:
               }
           ]
       }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
 events:
   - listen: prerequest
     script:

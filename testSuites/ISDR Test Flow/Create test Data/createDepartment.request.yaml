@@ -38,7 +38,7 @@ request:
         "data": [
           {
             "path": "name",
-            "value": "{{DepartmentName}}"
+            "value": "{{departmentName}}"
           }
         ],
         "name": "{{departmentName}}"
@@ -55,7 +55,7 @@ events:
         - const depResponse = pq.response.json();
         - ''
         - // Validate department name
-        - pq.test("Department Creation", () => {
+        - pq.test("Department Creation", function (){
         - '  pq.expect(depResponse.name).to.equal(pq.environment.get(''departmentName''));'
         - '});'
         - ''
@@ -88,7 +88,7 @@ events:
         - '      force: true'
         - '    })'
         - '  }'
-        - '}, {timeout: 10000}, (err, res) => {'
+        - '}, (err, res) => {'
         - '  if (err) {'
         - '    console.warn("Department linking failed", err);'
         - '    return;'
@@ -99,5 +99,6 @@ events:
         - '  }'
         - '  console.log("Department linked successfully:", res.json());'
         - '});'
+        - ''
         - ''
 type: request
