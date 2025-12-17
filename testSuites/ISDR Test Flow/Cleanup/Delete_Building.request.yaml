@@ -1,0 +1,43 @@
+id: d92b5bcd-dd96-4d54-a14d-cace6d697200
+name: Delete_Building
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/project/{{PROJECT_ID}}/system/{{SYSTEM_ID}}/srv/prosightApiServer/building/{{BuildingId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - project
+      - '{{PROJECT_ID}}'
+      - system
+      - '{{SYSTEM_ID}}'
+      - srv
+      - prosightApiServer
+      - building
+      - '{{BuildingId}}'
+  method: DELETE
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request

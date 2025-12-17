@@ -1,0 +1,40 @@
+id: 68bc10f8-6b5d-4883-a802-6f40d6dc183e
+name: unlinkStaffTag
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/staff/{{sId}}/tag
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - staff
+      - '{{sId}}'
+      - tag
+  method: DELETE
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Referer
+      value: https://stg-cognosos.web.app/
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/142.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: sec-ch-ua
+      value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request

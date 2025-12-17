@@ -1,0 +1,68 @@
+id: 51691187-2520-4521-a6a5-aaac9080e56b
+name: createFacility
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/project/{{PROJECT_ID}}/system/{{SYSTEM_ID}}/srv/prosightApiServer/hospital
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - project
+      - '{{PROJECT_ID}}'
+      - system
+      - '{{SYSTEM_ID}}'
+      - srv
+      - prosightApiServer
+      - hospital
+  method: POST
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n\"name\": \"{{hospitalDetails.hospitalName}}\",\r\n\"data\": {\r\n    \"name\": \"{{hospitalDetails.hospitalName}}\",\r\n    \"address\": {\r\n        \"street\": \"{{hospitalDetails.streetAddress}}\",\r\n        \"city\": \"{{hospitalDetails.city}}\",\r\n        \"state\": \"{{hospitalDetails.state}}\",\r\n        \"zipCode\": \"{{hospitalDetails.zipCode}}\"\r\n    },\r\n    \"contact\": {},\r\n    \"hospitalType\": \"Default\",\r\n    \"timezone\": \"{{hospitalDetails.timezone}}\",\r\n    \"position\": {\r\n        \"lat\": 42.32694,\r\n        \"lon\": -71.83355\r\n    }\r\n},\r\n\"metadata\": {\r\n    \"timeZone\": \"{{hospitalDetails.timezone}}\",\r\n    \"allowedApplications\": [\r\n        \"Prosight Assets\",\r\n        \"Prosight Safety\",\r\n        \"Prosight Environment\"\r\n        ]\r\n    },\r\n    \"hasHIDTags\": true\r\n}\r\n"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "let response = pq.response.json();\r"
+        - "if (pq.response.code === 201) {\r"
+        - "  const hospitalDetails = pq.environment.get(\"hospitalDetails\");\r"
+        - "  pq.test(\"Validate hospital details\", function () {\r"
+        - "    pq.expect(response.name).to.equal(hospitalDetails.hospitalName);\r"
+        - "    pq.expect(response.data.name).to.equal(hospitalDetails.hospitalName);\r"
+        - "    pq.expect(response.data.address.street).to.equal(hospitalDetails.streetAddress);\r"
+        - "    pq.expect(response.data.address.city).to.equal(hospitalDetails.city);\r"
+        - "    pq.expect(response.data.address.state).to.equal(hospitalDetails.state);\r"
+        - "    pq.expect(response.data.address.zipCode).to.equal(hospitalDetails.zipCode);\r"
+        - "    pq.expect(response.data.timezone).to.equal(hospitalDetails.timezone);\r"
+        - "    pq.expect(response.metadata.timeZone).to.equal(hospitalDetails.timezone);\r"
+        - "  });\r"
+        - "  pq.environment.set(\"HospitalId\", response.id);\r"
+        - "} else {\r"
+        - "  console.log(pq.variables.get('hospitalDetails').hospitalName);\r"
+        - "  console.log(\"Hospital creation failed with status code: \" + pq.response.code);\r"
+        - "  console.log(response);\r"
+        - "}\r"
+        - ''
+type: request
