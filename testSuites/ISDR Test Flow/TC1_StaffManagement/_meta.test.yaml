@@ -1,0 +1,16 @@
+description: ''
+id: 0b796496-ae4a-4e72-b7e0-c8311c974112
+name: TC1_StaffManagement
+dependencies: []
+type: TESTCASE
+testSteps:
+  - fileReference: createStaffType.request.yaml
+    type: request
+  - fileReference: editStaffType.request.yaml
+    type: request
+  - fileReference: createStaff.request.yaml
+    type: request
+  - fileReference: editStaff.request.yaml
+    type: request
+  - fileReference: linkStaffTag.request.yaml
+    type: request

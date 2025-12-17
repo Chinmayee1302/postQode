@@ -1,0 +1,62 @@
+id: 97046900-97c6-490e-99d4-0d22f4342003
+name: createRoomType
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{HospitalId}}/srv/prosightBypass/resourceEnum
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - system
+      - '{{SYSTEM_ID}}'
+      - device
+      - '{{HospitalId}}'
+      - srv
+      - prosightBypass
+      - resourceEnum
+  method: POST
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"resEnum\": {\r\n        \"name\": \"roomType\"\r\n    },\r\n    \"value\": {\r\n        \"metadata/isCompliant\": true,\r\n        \"name\": \"{{roomName}}\",\r\n        \"metadata/shrinkage\": \"N/A\",\r\n        \"metadata/color\": \"^#C6C6C6\",\r\n        \"metadata/defaultColor\": \"^#C6C6C6\",\r\n        \"metadata/status\": \"{{status}}\",\r\n        \"metadata/utilized\": \"{{utilizationStatus}}\"\r\n    }\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - "const roomData=pq.environment.get(\"roomDetails\")\r"
+        - "const roomName = roomData.roomType;\r"
+        - "// Inject value for request body\r"
+        - "pq.variables.set(\"roomName\", roomName);\r"
+        - "pq.variables.set(\"status\",roomData.assetStatus)\r"
+        - "pq.variables.set(\"utilizationStatus\",roomData.utilizationState)\r"
+        - ''
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "pq.test(\"Status code is 200.\", function () {\r"
+        - "    pq.response.to.have.status(200);\r"
+        - '});'
+type: request

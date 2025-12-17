@@ -1,0 +1,169 @@
+id: c511d55b-1c6b-4efc-9a41-14eb0124b718
+name: createDepartmentBoundary
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}/departmentBoundaries
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{HospitalId}}'
+      - departmentBoundaries
+  method: POST
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"data\": {\r\n                \"name\": \"{{departmentBoundaryName}}\",\r\n                \"department\": \"{{departmentID}}\",\r\n                \"geoJson\":\r\n                  {\"id\":\"a2dd22503517ebc198b2269e5e9d85f8\",\"type\":\"Feature\",\"properties\":{},\"geometry\":{\"coordinates\":[[[-117.25647114811176,32.991763406312586],[-117.25676101003815,32.99226541524463],[-117.25721916658418,32.99173009673808],[-117.25647114811176,32.991763406312586]]],\"type\":\"Polygon\"}}\r\n              },\r\n              \"name\": \"{{departmentBoundaryName}}\"\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "let response = pq.response.json();\r"
+        - "pq.environment.set('departmentBoundaryId', response.id);\r"
+        - "const deptBoundId = pq.environment.get('departmentBoundaryId');\r"
+        - "const baseUrl = pq.globals.get('API_Base_URL');\r"
+        - "const sysId = pq.globals.get('SYSTEM_ID');\r"
+        - "const hospId = pq.environment.get('HospitalId');\r"
+        - "const idToken = pq.globals.get(\"idToken\");\r"
+        - "const deptId = pq.environment.get('departmentID');\r"
+        - "const floorId = pq.environment.get('floorId');\r"
+        - "const request1 = {\r"
+        - "    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/departmentBoundaries/${deptBoundId}?test=true`,\r"
+        - "    method: 'PATCH',\r"
+        - "    header: {\r"
+        - "        'Cache-Control': 'no-cache',\r"
+        - "        'Accept': '*/*',\r"
+        - "        'Accept-Encoding': 'gzip, deflate',\r"
+        - "        'Connection': 'keep-alive'\r"
+        - "    },\r"
+        - "    auth: {\r"
+        - "        type: 'bearer',\r"
+        - "        bearer: {\r"
+        - "            token: idToken\r"
+        - "        }\r"
+        - "    }\r"
+        - "};\r"
+        - "pq.sendRequest(request1, function(err, res) {\r"
+        - "    console.log('Response from first embedded request:', res.json());\r"
+        - "});\r"
+        - "\r"
+        - "let url1 = `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments/${deptId}/departmentBoundaries`;\r"
+        - "console.log(url1);\r"
+        - "const request2 = {\r"
+        - "    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments/${deptId}/departmentBoundaries`,\r"
+        - "    method: 'POST',\r"
+        - "    header: {\r"
+        - "        'Content-Type': 'application/json'\r"
+        - "    },\r"
+        - "    body: {\r"
+        - "        mode: 'raw',\r"
+        - "        modeOfBody: 'JSON',\r"
+        - "        raw: JSON.stringify({\r"
+        - "            id: deptBoundId,\r"
+        - "            force: true\r"
+        - "        })\r"
+        - "    },\r"
+        - "    auth: {\r"
+        - "        type: 'bearer',\r"
+        - "        bearer: {\r"
+        - "            token: idToken\r"
+        - "        }\r"
+        - "    }\r"
+        - "};\r"
+        - "\r"
+        - "console.log(\"Request body for request2:\", request2.body.raw);\r"
+        - "pq.sendRequest(request2, (err, res) => {\r"
+        - "    if (err) {\r"
+        - "        console.error(err);\r"
+        - "    }\r"
+        - "  console.log('Response from second embedded request:', res);\r"
+        - "    console.log(pq.request.body)\r"
+        - "});\r"
+        - "\r"
+        - "\r"
+        - "\r"
+        - "const request3 = {\r"
+        - "    url: `${baseUrl}/interface/${sysId}/hospital/${hospId}/floors/${floorId}/departmentBoundaries`,\r"
+        - "    method: 'POST',\r"
+        - "    header: {\r"
+        - "        'Content-Type': 'application/json'\r"
+        - "    },\r"
+        - "    body: {\r"
+        - "        mode: 'raw',\r"
+        - "        modeOfBody: 'JSON',\r"
+        - "        raw: JSON.stringify({\r"
+        - "            id: deptBoundId,\r"
+        - "            force: true\r"
+        - "        })\r"
+        - "    },\r"
+        - "    auth: {\r"
+        - "        type: 'bearer',\r"
+        - "        bearer: {\r"
+        - "          token: idToken\r"
+        - "        }\r"
+        - "    }\r"
+        - "};\r"
+        - "pq.sendRequest(request3, (err, res) => {\r"
+        - "    if (err) {\r"
+        - "        console.error(err);\r"
+        - "    }\r"
+        - "    console.log('Response from third embedded request:', res.json());\r"
+        - "});\r"
+        - "\r"
+        - "\r"
+        - "const request4 = {\r"
+        - "    url: `${baseUrl}/system/${sysId}/device/${hospId}/srv/prosightBypass/boundary`,\r"
+        - "    method: 'PUT',\r"
+        - "    header: {\r"
+        - "        'Content-Type': 'application/json'\r"
+        - "    },\r"
+        - "    body: {\r"
+        - "        mode: 'raw',\r"
+        - "        modeOfBody: 'JSON',\r"
+        - "        raw: JSON.stringify({\r"
+        - "            boundaryId: deptBoundId,\r"
+        - "            hospitalId: hospId,\r"
+        - "            floorId: floorId,\r"
+        - "            departmentId: deptId\r"
+        - "        })\r"
+        - "    },\r"
+        - "    auth: {\r"
+        - "        type: 'bearer',\r"
+        - "        bearer: {\r"
+        - "          token: idToken\r"
+        - "        }\r"
+        - "    }\r"
+        - "};\r"
+        - "pq.sendRequest(request4, (err, res) => {\r"
+        - "    if (err) {\r"
+        - "        console.error(err);\r"
+        - "    }\r"
+        - "    console.log('Response from third embedded request:', res.json());\r"
+        - "});\r"
+        - ''
+type: request

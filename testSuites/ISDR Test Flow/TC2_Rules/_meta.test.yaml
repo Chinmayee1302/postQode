@@ -1,0 +1,12 @@
+description: ''
+id: 2b377da8-8cea-4602-8cc3-4b52961f4247
+name: TC2_Rules
+dependencies: []
+type: TESTCASE
+testSuiteId: 7bb986d3-e4f7-4920-84bb-7eabb5f7e165
+parentId: 7bb986d3-e4f7-4920-84bb-7eabb5f7e165
+testSteps:
+  - fileReference: create_Rule.request.yaml
+    type: request
+  - fileReference: edit_rule.request.yaml
+    type: request

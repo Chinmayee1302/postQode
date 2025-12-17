@@ -1,0 +1,43 @@
+id: b71f5327-cf68-49d2-a9f3-cbb5db81d0f2
+name: Delete_Hospital
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/project/{{PROJECT_ID}}/system/{{SYSTEM_ID}}/srv/prosightApiServer/hospital/{{HospitalId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - project
+      - '{{PROJECT_ID}}'
+      - system
+      - '{{SYSTEM_ID}}'
+      - srv
+      - prosightApiServer
+      - hospital
+      - '{{HospitalId}}'
+  method: DELETE
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events: []
+type: request

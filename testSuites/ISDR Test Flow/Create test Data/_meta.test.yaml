@@ -1,0 +1,24 @@
+description: This hook runs before all tests in the suite for authentication.
+id: 1fb47da5-1229-4504-907b-faa0c106a8fc
+name: Create test Data
+dependencies: []
+type: BEFORE
+testSuiteId: 7bb986d3-e4f7-4920-84bb-7eabb5f7e165
+parentId: 7bb986d3-e4f7-4920-84bb-7eabb5f7e165
+testSteps:
+  - fileReference: visitBaseURL.request.yaml
+    type: request
+  - fileReference: createFacility.request.yaml
+    type: request
+  - fileReference: create_Building.request.yaml
+    type: request
+  - fileReference: createDepartment.request.yaml
+    type: request
+  - fileReference: createRoomType.request.yaml
+    type: request
+  - fileReference: createFloorID.request.yaml
+    type: request
+  - fileReference: createDepartmentBoundary.request.yaml
+    type: request
+  - fileReference: createTags.request.yaml
+    type: request

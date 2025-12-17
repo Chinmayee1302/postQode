@@ -1,0 +1,52 @@
+id: 794787c4-2f77-46a0-9b29-b51753b3138f
+name: deleteStaffType
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{HospitalId}}/srv/prosightBypass/resourceEnum
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - system
+      - '{{SYSTEM_ID}}'
+      - device
+      - '{{HospitalId}}'
+      - srv
+      - prosightBypass
+      - resourceEnum
+  method: DELETE
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Referer
+      value: https://stg-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/142.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: >-
+      {"resEnum":{"name":"staffType","valueDefault":"st
+      st-nurse"},"enumValue":"{{staffDetails.updatedStaffType}}"}
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "console.log(pq.request.url)\r"
+        - console.log(pq.request.body)
+type: request

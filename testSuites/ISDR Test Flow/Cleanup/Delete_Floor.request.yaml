@@ -1,0 +1,50 @@
+id: aa8c1900-1586-4cdc-9988-646afc8b1006
+name: Delete_Floor
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/project/{{PROJECT_ID}}/system/{{SYSTEM_ID}}/srv/prosightApiServer/floor/{{floorId}}
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - project
+      - '{{PROJECT_ID}}'
+      - system
+      - '{{SYSTEM_ID}}'
+      - srv
+      - prosightApiServer
+      - floor
+      - '{{floorId}}'
+  method: DELETE
+  headers:
+    - description: ''
+      disabled: false
+      key: Cache-Control
+      value: no-cache
+    - description: ''
+      disabled: false
+      key: Accept
+      value: '*/*'
+    - description: ''
+      disabled: false
+      key: Accept-Encoding
+      value: gzip, deflate
+    - description: ''
+      disabled: false
+      key: Connection
+      value: keep-alive
+  body:
+    mode: none
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "pq.test(\"Status code is 204.\", function () {\r"
+        - "    pq.response.to.have.status(204);\r"
+        - '});'
+type: request

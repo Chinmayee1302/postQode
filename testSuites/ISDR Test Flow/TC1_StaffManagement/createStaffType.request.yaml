@@ -1,0 +1,61 @@
+id: 9691bbc1-9783-4f6d-bf0b-9046bf50996e
+name: createStaffType
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/system/{{SYSTEM_ID}}/device/{{HospitalId}}/srv/prosightBypass/resourceEnum
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - system
+      - '{{SYSTEM_ID}}'
+      - device
+      - '{{HospitalId}}'
+      - srv
+      - prosightBypass
+      - resourceEnum
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: Referer
+      value: https://stg-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/142.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: |-
+      {
+        "resEnum": {
+          "name": "staffType"
+        },
+        "value": {
+          "metadata/icon": "st st-staff",
+          "name": "{{staffDetails.staffType}}"
+        }
+      }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "pq.test(\"Status code is 200.\", function () {\r"
+        - "    pq.response.to.have.status(200);\r"
+        - "});\r"
+        - ''
+type: request

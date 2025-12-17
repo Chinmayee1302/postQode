@@ -1,0 +1,55 @@
+hospitalDetails:
+  hospitalName: ISDRHopsital
+  streetAddress: 1214 Coolidge Street
+  city: Birmingham
+  zipCode: '35205'
+  timezone: Eastern Standard Time
+  state: Alabama
+HospitalId: 4jgTU1k0jJA2A9BzypRKIc
+buildingDetails:
+  buildingName: ISDRBuilding
+  streetAddress: Koramangala
+  city: Bengaluru
+  zipCode: '35205'
+  contactName: Parker
+  contactPhoneNumber: '9285963258'
+  contactEmail: parker@mailinator.com
+  timezone: Eastern Standard Time
+  state: Alabama
+BuildingId: 7EJSb6UWrGfMEqRKf39crm
+departmentName: ISDRDept
+floorDetails:
+  floorName: First Floor
+  floorNumber: '1'
+roomDetails:
+  roomName_1: Room 101
+  roomName_2: Room 102
+  roomNumber_1: Room 101
+  roomNumber_2: Room 102
+  roomType: ISDRpostqodeType1
+  assetStatus: Available
+  utilizationState: Not Utilized
+  monitorCompliance: 'No'
+departmentID: 2kXXM0D1FjvKH9al8m0uBE
+floorId: 6nKoHXdKYLqPGIsVrGzHtD
+departmentBoundaryName: ISDRDeptBoundary
+tagDetails:
+  deviceId: ISDRpostTag
+  model: iBeek Mini
+  type: Staff Tag
+  manufacturer: HID
+staffDetails:
+  staffName: staffPostqode
+  staffType: staffPtype
+  updatedStaffType: ISDRType
+  staffID: s1243
+  email: vidyashree.g@cognosos.com
+  phone: '9645287978'
+sId: 3HpeO1oyDzA80zivsfkvB8
+tagId: 1zFIx9LelDBoavqfmLgmIM
+ISDRRules:
+  ruleName: ISDRRule1
+  ruleType: tagButton
+  alertType: staffEmergency
+  email: vidyashree.g@cognosos.com
+departmentBoundaryId: 2BA98k0raM40M9l2WK3Ycz

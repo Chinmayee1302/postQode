@@ -1,0 +1,30 @@
+description: This hook runs after all tests in the suite for cleanup.
+id: 139aee57-7ffa-491d-bb1c-7d3154c36438
+name: Cleanup
+dependencies: []
+type: AFTER
+testSuiteId: 7bb986d3-e4f7-4920-84bb-7eabb5f7e165
+parentId: 7bb986d3-e4f7-4920-84bb-7eabb5f7e165
+testSteps:
+  - fileReference: unlinkStaffTag.request.yaml
+    type: request
+  - fileReference: deleteStaff.request.yaml
+    type: request
+  - fileReference: deleteStaffType.request.yaml
+    type: request
+  - fileReference: deleteTag.request.yaml
+    type: request
+  - fileReference: Delete_DepartmentBoundary.request.yaml
+    type: request
+  - fileReference: Delete_Floor.request.yaml
+    type: request
+  - fileReference: Delete_Department.request.yaml
+    type: request
+  - fileReference: Delete_RoomType.request.yaml
+    type: request
+  - fileReference: Delete_Building.request.yaml
+    type: request
+  - fileReference: Delete_Hospital.request.yaml
+    type: request
+  - fileReference: delete_Rule.request.yaml
+    type: request
