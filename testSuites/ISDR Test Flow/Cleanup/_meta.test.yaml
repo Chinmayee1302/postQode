@@ -14,6 +14,8 @@ testSteps:
     type: request
   - fileReference: deleteTag.request.yaml
     type: request
+  - fileReference: delete_Rule.request.yaml
+    type: request
   - fileReference: Delete_DepartmentBoundary.request.yaml
     type: request
   - fileReference: Delete_Floor.request.yaml
@@ -25,6 +27,4 @@ testSteps:
   - fileReference: Delete_Building.request.yaml
     type: request
   - fileReference: Delete_Hospital.request.yaml
-    type: request
-  - fileReference: delete_Rule.request.yaml
     type: request

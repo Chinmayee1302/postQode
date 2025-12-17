@@ -1,34 +1,33 @@
-id: e74c6bac-4798-42c3-a399-8091f5a7619e
-name: createStaffEmergencyReport
+id: 75d8e663-54d2-49ac-b087-343e41e09860
+name: scheduledReport
 request:
   url:
     raw: >-
       {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HospitalId}}.srv/prosightAnalytics/scheduledReports
     host:
-      - '{{API_Base_URL}}'
+    - '{{API_Base_URL}}'
     path:
-      - interface
-      - '{{SYSTEM_ID}}'
-      - hospital
-      - '{{HospitalId}}.srv'
-      - prosightAnalytics
-      - scheduledReports
+    - interface
+    - '{{SYSTEM_ID}}'
+    - hospital
+    - '{{HospitalId}}.srv'
+    - prosightAnalytics
+    - scheduledReports
   method: POST
   headers:
-    - key: sec-ch-ua-platform
-      value: '"Windows"'
-    - key: sec-ch-ua
-      value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
-    - key: sec-ch-ua-mobile
-      value: '?0'
-    - key: User-Agent
-      value: >-
-        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
-        like Gecko) Chrome/142.0.0.0 Safari/537.36
-    - key: Accept
-      value: application/json
-    - key: Content-Type
-      value: application/json
+  - key: sec-ch-ua-platform
+    value: '"Windows"'
+  - key: sec-ch-ua
+    value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
+  - key: sec-ch-ua-mobile
+    value: '?0'
+  - key: User-Agent
+    value: >-
+      Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
+  - key: Accept
+    value: application/json
+  - key: Content-Type
+    value: application/json
   body:
     mode: raw
     modeOfBody: JSON
@@ -37,7 +36,7 @@ request:
         "form": {
           "basicInformation": {
             "type": "safety.smartReports.emergencyAlerts",
-            "name": "ISDRStaffEmergencyReports",
+            "name": "ScheduledReport",
             "schedule": "oneTime",
             "disabled": false
           },
@@ -45,7 +44,7 @@ request:
             "application": "safety",
             "dateRange": "last7Days",
             "department": [
-              "0EYKbjyxQcXPsrKKXoK3zg"
+              "{{departmentName}}"
             ],
             "itemType": null,
             "itemTypeList": [],
@@ -57,9 +56,9 @@ request:
           },
           "delivery": {
             "application": "safety",
-            "sendWhen": "now",
-            "sendReportOn": null,
-            "sendReportAt": null,
+            "sendWhen": "later",
+            "sendReportOn": "2025-12-18T07:22:34.037Z",
+            "sendReportAt": "2025-12-17T07:00:00.000Z",
             "sendReportStartingOn": null,
             "sendReportStartingAt": null,
             "sendReportEndingOn": null,
@@ -169,13 +168,15 @@ request:
         },
         "context": {
           "systemId": "23fqm29hl188zLLfhodrp9",
-          "hospitalId": "4jgTU1k0jJA2A9BzypRKIc",
+          "hospitalId": "14ziTUiokSBSAmBL9APIvT",
           "type": "safety.smartReports.emergencyAlerts",
           "filters": {
-            "hospitalId": "4jgTU1k0jJA2A9BzypRKIc",
-            "buildingIds": [],
+            "hospitalId": "14ziTUiokSBSAmBL9APIvT",
+            "buildingIds": [
+              "3QO4MRhF8CyBufYCqByNVp"
+            ],
             "departmentIds": [
-              "0EYKbjyxQcXPsrKKXoK3zg"
+              "0GS0pUNTVbvlVdE7OYcmVH"
             ],
             "itemTypeValues": [],
             "itemNameValues": [],
@@ -186,12 +187,11 @@ request:
         },
         "updatedBy": "vidyashree.g@cognosos.com",
         "createdBy": "vidyashree.g@cognosos.com",
-        "updatedAt": 1765910218170,
-        "createdAt": 1765910218170
+        "updatedAt": 1765956190465,
+        "createdAt": 1765956190465
       }
   auth:
     type: bearer
     bearer:
       token: '{{idToken}}'
 events: []
-type: request

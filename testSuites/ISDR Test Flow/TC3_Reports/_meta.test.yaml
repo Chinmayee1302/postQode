@@ -9,3 +9,5 @@ parentId: 7bb986d3-e4f7-4920-84bb-7eabb5f7e165
 testSteps:
   - fileReference: createStaffEmergencyReport.request.yaml
     type: request
+  - fileReference: scheduledReport.request.yaml
+    type: request

@@ -48,6 +48,10 @@ request:
     modeOfBody: JSON
     raw: >-
       [{"op":"replace","path":"data","value":{"type":"rule","ruleName":"{{ISDRRules.ruleName}}","ruleType":"tagButton","alertType":"staffEmergency","createdBy":"vidyashree.g@cognosos.com","isDepartmentAlerts":true,"isFloorAlerts":true}}]
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
 events:
   - listen: test
     script:

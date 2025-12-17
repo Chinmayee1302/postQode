@@ -22,8 +22,6 @@ request:
       value: >-
         Bearer
         eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY1ODc3NjAzLCJleHAiOjE3NjU5NjQwMDMsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMUlMdmFjNkVDQ0J4MkdFYVpVdlB4biJ9.xQ21K7A1sjkvJICu5IOT_hv4t7rBqE6Eqb0JlcPuE5M
-    - key: Referer
-      value: https://stg-cognosos.web.app/
     - key: sec-ch-ua
       value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
     - key: sec-ch-ua-mobile

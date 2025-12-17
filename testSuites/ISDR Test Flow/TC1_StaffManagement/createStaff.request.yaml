@@ -15,8 +15,6 @@ request:
   headers:
     - key: sec-ch-ua-platform
       value: '"Windows"'
-    - key: Referer
-      value: https://stg-cognosos.web.app/
     - key: sec-ch-ua
       value: '"Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"'
     - key: sec-ch-ua-mobile
