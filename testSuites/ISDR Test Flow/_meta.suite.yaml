@@ -3,9 +3,9 @@ description: ''
 id: 7bb986d3-e4f7-4920-84bb-7eabb5f7e165
 disabled: false
 runConfigs:
-  - name: ISDR_Stagibg
-    global: variables/stageConfig.variable.yaml
-    environment: variables/ISDR.variable.yaml
-  - name: ISDR_Dev
-    global: variables/devConfig.variable.yaml
-    environment: variables/ISDR.variable.yaml
+- name: ISDR_Stagibg
+  global: variables/stageConfig.variable.yaml
+  environment: variables/ISDR.variable.yaml
+- name: ISDR_Dev
+  global: variables/devConfig.variable.yaml
+  environment: variables/ISDR.variable.yaml

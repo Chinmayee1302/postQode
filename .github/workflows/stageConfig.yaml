@@ -28,6 +28,11 @@ jobs:
           -c stageConfig \
           --report-formats junit html \
           --report-dir ./test-results/stage
+        postqode execute \
+          -s "testSuites/IEM Test Flow/_meta.suite.yaml" \
+          -c equipment-management-stage \
+          --report-formats junit html \
+          --report-dir ./test-results/stage
 
     - name: Upload HTML Reports (STAGE)
       uses: actions/upload-artifact@v4
