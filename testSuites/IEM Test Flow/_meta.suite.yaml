@@ -22,7 +22,7 @@ tests:
 runConfigs:
   - name: equipment-management-dev
     global: variables/devConfig.variable.yaml
-    environment: variables/Env_Dev_IEM.variable.yaml
+    environment: variables/IEM.variable.yaml
   - name: equipment-management-stage
-    global: variables/stageConfigGlobal.variable.yaml
-    environment: variables/Env_Dev_IEM.variable.yaml
+    global: variables/stageConfig.variable.yaml
+    environment: variables/IEM.variable.yaml

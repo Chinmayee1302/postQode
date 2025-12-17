@@ -1,0 +1,48 @@
+id: 49def96f-ade8-40fc-a09c-98ef11bd319c
+name: createstaff
+request:
+  url:
+    raw: >-
+      https://stg-cox-health-imagine-api.leverege.com/v1/interface/23fqm29hl188zLLfhodrp9/hospital/1nHFSsaZpNXyE5dbfA4Wvv/staff
+    protocol: https
+    host:
+      - stg-cox-health-imagine-api
+      - leverege
+      - com
+    path:
+      - v1
+      - interface
+      - 23fqm29hl188zLLfhodrp9
+      - hospital
+      - 1nHFSsaZpNXyE5dbfA4Wvv
+      - staff
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"macOS"'
+    - key: Authorization
+      value: >-
+        Bearer
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY1Nzc3NjEzLCJleHAiOjE3NjU4NjQwMTMsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiNTFEWGpWWjVsMDllSEdSTFM4YWJ4UiJ9.9bilu3Y2Yvi00V4Uvqia0unvL2mXoFqYWIaZhIAw9_M
+    - key: Referer
+      value: https://stg-cognosos.web.app/
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36
+        (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: >-
+      {"networkAliases":{"staff":{"name":"23fqm29hl188zLLfhodrp9-s123","deviceId":"23fqm29hl188zLLfhodrp9-as"}},"networkId":"staff","name":"s123","data":[{"path":"staffType","value":"Bio-Medical
+      Engineer"},{"path":"name","value":"s123"},{"path":"staffId","value":"as"},{"path":"assignedDepartment/id","value":"289VGaDjtBleQJQBPWTvCc"},{"path":"assignedDepartment/name","value":"Accident
+      and emergency"}]}
+events: []

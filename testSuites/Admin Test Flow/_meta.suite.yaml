@@ -1,5 +1,8 @@
 id: a19a7aaf-87ae-43a0-b5fd-61be665ae463
 name: Admin Test Flow
+description: >-
+  Test suite for Admin functionalities including facility and building
+  management.
 hooks:
   - id: 1cd56ca5-e5ed-4d9f-b0e3-763bffd857dc
     name: Authentication
@@ -24,9 +27,12 @@ tests:
     description: Test case for Floor Plan Management
     path: ./T4_FloorPlanManagement
 datasets:
-  - path: ../../hospitalDetails.csv
+  - path: ../../hospitalDetails.json
     export: true
 runConfigs:
-  - name: dev
-    global: variables/Global_Variabel.variable.yaml
-    environment: variables/AdminModule.variable.yaml
+  - name: stageCofig
+    global: variables/stageConfig.variable.yaml
+    environment: variables/Admin.variable.yaml
+  - name: devConfig
+    global: variables/devConfig.variable.yaml
+    environment: variables/Admin.variable.yaml

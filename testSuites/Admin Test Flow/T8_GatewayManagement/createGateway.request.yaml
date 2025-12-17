@@ -103,8 +103,8 @@ events:
       type: javascript
       exec:
         - const deptBoundId = pq.environment.get('departmentBoundaryId');
-        - const baseUrl = pq.environment.get('API_Base_URL');
-        - const sysId = pq.environment.get('SYSTEM_ID');
+        - const baseUrl = pq.globals.get('API_Base_URL');
+        - const sysId = pq.globals.get('SYSTEM_ID');
         - const hospId = pq.environment.get('HospitalId');
         - let buildId = pq.environment.get('BuildingId')
         - const idToken = pq.globals.get("idToken");
