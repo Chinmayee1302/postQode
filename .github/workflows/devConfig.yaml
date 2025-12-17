@@ -15,22 +15,23 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '22.20.0'
+        node-version: '20.x'
 
     - name: Install PostQode CLI
       run: npm install -g @postqode/cli
 
     - name: Run DEV API Tests
-      run: |+
+      run: |
         mkdir -p test-results/dev
+
         postqode execute \
           -s testSuites/IAP_Test_Flow/_meta.suite.yaml \
           -c Dev_Config \
           --report-formats junit html \
           --report-dir ./test-results/dev
-        mkdir -p test-results/dev
+
         postqode execute \
-          -s testSuites/IEM Test Flow/_meta.suite.yaml \
+          -s "testSuites/IEM Test Flow/_meta.suite.yaml" \
           -c equipment-management-dev \
           --report-formats junit html \
           --report-dir ./test-results/dev
