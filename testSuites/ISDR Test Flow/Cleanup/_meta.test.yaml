@@ -28,3 +28,7 @@ testSteps:
     type: request
   - fileReference: delete_Rule.request.yaml
     type: request
+  - fileReference: delete_StaffEmergencyReport.request.yaml
+    type: request
+  - fileReference: deleteScheduledReport.request.yaml
+    type: request

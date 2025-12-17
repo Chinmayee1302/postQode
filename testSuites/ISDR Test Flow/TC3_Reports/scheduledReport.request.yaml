@@ -1,5 +1,5 @@
-id: e74c6bac-4798-42c3-a399-8091f5a7619e
-name: createStaffEmergencyReport
+id: 75d8e663-54d2-49ac-b087-343e41e09860
+name: scheduledReport
 request:
   url:
     raw: >-
@@ -20,7 +20,7 @@ request:
     - key: Authorization
       value: >-
         Bearer
-        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY1OTA5OTcwLCJleHAiOjE3NjU5OTYzNzAsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMUlMdmFjNkVDQ0J4MkdFYVpVdlB4biJ9.VCfpqoBeNpYBu5dY2MtasaC4LFmazHf8_mMFkS7_Bsc
+        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiIwSDhFYW5RMEdlZmNPWVJqVjQ2d0w5IiwiaWF0IjoxNzY1OTU1NjQ1LCJleHAiOjE3NjYwNDIwNDUsImF1ZCI6Ijk1NzhlMDQ2MGM5OGQ0YWRjMGY4N2Y3MCIsImlzcyI6Imh0dHBzOi8vc3RnLWNveC1oZWFsdGgtaW1hZ2luZS1hcGkubGV2ZXJlZ2UuY29tIiwic3ViIjoiMUlMdmFjNkVDQ0J4MkdFYVpVdlB4biJ9.V2BTRN13AjAl6oW252KRDtcHuDAP7Jxr2HSOUgrILQo
     - key: Referer
       value: https://stg-cognosos.web.app/
     - key: sec-ch-ua
@@ -38,12 +38,12 @@ request:
   body:
     mode: raw
     modeOfBody: JSON
-    raw: >-
+    raw: |-
       {
         "form": {
           "basicInformation": {
             "type": "safety.smartReports.emergencyAlerts",
-            "name": "ISDRStaffEmergencyReports",
+            "name": "ScheduledReport",
             "schedule": "oneTime",
             "disabled": false
           },
@@ -51,7 +51,7 @@ request:
             "application": "safety",
             "dateRange": "last7Days",
             "department": [
-              "0EYKbjyxQcXPsrKKXoK3zg"
+              "{{departmentName}}"
             ],
             "itemType": null,
             "itemTypeList": [],
@@ -63,9 +63,9 @@ request:
           },
           "delivery": {
             "application": "safety",
-            "sendWhen": "now",
-            "sendReportOn": null,
-            "sendReportAt": null,
+            "sendWhen": "later",
+            "sendReportOn": "2025-12-18T07:22:34.037Z",
+            "sendReportAt": "2025-12-17T07:00:00.000Z",
             "sendReportStartingOn": null,
             "sendReportStartingAt": null,
             "sendReportEndingOn": null,
@@ -175,13 +175,15 @@ request:
         },
         "context": {
           "systemId": "23fqm29hl188zLLfhodrp9",
-          "hospitalId": "4jgTU1k0jJA2A9BzypRKIc",
+          "hospitalId": "14ziTUiokSBSAmBL9APIvT",
           "type": "safety.smartReports.emergencyAlerts",
           "filters": {
-            "hospitalId": "4jgTU1k0jJA2A9BzypRKIc",
-            "buildingIds": [],
+            "hospitalId": "14ziTUiokSBSAmBL9APIvT",
+            "buildingIds": [
+              "3QO4MRhF8CyBufYCqByNVp"
+            ],
             "departmentIds": [
-              "0EYKbjyxQcXPsrKKXoK3zg"
+              "0GS0pUNTVbvlVdE7OYcmVH"
             ],
             "itemTypeValues": [],
             "itemNameValues": [],
@@ -192,8 +194,8 @@ request:
         },
         "updatedBy": "vidyashree.g@cognosos.com",
         "createdBy": "vidyashree.g@cognosos.com",
-        "updatedAt": 1765910218170,
-        "createdAt": 1765910218170
+        "updatedAt": 1765956190465,
+        "createdAt": 1765956190465
       }
 events: []
 type: request

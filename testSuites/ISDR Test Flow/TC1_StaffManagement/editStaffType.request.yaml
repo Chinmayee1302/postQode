@@ -50,5 +50,9 @@ request:
           "metadata/icon": "st st-staff"
         }
       }
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
 events: []
 type: request

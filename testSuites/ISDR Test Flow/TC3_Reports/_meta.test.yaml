@@ -1,11 +1,13 @@
 description: ''
 id: f1625ef7-dd96-4a7a-ab7d-fc9517d13760
 name: TC3_Reports
-disabled: true
+disabled: false
 dependencies: []
 type: TESTCASE
 testSuiteId: 7bb986d3-e4f7-4920-84bb-7eabb5f7e165
 parentId: 7bb986d3-e4f7-4920-84bb-7eabb5f7e165
 testSteps:
-  - fileReference: createStaffEmergencyReport.request.yaml
+  - fileReference: create_StaffEmergencyReport.request.yaml
+    type: request
+  - fileReference: scheduledReport.request.yaml
     type: request

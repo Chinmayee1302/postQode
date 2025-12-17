@@ -6,3 +6,6 @@ runConfigs:
   - name: ISDR_Stagibg
     global: variables/stageConfigGlobal.variable.yaml
     environment: variables/ISDR_Stag.variable.yaml
+  - name: ISDR_Dev
+    global: variables/devConfig.variable.yaml
+    environment: variables/ISDR_Stag.variable.yaml
