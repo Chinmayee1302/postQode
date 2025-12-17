@@ -1,0 +1,15 @@
+description: ''
+id: 3748de74-540e-4f5c-8b28-6b189c4e3fa4
+name: recurringReport
+disabled: false
+dependencies: []
+type: TESTCASE
+testSuiteId: b09e7f95-4857-4519-9a58-d87c5e3269eb
+parentId: 5dfbe9f6-1377-4f80-abb4-122d7653462c
+testSteps:
+  - fileReference: reportCreation.request.yaml
+    type: request
+  - fileReference: editReport.request.yaml
+    type: request
+  - fileReference: deleteReport.request.yaml
+    type: request

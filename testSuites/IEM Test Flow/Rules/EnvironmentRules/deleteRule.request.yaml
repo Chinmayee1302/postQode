@@ -19,12 +19,10 @@ request:
   headers:
     - key: sec-ch-ua-platform
       value: '"Windows"'
-    - key: Authorization
-      value: >-
-        Bearer
-        eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcmoiOiI1NXptcEphMlE3dnlqdWxORjcySks2IiwiaWF0IjoxNzY1Nzg4ODI0LCJleHAiOjE3NjU4NzUyMjQsImF1ZCI6IkxvX2xuVXhGTDNadk1uRk41ZU1qRmlDVXYxeEZxRi1IIiwiaXNzIjoiaHR0cHM6Ly9kZXYtY294LWhlYWx0aC1pbWFnaW5lLWFwaS5sZXZlcmVnZS5jb20iLCJzdWIiOiI1a1hkbkNBbDk2aldxYWN5ZkZoZEhzIn0.s8QLmRBUg6cukrFhBENukA_R8ePop6tKRD0WfxDMxMU
-    - key: Referer
-      value: https://dev-cognosos.web.app/
+    - description: ''
+      disabled: false
+      key: Authorization
+      value: Bearer {{idToken}}
     - key: sec-ch-ua
       value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
     - key: sec-ch-ua-mobile

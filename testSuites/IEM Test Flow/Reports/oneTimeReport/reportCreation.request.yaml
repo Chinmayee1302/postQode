@@ -1,0 +1,52 @@
+id: 8885cdf2-4a2d-4d23-9ade-648820734e60
+name: reportCreation
+request:
+  url:
+    raw: >-
+      {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{EquipmentManagement.hospitalDetails.hospitalId}}.srv/prosightAnalytics/scheduledReports
+    host:
+      - '{{API_Base_URL}}'
+    path:
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{EquipmentManagement.hospitalDetails.hospitalId}}.srv'
+      - prosightAnalytics
+      - scheduledReports
+  method: POST
+  headers:
+    - key: sec-ch-ua-platform
+      value: '"Windows"'
+    - key: sec-ch-ua
+      value: '"Google Chrome";v="143", "Chromium";v="143", "Not A(Brand";v="24"'
+    - key: sec-ch-ua-mobile
+      value: '?0'
+    - key: User-Agent
+      value: >-
+        Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
+        like Gecko) Chrome/143.0.0.0 Safari/537.36
+    - key: Accept
+      value: application/json
+    - key: Content-Type
+      value: application/json
+  body:
+    mode: raw
+    modeOfBody: JSON
+    raw: "{\r\n    \"form\": {\r\n        \"basicInformation\": {\r\n            \"type\": \"environment.smartReports.environmental\",\r\n            \"name\": \"env report postqode\",\r\n            \"schedule\": \"oneTime\",\r\n            \"disabled\": false\r\n        },\r\n        \"filters\": {\r\n            \"application\": \"environment\",\r\n            \"dateRange\": \"last7Days\",\r\n            \"department\": [\r\n                \"{{EquipmentManagement.departmentDetails.departmentID}}\"\r\n            ],\r\n            \"itemType\": [\r\n                \"{{EquipmentManagement.equipmentType}}\"\r\n            ],\r\n            \"itemTypeList\": [\r\n                {\r\n                    \"name\": \"{{EquipmentManagement.equipmentType}}\",\r\n                    \"value\": \"{{EquipmentManagement.equipmentType}}\",\r\n                    \"icon\": \"eq eq-default\"\r\n                }\r\n            ],\r\n            \"showCalendar\": true,\r\n            \"itemName\": [\r\n                \"{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}\"\r\n            ],\r\n            \"itemNamesList\": [],\r\n            \"dateRangeType\": \"RANGE_TYPES_BACKWARD\",\r\n            \"departmentLabel\": \"Assigned Owner\"\r\n        },\r\n        \"delivery\": {\r\n            \"application\": \"environment\",\r\n            \"sendWhen\": \"now\",\r\n            \"sendReportOn\": null,\r\n            \"sendReportAt\": null,\r\n            \"sendReportStartingOn\": null,\r\n            \"sendReportStartingAt\": null,\r\n            \"sendReportEndingOn\": null,\r\n            \"sendReportFrequency\": null,\r\n            \"sendReportEndingOnMax\": null,\r\n            \"dateTimeSelectMin\": null,\r\n            \"enableSendReportEndingOn\": false,\r\n            \"disabled\": false,\r\n            \"type\": \"environment.smartReports.environmental\"\r\n        },\r\n        \"data/itemType\": null,\r\n        \"data/itemName\": null,\r\n        \"recipients\": [\r\n            \"{{username}}\"\r\n        ]\r\n    },\r\n    \"config\": {\r\n        \"title\": \"Environment Reports\",\r\n        \"type\": \"environment.smartReports.environmental\",\r\n        \"dataType\": \"multiplePowerBI\",\r\n        \"forwardDateDisable\": true,\r\n        \"previewInterface\": [\r\n            {\r\n                \"path\": [\r\n                    [\r\n                        \"interface\",\r\n                        \"{systemId}\",\r\n                        \"hospital\"\r\n                    ],\r\n                    [\r\n                        \"obj\",\r\n                        \"{hospitalId}\"\r\n                    ],\r\n                    [\r\n                        \"srv\",\r\n                        \"prosightAnalytics\"\r\n                    ],\r\n                    [\r\n                        \"get\",\r\n                        \"embed/{type}\"\r\n                    ]\r\n                ]\r\n            }\r\n        ],\r\n        \"interface\": [\r\n            {\r\n                \"path\": [\r\n                    [\r\n                        \"interface\",\r\n                        \"{systemId}\",\r\n                        \"hospital\"\r\n                    ],\r\n                    [\r\n                        \"obj\",\r\n                        \"{hospitalId}\"\r\n                    ],\r\n                    [\r\n                        \"srv\",\r\n                        \"prosightAnalytics\"\r\n                    ],\r\n                    [\r\n                        \"post\",\r\n                        \"scheduledReports/{type}/data\",\r\n                        {\r\n                            \"context\": \"{}\"\r\n                        }\r\n                    ]\r\n                ]\r\n            }\r\n        ],\r\n        \"accessors\": [\r\n            {\r\n                \"type\": \"value\",\r\n                \"label\": \"Date/Time\",\r\n                \"path\": \"time\",\r\n                \"modifier\": [\r\n                    \"formatDate\",\r\n                    \"MM/dd/yyyy hh:mm a\"\r\n                ]\r\n            },\r\n            {\r\n                \"type\": \"value\",\r\n                \"label\": \"Temp. (C)\",\r\n                \"path\": \"temperature\",\r\n                \"modifier\": [\r\n                    \"environment.temperatureAccessor\"\r\n                ]\r\n            },\r\n            {\r\n                \"type\": \"value\",\r\n                \"label\": \"Humidity\",\r\n                \"path\": \"humidity\",\r\n                \"modifier\": [\r\n                    \"environment.humidityAccessor\"\r\n                ]\r\n            },\r\n            {\r\n                \"type\": \"value\",\r\n                \"label\": \"Temp. Status\",\r\n                \"path\": \"temperatureStatus\",\r\n                \"modifier\": [\r\n                    \"environment.temperatureStatusAccessor\"\r\n                ]\r\n            },\r\n            {\r\n                \"type\": \"value\",\r\n                \"label\": \"Equip. Name\",\r\n                \"path\": \"equipmentName\",\r\n                \"dontDisplay\": true\r\n            },\r\n            {\r\n                \"type\": \"value\",\r\n                \"label\": \"Equip. ID\",\r\n                \"path\": \"equipmentId\",\r\n                \"dontDisplay\": true\r\n            },\r\n            {\r\n                \"type\": \"value\",\r\n                \"label\": \"Equi. Type\",\r\n                \"path\": \"equipmentType\",\r\n                \"dontDisplay\": true\r\n            },\r\n            {\r\n                \"type\": \"value\",\r\n                \"label\": \"Assigned Owner\",\r\n                \"path\": \"department\",\r\n                \"dontDisplay\": true\r\n            },\r\n            {\r\n                \"type\": \"value\",\r\n                \"label\": \"Sensor ID\",\r\n                \"path\": \"sensorId\",\r\n                \"dontDisplay\": true\r\n            }\r\n        ],\r\n        \"form\": {\r\n            \"defaults\": {\r\n                \"basicInformation\": {\r\n                    \"type\": \"environment.smartReports.environmental\",\r\n                    \"schedule\": \"oneTime\"\r\n                },\r\n                \"filters\": {\r\n                    \"dateRange\": \"last7Days\"\r\n                }\r\n            },\r\n            \"useDateRangeDirection\": \"backward\",\r\n            \"useItemTypeFilter\": true,\r\n            \"useItemFilter\": true\r\n        }\r\n    },\r\n    \"context\": {\r\n        \"systemId\": \"{{SYSTEM_ID}}\",\r\n        \"hospitalId\": \"{{EquipmentManagement.hospitalDetails.hospitalId}}\",\r\n        \"type\": \"environment.smartReports.environmental\",\r\n        \"filters\": {\r\n            \"hospitalId\": \"{{EquipmentManagement.hospitalDetails.hospitalId}}\",\r\n            \"buildingIds\": [\r\n                \"{{EquipmentManagement.buildingDetails.buildingId}}\"\r\n            ],\r\n            \"departmentIds\": [\"{{EquipmentManagement.departmentDetails.departmentID}}\"],\r\n            \"itemTypeValues\": [\"{{EquipmentManagement.equipmentType}}\"],\r\n            \"itemNameValues\": [\r\n              \"{{EquipmentManagement.equipmentDetails.equipment3.equipmentId}}\"\r\n            ],\r\n            \"dateRange\": \"last7Days\"\r\n        },\r\n        \"offset\": 0,\r\n        \"limit\": 9999\r\n    },\r\n    \"updatedBy\": \"{{username}}\",\r\n    \"createdBy\": \"{{username}}\",\r\n    \"updatedAt\": \"{{Reports.curtimestamp}}\",\r\n    \"createdAt\": \"{{Reports.curtimestamp}}\"\r\n}"
+  auth:
+    type: bearer
+    bearer:
+      token: '{{idToken}}'
+events:
+  - listen: prerequest
+    script:
+      type: javascript
+      exec:
+        - pq.environment.set("Reports.curtimestamp", new Date().toISOString())
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - "const response = pq.response.json()\r"
+        - pq.environment.set("Reports.onetimeReportId",response.id)
+type: request
