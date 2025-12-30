@@ -1,128 +1,166 @@
-id: 3d630a27-b5a2-4377-99d2-fc0527916556
+id: 3d630a27-b5a2-4377-99d2-fc0527916576
 name: createFloorID
 request:
   url:
     raw: >-
       {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{HOSPITAL_ID}}/buildings/{{buildingId}}/floors
     host:
-      - '{{API_Base_URL}}'
+    - '{{API_Base_URL}}'
     path:
-      - interface
-      - '{{SYSTEM_ID}}'
-      - hospital
-      - '{{HOSPITAL_ID}}'
-      - buildings
-      - '{{buildingId}}'
-      - floors
+    - interface
+    - '{{SYSTEM_ID}}'
+    - hospital
+    - '{{HOSPITAL_ID}}'
+    - buildings
+    - '{{buildingId}}'
+    - floors
   method: POST
   headers:
-    - key: Referer
-      value: '{{leverageURL}}'
-    - key: Content-Type
-      value: application/json
+  - key: Referer
+    value: '{{leverageURL}}'
+  - key: Content-Type
+    value: application/json
   body:
     mode: raw
-    raw: "{\r\n  \"name\": \"{{floorName}}\",\r\n  \"data\": {\r\n    \"name\": \"{{floorName}}\",\r\n    \"floorNumber\": \"{{floorNumber}}\",\r\n    \"abbreviation\": \"{{floorNumber}}\",\r\n    \"location\": {\r\n      \"building\": {\r\n        \"id\": \"{{buildingId}}\",\r\n        \"name\": \"{{buildingName}}\"\r\n      },\r\n      \"hospital\": {\r\n        \"id\": \"{{HOSPITAL_ID}}\",\r\n        \"name\": \"{{hospitalName}}\"\r\n      }\r\n    },\r\n    \"floorPlan\": \"test-floor.geojson\",\r\n    \"geoJson\": {{geoJsonEscaped}}\r\n  }\r\n}\r\n"
+    raw: "{\r
+
+      \  \"name\": \"{{floorName}}\",\r
+
+      \  \"data\": {\r
+
+      \    \"name\": \"{{floorName}}\",\r
+
+      \    \"floorNumber\": \"{{floorNumber}}\",\r
+
+      \    \"abbreviation\": \"{{floorNumber}}\",\r
+
+      \    \"location\": {\r
+
+      \      \"building\": {\r
+
+      \        \"id\": \"{{buildingId}}\",\r
+
+      \        \"name\": \"{{buildingName}}\"\r
+
+      \      },\r
+
+      \      \"hospital\": {\r
+
+      \        \"id\": \"{{HOSPITAL_ID}}\",\r
+
+      \        \"name\": \"{{hospitalName}}\"\r
+
+      \      }\r
+
+      \    },\r
+
+      \    \"floorPlan\": \"test-floor.geojson\",\r
+
+      \    \"geoJson\": {{geoJsonEscaped}}\r
+
+      \  }\r
+
+      }\r\n"
   auth:
     type: bearer
     bearer:
       token: '{{idToken}}'
 events:
-  - listen: prerequest
-    script:
-      type: javascript
-      exec:
-        - "const floorResponse=JSON.parse(pq.collectionVariables.get(\"assetAlertData\"))\r"
-        - "pq.variables.set(\"floorName\", floorResponse.floorDetails.floorName);\r"
-        - "pq.variables.set(\"floorNumber\", floorResponse.floorDetails.floorNumber);\r"
-        - "\r"
-        - "const room1Name = floorResponse.locationDetails.roomName_1;\r"
-        - "const room2Name = floorResponse.locationDetails.roomName_2;\r"
-        - "const roomType = floorResponse.roomDetails.roomTypeName;\r"
-        - "\r"
-        - "\r"
-        - "\r"
-        - " const geoJson= `{\"type\":\"Feature\",\"bbox\":[-117.2573850339,32.9919326446,-117.2567672814,32.9924188269],\"properties\":{},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-117.2573850339,32.9919326446],[-117.2567672814,32.9919326446],[-117.2567672814,32.9924188269],[-117.2573850339,32.9924188269],[-117.2573850339,32.9919326446]]]},\"floorPlan\":{\"type\":\"FeatureCollection\",\"name\":\"Rooms\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-117.2567801716,32.9919700738],[-117.2567802873,32.9919700442],[-117.2567802676,32.9919699897],[-117.256790479,32.9919673747],[-117.2568391117,32.9919670862],[-117.2568391158,32.9919672568],[-117.256845524,32.9919672188],[-117.2568455283,32.9919677307],[-117.2568557858,32.9919676698],[-117.2568557815,32.991967158],[-117.2568563888,32.9919671544],[-117.2568563874,32.9919669838],[-117.2568569273,32.9919669806],[-117.2568569248,32.9919670375],[-117.2568636761,32.9919669974],[-117.2568634008,32.9919340414],[-117.2568431926,32.9919342181],[-117.2568432165,32.9919370774],[-117.2568370755,32.9919371139],[-117.2568370512,32.9919341976],[-117.2568371187,32.9919341972],[-117.2568371163,32.9919339129],[-117.2567672814,32.9919343271],[-117.2567801716,32.9919700738]]]},\"properties\":{\"RoomNumber\":\"${room1Name}\",\"RoomName\":\"${room1Name}\",\"RoomType\":\"${roomType}\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-117.2568203856,32.9919698135],[-117.2568197782,32.9919698171],[-117.2568197744,32.9919693621],[-117.2567908688,32.9919695336],[-117.2567828024,32.9919715993],[-117.2567840587,32.9919750832],[-117.2567797971,32.9919761745],[-117.256791613,32.9920089419],[-117.2568200361,32.9920087733],[-117.2568198281,32.9919838643],[-117.2568198956,32.9919838639],[-117.2568198504,32.9919784613],[-117.2568204578,32.9919784577],[-117.2568203856,32.9919698135]]]},\"properties\":{\"RoomNumber\":\"${room2Name}\",\"RoomName\":\"${room2Name}\",\"RoomType\":\"${roomType}\"}}]}}`\r"
-        - " \r"
-        - "pq.variables.set(\"geoJsonEscaped\", JSON.stringify(geoJson))\r"
-        - ''
-      packages: []
-  - listen: test
-    script:
-      type: javascript
-      exec:
-        - "const resp     = pq.response.json();\r"
-        - "const floorId  = resp.id;                       \r"
-        - "const baseUrl  = pq.environment.get('API_Base_URL');\r"
-        - "const sysId    = pq.environment.get('SYSTEM_ID');\r"
-        - "const hospId   = pq.collectionVariables.get('HOSPITAL_ID');\r"
-        - "const bldgId   = pq.collectionVariables.get(\"buildingId\");\r"
-        - "const deptId   = pq.variables.get(\"departmentID\");\r"
-        - "const idToken = pq.environment.get(\"idToken\");\r"
-        - "const testData = JSON.parse(pq.collectionVariables.get(\"assetAlertData\"))\r"
-        - "const buildingName=testData.buildingName\r"
-        - "const hospitalName=testData.hospitalName\r"
-        - "// Parse the GeoJSON that server just stored\r"
-        - "const geoJson  =JSON.parse(resp.data.geoJson);    \r"
-        - "const features = geoJson.floorPlan || [];\r"
-        - "console.log(features)\r"
-        - "pq.sendRequest({\r"
-        - "    url:`${baseUrl}/interface/${sysId}/hospital/buildings/${bldgId}/floors/${floorId}?test=true`,\r"
-        - "    header: {\r"
-        - "                    Authorization: `Bearer ${idToken}`,\r"
-        - "                    'Content-Type': 'application/json'\r"
-        - "    }\r"
-        - "})\r"
-        - "features.features.forEach((feature, idx) => {\r"
-        - "  // POST /rooms\r"
-        - "  pq.sendRequest({\r"
-        - "    url   : `${baseUrl}/interface/${sysId}/hospital/${hospId}` +\r"
-        - "            `/buildings/${bldgId}/floors/${floorId}/rooms`,\r"
-        - "    method: 'POST',\r"
-        - "    header: {\r"
-        - "                    Authorization: `Bearer ${idToken}`,\r"
-        - "                    'Content-Type': 'application/json'\r"
-        - "    },\r"
-        - "    body  : {\r"
-        - "      mode: 'raw',\r"
-        - "      raw : JSON.stringify({\r"
-        - "        name: feature.properties.RoomNumber,\r"
-        - "        data: {\r"
-        - "          geoshape  : JSON.stringify(feature),      \r"
-        - "          roomNumber: feature.properties.RoomNumber,\r"
-        - "          roomType  : feature.properties.RoomType,\r"
-        - "          mapLabel  : feature.properties.RoomName\r"
-        - "        }\r"
-        - "      })\r"
-        - "    }\r"
-        - "  }, (err, res) => {\r"
-        - "    if (err || res.code != 200) {\r"
-        - "      console.warn(`Room ${idx + 1} failed`, err || res.text());\r"
-        - "      return;\r"
-        - "    }else{\r"
-        - "        console.log(res.json(),\"Room created\")\r"
-        - "    }\r"
-        - "\r"
-        - "    const roomId = res.json().id;\r"
-        - "    console.log(`Room ${roomId} created`);\r"
-        - "\r"
-        - "    // POST /departments/{deptId}/rooms  → link\r"
-        - "    pq.sendRequest({\r"
-        - "      url   : `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments/${deptId}/rooms`,\r"
-        - "      method: 'POST',\r"
-        - "      header: {\r"
-        - "                    Authorization: `Bearer ${idToken}`,\r"
-        - "                    'Content-Type': 'application/json'\r"
-        - "    },\r"
-        - "      body  : { mode: 'raw', raw: JSON.stringify({ id: roomId, force: true }) }\r"
-        - "    }, (err2, res2) => {\r"
-        - "      if (err2 || res2.code >= 400) {\r"
-        - "        console.warn(`Linking room ${roomId} failed`, err2 || res2.text());\r"
-        - "      } else {\r"
-        - "        console.log(`Room ${roomId} linked to department`);\r"
-        - "      }\r"
-        - "    });\r"
-        - "  });\r"
-        - "});\r"
-        - ''
-      packages: []
+- listen: prerequest
+  script:
+    type: javascript
+    exec:
+    - "const floorResponse=JSON.parse(pq.collectionVariables.get(\"assetAlertData\"))\r"
+    - "pq.variables.set(\"floorName\", floorResponse.floorDetails.floorName);\r"
+    - "pq.variables.set(\"floorNumber\", floorResponse.floorDetails.floorNumber);\r"
+    - "\r"
+    - "const room1Name = floorResponse.locationDetails.roomName_1;\r"
+    - "const room2Name = floorResponse.locationDetails.roomName_2;\r"
+    - "const roomType = floorResponse.roomDetails.roomTypeName;\r"
+    - "\r"
+    - "\r"
+    - "\r"
+    - " const geoJson= `{\"type\":\"Feature\",\"bbox\":[-117.2573850339,32.9919326446,-117.2567672814,32.9924188269],\"properties\":{},\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-117.2573850339,32.9919326446],[-117.2567672814,32.9919326446],[-117.2567672814,32.9924188269],[-117.2573850339,32.9924188269],[-117.2573850339,32.9919326446]]]},\"floorPlan\":{\"type\":\"FeatureCollection\",\"name\":\"Rooms\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-117.2567801716,32.9919700738],[-117.2567802873,32.9919700442],[-117.2567802676,32.9919699897],[-117.256790479,32.9919673747],[-117.2568391117,32.9919670862],[-117.2568391158,32.9919672568],[-117.256845524,32.9919672188],[-117.2568455283,32.9919677307],[-117.2568557858,32.9919676698],[-117.2568557815,32.991967158],[-117.2568563888,32.9919671544],[-117.2568563874,32.9919669838],[-117.2568569273,32.9919669806],[-117.2568569248,32.9919670375],[-117.2568636761,32.9919669974],[-117.2568634008,32.9919340414],[-117.2568431926,32.9919342181],[-117.2568432165,32.9919370774],[-117.2568370755,32.9919371139],[-117.2568370512,32.9919341976],[-117.2568371187,32.9919341972],[-117.2568371163,32.9919339129],[-117.2567672814,32.9919343271],[-117.2567801716,32.9919700738]]]},\"properties\":{\"RoomNumber\":\"${room1Name}\",\"RoomName\":\"${room1Name}\",\"RoomType\":\"${roomType}\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Polygon\",\"coordinates\":[[[-117.2568203856,32.9919698135],[-117.2568197782,32.9919698171],[-117.2568197744,32.9919693621],[-117.2567908688,32.9919695336],[-117.2567828024,32.9919715993],[-117.2567840587,32.9919750832],[-117.2567797971,32.9919761745],[-117.256791613,32.9920089419],[-117.2568200361,32.9920087733],[-117.2568198281,32.9919838643],[-117.2568198956,32.9919838639],[-117.2568198504,32.9919784613],[-117.2568204578,32.9919784577],[-117.2568203856,32.9919698135]]]},\"properties\":{\"RoomNumber\":\"${room2Name}\",\"RoomName\":\"${room2Name}\",\"RoomType\":\"${roomType}\"}}]}}`\r"
+    - " \r"
+    - "pq.variables.set(\"geoJsonEscaped\", JSON.stringify(geoJson))\r"
+    - ''
+    packages: []
+- listen: test
+  script:
+    type: javascript
+    exec:
+    - "const resp     = pq.response.json();\r"
+    - "const floorId  = resp.id;                       \r"
+    - "const baseUrl  = pq.environment.get('API_Base_URL');\r"
+    - "const sysId    = pq.environment.get('SYSTEM_ID');\r"
+    - "const hospId   = pq.collectionVariables.get('HOSPITAL_ID');\r"
+    - "const bldgId   = pq.collectionVariables.get(\"buildingId\");\r"
+    - "const deptId   = pq.variables.get(\"departmentID\");\r"
+    - "const idToken = pq.environment.get(\"idToken\");\r"
+    - "const testData = JSON.parse(pq.collectionVariables.get(\"assetAlertData\"))\r"
+    - "const buildingName=testData.buildingName\r"
+    - "const hospitalName=testData.hospitalName\r"
+    - "// Parse the GeoJSON that server just stored\r"
+    - "const geoJson  =JSON.parse(resp.data.geoJson);    \r"
+    - "const features = geoJson.floorPlan || [];\r"
+    - "console.log(features)\r"
+    - "pq.sendRequest({\r"
+    - "    url:`${baseUrl}/interface/${sysId}/hospital/buildings/${bldgId}/floors/${floorId}?test=true`,\r"
+    - "    header: {\r"
+    - "                    Authorization: `Bearer ${idToken}`,\r"
+    - "                    'Content-Type': 'application/json'\r"
+    - "    }\r"
+    - "})\r"
+    - "features.features.forEach((feature, idx) => {\r"
+    - "  // POST /rooms\r"
+    - "  pq.sendRequest({\r"
+    - "    url   : `${baseUrl}/interface/${sysId}/hospital/${hospId}` +\r"
+    - "            `/buildings/${bldgId}/floors/${floorId}/rooms`,\r"
+    - "    method: 'POST',\r"
+    - "    header: {\r"
+    - "                    Authorization: `Bearer ${idToken}`,\r"
+    - "                    'Content-Type': 'application/json'\r"
+    - "    },\r"
+    - "    body  : {\r"
+    - "      mode: 'raw',\r"
+    - "      raw : JSON.stringify({\r"
+    - "        name: feature.properties.RoomNumber,\r"
+    - "        data: {\r"
+    - "          geoshape  : JSON.stringify(feature),      \r"
+    - "          roomNumber: feature.properties.RoomNumber,\r"
+    - "          roomType  : feature.properties.RoomType,\r"
+    - "          mapLabel  : feature.properties.RoomName\r"
+    - "        }\r"
+    - "      })\r"
+    - "    }\r"
+    - "  }, (err, res) => {\r"
+    - "    if (err || res.code != 200) {\r"
+    - "      console.warn(`Room ${idx + 1} failed`, err || res.text());\r"
+    - "      return;\r"
+    - "    }else{\r"
+    - "        console.log(res.json(),\"Room created\")\r"
+    - "    }\r"
+    - "\r"
+    - "    const roomId = res.json().id;\r"
+    - "    console.log(`Room ${roomId} created`);\r"
+    - "\r"
+    - "    // POST /departments/{deptId}/rooms  → link\r"
+    - "    pq.sendRequest({\r"
+    - "      url   : `${baseUrl}/interface/${sysId}/hospital/${hospId}/departments/${deptId}/rooms`,\r"
+    - "      method: 'POST',\r"
+    - "      header: {\r"
+    - "                    Authorization: `Bearer ${idToken}`,\r"
+    - "                    'Content-Type': 'application/json'\r"
+    - "    },\r"
+    - "      body  : { mode: 'raw', raw: JSON.stringify({ id: roomId, force: true }) }\r"
+    - "    }, (err2, res2) => {\r"
+    - "      if (err2 || res2.code >= 400) {\r"
+    - "        console.warn(`Linking room ${roomId} failed`, err2 || res2.text());\r"
+    - "      } else {\r"
+    - "        console.log(`Room ${roomId} linked to department`);\r"
+    - "      }\r"
+    - "    });\r"
+    - "  });\r"
+    - "});\r"
+    - ''
+    packages: []

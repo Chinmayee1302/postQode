@@ -50,7 +50,11 @@ events:
       exec:
         - "setTimeout(() => {\r"
         - "  console.log(\"wait for 10 secs\")\r"
-        - '},3000)'
+        - "}, 3000)\r"
+        - "\r"
+        - "for (let i = 0; i < 1000; i++){\r"
+        - "  console.log(i)\r"
+        - '}'
   - listen: test
     script:
       type: javascript
