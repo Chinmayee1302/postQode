@@ -46,24 +46,10 @@ request:
               "operator": "and",
               "conditions": [
                   {
-                      "type": "logical",
-                      "operator": "and",
-                      "conditions": [
-                          {
-                              "type": "equals",
-                              "fieldType": "string",
-                              "empty": false,
-                              "field": "data/floor/name",
-                              "value": [
-                                  "{{floorDetails.floorName}}"
-                              ],
-                              "floorId": "{{floorId}}"
-                          }
-                      ]
-                  },
-                  {
-                      "type": "groupedText",
-                      "value": "{{roomDetails.roomName_1}}"
+                      "type": "equals",
+                      "field": "data.parentData.floor.id",
+                      "value": "{{floorId}}",
+                      "fieldType": "string"
                   }
               ]
           },

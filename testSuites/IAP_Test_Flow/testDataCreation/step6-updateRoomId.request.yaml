@@ -5,17 +5,17 @@ request:
     raw: >-
       {{API_Base_URL}}/interface/{{SYSTEM_ID}}/hospital/{{AssetManagement.hospitalDetails.HospitalId}}/rooms.search
     host:
-    - '{{API_Base_URL}}'
+      - '{{API_Base_URL}}'
     path:
-    - interface
-    - '{{SYSTEM_ID}}'
-    - hospital
-    - '{{AssetManagement.hospitalDetails.HospitalId}}'
-    - rooms.search
+      - interface
+      - '{{SYSTEM_ID}}'
+      - hospital
+      - '{{AssetManagement.hospitalDetails.HospitalId}}'
+      - rooms.search
   method: POST
   headers:
-  - key: Content-Type
-    value: application/json
+    - key: Content-Type
+      value: application/json
   body:
     mode: raw
     modeOfBody: JSON
@@ -30,7 +30,7 @@ request:
                   {
                       "type": "equals",
                       "field": "data.parentData.floor.id",
-                      "value": "{{AssetManagement.floorDetails.floorId}}",
+                      "value": "{{floorId}}",
                       "fieldType": "string"
                   }
               ]
@@ -48,12 +48,12 @@ request:
     bearer:
       token: '{{idToken}}'
 events:
-- listen: test
-  script:
-    type: javascript
-    exec:
-    - let res = pq.response.json();
-    - // const id = response.json().items[0].id
-    - pq.environment.set("AssetManagement.roomId", res.items[0].id);
-    - console.log(pq.environment.get("AssetManagement.roomId"))
+  - listen: test
+    script:
+      type: javascript
+      exec:
+        - let res = pq.response.json();
+        - // const id = response.json().items[0].id
+        - pq.environment.set("AssetManagement.roomId", res.items[0].id);
+        - console.log(pq.environment.get("AssetManagement.roomId"))
 type: request
