@@ -17,7 +17,7 @@ testSteps:
     type: request
   - fileReference: step4-createRoomType.request.yaml
     type: request
-  - fileReference: step5-createFloorID.request.yaml
+  - fileReference: step5-createfloorid--IPBdu73X.request.yaml
     type: request
   - fileReference: step6-updateRoomId.request.yaml
     type: request
